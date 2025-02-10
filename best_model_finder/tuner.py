@@ -13,18 +13,7 @@ class Model_Finder:
         self.xgb = XGBClassifier(objective='binary:logistic',n_jobs=-1)
 
     def get_best_params_for_svm(self,train_x,train_y):
-        """
-        Method Name: get_best_params_for_naive_bayes
-        Description: get the parameters for the SVM Algorithm which give the best accuracy.
-                     Use Hyper Parameter Tuning.
-        Output: The model with the best parameters
-        On Failure: Raise Exception
 
-        Written By: iNeuron Intelligence
-        Version: 1.0
-        Revisions: None
-
-                        """
         self.logger_object.log(self.file_object, 'Entered the get_best_params_for_svm method of the Model_Finder class')
         try:
             # initializing with different combination of parameters
@@ -61,18 +50,7 @@ class Model_Finder:
 
     def get_best_params_for_xgboost(self,train_x,train_y):
 
-        """
-                                        Method Name: get_best_params_for_xgboost
-                                        Description: get the parameters for XGBoost Algorithm which give the best accuracy.
-                                                     Use Hyper Parameter Tuning.
-                                        Output: The model with the best parameters
-                                        On Failure: Raise Exception
 
-                                        Written By: iNeuron Intelligence
-                                        Version: 1.0
-                                        Revisions: None
-
-                                """
         self.logger_object.log(self.file_object,
                                'Entered the get_best_params_for_xgboost method of the Model_Finder class')
         try:
@@ -111,17 +89,8 @@ class Model_Finder:
 
 
     def get_best_model(self,train_x,train_y,test_x,test_y):
-        """
-                                                Method Name: get_best_model
-                                                Description: Find out the Model which has the best AUC score.
-                                                Output: The best model name and the model object
-                                                On Failure: Raise Exception
 
-                                                Written By: iNeuron Intelligence
-                                                Version: 1.0
-                                                Revisions: None
 
-                                        """
         self.logger_object.log(self.file_object,
                                'Entered the get_best_model method of the Model_Finder class')
         # create best model for XGBoost

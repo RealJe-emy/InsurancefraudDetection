@@ -52,3 +52,63 @@
 2020-04-13/15:26:22		Entered the load_model method of the File_Operation class
 2020-04-13/15:26:22		Model File XGBoost0 loaded. Exited the load_model method of the Model_Finder class
 2020-04-13/15:26:22		End of Prediction
+2025-01-25/13:08:14		Start of Validation on files for prediction!!
+2025-01-25/13:08:14		Raw Data Validation Complete!!
+2025-01-25/13:08:14		Starting Data Transforamtion!!
+2025-01-25/13:08:14		DataTransformation Completed!!!
+2025-01-25/13:08:14		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-01-25/13:08:14		Table creation Completed!!
+2025-01-25/13:08:14		Insertion of Data into Table started!!!!
+2025-01-25/13:08:15		Insertion in Table completed!!!
+2025-01-25/13:08:15		Deleting Good Data Folder!!!
+2025-01-25/13:08:15		Good_Data folder deleted!!!
+2025-01-25/13:08:15		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-01-25/13:08:15		Bad files moved to archive!! Bad folder Deleted!!
+2025-01-25/13:08:15		Validation Operation completed!!
+2025-01-25/13:08:15		Extracting csv file from table
+2025-01-25/13:08:15		Start of Prediction
+2025-01-25/13:08:15		Entered the get_data method of the Data_Getter class
+2025-01-25/13:08:15		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-01-25/13:08:15		Entered the remove_columns method of the Preprocessor class
+2025-01-25/13:08:15		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-01-25/13:08:15		Entered the is_null_present method of the Preprocessor class
+2025-01-25/13:08:15		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-01-25/13:08:15		Entered the impute_missing_values method of the Preprocessor class
+2025-01-25/13:08:15		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-01-25/13:08:15		Entered the encode_categorical_columns method of the Preprocessor class
+2025-01-25/13:08:15		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-01-25/13:08:15		Entered the scale_numerical_columns method of the Preprocessor class
+2025-01-25/13:08:15		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-01-25/13:08:15		Entered the load_model method of the File_Operation class
+2025-01-25/13:08:15		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2025-01-25/13:08:15		Error occured while running the prediction!! Error:: 'KMeans' object has no attribute '_n_threads'
+2025-01-25/13:08:30		Start of Validation on files for prediction!!
+2025-01-25/13:08:30		Raw Data Validation Complete!!
+2025-01-25/13:08:30		Starting Data Transforamtion!!
+2025-01-25/13:08:30		DataTransformation Completed!!!
+2025-01-25/13:08:30		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-01-25/13:08:31		Table creation Completed!!
+2025-01-25/13:08:31		Insertion of Data into Table started!!!!
+2025-01-25/13:08:32		Insertion in Table completed!!!
+2025-01-25/13:08:32		Deleting Good Data Folder!!!
+2025-01-25/13:08:32		Good_Data folder deleted!!!
+2025-01-25/13:08:32		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-01-25/13:08:32		Bad files moved to archive!! Bad folder Deleted!!
+2025-01-25/13:08:32		Validation Operation completed!!
+2025-01-25/13:08:32		Extracting csv file from table
+2025-01-25/13:08:32		Start of Prediction
+2025-01-25/13:08:32		Entered the get_data method of the Data_Getter class
+2025-01-25/13:08:32		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-01-25/13:08:32		Entered the remove_columns method of the Preprocessor class
+2025-01-25/13:08:32		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-01-25/13:08:32		Entered the is_null_present method of the Preprocessor class
+2025-01-25/13:08:32		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-01-25/13:08:32		Entered the impute_missing_values method of the Preprocessor class
+2025-01-25/13:08:32		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-01-25/13:08:32		Entered the encode_categorical_columns method of the Preprocessor class
+2025-01-25/13:08:32		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-01-25/13:08:32		Entered the scale_numerical_columns method of the Preprocessor class
+2025-01-25/13:08:32		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-01-25/13:08:32		Entered the load_model method of the File_Operation class
+2025-01-25/13:08:32		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2025-01-25/13:08:32		Error occured while running the prediction!! Error:: 'KMeans' object has no attribute '_n_threads'
