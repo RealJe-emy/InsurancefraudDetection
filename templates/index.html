@@ -134,6 +134,32 @@
 						<button class="form-control btn-primary mb-5" id="defaultfile" data-path="Prediction_Batch_files">
 							Default File Predict
 						</button>
+						<button id="submitBtn" type="button">Submit</button>
+
+<script>
+    document.getElementById("submitBtn").addEventListener("click", function() {
+        fetch('/validate', {  // Ensure this matches your Flask route
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Validation Passed! Proceeding...");
+                // Optionally, submit the form here
+            } else {
+                alert("Validation Failed: " + data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
+
+
+
 					</form>
 				</div>
 				<div class="res-container col-md-6 col-xs-12">
