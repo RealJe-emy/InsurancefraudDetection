@@ -27,7 +27,8 @@ logger = App_Logger()
 def home():
     return render_template('index.html')
 
-# Validate uploaded file
+
+#To validate the file
 @app.route('/validate', methods=['POST'])
 @cross_origin()
 def validate_file():
@@ -40,7 +41,10 @@ def validate_file():
         if 'file' not in request.files:
             logger.log(log_file, "No file provided in request")
             log_file.close()
-            return jsonify({"message": "No file provided"}), 400
+            return jsonify({
+                "status": "error",
+                "message": "No file provided. Please upload a file."
+            }), 400
 
         file = request.files['file']
         logger.log(log_file, f"File received: {file.filename}")
@@ -49,7 +53,10 @@ def validate_file():
         if file.filename == '':
             logger.log(log_file, "No selected file")
             log_file.close()
-            return jsonify({"message": "No selected file"}), 400
+            return jsonify({
+                "status": "error",
+                "message": "The file is empty. Please upload a valid file."
+            }), 400
 
         # Save the file to the UPLOAD_FOLDER
         file_path = os.path.join(UPLOAD_FOLDER, file.filename)
@@ -59,27 +66,52 @@ def validate_file():
         # Initialize the Raw_Data_validation class
         validator = Raw_Data_validation(UPLOAD_FOLDER, log_file)
 
-        # Perform validation steps
-        logger.log(log_file, "Validating file name...")
+        # Stage 1: Validate file name and media type
+        logger.log(log_file, "Validating file name and media type...")
         regex = validator.manualRegexCreation()
-        LengthOfDateStampInFile, LengthOfTimeStampInFile, _, NumberofColumns = validator.valuesFromSchema()
+        LengthOfDateStampInFile, LengthOfTimeStampInFile, _, _ = validator.valuesFromSchema()
         validator.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
 
-        logger.log(log_file, "Validating column length...")
-        validator.validateColumnLength(NumberofColumns)
+        # Check if the file was moved to Bad_Raw during Stage 1 validation
+        bad_raw_path = os.path.join("Training_Raw_files_validated/Bad_Raw/", file.filename)
+        if os.path.exists(bad_raw_path):
+            logger.log(log_file, f"File failed Stage 1 validation: {file.filename}")
+            log_file.close()
+            return jsonify({
+                "status": "error",
+                "message": f"Invalid file name. The file name must follow the format: {regex}."
+            }), 400
 
-        logger.log(log_file, "Validating missing values...")
+        # Stage 2: Validate column length and missing values
+        logger.log(log_file, "Validating column length and missing values...")
+        _, _, _, NumberofColumns = validator.valuesFromSchema()
+        validator.validateColumnLength(NumberofColumns)
         validator.validateMissingValuesInWholeColumn()
 
+        # Check if the file was moved to Bad_Raw during Stage 2 validation
+        if os.path.exists(bad_raw_path):
+            logger.log(log_file, f"File failed Stage 2 validation: {file.filename}")
+            log_file.close()
+            return jsonify({
+                "status": "error",
+                "message": "Invalid column count or missing values. Please check the file and try again."
+            }), 400
+
+        # If the file passes all validations
         logger.log(log_file, "Validation Successful!")
         log_file.close()
-        return jsonify({"message": "Validation Successful!"}), 200
+        return jsonify({
+            "status": "success",
+            "message": "File validated successfully. The file has been accepted for processing."
+        }), 200
 
     except Exception as e:
         logger.log(log_file, f"Validation Failed: {str(e)}")
         log_file.close()
-        return jsonify({"message": f"Validation Failed: {str(e)}"}), 500
-
+        return jsonify({
+            "status": "error",
+            "message": f"An unexpected error occurred: {str(e)}"
+        }), 500
 
 # Predict route
 @app.route("/predict", methods=['POST'])

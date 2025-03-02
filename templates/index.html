@@ -176,78 +176,93 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#loading').hide();
+    <script>$(document).ready(function(){
+    $('#loading').hide();
 
-            // Custom File Predict
-            $("#customfile").click(function(e){
-                e.preventDefault();
-                $('#loading').show();
-                var fileInput = document.getElementById('csvfile');
-                var file = fileInput.files[0];
-                var formData = new FormData();
-                formData.append('file', file);
+    // Custom File Predict
+    $("#customfile").click(function(e){
+        e.preventDefault();
+        $('#loading').show();
+        var fileInput = document.getElementById('csvfile');
+        var file = fileInput.files[0];
+        var formData = new FormData();
+        formData.append('file', file);
 
-                $.ajax({
-                    url: "/predict",
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response){
-                        $(".json-result").html('<p>"Prediction File created at !!!Prediction_Output_File/Predictions.csv and few of the predictions are"</p><pre>' + response + '</pre>');
-                        $('#loading').hide();
-                    },
-                    error: function(xhr, status, error){
-                        $(".json-result").html('<p>Error: ' + error + '</p>');
-                        $('#loading').hide();
-                    }
-                });
-            });
-
-            // Default File Predict
-            $("#defaultfile").click(function(e){
-                e.preventDefault();
-                $('#loading').show();
-                var path = $(this).attr("data-path");
-                $.ajax({
-                    url: "/predict",
-                    type: "POST",
-                    data: {filepath: path},
-                    success: function(response){
-                        $(".json-result").html('<p>"Prediction File created !!!</p><pre>' + response + '</pre>');
-                        $('#loading').hide();
-                    }
-                });
-            });
-
-            // Validate File
-            $("#validatefile").click(function(e){
-                e.preventDefault();
-                $('#loading').show();
-                var fileInput = document.getElementById('csvfile');
-                var file = fileInput.files[0];
-                var formData = new FormData();
-                formData.append('file', file);
-
-                $.ajax({
-                    url: "/validate",  // Endpoint for validation
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response){
-                        $(".json-result").html('<p>Validation Result:</p><pre>' + JSON.stringify(response, null, 2) + '</pre>');
-                        $('#loading').hide();
-                    },
-                    error: function(xhr, status, error){
-                        $(".json-result").html('<p>Error: ' + error + '</p>');
-                        $('#loading').hide();
-                    }
-                });
-            });
+        $.ajax({
+            url: "/predict",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response){
+                $(".json-result").html('<p>"Prediction File created at !!!Prediction_Output_File/Predictions.csv and few of the predictions are"</p><pre>' + response + '</pre>');
+                $('#loading').hide();
+            },
+            error: function(xhr, status, error){
+                $(".json-result").html('<p>Error: ' + error + '</p>');
+                $('#loading').hide();
+            }
         });
+    });
+
+    // Default File Predict
+    $("#defaultfile").click(function(e){
+        e.preventDefault();
+        $('#loading').show();
+        var path = $(this).attr("data-path");
+        $.ajax({
+            url: "/predict",
+            type: "POST",
+            data: {filepath: path},
+            success: function(response){
+                $(".json-result").html('<p>"Prediction File created !!!</p><pre>' + response + '</pre>');
+                $('#loading').hide();
+            }
+        });
+    });
+
+    // Validate File
+    $("#validatefile").click(function(e){
+        e.preventDefault();
+        $('#loading').show();
+        var fileInput = document.getElementById('csvfile');
+        var file = fileInput.files[0];
+        var formData = new FormData();
+        formData.append('file', file);
+
+        $.ajax({
+            url: "/validate",  // Endpoint for validation
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response){
+                var resultHtml = '';
+                if (response.status === "success") {
+                    resultHtml = '<div class="alert alert-success" role="alert">' +
+                                 '<strong>Success!</strong> ' + response.message +
+                                 '</div>';
+                } else if (response.status === "error") {
+                    resultHtml = '<div class="alert alert-danger" role="alert">' +
+                                 '<strong>Error:</strong> ' + response.message +
+                                 '</div>';
+                } else {
+                    resultHtml = '<div class="alert alert-warning" role="alert">' +
+                                 '<strong>Warning:</strong> Unexpected response format.' +
+                                 '</div>';
+                }
+                $(".json-result").html(resultHtml);
+                $('#loading').hide();
+            },
+            error: function(xhr, status, error){
+                $(".json-result").html('<div class="alert alert-danger" role="alert">' +
+                                        '<strong>Error:</strong> ' + error +
+                                        '</div>');
+                $('#loading').hide();
+            }
+        });
+    });
+    });
     </script>
 </body>
 </html>

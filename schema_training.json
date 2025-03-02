@@ -1,5 +1,5 @@
 {	"SampleFileName": "fraudDetection_021119920_010222.csv",
-	"LengthOfDateStampInFile": 9,
+	"LengthOfDateStampInFile": 8,
 	"LengthOfTimeStampInFile": 6,
 	"NumberofColumns" : 39,
 	"ColName": {
