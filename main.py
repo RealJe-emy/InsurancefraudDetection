@@ -31,35 +31,35 @@ def home():
 @app.route('/validate', methods=['POST'])
 @cross_origin()
 def validate_file():
-    # Open a log file to track the validation process
-    log_file = open("Training_Logs/validationLog.txt", "a+")
-    logger.log(log_file, "Request received at /validate")
-
-    # Check if a file is included in the request
-    if 'file' not in request.files:
-        logger.log(log_file, "No file provided in request")
-        log_file.close()
-        return jsonify({"message": "No file provided"}), 400
-
-    file = request.files['file']
-    logger.log(log_file, f"File received: {file.filename}")
-
-    # Check if the file has a filename
-    if file.filename == '':
-        logger.log(log_file, "No selected file")
-        log_file.close()
-        return jsonify({"message": "No selected file"}), 400
-
-    # Save the file to the UPLOAD_FOLDER
-    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
-    file.save(file_path)
-    logger.log(log_file, f"File saved to: {file_path}")
-
-    # Initialize the Raw_Data_validation class
-    validator = Raw_Data_validation(UPLOAD_FOLDER, log_file)
-
-    # Perform validation steps
     try:
+        # Open a log file to track the validation process
+        log_file = open("Training_Logs/validationLog.txt", "a+")
+        logger.log(log_file, "Request received at /validate")
+
+        # Check if a file is included in the request
+        if 'file' not in request.files:
+            logger.log(log_file, "No file provided in request")
+            log_file.close()
+            return jsonify({"message": "No file provided"}), 400
+
+        file = request.files['file']
+        logger.log(log_file, f"File received: {file.filename}")
+
+        # Check if the file has a filename
+        if file.filename == '':
+            logger.log(log_file, "No selected file")
+            log_file.close()
+            return jsonify({"message": "No selected file"}), 400
+
+        # Save the file to the UPLOAD_FOLDER
+        file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(file_path)
+        logger.log(log_file, f"File saved to: {file_path}")
+
+        # Initialize the Raw_Data_validation class
+        validator = Raw_Data_validation(UPLOAD_FOLDER, log_file)
+
+        # Perform validation steps
         logger.log(log_file, "Validating file name...")
         regex = validator.manualRegexCreation()
         LengthOfDateStampInFile, LengthOfTimeStampInFile, _, NumberofColumns = validator.valuesFromSchema()
@@ -74,10 +74,12 @@ def validate_file():
         logger.log(log_file, "Validation Successful!")
         log_file.close()
         return jsonify({"message": "Validation Successful!"}), 200
+
     except Exception as e:
         logger.log(log_file, f"Validation Failed: {str(e)}")
         log_file.close()
         return jsonify({"message": f"Validation Failed: {str(e)}"}), 500
+
 
 # Predict route
 @app.route("/predict", methods=['POST'])

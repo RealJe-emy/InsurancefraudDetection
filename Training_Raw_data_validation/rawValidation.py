@@ -11,36 +11,14 @@ from application_logging.logger import App_Logger
 
 
 
-
 class Raw_Data_validation:
-
-    """
-             This class shall be used for handling all the validation done on the Raw Training Data!!.
-
-             Written By: iNeuron Intelligence
-             Version: 1.0
-             Revisions: None
-
-             """
-
-    def __init__(self,path):
+    def __init__(self, path, log_file):
         self.Batch_Directory = path
         self.schema_path = 'schema_training.json'
         self.logger = App_Logger()
-
+        self.log_file = log_file
 
     def valuesFromSchema(self):
-        """
-                        Method Name: valuesFromSchema
-                        Description: This method extracts all the relevant information from the pre-defined "Schema" file.
-                        Output: LengthOfDateStampInFile, LengthOfTimeStampInFile, column_names, Number of Columns
-                        On Failure: Raise ValueError,KeyError,Exception
-
-                         Written By: iNeuron Intelligence
-                        Version: 1.0
-                        Revisions: None
-
-                                """
         try:
             with open(self.schema_path, 'r') as f:
                 dic = json.load(f)
@@ -51,50 +29,33 @@ class Raw_Data_validation:
             column_names = dic['ColName']
             NumberofColumns = dic['NumberofColumns']
 
-            file = open("Training_Logs/valuesfromSchemaValidationLog.txt", 'a+')
-            message ="LengthOfDateStampInFile:: %s" %LengthOfDateStampInFile + "\t" + "LengthOfTimeStampInFile:: %s" % LengthOfTimeStampInFile +"\t " + "NumberofColumns:: %s" % NumberofColumns + "\n"
-            self.logger.log(file,message)
-
-            file.close()
-
-
-
-        except ValueError:
-            file = open("Training_Logs/valuesfromSchemaValidationLog.txt", 'a+')
-            self.logger.log(file,"ValueError:Value not found inside schema_training.json")
-            file.close()
-            raise ValueError
-
-        except KeyError:
-            file = open("Training_Logs/valuesfromSchemaValidationLog.txt", 'a+')
-            self.logger.log(file, "KeyError:Key value error incorrect key passed")
-            file.close()
-            raise KeyError
+            self.logger.log(self.log_file, f"Schema values loaded: LengthOfDateStampInFile={LengthOfDateStampInFile}, LengthOfTimeStampInFile={LengthOfTimeStampInFile}, NumberofColumns={NumberofColumns}")
+            return LengthOfDateStampInFile, LengthOfTimeStampInFile, column_names, NumberofColumns
 
         except Exception as e:
-            file = open("Training_Logs/valuesfromSchemaValidationLog.txt", 'a+')
-            self.logger.log(file, str(e))
-            file.close()
+            self.logger.log(self.log_file, f"Error loading schema: {str(e)}")
             raise e
 
-        return LengthOfDateStampInFile, LengthOfTimeStampInFile, column_names, NumberofColumns
-
-
     def manualRegexCreation(self):
-        """
-                                Method Name: manualRegexCreation
-                                Description: This method contains a manually defined regex based on the "FileName" given in "Schema" file.
-                                            This Regex is used to validate the filename of the training data.
-                                Output: Regex pattern
-                                On Failure: None
-
-                                 Written By: iNeuron Intelligence
-                                Version: 1.0
-                                Revisions: None
-
-                                        """
         regex = "['fraudDetection']+['\_'']+[\d_]+[\d]+\.csv"
+        self.logger.log(self.log_file, f"Regex pattern created: {regex}")
         return regex
+
+    def validationFileNameRaw(self, regex, LengthOfDateStampInFile, LengthOfTimeStampInFile):
+        self.logger.log(self.log_file, "Validating file names...")
+        # Your existing code for file name validation
+        pass
+
+    def validateColumnLength(self, NumberofColumns):
+        self.logger.log(self.log_file, "Validating column length...")
+        # Your existing code for column length validation
+        pass
+
+    def validateMissingValuesInWholeColumn(self):
+        self.logger.log(self.log_file, "Validating missing values...")
+        # Your existing code for missing values validation
+        pass
+
 
     def createDirectoryForGoodBadRawData(self):
 

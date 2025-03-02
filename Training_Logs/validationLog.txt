@@ -1,0 +1,9 @@
+2025-03-02/11:24:51		Request received at /validate
+2025-03-02/11:24:51		File received: fraudDetection_26012025_071222.csv
+2025-03-02/11:24:51		File saved to: Training_Batch_Files\fraudDetection_26012025_071222.csv
+2025-03-02/11:24:51		Validating file name...
+2025-03-02/11:24:51		Regex pattern created: ['fraudDetection']+['\_'']+[\d_]+[\d]+\.csv
+2025-03-02/11:24:51		Schema values loaded: LengthOfDateStampInFile=9, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-02/11:24:51		Validating column length...
+2025-03-02/11:24:51		Validating missing values...
+2025-03-02/11:24:51		Validation Successful!
