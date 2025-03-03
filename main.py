@@ -32,9 +32,8 @@ def home():
 @app.route('/validate', methods=['POST'])
 @cross_origin()
 def validate_file():
+    log_file = open("Training_Logs/validationLog.txt", "a+")
     try:
-        # Open a log file to track the validation process
-        log_file = open("Training_Logs/validationLog.txt", "a+")
         logger.log(log_file, "Request received at /validate")
 
         # Check if a file is included in the request
@@ -51,11 +50,11 @@ def validate_file():
 
         # Check if the file has a filename
         if file.filename == '':
-            logger.log(log_file, "No selected file")
+            logger.log(log_file, "Empty filename")
             log_file.close()
             return jsonify({
                 "status": "error",
-                "message": "The file is empty. Please upload a valid file."
+                "message": "Please select a file before validating."
             }), 400
 
         # Save the file to the UPLOAD_FOLDER
@@ -67,34 +66,60 @@ def validate_file():
         validator = Raw_Data_validation(UPLOAD_FOLDER, log_file)
 
         # Stage 1: Validate file name and media type
-        logger.log(log_file, "Validating file name and media type...")
+        logger.log(log_file, "Validating file name...")
         regex = validator.manualRegexCreation()
         LengthOfDateStampInFile, LengthOfTimeStampInFile, _, _ = validator.valuesFromSchema()
-        validator.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
+
+        # Capture the result of file name validation
+        try:
+            validator.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
+        except Exception as e:
+            logger.log(log_file, f"File name validation failed: {str(e)}")
+            return jsonify({
+                "status": "error",
+                "message": f"Invalid file name format. The file name should follow the pattern: {regex}"
+            }), 400
 
         # Check if the file was moved to Bad_Raw during Stage 1 validation
         bad_raw_path = os.path.join("Training_Raw_files_validated/Bad_Raw/", file.filename)
         if os.path.exists(bad_raw_path):
-            logger.log(log_file, f"File failed Stage 1 validation: {file.filename}")
+            logger.log(log_file, f"File failed name validation: {file.filename}")
             log_file.close()
             return jsonify({
                 "status": "error",
-                "message": f"Invalid file name. The file name must follow the format: {regex}."
+                "message": f"The file name format is incorrect. Please ensure it follows the required naming convention: {regex}"
             }), 400
 
-        # Stage 2: Validate column length and missing values
-        logger.log(log_file, "Validating column length and missing values...")
+        # Stage 2: Validate column length
+        logger.log(log_file, "Validating column length...")
         _, _, _, NumberofColumns = validator.valuesFromSchema()
-        validator.validateColumnLength(NumberofColumns)
-        validator.validateMissingValuesInWholeColumn()
+        try:
+            validator.validateColumnLength(NumberofColumns)
+        except Exception as e:
+            logger.log(log_file, f"Column validation failed: {str(e)}")
+            return jsonify({
+                "status": "error",
+                "message": f"The file contains an incorrect number of columns. Expected {NumberofColumns} columns."
+            }), 400
 
-        # Check if the file was moved to Bad_Raw during Stage 2 validation
+        # Stage 3: Validate missing values
+        logger.log(log_file, "Validating for missing values...")
+        try:
+            validator.validateMissingValuesInWholeColumn()
+        except Exception as e:
+            logger.log(log_file, f"Missing value validation failed: {str(e)}")
+            return jsonify({
+                "status": "error",
+                "message": "The file contains columns with all missing values. Please fix and try again."
+            }), 400
+
+        # Final check if the file was moved to Bad_Raw during any validation
         if os.path.exists(bad_raw_path):
-            logger.log(log_file, f"File failed Stage 2 validation: {file.filename}")
+            logger.log(log_file, f"File failed validation: {file.filename}")
             log_file.close()
             return jsonify({
                 "status": "error",
-                "message": "Invalid column count or missing values. Please check the file and try again."
+                "message": "The file contains invalid data. Please check for correct column count and missing values."
             }), 400
 
         # If the file passes all validations
@@ -102,15 +127,29 @@ def validate_file():
         log_file.close()
         return jsonify({
             "status": "success",
-            "message": "File validated successfully. The file has been accepted for processing."
+            "message": "File validation successful! Your file has been accepted for processing."
         }), 200
 
     except Exception as e:
-        logger.log(log_file, f"Validation Failed: {str(e)}")
+        error_message = str(e)
+        logger.log(log_file, f"Validation Failed: {error_message}")
         log_file.close()
+
+        # Provide user-friendly error messages based on the exception
+        if "schema" in error_message.lower():
+            message = "Schema validation error. Please check if the file format is correct."
+        elif "column" in error_message.lower():
+            message = "Column validation error. Please ensure the file has the correct number of columns."
+        elif "missing" in error_message.lower():
+            message = "Missing values detected. Please ensure all required data is present."
+        elif "name" in error_message.lower():
+            message = "File name error. Please ensure the file follows the naming convention."
+        else:
+            message = f"An unexpected error occurred during validation. Please try again."
+
         return jsonify({
             "status": "error",
-            "message": f"An unexpected error occurred: {str(e)}"
+            "message": message
         }), 500
 
 # Predict route
