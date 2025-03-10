@@ -112,3 +112,33 @@
 2025-01-25/13:08:32		Entered the load_model method of the File_Operation class
 2025-01-25/13:08:32		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
 2025-01-25/13:08:32		Error occured while running the prediction!! Error:: 'KMeans' object has no attribute '_n_threads'
+2025-03-08/09:21:05		Start of Validation on files for prediction!!
+2025-03-08/09:21:05		Raw Data Validation Complete!!
+2025-03-08/09:21:05		Starting Data Transforamtion!!
+2025-03-08/09:21:05		DataTransformation Completed!!!
+2025-03-08/09:21:05		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-08/09:21:05		Table creation Completed!!
+2025-03-08/09:21:05		Insertion of Data into Table started!!!!
+2025-03-08/09:21:08		Insertion in Table completed!!!
+2025-03-08/09:21:08		Deleting Good Data Folder!!!
+2025-03-08/09:21:08		Good_Data folder deleted!!!
+2025-03-08/09:21:08		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-08/09:21:08		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-08/09:21:08		Validation Operation completed!!
+2025-03-08/09:21:08		Extracting csv file from table
+2025-03-08/09:21:08		Start of Prediction
+2025-03-08/09:21:08		Entered the get_data method of the Data_Getter class
+2025-03-08/09:21:08		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-08/09:21:08		Entered the remove_columns method of the Preprocessor class
+2025-03-08/09:21:08		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-03-08/09:21:08		Entered the is_null_present method of the Preprocessor class
+2025-03-08/09:21:08		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-08/09:21:08		Entered the impute_missing_values method of the Preprocessor class
+2025-03-08/09:21:08		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-08/09:21:08		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-08/09:21:09		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-08/09:21:09		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-08/09:21:09		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-08/09:21:09		Entered the load_model method of the File_Operation class
+2025-03-08/09:21:09		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2025-03-08/09:21:09		Error occured while running the prediction!! Error:: 'KMeans' object has no attribute '_n_threads'
