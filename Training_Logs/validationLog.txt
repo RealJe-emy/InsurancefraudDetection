@@ -258,3 +258,23 @@
 2025-03-03/17:40:46		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
 2025-03-03/17:40:46		Validating for missing values...
 2025-03-03/17:40:46		Validation Successful!
+2025-03-10/14:41:13		Request received at /validate
+2025-03-10/14:41:13		File received: fraudDetection_03032025_010223.csv
+2025-03-10/14:41:13		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-10/14:41:13		Validating file name...
+2025-03-10/14:41:13		Regex pattern created: ['fraudDetection']+['\_'']+[\d_]+[\d]+\.csv
+2025-03-10/14:41:13		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-10/14:41:13		Validating column length...
+2025-03-10/14:41:13		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-10/14:41:13		Validating for missing values...
+2025-03-10/14:41:13		Validation Successful!
+2025-03-10/15:06:38		Request received at /validate
+2025-03-10/15:06:38		File received: fraudDetection_26012025_071222.csv
+2025-03-10/15:06:38		File saved to: Training_Batch_Files\fraudDetection_26012025_071222.csv
+2025-03-10/15:06:38		Validating file name...
+2025-03-10/15:06:38		Regex pattern created: ['fraudDetection']+['\_'']+[\d_]+[\d]+\.csv
+2025-03-10/15:06:38		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-10/15:06:38		Validating column length...
+2025-03-10/15:06:38		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-10/15:06:39		Validating for missing values...
+2025-03-10/15:06:39		File failed validation: fraudDetection_26012025_071222.csv

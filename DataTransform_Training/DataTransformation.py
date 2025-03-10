@@ -1,60 +1,49 @@
-import os
-import pandas as pd
+from datetime import datetime
+from os import listdir
+import pandas
 from application_logging.logger import App_Logger
 
 
-class DataTransform:
-    """
-     This class is responsible for transforming the Good Raw Data (both training and prediction)
-     before loading it into the database.
+class dataTransform:
+
      """
+               This class shall be used for transforming the Good Raw Training Data before loading it in Database!!.
 
-    def __init__(self, data_type="training"):
-        """
-          Initialize the DataTransform class.
 
-          Parameters:
-          - data_type (str): Type of data to transform. Can be "training" or "prediction".
+               """
+
+     def __init__(self):
+          self.goodDataPath = "Training_Raw_files_validated/Good_Raw"
+          self.logger = App_Logger()
+
+
+     def replaceMissingWithNull(self):
           """
-        if data_type == "training":
-            self.goodDataPath = "Training_Raw_files_validated/Good_Raw"
-            self.log_file = "Training_Logs/dataTransformLog.txt"
-        else:
-            self.goodDataPath = "Prediction_Raw_Files_Validated/Good_Raw"
-            self.log_file = "Prediction_Logs/dataTransformLog.txt"
+                                           Method Name: replaceMissingWithNull
+                                           Description: This method replaces the missing values in columns with "NULL" to
+                                                        store in the table. We are using substring in the first column to
+                                                        keep only "Integer" data for ease up the loading.
+                                                        This column is anyways going to be removed during training.
 
-        self.logger = App_Logger()
 
-    def replace_missing_with_null(self):
-        """
-          Replaces missing values in string columns with "NULL" for database insertion.
-          """
-        log_file = open(self.log_file, 'a+')
-        try:
-            onlyfiles = [f for f in os.listdir(self.goodDataPath)]
-            for file in onlyfiles:
-                file_path = os.path.join(self.goodDataPath, file)
-                data = pd.read_csv(file_path)
+                                                   """
 
-                # List of columns with string datatype
-                string_columns = [
-                    "policy_bind_date", "policy_state", "policy_csl", "insured_sex",
-                    "insured_education_level", "insured_occupation", "insured_hobbies",
-                    "insured_relationship", "incident_state", "incident_date", "incident_type",
-                    "collision_type", "incident_severity", "authorities_contacted", "incident_city",
-                    "incident_location", "property_damage", "police_report_available", "auto_make",
-                    "auto_model", "fraud_reported"
-                ]
+          log_file = open("Training_Logs/dataTransformLog.txt", 'a+')
+          try:
+               onlyfiles = [f for f in listdir(self.goodDataPath)]
+               for file in onlyfiles:
+                    data = pandas.read_csv(self.goodDataPath + "/" + file)
+                    # list of columns with string datatype variables
+                    columns = ["policy_bind_date","policy_state","policy_csl","insured_sex","insured_education_level","insured_occupation","insured_hobbies","insured_relationship","incident_state","incident_date","incident_type","collision_type","incident_severity","authorities_contacted","incident_city","incident_location","property_damage","police_report_available","auto_make","auto_model","fraud_reported"]
 
-                # Replace missing values with "NULL"
-                for col in string_columns:
-                    data[col] = data[col].apply(lambda x: f"'{x}'" if pd.notnull(x) else "'NULL'")
+                    for col in columns:
+                         data[col] = data[col].apply(lambda x: "'" + str(x) + "'")
 
-                # Save the transformed data
-                data.to_csv(file_path, index=None, header=True)
-                self.logger.log(log_file, f"{file}: Quotes added successfully!!")
-        except Exception as e:
-            self.logger.log(log_file, f"Data Transformation failed because:: {e}")
-            raise e
-        finally:
-            log_file.close()
+                    data.to_csv(self.goodDataPath + "/" + file, index=None, header=True)
+                    self.logger.log(log_file, " %s: Quotes added successfully!!" % file)
+               #log_file.write("Current Date :: %s" %date +"\t" + "Current time:: %s" % current_time + "\t \t" +  + "\n")
+          except Exception as e:
+               self.logger.log(log_file, "Data Transformation failed because:: %s" % e)
+               #log_file.write("Current Date :: %s" %date +"\t" +"Current time:: %s" % current_time + "\t \t" + "Data Transformation failed because:: %s" % e + "\n")
+               log_file.close()
+          log_file.close()
