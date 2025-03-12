@@ -184,3 +184,15 @@
 2025-03-10/15:06:38		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_26012025_071222.csv
 2025-03-10/15:06:38		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_26012025_071222.csv.csv
 2025-03-10/15:06:38		Invalid File Name!! File moved to Bad Raw Folder :: sample_submission.csv
+2025-03-12/08:14:37		Invalid File Name!! File moved to Bad Raw Folder :: fraudDetection_021119920_010222.csv
+2025-03-12/08:14:37		Invalid File Name!! File moved to Bad Raw Folder :: fraudDetection_030320250_010223.csv
+2025-03-12/08:14:37		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_03032025_010223.csv
+2025-03-12/08:14:37		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_26012025_071222.csv
+2025-03-12/08:14:37		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-12/08:14:37		Invalid File Name!! File moved to Bad Raw Folder :: sample_submission.csv
+2025-03-12/08:14:44		Invalid File Name!! File moved to Bad Raw Folder :: fraudDetection_021119920_010222.csv
+2025-03-12/08:14:44		Invalid File Name!! File moved to Bad Raw Folder :: fraudDetection_030320250_010223.csv
+2025-03-12/08:14:44		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_03032025_010223.csv
+2025-03-12/08:14:44		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_26012025_071222.csv
+2025-03-12/08:14:44		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-12/08:14:44		Invalid File Name!! File moved to Bad Raw Folder :: sample_submission.csv

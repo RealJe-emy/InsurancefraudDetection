@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Predict Fraud</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 700;
+        }
+        .navbar {
+            background-color: #273582 !important;
+        }
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: 700;
+        }
+        .btn-primary {
+            background-color: #ff7f00;
+            border-color: #ff7f00;
+        }
+        .btn-primary:hover {
+            background-color: #e67300;
+            border-color: #e67300;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+        .footer {
+            background-color: #273582;
+            color: #fff;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer a {
+            color: #ff7f00;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #e67300;
+        }
+        .result-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            height: 300px;
+            overflow-y: auto;
+        }
+        #loading {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+            display: none;
+        }
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #273582;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -30px;
+            margin-left: -30px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Insurance Fraud Detection System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="train.html">Train Model</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="predict.html">Predict Fraud</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Predict Fraud Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Predict Fraud</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Batch Prediction Form -->
+                <form id="batch_predict_form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="csvfile">Upload CSV File for Batch Prediction</label>
+                        <input type="file" class="form-control" id="csvfile" name="csvfile" accept=".csv" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" id="batchpredict">Batch Predict</button>
+                </form>
+
+                <!-- Single Client Prediction Form -->
+                <form id="single_predict_form" class="mt-5">
+                    <h5 class="mb-3">Single Client Prediction</h5>
+                    <div class="form-group">
+                        <label for="policy_number">Policy Number</label>
+                        <input type="text" class="form-control" id="policy_number" name="policy_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="incident_severity">Incident Severity</label>
+                        <input type="text" class="form-control" id="incident_severity" name="incident_severity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="property_damage">Property Damage</label>
+                        <input type="text" class="form-control" id="property_damage" name="property_damage" required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block" id="singlepredict">Single Predict</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="result-box">
+                    <h6 class="title">Prediction Results</h6>
+                    <div class="json-result"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Insurance Fraud Detection System. All rights reserved.</p>
+            <p class="mb-0"><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#loading').hide();
+
+            // Batch Prediction
+            $("#batch_predict_form").submit(function(e) {
+                e.preventDefault();
+                $('#loading').show();
+                var fileInput = document.getElementById('csvfile');
+                var file = fileInput.files[0];
+                var formData = new FormData();
+                formData.append('file', file);
+
+                $.ajax({
+                    url: "/batch_predict",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        $(".json-result").html('<div class="alert alert-success" role="alert">' +
+                                              '<strong>Success!</strong> ' + response +
+                                              '</div>');
+                        $('#loading').hide();
+                    },
+                    error: function(xhr, status, error) {
+                        $(".json-result").html('<div class="alert alert-danger" role="alert">' +
+                                              '<strong>Error:</strong> ' + error +
+                                              '</div>');
+                        $('#loading').hide();
+                    }
+                });
+            });
+
+            // Single Client Prediction
+            $("#single_predict_form").submit(function(e) {
+                e.preventDefault();
+                $('#loading').show();
+                var formData = {
+                    policy_number: $("#policy_number").val(),
+                    incident_severity: $("#incident_severity").val(),
+                    property_damage: $("#property_damage").val()
+                };
+
+                $.ajax({
+                    url: "/single_predict",
+                    type: "POST",
+                    data: JSON.stringify(formData),
+                    contentType: "application/json",
+                    success: function(response) {
+                        $(".json-result").html('<div class="alert alert-success" role="alert">' +
+                                              '<strong>Success!</strong> ' + response +
+                                              '</div>');
+                        $('#loading').hide();
+                    },
+                    error: function(xhr, status, error) {
+                        $(".json-result").html('<div class="alert alert-danger" role="alert">' +
+                                              '<strong>Error:</strong> ' + error +
+                                              '</div>');
+                        $('#loading').hide();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

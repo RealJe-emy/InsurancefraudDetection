@@ -21,14 +21,33 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # Initialize the logger
 logger = App_Logger()
 
-# Serve the HTML file at the root URL
+
+# Serve the HTML files
 @app.route("/", methods=['GET'])
 @cross_origin()
 def home():
     return render_template('index.html')
 
 
-#To validate the file
+@app.route("/predict.html", methods=['GET'])
+@cross_origin()
+def predict_page():
+    return render_template('predict.html')
+
+
+@app.route("/validation.html", methods=['GET'])
+@cross_origin()
+def validation_page():
+    return render_template('validation.html')
+
+
+@app.route("/train.html", methods=['GET'])
+@cross_origin()
+def train_page():
+    return render_template('train.html')
+
+
+# To validate the file
 @app.route('/validate', methods=['POST'])
 @cross_origin()
 def validate_file():
@@ -152,6 +171,7 @@ def validate_file():
             "message": message
         }), 500
 
+
 # Predict route
 @app.route("/predict", methods=['POST'])
 @cross_origin()
@@ -177,6 +197,27 @@ def predictRouteClient():
             path = pred.predictionFromModel()  # predicting for dataset present in database
             return Response("Prediction File created at %s!!!" % path)
 
+        elif request.files is not None and 'file' in request.files:
+            file = request.files['file']
+
+            # Create Prediction_Batch_Files directory if it doesn't exist
+            pred_folder = "Prediction_Batch_Files"
+            os.makedirs(pred_folder, exist_ok=True)
+
+            # Save uploaded file
+            file_path = os.path.join(pred_folder, file.filename)
+            file.save(file_path)
+
+            # Initialize prediction validation
+            pred_val = pred_validation(pred_folder)
+            pred_val.prediction_validation()
+
+            # Make prediction
+            pred = prediction(pred_folder)
+            path = pred.predictionFromModel()
+
+            return Response("Prediction File created at %s!!!" % path)
+
     except ValueError:
         return Response("Error Occurred! %s" % ValueError)
     except KeyError:
@@ -184,18 +225,40 @@ def predictRouteClient():
     except Exception as e:
         return Response("Error Occurred! %s" % e)
 
+
 # Train route
 @app.route("/train", methods=['POST'])
 @cross_origin()
 def trainRouteClient():
     try:
-        if request.json['folderPath'] is not None:
+        if request.json and 'folderPath' in request.json:
             path = request.json['folderPath']
-            train_valObj = train_validation(path)  # object initialization
-            train_valObj.train_validation()  # calling the training_validation function
 
-            trainModelObj = trainModel()  # object initialization
-            trainModelObj.trainingModel()  # training the model for the files in the table
+        elif request.form and 'folderPath' in request.form:
+            path = request.form['folderPath']
+
+        elif request.files and 'file' in request.files:
+            file = request.files['file']
+
+            # Create directory if it doesn't exist
+            train_folder = "Training_Batch_Files"
+            os.makedirs(train_folder, exist_ok=True)
+
+            # Save uploaded file
+            file_path = os.path.join(train_folder, file.filename)
+            file.save(file_path)
+
+            path = train_folder
+        else:
+            return Response("No data provided for training")
+
+        # Perform validation
+        train_valObj = train_validation(path)
+        train_valObj.train_validation()
+
+        # Train model
+        trainModelObj = trainModel()
+        trainModelObj.trainingModel()
 
     except ValueError:
         return Response("Error Occurred! %s" % ValueError)
@@ -204,6 +267,7 @@ def trainRouteClient():
     except Exception as e:
         return Response("Error Occurred! %s" % e)
     return Response("Training successful!!")
+
 
 # Run the Flask app
 if __name__ == "__main__":
