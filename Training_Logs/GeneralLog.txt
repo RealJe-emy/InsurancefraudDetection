@@ -107,3 +107,13 @@
 2025-03-12/08:14:37		GoodRaw directory deleted successfully!!!
 2025-03-12/08:14:44		BadRaw directory deleted before starting validation!!!
 2025-03-12/08:14:44		GoodRaw directory deleted successfully!!!
+2025-03-12/18:41:45		BadRaw directory deleted before starting validation!!!
+2025-03-12/18:41:45		GoodRaw directory deleted successfully!!!
+2025-03-12/19:03:07		BadRaw directory deleted before starting validation!!!
+2025-03-12/19:03:07		GoodRaw directory deleted successfully!!!
+2025-03-12/19:03:16		BadRaw directory deleted before starting validation!!!
+2025-03-12/19:03:16		GoodRaw directory deleted successfully!!!
+2025-03-13/13:25:53		BadRaw directory deleted before starting validation!!!
+2025-03-13/13:25:53		GoodRaw directory deleted successfully!!!
+2025-03-13/13:26:04		BadRaw directory deleted before starting validation!!!
+2025-03-13/13:26:04		GoodRaw directory deleted successfully!!!

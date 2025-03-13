@@ -302,3 +302,167 @@
 2025-03-12/08:14:44		Validation Successful!
 2025-03-12/08:34:52		Request received at /validate
 2025-03-12/08:34:52		No file provided in request
+2025-03-12/17:16:20		Request received at /validate
+2025-03-12/17:16:20		No file provided in request
+2025-03-12/18:41:36		Request received at /validate
+2025-03-12/18:41:36		No file provided in request
+2025-03-12/18:41:45		Request received at /validate
+2025-03-12/18:41:45		File received: fraudDetection_03032025_010223.csv
+2025-03-12/18:41:45		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-12/18:41:45		Validating file name...
+2025-03-12/18:41:45		Regex pattern created: ['fraudDetection']+['\_'']+[\d_]+[\d]+\.csv
+2025-03-12/18:41:45		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-12/18:41:46		Validating column length...
+2025-03-12/18:41:46		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-12/18:41:46		Validating for missing values...
+2025-03-12/18:41:46		Validation Successful!
+2025-03-12/19:02:59		Request received at /validate
+2025-03-12/19:02:59		No file provided in request
+2025-03-12/19:03:07		Request received at /validate
+2025-03-12/19:03:07		File received: Dataset-carclaims.csv
+2025-03-12/19:03:07		File saved to: Training_Batch_Files\Dataset-carclaims.csv
+2025-03-12/19:03:07		Validating file name...
+2025-03-12/19:03:07		Regex pattern created: ['fraudDetection']+['\_'']+[\d_]+[\d]+\.csv
+2025-03-12/19:03:07		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-12/19:03:07		File failed name validation: Dataset-carclaims.csv
+2025-03-12/19:03:16		Request received at /validate
+2025-03-12/19:03:16		File received: fraudDetection_03032025_010223.csv
+2025-03-12/19:03:16		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-12/19:03:16		Validating file name...
+2025-03-12/19:03:16		Regex pattern created: ['fraudDetection']+['\_'']+[\d_]+[\d]+\.csv
+2025-03-12/19:03:16		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-12/19:03:16		Validating column length...
+2025-03-12/19:03:16		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-12/19:03:16		Validating for missing values...
+2025-03-12/19:03:16		Validation Successful!
+2025-03-13/13:25:44		Request received at /validate
+2025-03-13/13:25:44		No file provided in request
+2025-03-13/13:25:53		Request received at /validate
+2025-03-13/13:25:53		File received: fraudDetection_26012025_071222.csv
+2025-03-13/13:25:53		File saved to: Training_Batch_Files\fraudDetection_26012025_071222.csv
+2025-03-13/13:25:53		Validating file name...
+2025-03-13/13:25:53		Regex pattern created: ['fraudDetection']+['\_'']+[\d_]+[\d]+\.csv
+2025-03-13/13:25:53		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-13/13:25:54		Validating column length...
+2025-03-13/13:25:54		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-13/13:25:54		Validating for missing values...
+2025-03-13/13:25:54		File failed validation: fraudDetection_26012025_071222.csv
+2025-03-13/13:26:04		Request received at /validate
+2025-03-13/13:26:04		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:26:04		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:26:04		Validating file name...
+2025-03-13/13:26:04		Regex pattern created: ['fraudDetection']+['\_'']+[\d_]+[\d]+\.csv
+2025-03-13/13:26:04		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-13/13:26:04		Validating column length...
+2025-03-13/13:26:04		Schema values loaded: LengthOfDateStampInFile=8, LengthOfTimeStampInFile=6, NumberofColumns=39
+2025-03-13/13:26:04		Validating for missing values...
+2025-03-13/13:26:04		Validation Successful!
+2025-03-13/13:39:48		Request received at /validate
+2025-03-13/13:39:48		No file provided in request
+2025-03-13/13:39:56		Request received at /validate
+2025-03-13/13:39:56		File received: fraudDetection_26012025_071222.csv
+2025-03-13/13:39:56		File saved to: Training_Batch_Files\fraudDetection_26012025_071222.csv
+2025-03-13/13:39:56		Validating file name...
+2025-03-13/13:39:56		Regex pattern created successfully.
+2025-03-13/13:39:56		Schema details extracted successfully.
+2025-03-13/13:39:56		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:03		Request received at /validate
+2025-03-13/13:40:03		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:03		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:03		Validating file name...
+2025-03-13/13:40:03		Regex pattern created successfully.
+2025-03-13/13:40:03		Schema details extracted successfully.
+2025-03-13/13:40:03		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:04		Request received at /validate
+2025-03-13/13:40:04		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:04		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:04		Validating file name...
+2025-03-13/13:40:04		Regex pattern created successfully.
+2025-03-13/13:40:04		Schema details extracted successfully.
+2025-03-13/13:40:04		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:04		Request received at /validate
+2025-03-13/13:40:04		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:04		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:04		Validating file name...
+2025-03-13/13:40:04		Regex pattern created successfully.
+2025-03-13/13:40:04		Schema details extracted successfully.
+2025-03-13/13:40:04		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:04		Request received at /validate
+2025-03-13/13:40:04		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:04		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:04		Validating file name...
+2025-03-13/13:40:04		Regex pattern created successfully.
+2025-03-13/13:40:04		Schema details extracted successfully.
+2025-03-13/13:40:04		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:04		Request received at /validate
+2025-03-13/13:40:04		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:04		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:04		Validating file name...
+2025-03-13/13:40:04		Regex pattern created successfully.
+2025-03-13/13:40:04		Schema details extracted successfully.
+2025-03-13/13:40:04		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:05		Request received at /validate
+2025-03-13/13:40:05		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:05		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:05		Validating file name...
+2025-03-13/13:40:05		Regex pattern created successfully.
+2025-03-13/13:40:05		Schema details extracted successfully.
+2025-03-13/13:40:05		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:05		Request received at /validate
+2025-03-13/13:40:05		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:05		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:05		Validating file name...
+2025-03-13/13:40:05		Regex pattern created successfully.
+2025-03-13/13:40:05		Schema details extracted successfully.
+2025-03-13/13:40:05		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:13		Request received at /validate
+2025-03-13/13:40:13		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:13		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:13		Validating file name...
+2025-03-13/13:40:13		Regex pattern created successfully.
+2025-03-13/13:40:13		Schema details extracted successfully.
+2025-03-13/13:40:13		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:45		Request received at /validate
+2025-03-13/13:40:45		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:45		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:45		Validating file name...
+2025-03-13/13:40:45		Regex pattern created successfully.
+2025-03-13/13:40:45		Schema details extracted successfully.
+2025-03-13/13:40:45		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:46		Request received at /validate
+2025-03-13/13:40:46		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:46		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:46		Validating file name...
+2025-03-13/13:40:46		Regex pattern created successfully.
+2025-03-13/13:40:46		Schema details extracted successfully.
+2025-03-13/13:40:46		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:46		Request received at /validate
+2025-03-13/13:40:46		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:46		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:46		Validating file name...
+2025-03-13/13:40:46		Regex pattern created successfully.
+2025-03-13/13:40:46		Schema details extracted successfully.
+2025-03-13/13:40:46		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:47		Request received at /validate
+2025-03-13/13:40:47		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:40:47		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:40:47		Validating file name...
+2025-03-13/13:40:47		Regex pattern created successfully.
+2025-03-13/13:40:47		Schema details extracted successfully.
+2025-03-13/13:40:47		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:40:51		Request received at /validate
+2025-03-13/13:40:51		No file provided in request
+2025-03-13/13:40:58		Request received at /validate
+2025-03-13/13:40:58		File received: fraudDetection_26012025_071222.csv
+2025-03-13/13:40:58		File saved to: Training_Batch_Files\fraudDetection_26012025_071222.csv
+2025-03-13/13:40:58		Validating file name...
+2025-03-13/13:40:58		Regex pattern created successfully.
+2025-03-13/13:40:58		Schema details extracted successfully.
+2025-03-13/13:40:58		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'
+2025-03-13/13:41:03		Request received at /validate
+2025-03-13/13:41:03		File received: fraudDetection_03032025_010223.csv
+2025-03-13/13:41:03		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-03-13/13:41:03		Validating file name...
+2025-03-13/13:41:03		Regex pattern created successfully.
+2025-03-13/13:41:03		Schema details extracted successfully.
+2025-03-13/13:41:03		File name validation failed: 'Raw_Data_validation' object has no attribute 'deleteExistingBadDataTrainingFolder'

@@ -116,3 +116,19 @@
 2025-03-12/08:14:44		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
 2025-03-12/08:14:44		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
 2025-03-12/08:14:44		Column Length Validation Completed!!
+2025-03-12/18:41:46		Column Length Validation Started!!
+2025-03-12/18:41:46		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-12/18:41:46		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-12/18:41:46		Column Length Validation Completed!!
+2025-03-12/19:03:16		Column Length Validation Started!!
+2025-03-12/19:03:16		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-12/19:03:16		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-12/19:03:16		Column Length Validation Completed!!
+2025-03-13/13:25:54		Column Length Validation Started!!
+2025-03-13/13:25:54		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-13/13:25:54		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-13/13:25:54		Column Length Validation Completed!!
+2025-03-13/13:26:04		Column Length Validation Started!!
+2025-03-13/13:26:04		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-13/13:26:04		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-13/13:26:04		Column Length Validation Completed!!
