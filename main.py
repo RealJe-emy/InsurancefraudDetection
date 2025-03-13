@@ -226,48 +226,6 @@ def predictRouteClient():
         return Response("Error Occurred! %s" % e)
 
 
-# Train route
-@app.route("/train", methods=['POST'])
-@cross_origin()
-def trainRouteClient():
-    try:
-        if request.json and 'folderPath' in request.json:
-            path = request.json['folderPath']
-
-        elif request.form and 'folderPath' in request.form:
-            path = request.form['folderPath']
-
-        elif request.files and 'file' in request.files:
-            file = request.files['file']
-
-            # Create directory if it doesn't exist
-            train_folder = "Training_Batch_Files"
-            os.makedirs(train_folder, exist_ok=True)
-
-            # Save uploaded file
-            file_path = os.path.join(train_folder, file.filename)
-            file.save(file_path)
-
-            path = train_folder
-        else:
-            return Response("No data provided for training")
-
-        # Perform validation
-        train_valObj = train_validation(path)
-        train_valObj.train_validation()
-
-        # Train model
-        trainModelObj = trainModel()
-        trainModelObj.trainingModel()
-
-    except ValueError:
-        return Response("Error Occurred! %s" % ValueError)
-    except KeyError:
-        return Response("Error Occurred! %s" % KeyError)
-    except Exception as e:
-        return Response("Error Occurred! %s" % e)
-    return Response("Training successful!!")
-
 
 # Run the Flask app
 if __name__ == "__main__":
