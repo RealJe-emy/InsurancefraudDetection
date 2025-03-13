@@ -15,3 +15,5 @@
 2020-02-15/16:35:20		 fraudDetection_021119920_010222.csv: Quotes added successfully!!
 2020-02-15/16:41:13		 fraudDetection_021119920_010222.csv: Quotes added successfully!!
 2020-02-15/16:42:24		 fraudDetection_021119920_010222.csv: Quotes added successfully!!
+2025-03-13/14:40:14		 fraudDetection_03032025_010223.csv: Quotes added successfully!!
+2025-03-13/14:59:39		 fraudDetection_03032025_010223.csv: Quotes added successfully!!

@@ -6,10 +6,10 @@ from application_logging import logger
 
 class train_validation:
     def __init__(self,path):
-        self.raw_data = Raw_Data_validation(path)
+        self.file_object = open("Training_Logs/Training_Main_Log.txt", 'a+')
+        self.raw_data = Raw_Data_validation(path,self.file_object)
         self.dataTransform = dataTransform()
         self.dBOperation = dBOperation()
-        self.file_object = open("Training_Logs/Training_Main_Log.txt", 'a+')
         self.log_writer = logger.App_Logger()
 
     def train_validation(self):
