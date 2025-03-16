@@ -1,6 +1,5 @@
 from datetime import datetime
 
-
 class App_Logger:
     def __init__(self):
         pass
@@ -9,5 +8,8 @@ class App_Logger:
         self.now = datetime.now()
         self.date = self.now.date()
         self.current_time = self.now.strftime("%H:%M:%S")
-        file_object.write(
-            str(self.date) + "/" + str(self.current_time) + "\t\t" + log_message +"\n")
+        try:
+            file_object.write(
+                str(self.date) + "/" + str(self.current_time) + "\t\t" + log_message + "\n")
+        except Exception as e:
+            print(f"Error writing to log file: {str(e)}")  # Print the error to the terminal
