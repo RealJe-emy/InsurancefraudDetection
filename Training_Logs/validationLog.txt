@@ -576,3 +576,843 @@
 2025-03-13/14:12:22		Missing Values Validation Started!!
 2025-03-13/14:12:22		Missing Values Validation Completed!!
 2025-03-13/14:12:22		Validation Successful!
+2025-03-15/21:37:12		Request received at /validate
+2025-03-15/21:37:12		File received: fraudDetection_03032025_010223.csv
+2025-03-15/21:37:12		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-15/21:37:12		Validating file name...
+2025-03-15/21:37:12		Regex pattern created successfully.
+2025-03-15/21:37:12		Schema details extracted successfully.
+2025-03-15/21:37:12		Bad Data folder deleted successfully.
+2025-03-15/21:37:12		Good Data folder deleted successfully.
+2025-03-15/21:37:12		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-15/21:37:12		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-15/21:37:12		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-15/21:37:12		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-15/21:37:12		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-15/21:37:12		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-15/21:37:12		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-15/21:37:12		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-15/21:37:12		File name validation completed.
+2025-03-15/21:37:12		Validating column length...
+2025-03-15/21:37:12		Schema details extracted successfully.
+2025-03-15/21:37:12		Column Length Validation Started!!
+2025-03-15/21:37:12		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-15/21:37:12		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-15/21:37:12		Column Length Validation Completed!!
+2025-03-15/21:37:12		Validating for missing values...
+2025-03-15/21:37:12		Missing Values Validation Started!!
+2025-03-15/21:37:12		Missing Values Validation Completed!!
+2025-03-15/21:37:12		Validation Successful!
+2025-03-15/21:42:16		Request received at /validate
+2025-03-15/21:42:16		File received: fraudDetection_03032025_010223.csv
+2025-03-15/21:42:16		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-15/21:42:16		Validating file name...
+2025-03-15/21:42:16		Regex pattern created successfully.
+2025-03-15/21:42:16		Schema details extracted successfully.
+2025-03-15/21:42:16		Bad Data folder deleted successfully.
+2025-03-15/21:42:16		Good Data folder deleted successfully.
+2025-03-15/21:42:16		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-15/21:42:16		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-15/21:42:16		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-15/21:42:16		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-15/21:42:16		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-15/21:42:16		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-15/21:42:16		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-15/21:42:16		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-15/21:42:16		File name validation completed.
+2025-03-15/21:42:16		Validating column length...
+2025-03-15/21:42:16		Schema details extracted successfully.
+2025-03-15/21:42:16		Column Length Validation Started!!
+2025-03-15/21:42:16		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-15/21:42:16		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-15/21:42:16		Column Length Validation Completed!!
+2025-03-15/21:42:16		Validating for missing values...
+2025-03-15/21:42:16		Missing Values Validation Started!!
+2025-03-15/21:42:16		Missing Values Validation Completed!!
+2025-03-15/21:42:16		Validation Successful!
+2025-03-15/21:50:27		Request received at /validate
+2025-03-15/21:50:27		File received: fraudDetection_03032025_010223.csv
+2025-03-15/21:50:27		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-15/21:50:27		Validating file name...
+2025-03-15/21:50:27		Regex pattern created successfully.
+2025-03-15/21:50:27		Schema details extracted successfully.
+2025-03-15/21:50:27		Bad Data folder deleted successfully.
+2025-03-15/21:50:27		Good Data folder deleted successfully.
+2025-03-15/21:50:27		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-15/21:50:27		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-15/21:50:27		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-15/21:50:27		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-15/21:50:27		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-15/21:50:27		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-15/21:50:27		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-15/21:50:27		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-15/21:50:27		File name validation completed.
+2025-03-15/21:50:27		Validating column length...
+2025-03-15/21:50:27		Schema details extracted successfully.
+2025-03-15/21:50:27		Column Length Validation Started!!
+2025-03-15/21:50:27		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-15/21:50:27		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-15/21:50:27		Column Length Validation Completed!!
+2025-03-15/21:50:27		Validating for missing values...
+2025-03-15/21:50:27		Missing Values Validation Started!!
+2025-03-15/21:50:27		Missing Values Validation Completed!!
+2025-03-15/21:50:27		Validation Successful!
+2025-03-15/21:59:08		Request received at /validate
+2025-03-15/21:59:08		File received: fraudDetection_03032025_010223.csv
+2025-03-15/21:59:08		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-15/21:59:08		Validating file name...
+2025-03-15/21:59:08		Regex pattern created successfully.
+2025-03-15/21:59:08		Schema details extracted successfully.
+2025-03-15/21:59:08		Bad Data folder deleted successfully.
+2025-03-15/21:59:08		Good Data folder deleted successfully.
+2025-03-15/21:59:08		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-15/21:59:08		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-15/21:59:08		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-15/21:59:08		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-15/21:59:08		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-15/21:59:08		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-15/21:59:08		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-15/21:59:08		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-15/21:59:08		File name validation completed.
+2025-03-15/21:59:08		Validating column length...
+2025-03-15/21:59:08		Schema details extracted successfully.
+2025-03-15/21:59:08		Column Length Validation Started!!
+2025-03-15/21:59:08		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-15/21:59:08		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-15/21:59:08		Column Length Validation Completed!!
+2025-03-15/21:59:08		Validating for missing values...
+2025-03-15/21:59:08		Missing Values Validation Started!!
+2025-03-15/21:59:08		Missing Values Validation Completed!!
+2025-03-15/21:59:08		Validation Successful!
+2025-03-16/18:57:39		Request received at /validate
+2025-03-16/18:57:39		File received: fraudDetection_03032025_010223.csv
+2025-03-16/18:57:39		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-16/18:57:39		Validating file name...
+2025-03-16/18:57:39		Regex pattern created successfully.
+2025-03-16/18:57:39		Schema details extracted successfully.
+2025-03-16/18:57:39		Bad Data folder deleted successfully.
+2025-03-16/18:57:39		Good Data folder deleted successfully.
+2025-03-16/18:57:39		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-16/18:57:39		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-16/18:57:39		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-16/18:57:39		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-16/18:57:39		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-16/18:57:39		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-16/18:57:39		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-16/18:57:39		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-16/18:57:39		File name validation completed.
+2025-03-16/18:57:39		Validating column length...
+2025-03-16/18:57:39		Schema details extracted successfully.
+2025-03-16/18:57:39		Column Length Validation Started!!
+2025-03-16/18:57:39		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-16/18:57:39		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-16/18:57:39		Column Length Validation Completed!!
+2025-03-16/18:57:39		Validating for missing values...
+2025-03-16/18:57:39		Missing Values Validation Started!!
+2025-03-16/18:57:39		Missing Values Validation Completed!!
+2025-03-16/18:57:39		Validation Successful!
+2025-03-16/19:01:09		Request received at /validate
+2025-03-16/19:01:09		File received: fraudDetection_03032025_010223.csv
+2025-03-16/19:01:09		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-16/19:01:09		Validating file name...
+2025-03-16/19:01:09		Validation Failed: 'str' object has no attribute 'write'
+2025-03-16/19:01:32		Request received at /validate
+2025-03-16/19:01:32		File received: fraudDetection_03032025_010223.csv
+2025-03-16/19:01:32		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-16/19:01:32		Validating file name...
+2025-03-16/19:01:32		Regex pattern created successfully.
+2025-03-16/19:01:32		Schema details extracted successfully.
+2025-03-16/19:01:32		Bad Data folder deleted successfully.
+2025-03-16/19:01:32		Good Data folder deleted successfully.
+2025-03-16/19:01:32		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-16/19:01:32		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-16/19:01:32		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-16/19:01:32		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-16/19:01:32		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-16/19:01:32		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-16/19:01:32		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-16/19:01:32		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-16/19:01:32		File name validation completed.
+2025-03-16/19:01:32		Validating column length...
+2025-03-16/19:01:32		Schema details extracted successfully.
+2025-03-16/19:01:32		Column Length Validation Started!!
+2025-03-16/19:01:32		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-16/19:01:32		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-16/19:01:32		Column Length Validation Completed!!
+2025-03-16/19:01:32		Validating for missing values...
+2025-03-16/19:01:32		Missing Values Validation Started!!
+2025-03-16/19:01:32		Missing Values Validation Completed!!
+2025-03-16/19:01:32		Validation Successful!
+2025-03-16/19:04:48		Request received at /validate
+2025-03-16/19:04:48		File received: fraudDetection_03032025_010223.csv
+2025-03-16/19:04:48		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-16/19:04:48		Validating file name...
+2025-03-16/19:04:48		Regex pattern created successfully.
+2025-03-16/19:04:48		Schema details extracted successfully.
+2025-03-16/19:04:48		Bad Data folder deleted successfully.
+2025-03-16/19:04:48		Good Data folder deleted successfully.
+2025-03-16/19:04:48		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-16/19:04:48		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-16/19:04:48		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-16/19:04:48		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-16/19:04:48		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-16/19:04:48		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-16/19:04:48		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-16/19:04:48		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-16/19:04:48		File name validation completed.
+2025-03-16/19:04:48		Validating column length...
+2025-03-16/19:04:48		Schema details extracted successfully.
+2025-03-16/19:04:48		Column Length Validation Started!!
+2025-03-16/19:04:48		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-16/19:04:48		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-16/19:04:48		Column Length Validation Completed!!
+2025-03-16/19:04:48		Validating for missing values...
+2025-03-16/19:04:48		Missing Values Validation Started!!
+2025-03-16/19:04:48		Missing Values Validation Completed!!
+2025-03-16/19:04:48		Validation Successful!
+2025-03-17/08:41:02		Request received at /validate
+2025-03-17/08:41:02		File received: fraudDetection_26012025_071222.csv
+2025-03-17/08:41:02		File saved to: Training_Batch_Files/fraudDetection_26012025_071222.csv
+2025-03-17/08:41:02		Validating file name...
+2025-03-17/08:41:02		Regex pattern created successfully.
+2025-03-17/08:41:02		Schema details extracted successfully.
+2025-03-17/08:41:02		Bad Data folder deleted successfully.
+2025-03-17/08:41:02		Good Data folder deleted successfully.
+2025-03-17/08:41:02		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/08:41:02		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/08:41:02		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/08:41:02		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/08:41:02		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/08:41:02		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/08:41:02		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/08:41:02		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/08:41:02		File name validation completed.
+2025-03-17/08:41:02		Validating column length...
+2025-03-17/08:41:02		Schema details extracted successfully.
+2025-03-17/08:41:02		Column Length Validation Started!!
+2025-03-17/08:41:02		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/08:41:02		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/08:41:02		Column Length Validation Completed!!
+2025-03-17/08:41:02		Validating for missing values...
+2025-03-17/08:41:02		Missing Values Validation Started!!
+2025-03-17/08:41:02		Missing Values Validation Completed!!
+2025-03-17/08:41:02		File failed validation: fraudDetection_26012025_071222.csv
+2025-03-17/08:41:19		Request received at /validate
+2025-03-17/08:41:19		File received: fraudDetection_03032025_010223.csv
+2025-03-17/08:41:19		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/08:41:19		Validating file name...
+2025-03-17/08:41:19		Regex pattern created successfully.
+2025-03-17/08:41:19		Schema details extracted successfully.
+2025-03-17/08:41:19		Bad Data folder deleted successfully.
+2025-03-17/08:41:19		Good Data folder deleted successfully.
+2025-03-17/08:41:19		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/08:41:19		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/08:41:19		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/08:41:19		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/08:41:19		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/08:41:19		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/08:41:19		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/08:41:19		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/08:41:19		File name validation completed.
+2025-03-17/08:41:19		Validating column length...
+2025-03-17/08:41:19		Schema details extracted successfully.
+2025-03-17/08:41:19		Column Length Validation Started!!
+2025-03-17/08:41:19		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/08:41:19		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/08:41:19		Column Length Validation Completed!!
+2025-03-17/08:41:19		Validating for missing values...
+2025-03-17/08:41:19		Missing Values Validation Started!!
+2025-03-17/08:41:19		Missing Values Validation Completed!!
+2025-03-17/08:41:19		Validation Successful!
+2025-03-17/08:43:08		Request received at /validate
+2025-03-17/08:43:08		File received: fraudDetection_03032025_010223.csv
+2025-03-17/08:43:08		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/08:43:08		Validating file name...
+2025-03-17/08:43:08		Regex pattern created successfully.
+2025-03-17/08:43:08		Schema details extracted successfully.
+2025-03-17/08:43:08		Bad Data folder deleted successfully.
+2025-03-17/08:43:08		Good Data folder deleted successfully.
+2025-03-17/08:43:08		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/08:43:08		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/08:43:08		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/08:43:08		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/08:43:08		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/08:43:08		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/08:43:08		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/08:43:08		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/08:43:08		File name validation completed.
+2025-03-17/08:43:08		Validating column length...
+2025-03-17/08:43:08		Schema details extracted successfully.
+2025-03-17/08:43:08		Column Length Validation Started!!
+2025-03-17/08:43:08		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/08:43:08		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/08:43:08		Column Length Validation Completed!!
+2025-03-17/08:43:08		Validating for missing values...
+2025-03-17/08:43:08		Missing Values Validation Started!!
+2025-03-17/08:43:08		Missing Values Validation Completed!!
+2025-03-17/08:43:08		Validation Successful!
+2025-03-17/08:47:33		Request received at /validate
+2025-03-17/08:47:33		File received: fraudDetection_03032025_010223.csv
+2025-03-17/08:47:33		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/08:47:33		Validating file name...
+2025-03-17/08:47:33		Regex pattern created successfully.
+2025-03-17/08:47:33		Schema details extracted successfully.
+2025-03-17/08:47:33		Bad Data folder deleted successfully.
+2025-03-17/08:47:33		Good Data folder deleted successfully.
+2025-03-17/08:47:33		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/08:47:33		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/08:47:33		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/08:47:33		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/08:47:33		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/08:47:33		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/08:47:33		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/08:47:33		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/08:47:33		File name validation completed.
+2025-03-17/08:47:33		Validating column length...
+2025-03-17/08:47:33		Schema details extracted successfully.
+2025-03-17/08:47:33		Column Length Validation Started!!
+2025-03-17/08:47:33		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/08:47:33		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/08:47:33		Column Length Validation Completed!!
+2025-03-17/08:47:33		Validating for missing values...
+2025-03-17/08:47:33		Missing Values Validation Started!!
+2025-03-17/08:47:33		Missing Values Validation Completed!!
+2025-03-17/08:47:33		Validation Successful!
+2025-03-17/08:50:20		Request received at /validate
+2025-03-17/08:50:20		File received: fraudDetection_03032025_010223.csv
+2025-03-17/08:50:20		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/08:50:20		Validating file name...
+2025-03-17/08:50:20		Regex pattern created successfully.
+2025-03-17/08:50:20		Schema details extracted successfully.
+2025-03-17/08:50:20		Bad Data folder deleted successfully.
+2025-03-17/08:50:20		Good Data folder deleted successfully.
+2025-03-17/08:50:20		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/08:50:20		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/08:50:20		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/08:50:20		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/08:50:20		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/08:50:20		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/08:50:20		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/08:50:20		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/08:50:20		File name validation completed.
+2025-03-17/08:50:20		Validating column length...
+2025-03-17/08:50:20		Schema details extracted successfully.
+2025-03-17/08:50:20		Column Length Validation Started!!
+2025-03-17/08:50:20		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/08:50:20		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/08:50:20		Column Length Validation Completed!!
+2025-03-17/08:50:20		Validating for missing values...
+2025-03-17/08:50:20		Missing Values Validation Started!!
+2025-03-17/08:50:20		Missing Values Validation Completed!!
+2025-03-17/08:50:20		Validation Successful!
+2025-03-17/09:03:25		Request received at /validate
+2025-03-17/09:03:25		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:03:25		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:03:25		Validating file name...
+2025-03-17/09:03:25		Regex pattern created successfully.
+2025-03-17/09:03:25		Schema details extracted successfully.
+2025-03-17/09:03:25		Bad Data folder deleted successfully.
+2025-03-17/09:03:25		Good Data folder deleted successfully.
+2025-03-17/09:03:25		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:03:25		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:03:25		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:03:25		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:03:25		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:03:25		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:03:25		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:03:25		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:03:25		File name validation completed.
+2025-03-17/09:03:25		Validating column length...
+2025-03-17/09:03:25		Schema details extracted successfully.
+2025-03-17/09:03:25		Column Length Validation Started!!
+2025-03-17/09:03:25		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:03:25		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:03:25		Column Length Validation Completed!!
+2025-03-17/09:03:25		Validating for missing values...
+2025-03-17/09:03:25		Missing Values Validation Started!!
+2025-03-17/09:03:25		Missing Values Validation Completed!!
+2025-03-17/09:03:25		Validation Successful!
+2025-03-17/09:04:27		Request received at /validate
+2025-03-17/09:04:27		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:04:27		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:04:27		Validating file name...
+2025-03-17/09:04:27		Regex pattern created successfully.
+2025-03-17/09:04:27		Schema details extracted successfully.
+2025-03-17/09:04:27		Bad Data folder deleted successfully.
+2025-03-17/09:04:27		Good Data folder deleted successfully.
+2025-03-17/09:04:27		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:04:27		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:04:27		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:04:27		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:04:27		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:04:27		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:04:27		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:04:27		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:04:27		File name validation completed.
+2025-03-17/09:04:27		Validating column length...
+2025-03-17/09:04:27		Schema details extracted successfully.
+2025-03-17/09:04:27		Column Length Validation Started!!
+2025-03-17/09:04:27		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:04:27		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:04:27		Column Length Validation Completed!!
+2025-03-17/09:04:27		Validating for missing values...
+2025-03-17/09:04:27		Missing Values Validation Started!!
+2025-03-17/09:04:27		Missing Values Validation Completed!!
+2025-03-17/09:04:27		Validation Successful!
+2025-03-17/09:11:16		Request received at /validate
+2025-03-17/09:11:16		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:11:16		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:11:16		Validating file name...
+2025-03-17/09:11:16		Regex pattern created successfully.
+2025-03-17/09:11:16		Schema details extracted successfully.
+2025-03-17/09:11:16		Bad Data folder deleted successfully.
+2025-03-17/09:11:16		Good Data folder deleted successfully.
+2025-03-17/09:11:16		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:11:16		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:11:16		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:11:16		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:11:16		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:11:16		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:11:16		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:11:16		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:11:16		File name validation completed.
+2025-03-17/09:11:16		Validating column length...
+2025-03-17/09:11:16		Schema details extracted successfully.
+2025-03-17/09:11:16		Column Length Validation Started!!
+2025-03-17/09:11:16		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:11:16		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:11:16		Column Length Validation Completed!!
+2025-03-17/09:11:16		Validating for missing values...
+2025-03-17/09:11:16		Missing Values Validation Started!!
+2025-03-17/09:11:16		Missing Values Validation Completed!!
+2025-03-17/09:11:16		Validation Successful!
+2025-03-17/09:14:03		Request received at /validate
+2025-03-17/09:14:03		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:14:03		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:14:03		Validating file name...
+2025-03-17/09:14:03		Regex pattern created successfully.
+2025-03-17/09:14:03		Schema details extracted successfully.
+2025-03-17/09:14:03		Bad Data folder deleted successfully.
+2025-03-17/09:14:03		Good Data folder deleted successfully.
+2025-03-17/09:14:03		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:14:03		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:14:03		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:14:03		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:14:03		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:14:03		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:14:03		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:14:03		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:14:03		File name validation completed.
+2025-03-17/09:14:03		Validating column length...
+2025-03-17/09:14:03		Schema details extracted successfully.
+2025-03-17/09:14:03		Column Length Validation Started!!
+2025-03-17/09:14:03		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:14:03		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:14:03		Column Length Validation Completed!!
+2025-03-17/09:14:03		Validating for missing values...
+2025-03-17/09:14:03		Missing Values Validation Started!!
+2025-03-17/09:14:03		Missing Values Validation Completed!!
+2025-03-17/09:14:03		Validation Successful!
+2025-03-17/09:17:18		Request received at /validate
+2025-03-17/09:17:18		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:17:18		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:17:18		Validating file name...
+2025-03-17/09:17:18		Regex pattern created successfully.
+2025-03-17/09:17:18		Schema details extracted successfully.
+2025-03-17/09:17:18		Bad Data folder deleted successfully.
+2025-03-17/09:17:18		Good Data folder deleted successfully.
+2025-03-17/09:17:18		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:17:18		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:17:18		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:17:18		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:17:18		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:17:18		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:17:18		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:17:18		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:17:18		File name validation completed.
+2025-03-17/09:17:18		Validating column length...
+2025-03-17/09:17:18		Schema details extracted successfully.
+2025-03-17/09:17:18		Column Length Validation Started!!
+2025-03-17/09:17:18		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:17:18		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:17:18		Column Length Validation Completed!!
+2025-03-17/09:17:18		Validating for missing values...
+2025-03-17/09:17:18		Missing Values Validation Started!!
+2025-03-17/09:17:18		Missing Values Validation Completed!!
+2025-03-17/09:17:18		Validation Successful!
+2025-03-17/09:20:25		Request received at /validate
+2025-03-17/09:20:25		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:20:25		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:20:25		Validating file name...
+2025-03-17/09:20:25		Regex pattern created successfully.
+2025-03-17/09:20:25		Schema details extracted successfully.
+2025-03-17/09:20:25		Bad Data folder deleted successfully.
+2025-03-17/09:20:25		Good Data folder deleted successfully.
+2025-03-17/09:20:25		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:20:25		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:20:25		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:20:25		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:20:25		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:20:25		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:20:25		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:20:25		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:20:25		File name validation completed.
+2025-03-17/09:20:25		Validating column length...
+2025-03-17/09:20:25		Schema details extracted successfully.
+2025-03-17/09:20:25		Column Length Validation Started!!
+2025-03-17/09:20:25		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:20:25		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:20:25		Column Length Validation Completed!!
+2025-03-17/09:20:25		Validating for missing values...
+2025-03-17/09:20:25		Missing Values Validation Started!!
+2025-03-17/09:20:25		Missing Values Validation Completed!!
+2025-03-17/09:20:25		Validation Successful!
+2025-03-17/09:27:29		Request received at /validate
+2025-03-17/09:27:29		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:27:29		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:27:29		Validating file name...
+2025-03-17/09:27:29		Regex pattern created successfully.
+2025-03-17/09:27:29		Schema details extracted successfully.
+2025-03-17/09:27:29		Bad Data folder deleted successfully.
+2025-03-17/09:27:29		Good Data folder deleted successfully.
+2025-03-17/09:27:29		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:27:29		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:27:29		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:27:29		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:27:29		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:27:29		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:27:29		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:27:29		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:27:29		File name validation completed.
+2025-03-17/09:27:29		Validating column length...
+2025-03-17/09:27:29		Schema details extracted successfully.
+2025-03-17/09:27:29		Column Length Validation Started!!
+2025-03-17/09:27:30		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:27:30		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:27:30		Column Length Validation Completed!!
+2025-03-17/09:27:30		Validating for missing values...
+2025-03-17/09:27:30		Missing Values Validation Started!!
+2025-03-17/09:27:30		Missing Values Validation Completed!!
+2025-03-17/09:27:30		Validation Successful!
+2025-03-17/09:33:40		Request received at /validate
+2025-03-17/09:33:40		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:33:40		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:33:40		Validating file name...
+2025-03-17/09:33:40		Regex pattern created successfully.
+2025-03-17/09:33:40		Schema details extracted successfully.
+2025-03-17/09:33:40		Bad Data folder deleted successfully.
+2025-03-17/09:33:40		Good Data folder deleted successfully.
+2025-03-17/09:33:40		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:33:40		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:33:40		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:33:40		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:33:40		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:33:40		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:33:40		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:33:40		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:33:40		File name validation completed.
+2025-03-17/09:33:40		Validating column length...
+2025-03-17/09:33:40		Schema details extracted successfully.
+2025-03-17/09:33:40		Column Length Validation Started!!
+2025-03-17/09:33:40		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:33:40		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:33:40		Column Length Validation Completed!!
+2025-03-17/09:33:40		Validating for missing values...
+2025-03-17/09:33:40		Missing Values Validation Started!!
+2025-03-17/09:33:40		Missing Values Validation Completed!!
+2025-03-17/09:33:40		Validation Successful!
+2025-03-17/09:34:52		Request received at /validate
+2025-03-17/09:34:52		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:34:52		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:34:52		Validating file name...
+2025-03-17/09:34:52		Regex pattern created successfully.
+2025-03-17/09:34:52		Schema details extracted successfully.
+2025-03-17/09:34:52		Bad Data folder deleted successfully.
+2025-03-17/09:34:52		Good Data folder deleted successfully.
+2025-03-17/09:34:52		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:34:52		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:34:52		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:34:52		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:34:52		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:34:52		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:34:52		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:34:52		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:34:52		File name validation completed.
+2025-03-17/09:34:52		Validating column length...
+2025-03-17/09:34:52		Schema details extracted successfully.
+2025-03-17/09:34:52		Column Length Validation Started!!
+2025-03-17/09:34:52		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:34:52		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:34:52		Column Length Validation Completed!!
+2025-03-17/09:34:52		Validating for missing values...
+2025-03-17/09:34:52		Missing Values Validation Started!!
+2025-03-17/09:34:52		Missing Values Validation Completed!!
+2025-03-17/09:34:52		Validation Successful!
+2025-03-17/09:41:36		Request received at /validate
+2025-03-17/09:41:36		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:41:36		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:41:36		Validating file name...
+2025-03-17/09:41:36		Regex pattern created successfully.
+2025-03-17/09:41:36		Schema details extracted successfully.
+2025-03-17/09:41:36		Bad Data folder deleted successfully.
+2025-03-17/09:41:36		Good Data folder deleted successfully.
+2025-03-17/09:41:36		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:41:36		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:41:36		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:41:36		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:41:36		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:41:36		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:41:36		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:41:36		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:41:36		File name validation completed.
+2025-03-17/09:41:36		Validating column length...
+2025-03-17/09:41:36		Schema details extracted successfully.
+2025-03-17/09:41:36		Column Length Validation Started!!
+2025-03-17/09:41:36		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:41:36		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:41:36		Column Length Validation Completed!!
+2025-03-17/09:41:36		Validating for missing values...
+2025-03-17/09:41:36		Missing Values Validation Started!!
+2025-03-17/09:41:36		Missing Values Validation Completed!!
+2025-03-17/09:41:36		Validation Successful!
+2025-03-17/09:45:14		Request received at /validate
+2025-03-17/09:45:14		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:45:14		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:45:14		Validating file name...
+2025-03-17/09:45:14		Regex pattern created successfully.
+2025-03-17/09:45:14		Schema details extracted successfully.
+2025-03-17/09:45:14		Bad Data folder deleted successfully.
+2025-03-17/09:45:14		Good Data folder deleted successfully.
+2025-03-17/09:45:14		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:45:14		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:45:14		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:45:14		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:45:14		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:45:14		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:45:14		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:45:14		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:45:14		File name validation completed.
+2025-03-17/09:45:14		Validating column length...
+2025-03-17/09:45:14		Schema details extracted successfully.
+2025-03-17/09:45:14		Column Length Validation Started!!
+2025-03-17/09:45:14		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:45:14		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:45:14		Column Length Validation Completed!!
+2025-03-17/09:45:14		Validating for missing values...
+2025-03-17/09:45:14		Missing Values Validation Started!!
+2025-03-17/09:45:14		Missing Values Validation Completed!!
+2025-03-17/09:45:14		Validation Successful!
+2025-03-17/09:46:31		Request received at /validate
+2025-03-17/09:46:31		File received: fraudDetection_03032025_010223.csv
+2025-03-17/09:46:31		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/09:46:31		Validating file name...
+2025-03-17/09:46:31		Regex pattern created successfully.
+2025-03-17/09:46:31		Schema details extracted successfully.
+2025-03-17/09:46:31		Bad Data folder deleted successfully.
+2025-03-17/09:46:31		Good Data folder deleted successfully.
+2025-03-17/09:46:31		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:46:31		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/09:46:31		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/09:46:31		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/09:46:31		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/09:46:31		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/09:46:31		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/09:46:31		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/09:46:31		File name validation completed.
+2025-03-17/09:46:31		Validating column length...
+2025-03-17/09:46:31		Schema details extracted successfully.
+2025-03-17/09:46:31		Column Length Validation Started!!
+2025-03-17/09:46:31		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/09:46:31		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/09:46:31		Column Length Validation Completed!!
+2025-03-17/09:46:31		Validating for missing values...
+2025-03-17/09:46:31		Missing Values Validation Started!!
+2025-03-17/09:46:31		Missing Values Validation Completed!!
+2025-03-17/09:46:31		Validation Successful!
+2025-03-17/10:00:30		Request received at /validate
+2025-03-17/10:00:30		File received: fraudDetection_03032025_010223.csv
+2025-03-17/10:00:30		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/10:00:30		Validating file name...
+2025-03-17/10:00:30		Regex pattern created successfully.
+2025-03-17/10:00:30		Schema details extracted successfully.
+2025-03-17/10:00:30		Bad Data folder deleted successfully.
+2025-03-17/10:00:30		Good Data folder deleted successfully.
+2025-03-17/10:00:30		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:00:30		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/10:00:30		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/10:00:30		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/10:00:30		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/10:00:30		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/10:00:30		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/10:00:30		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:00:30		File name validation completed.
+2025-03-17/10:00:30		Validating column length...
+2025-03-17/10:00:30		Schema details extracted successfully.
+2025-03-17/10:00:30		Column Length Validation Started!!
+2025-03-17/10:00:30		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/10:00:30		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/10:00:30		Column Length Validation Completed!!
+2025-03-17/10:00:30		Validating for missing values...
+2025-03-17/10:00:30		Missing Values Validation Started!!
+2025-03-17/10:00:30		Missing Values Validation Completed!!
+2025-03-17/10:00:30		Validation Successful!
+2025-03-17/10:09:35		Request received at /validate
+2025-03-17/10:09:35		File received: fraudDetection_03032025_010223.csv
+2025-03-17/10:09:35		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/10:09:35		Validating file name...
+2025-03-17/10:09:35		Regex pattern created successfully.
+2025-03-17/10:09:35		Schema details extracted successfully.
+2025-03-17/10:09:35		Bad Data folder deleted successfully.
+2025-03-17/10:09:35		Good Data folder deleted successfully.
+2025-03-17/10:09:35		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:09:35		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/10:09:35		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/10:09:35		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/10:09:35		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/10:09:35		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/10:09:35		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/10:09:35		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:09:35		File name validation completed.
+2025-03-17/10:09:35		Validating column length...
+2025-03-17/10:09:35		Schema details extracted successfully.
+2025-03-17/10:09:35		Column Length Validation Started!!
+2025-03-17/10:09:35		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/10:09:35		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/10:09:35		Column Length Validation Completed!!
+2025-03-17/10:09:35		Validating for missing values...
+2025-03-17/10:09:35		Missing Values Validation Started!!
+2025-03-17/10:09:35		Missing Values Validation Completed!!
+2025-03-17/10:09:35		Validation Successful!
+2025-03-17/10:18:36		Request received at /validate
+2025-03-17/10:18:36		File received: fraudDetection_03032025_010223.csv
+2025-03-17/10:18:36		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-17/10:18:36		Validating file name...
+2025-03-17/10:18:36		Regex pattern created successfully.
+2025-03-17/10:18:36		Schema details extracted successfully.
+2025-03-17/10:18:36		Bad Data folder deleted successfully.
+2025-03-17/10:18:36		Good Data folder deleted successfully.
+2025-03-17/10:18:36		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:18:36		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-17/10:18:36		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-17/10:18:36		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-17/10:18:36		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-17/10:18:36		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-17/10:18:36		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-17/10:18:36		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:18:36		File name validation completed.
+2025-03-17/10:18:36		Validating column length...
+2025-03-17/10:18:36		Schema details extracted successfully.
+2025-03-17/10:18:36		Column Length Validation Started!!
+2025-03-17/10:18:36		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-17/10:18:36		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-17/10:18:36		Column Length Validation Completed!!
+2025-03-17/10:18:36		Validating for missing values...
+2025-03-17/10:18:36		Missing Values Validation Started!!
+2025-03-17/10:18:36		Missing Values Validation Completed!!
+2025-03-17/10:18:36		Validation Successful!
+2025-03-18/09:52:13		Request received at /validate
+2025-03-18/09:52:13		File received: fraudDetection_03032025_010223.csv
+2025-03-18/09:52:13		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-18/09:52:13		Validating file name...
+2025-03-18/09:52:13		Regex pattern created successfully.
+2025-03-18/09:52:13		Schema details extracted successfully.
+2025-03-18/09:52:13		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-18/09:52:13		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-18/09:52:13		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-18/09:52:13		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-18/09:52:13		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-18/09:52:13		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-18/09:52:13		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-18/09:52:13		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-18/09:52:13		File name validation completed.
+2025-03-18/09:52:13		Validating column length...
+2025-03-18/09:52:13		Schema details extracted successfully.
+2025-03-18/09:52:13		Column Length Validation Started!!
+2025-03-18/09:52:13		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-18/09:52:13		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-18/09:52:13		Column Length Validation Completed!!
+2025-03-18/09:52:13		Validating for missing values...
+2025-03-18/09:52:13		Missing Values Validation Started!!
+2025-03-18/09:52:13		Missing Values Validation Completed!!
+2025-03-18/09:52:13		Validation Successful!
+2025-03-18/10:01:06		Request received at /validate
+2025-03-18/10:01:06		File received: fraudDetection_03032025_010223.csv
+2025-03-18/10:01:06		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-18/10:01:06		Validating file name...
+2025-03-18/10:01:06		Regex pattern created successfully.
+2025-03-18/10:01:06		Schema details extracted successfully.
+2025-03-18/10:01:06		Bad Data folder deleted successfully.
+2025-03-18/10:01:06		Good Data folder deleted successfully.
+2025-03-18/10:01:06		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-18/10:01:06		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-18/10:01:06		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-18/10:01:06		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-18/10:01:06		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-18/10:01:06		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-18/10:01:06		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-18/10:01:06		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-18/10:01:06		File name validation completed.
+2025-03-18/10:01:06		Validating column length...
+2025-03-18/10:01:06		Schema details extracted successfully.
+2025-03-18/10:01:06		Column Length Validation Started!!
+2025-03-18/10:01:06		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-18/10:01:06		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-18/10:01:06		Column Length Validation Completed!!
+2025-03-18/10:01:06		Validating for missing values...
+2025-03-18/10:01:06		Missing Values Validation Started!!
+2025-03-18/10:01:06		Missing Values Validation Completed!!
+2025-03-18/10:01:06		Validation Successful!
+2025-03-18/10:12:10		Request received at /validate
+2025-03-18/10:12:10		File received: fraudDetection_03032025_010223.csv
+2025-03-18/10:12:10		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-18/10:12:10		Validating file name...
+2025-03-18/10:12:10		Regex pattern created successfully.
+2025-03-18/10:12:10		Schema details extracted successfully.
+2025-03-18/10:12:10		Bad Data folder deleted successfully.
+2025-03-18/10:12:10		Good Data folder deleted successfully.
+2025-03-18/10:12:10		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-18/10:12:10		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-18/10:12:10		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-18/10:12:10		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-18/10:12:10		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-18/10:12:10		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-18/10:12:10		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-18/10:12:10		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-18/10:12:10		File name validation completed.
+2025-03-18/10:12:10		Validating column length...
+2025-03-18/10:12:10		Schema details extracted successfully.
+2025-03-18/10:12:10		Column Length Validation Started!!
+2025-03-18/10:12:10		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-18/10:12:10		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-18/10:12:10		Column Length Validation Completed!!
+2025-03-18/10:12:10		Validating for missing values...
+2025-03-18/10:12:10		Missing Values Validation Started!!
+2025-03-18/10:12:10		Missing Values Validation Completed!!
+2025-03-18/10:12:10		Validation Successful!
+2025-03-19/22:39:40		Request received at /validate
+2025-03-19/22:39:40		File received: fraudDetection_03032025_010223.csv
+2025-03-19/22:39:40		File saved to: Training_Batch_Files/fraudDetection_03032025_010223.csv
+2025-03-19/22:39:40		Validating file name...
+2025-03-19/22:39:40		Regex pattern created successfully.
+2025-03-19/22:39:40		Schema details extracted successfully.
+2025-03-19/22:39:40		Bad Data folder deleted successfully.
+2025-03-19/22:39:40		Good Data folder deleted successfully.
+2025-03-19/22:39:40		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-19/22:39:40		Invalid File Name: fraudDetection_021119920_010222.csv. File moved to Bad_Raw folder.
+2025-03-19/22:39:40		Invalid File Name: Dataset-carclaims.csv. File moved to Bad_Raw folder.
+2025-03-19/22:39:40		Invalid File Name: fraudDetection_030320250_010223.csv. File moved to Bad_Raw folder.
+2025-03-19/22:39:40		Valid File name: fraudDetection_26012025_071222.csv. File moved to Good_Raw folder.
+2025-03-19/22:39:40		Valid File name: fraudDetection_26012025_071222.csv.csv. File moved to Good_Raw folder.
+2025-03-19/22:39:40		Invalid File Name: sample_submission.csv. File moved to Bad_Raw folder.
+2025-03-19/22:39:40		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-19/22:39:40		File name validation completed.
+2025-03-19/22:39:40		Validating column length...
+2025-03-19/22:39:40		Schema details extracted successfully.
+2025-03-19/22:39:40		Column Length Validation Started!!
+2025-03-19/22:39:40		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv
+2025-03-19/22:39:40		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_26012025_071222.csv.csv
+2025-03-19/22:39:40		Column Length Validation Completed!!
+2025-03-19/22:39:40		Validating for missing values...
+2025-03-19/22:39:40		Missing Values Validation Started!!
+2025-03-19/22:39:40		Missing Values Validation Completed!!
+2025-03-19/22:39:40		Validation Successful!

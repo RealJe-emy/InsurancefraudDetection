@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 from os import listdir
 import pandas
 from application_logging.logger import App_Logger
@@ -28,7 +29,7 @@ class dataTransform:
 
                                                    """
 
-          log_file = open("Training_Logs/dataTransformLog.txt", 'a+')
+          log_file = "Training_Logs/dataTransformLog.txt"
           try:
                onlyfiles = [f for f in listdir(self.goodDataPath)]
                for file in onlyfiles:
@@ -45,5 +46,5 @@ class dataTransform:
           except Exception as e:
                self.logger.log(log_file, "Data Transformation failed because:: %s" % e)
                #log_file.write("Current Date :: %s" %date +"\t" +"Current time:: %s" % current_time + "\t \t" + "Data Transformation failed because:: %s" % e + "\n")
-               log_file.close()
-          log_file.close()
+          #      log_file.close()
+          # log_file.close()

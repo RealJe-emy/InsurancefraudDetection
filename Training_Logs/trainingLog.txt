@@ -1,0 +1,1792 @@
+2025-03-15/21:59:10		Training request received.
+2025-03-15/21:59:10		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-15/21:59:10		Unexpected error: Raw_Data_validation.__init__() missing 1 required positional argument: 'log_file'
+2025-03-15/22:09:56		Training request received.
+2025-03-15/22:09:56		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-15/22:09:56		Unexpected error: Raw_Data_validation.__init__() missing 1 required positional argument: 'log_file'
+2025-03-16/18:57:40		Training request received.
+2025-03-16/18:57:40		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-16/18:57:40		Unexpected error: Raw_Data_validation.__init__() missing 1 required positional argument: 'log_file'
+2025-03-16/19:04:50		Training request received.
+2025-03-16/19:04:50		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-16/19:04:50		Unexpected error: train_validation.__init__() takes 2 positional arguments but 3 were given
+2025-03-16/19:04:50		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 188, in trainRouteClient
+    train_valObj = train_validation(path, log_file)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: train_validation.__init__() takes 2 positional arguments but 3 were given
+
+2025-03-17/08:43:09		Training request received.
+2025-03-17/08:43:09		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/08:43:09		Unexpected error: train_validation.__init__() takes 2 positional arguments but 3 were given
+2025-03-17/08:43:09		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 188, in trainRouteClient
+    train_valObj = train_validation(path, log_file)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: train_validation.__init__() takes 2 positional arguments but 3 were given
+
+2025-03-17/08:47:35		Training request received.
+2025-03-17/08:47:35		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/08:47:35		Unexpected error: Raw_Data_validation.__init__() missing 1 required positional argument: 'log_file'
+2025-03-17/08:47:35		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 188, in trainRouteClient
+    train_valObj = train_validation(path)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 9, in __init__
+    self.raw_data = Raw_Data_validation(path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Raw_Data_validation.__init__() missing 1 required positional argument: 'log_file'
+
+2025-03-17/08:50:22		Training request received.
+2025-03-17/08:50:22		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/08:50:22		Unexpected error: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/08:50:22		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 189, in trainRouteClient
+    train_valObj.train_validation()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 61, in train_validation
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 24, in train_validation
+    self.raw_data.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 98, in validationFileNameRaw
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 74, in validationFileNameRaw
+    onlyfiles = [f for f in listdir(self.Batch_Directory)]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+
+2025-03-17/09:03:27		Training request received.
+2025-03-17/09:03:27		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/09:03:27		Unexpected error: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:03:27		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 193, in trainRouteClient
+    train_valObj.train_validation()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 61, in train_validation
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 24, in train_validation
+    self.raw_data.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 98, in validationFileNameRaw
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 74, in validationFileNameRaw
+    onlyfiles = [f for f in listdir(self.Batch_Directory)]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+
+2025-03-17/09:04:29		Training request received.
+2025-03-17/09:04:29		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/09:04:29		Unexpected error: train_validation.__init__() takes 2 positional arguments but 3 were given
+2025-03-17/09:04:29		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 192, in trainRouteClient
+    train_valObj = train_validation(path, log_file)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: train_validation.__init__() takes 2 positional arguments but 3 were given
+
+2025-03-17/09:14:04		Training request received.
+2025-03-17/09:14:04		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/09:14:04		Unexpected error: 'train_validation' object has no attribute 'file_object'
+2025-03-17/09:14:04		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 193, in trainRouteClient
+    train_valObj.train_validation()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 64, in train_validation
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 21, in train_validation
+    self.log_writer.log(self.file_object, 'Start of Validation on files for Training!!')
+                        ^^^^^^^^^^^^^^^^
+AttributeError: 'train_validation' object has no attribute 'file_object'
+
+2025-03-17/09:17:19		Training request received.
+2025-03-17/09:17:19		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/09:17:19		Start of Validation on files for Training!!
+2025-03-17/09:17:19		Schema details extracted successfully.
+2025-03-17/09:17:19		Regex pattern created successfully.
+2025-03-17/09:17:19		Bad Data folder deleted successfully.
+2025-03-17/09:17:19		Good Data folder deleted successfully.
+2025-03-17/09:17:19		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:17:19		File name validation failed: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:17:19		Unexpected error: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:17:19		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 193, in trainRouteClient
+    train_valObj.train_validation()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 64, in train_validation
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 27, in train_validation
+    self.raw_data.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 98, in validationFileNameRaw
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 74, in validationFileNameRaw
+    onlyfiles = [f for f in listdir(self.Batch_Directory)]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+
+2025-03-17/09:20:26		Training request received.
+2025-03-17/09:20:26		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/09:20:26		Start of Validation on files for Training!!
+2025-03-17/09:20:26		Schema details extracted successfully.
+2025-03-17/09:20:26		Regex pattern created successfully.
+2025-03-17/09:20:26		Bad Data folder deleted successfully.
+2025-03-17/09:20:26		Good Data folder deleted successfully.
+2025-03-17/09:20:26		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:20:26		File name validation failed: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:20:26		Unexpected error: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:20:26		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 194, in trainRouteClient
+    train_valObj.train_validation()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 64, in train_validation
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 27, in train_validation
+    self.raw_data.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 98, in validationFileNameRaw
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 74, in validationFileNameRaw
+    onlyfiles = [f for f in listdir(self.Batch_Directory)]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+
+2025-03-17/09:27:31		Training request received.
+2025-03-17/09:27:31		Absolute path received: /home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/fraudDetection_03032025_010223.csv
+2025-03-17/09:27:31		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/09:27:31		Start of Validation on files for Training!!
+2025-03-17/09:27:31		Schema details extracted successfully.
+2025-03-17/09:27:31		Regex pattern created successfully.
+2025-03-17/09:27:31		Bad Data folder deleted successfully.
+2025-03-17/09:27:31		Good Data folder deleted successfully.
+2025-03-17/09:27:31		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:27:31		File name validation failed: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:27:31		Unexpected error: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:27:31		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 198, in trainRouteClient
+    train_valObj.train_validation()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 64, in train_validation
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 27, in train_validation
+    self.raw_data.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 98, in validationFileNameRaw
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 74, in validationFileNameRaw
+    onlyfiles = [f for f in listdir(self.Batch_Directory)]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+
+2025-03-17/09:33:42		Training request received.
+2025-03-17/09:33:42		Error: No file part in request.
+2025-03-17/09:34:53		Training request received.
+2025-03-17/09:34:53		Absolute path received: /home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/fraudDetection_03032025_010223.csv
+2025-03-17/09:34:53		Folder path received: fraudDetection_03032025_010223.csv
+2025-03-17/09:34:53		Start of Validation on files for Training!!
+2025-03-17/09:34:53		Schema details extracted successfully.
+2025-03-17/09:34:53		Regex pattern created successfully.
+2025-03-17/09:34:53		Bad Data folder deleted successfully.
+2025-03-17/09:34:53		Good Data folder deleted successfully.
+2025-03-17/09:34:53		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:34:53		File name validation failed: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:34:53		Unexpected error: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:34:53		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 198, in trainRouteClient
+    train_valObj.train_validation()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 64, in train_validation
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 27, in train_validation
+    self.raw_data.validationFileNameRaw(regex, LengthOfDateStampInFile, LengthOfTimeStampInFile)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 98, in validationFileNameRaw
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/Training_Raw_data_validation/rawValidation.py", line 74, in validationFileNameRaw
+    onlyfiles = [f for f in listdir(self.Batch_Directory)]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+
+2025-03-17/09:41:37		Training request received.
+2025-03-17/09:41:37		Error: No file part in request.
+2025-03-17/09:45:16		Training request received.
+2025-03-17/09:45:16		Error: No file part in request.
+2025-03-17/09:46:32		Training request received.
+2025-03-17/09:46:32		Error: No file part in request.
+2025-03-17/10:00:31		Training request received.
+2025-03-17/10:00:31		Error: No file part in request.
+2025-03-17/10:09:36		Training request received.
+2025-03-17/10:09:36		Error: No file part in request.
+2025-03-17/10:18:49		Training request received.
+2025-03-17/10:18:49		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/10:18:49		Start of Validation on files for Training!!
+2025-03-17/10:18:49		Schema details extracted successfully.
+2025-03-17/10:18:49		Regex pattern created successfully.
+2025-03-17/10:18:49		Bad Data folder deleted successfully.
+2025-03-17/10:18:49		Good Data folder deleted successfully.
+2025-03-17/10:18:49		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:18:49		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:18:49		File name validation completed.
+2025-03-17/10:18:49		Column Length Validation Started!!
+2025-03-17/10:18:49		Column Length Validation Completed!!
+2025-03-17/10:18:49		Missing Values Validation Started!!
+2025-03-17/10:18:49		Missing Values Validation Completed!!
+2025-03-17/10:18:49		Raw Data Validation Complete!!
+2025-03-17/10:18:49		Starting Data Transforamtion!!
+2025-03-17/10:18:49		DataTransformation Completed!!!
+2025-03-17/10:18:49		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/10:18:49		Unexpected error: cannot access local variable 'conn' where it is not associated with a value
+2025-03-17/10:18:49		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/DataTypeValidation_Insertion_Training/DataTypeValidation.py", line 59, in createTableDb
+    conn = self.dataBaseConnection(DatabaseName)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/DataTypeValidation_Insertion_Training/DataTypeValidation.py", line 36, in dataBaseConnection
+    conn = sqlite3.connect(self.path+DatabaseName+'.db')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: unable to open database file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 262, in trainRouteClient
+    train_valObj.train_validation()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 64, in train_validation
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 43, in train_validation
+    self.dBOperation.createTableDb('Training', column_names)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/DataTypeValidation_Insertion_Training/DataTypeValidation.py", line 108, in createTableDb
+    conn.close()
+    ^^^^
+UnboundLocalError: cannot access local variable 'conn' where it is not associated with a value
+
+2025-03-17/10:25:00		Training request received.
+2025-03-17/10:25:00		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/10:25:00		Start of Validation on files for Training!!
+2025-03-17/10:25:00		Schema details extracted successfully.
+2025-03-17/10:25:00		Regex pattern created successfully.
+2025-03-17/10:25:00		Bad Data folder deleted successfully.
+2025-03-17/10:25:00		Good Data folder deleted successfully.
+2025-03-17/10:25:00		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:25:00		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:25:00		File name validation completed.
+2025-03-17/10:25:00		Column Length Validation Started!!
+2025-03-17/10:25:00		Column Length Validation Completed!!
+2025-03-17/10:25:00		Missing Values Validation Started!!
+2025-03-17/10:25:00		Missing Values Validation Completed!!
+2025-03-17/10:25:00		Raw Data Validation Complete!!
+2025-03-17/10:25:00		Starting Data Transforamtion!!
+2025-03-17/10:25:00		DataTransformation Completed!!!
+2025-03-17/10:25:00		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/10:25:00		Unexpected error: 'NoneType' object has no attribute 'close'
+2025-03-17/10:25:00		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/DataTypeValidation_Insertion_Training/DataTypeValidation.py", line 60, in createTableDb
+    conn = self.dataBaseConnection(DatabaseName)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/DataTypeValidation_Insertion_Training/DataTypeValidation.py", line 36, in dataBaseConnection
+    conn = sqlite3.connect(self.path+DatabaseName+'.db')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: unable to open database file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 262, in trainRouteClient
+    train_valObj.train_validation()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 64, in train_validation
+    raise e
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/training_Validation_Insertion.py", line 43, in train_validation
+    self.dBOperation.createTableDb('Training', column_names)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/DataTypeValidation_Insertion_Training/DataTypeValidation.py", line 109, in createTableDb
+    conn.close()
+    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'close'
+
+2025-03-17/10:28:34		Training request received.
+2025-03-17/10:28:34		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/10:28:34		Start of Validation on files for Training!!
+2025-03-17/10:28:34		Schema details extracted successfully.
+2025-03-17/10:28:34		Regex pattern created successfully.
+2025-03-17/10:28:34		Bad Data folder deleted successfully.
+2025-03-17/10:28:34		Good Data folder deleted successfully.
+2025-03-17/10:28:34		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:28:34		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:28:34		File name validation completed.
+2025-03-17/10:28:34		Column Length Validation Started!!
+2025-03-17/10:28:34		Column Length Validation Completed!!
+2025-03-17/10:28:34		Missing Values Validation Started!!
+2025-03-17/10:28:34		Missing Values Validation Completed!!
+2025-03-17/10:28:34		Raw Data Validation Complete!!
+2025-03-17/10:28:34		Starting Data Transforamtion!!
+2025-03-17/10:28:34		DataTransformation Completed!!!
+2025-03-17/10:28:34		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/10:28:35		Table creation Completed!!
+2025-03-17/10:28:35		Insertion of Data into Table started!!!!
+2025-03-17/10:28:37		Insertion in Table completed!!!
+2025-03-17/10:28:37		Deleting Good Data Folder!!!
+2025-03-17/10:28:37		Good Data folder deleted successfully.
+2025-03-17/10:28:37		Good_Data folder deleted!!!
+2025-03-17/10:28:37		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/10:28:37		Bad files moved to archive
+2025-03-17/10:28:37		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/10:28:37		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/10:28:37		Validation Operation completed!!
+2025-03-17/10:28:37		Extracting csv file from table
+2025-03-17/10:31:34		Training request received.
+2025-03-17/10:31:34		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/10:31:34		Start of Validation on files for Training!!
+2025-03-17/10:31:34		Schema details extracted successfully.
+2025-03-17/10:31:34		Regex pattern created successfully.
+2025-03-17/10:31:34		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:31:34		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:31:34		File name validation completed.
+2025-03-17/10:31:34		Column Length Validation Started!!
+2025-03-17/10:31:34		Column Length Validation Completed!!
+2025-03-17/10:31:34		Missing Values Validation Started!!
+2025-03-17/10:31:34		Missing Values Validation Completed!!
+2025-03-17/10:31:34		Raw Data Validation Complete!!
+2025-03-17/10:31:34		Starting Data Transforamtion!!
+2025-03-17/10:31:34		DataTransformation Completed!!!
+2025-03-17/10:31:34		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/10:31:34		Table creation Completed!!
+2025-03-17/10:31:34		Insertion of Data into Table started!!!!
+2025-03-17/10:31:36		Insertion in Table completed!!!
+2025-03-17/10:31:36		Deleting Good Data Folder!!!
+2025-03-17/10:31:36		Good Data folder deleted successfully.
+2025-03-17/10:31:36		Good_Data folder deleted!!!
+2025-03-17/10:31:36		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/10:31:36		Bad files moved to archive
+2025-03-17/10:31:36		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/10:31:36		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/10:31:36		Validation Operation completed!!
+2025-03-17/10:31:36		Extracting csv file from table
+2025-03-17/10:36:03		Training request received.
+2025-03-17/10:36:03		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/10:36:03		Start of Validation on files for Training!!
+2025-03-17/10:36:03		Schema details extracted successfully.
+2025-03-17/10:36:03		Regex pattern created successfully.
+2025-03-17/10:36:03		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:36:03		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:36:03		File name validation completed.
+2025-03-17/10:36:03		Column Length Validation Started!!
+2025-03-17/10:36:03		Column Length Validation Completed!!
+2025-03-17/10:36:03		Missing Values Validation Started!!
+2025-03-17/10:36:03		Missing Values Validation Completed!!
+2025-03-17/10:36:03		Raw Data Validation Complete!!
+2025-03-17/10:36:03		Starting Data Transforamtion!!
+2025-03-17/10:36:03		DataTransformation Completed!!!
+2025-03-17/10:36:03		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/10:36:03		Table creation Completed!!
+2025-03-17/10:36:03		Insertion of Data into Table started!!!!
+2025-03-17/10:36:05		Insertion in Table completed!!!
+2025-03-17/10:36:05		Deleting Good Data Folder!!!
+2025-03-17/10:36:05		Good Data folder deleted successfully.
+2025-03-17/10:36:05		Good_Data folder deleted!!!
+2025-03-17/10:36:05		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/10:36:05		Bad files moved to archive
+2025-03-17/10:36:05		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/10:36:05		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/10:36:05		Validation Operation completed!!
+2025-03-17/10:36:05		Extracting csv file from table
+2025-03-17/10:36:05		Unexpected error: 
+2025-03-17/10:36:05		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 151, in impute_missing_values
+    self.data[col] = self.imputer.fit_transform(self.data[col])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn_pandas/transformers.py", line 101, in fit
+    raise ValueError('No value is repeated more than '
+ValueError: No value is repeated more than once in the column
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 50, in trainingModel
+    data = preprocessor.impute_missing_values(data, cols_with_missing_values)  # missing value imputation
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 157, in impute_missing_values
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 266, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 105, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/10:46:50		Training request received.
+2025-03-17/10:46:50		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/10:46:50		Start of Validation on files for Training!!
+2025-03-17/10:46:50		Schema details extracted successfully.
+2025-03-17/10:46:50		Regex pattern created successfully.
+2025-03-17/10:46:50		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:46:50		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:46:50		File name validation completed.
+2025-03-17/10:46:50		Column Length Validation Started!!
+2025-03-17/10:46:50		Column Length Validation Completed!!
+2025-03-17/10:46:50		Missing Values Validation Started!!
+2025-03-17/10:46:50		Missing Values Validation Completed!!
+2025-03-17/10:46:50		Raw Data Validation Complete!!
+2025-03-17/10:46:50		Starting Data Transforamtion!!
+2025-03-17/10:46:50		DataTransformation Completed!!!
+2025-03-17/10:46:50		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/10:46:50		Table creation Completed!!
+2025-03-17/10:46:50		Insertion of Data into Table started!!!!
+2025-03-17/10:46:51		Insertion in Table completed!!!
+2025-03-17/10:46:51		Deleting Good Data Folder!!!
+2025-03-17/10:46:51		Good Data folder deleted successfully.
+2025-03-17/10:46:51		Good_Data folder deleted!!!
+2025-03-17/10:46:51		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/10:46:51		Bad files moved to archive
+2025-03-17/10:46:51		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/10:46:51		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/10:46:51		Validation Operation completed!!
+2025-03-17/10:46:51		Extracting csv file from table
+2025-03-17/10:46:52		Unexpected error: 
+2025-03-17/10:46:52		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 151, in impute_missing_values
+    self.data[col] = self.imputer.fit_transform(self.data[col])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn_pandas/transformers.py", line 101, in fit
+    raise ValueError('No value is repeated more than '
+ValueError: No value is repeated more than once in the column
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 50, in trainingModel
+    data = preprocessor.impute_missing_values(data, cols_with_missing_values)  # missing value imputation
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 157, in impute_missing_values
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 266, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 105, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/10:57:13		Training request received.
+2025-03-17/10:57:13		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/10:57:13		Start of Validation on files for Training!!
+2025-03-17/10:57:13		Schema details extracted successfully.
+2025-03-17/10:57:13		Regex pattern created successfully.
+2025-03-17/10:57:13		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/10:57:13		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/10:57:13		File name validation completed.
+2025-03-17/10:57:13		Column Length Validation Started!!
+2025-03-17/10:57:13		Column Length Validation Completed!!
+2025-03-17/10:57:13		Missing Values Validation Started!!
+2025-03-17/10:57:13		Missing Values Validation Completed!!
+2025-03-17/10:57:13		Raw Data Validation Complete!!
+2025-03-17/10:57:13		Starting Data Transforamtion!!
+2025-03-17/10:57:13		DataTransformation Completed!!!
+2025-03-17/10:57:13		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/10:57:13		Table creation Completed!!
+2025-03-17/10:57:13		Insertion of Data into Table started!!!!
+2025-03-17/10:57:15		Insertion in Table completed!!!
+2025-03-17/10:57:15		Deleting Good Data Folder!!!
+2025-03-17/10:57:15		Good Data folder deleted successfully.
+2025-03-17/10:57:15		Good_Data folder deleted!!!
+2025-03-17/10:57:15		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/10:57:15		Bad files moved to archive
+2025-03-17/10:57:15		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/10:57:15		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/10:57:15		Validation Operation completed!!
+2025-03-17/10:57:15		Extracting csv file from table
+2025-03-17/10:57:16		Unexpected error: 
+2025-03-17/10:57:16		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 165, in impute_missing_values
+    self.data[col] = categorical_imputer.fit_transform(self.data[[col]])  # Use double brackets to keep DataFrame structure
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn_pandas/transformers.py", line 95, in fit
+    modes = pd.Series(X).mode()
+            ^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/pandas/core/series.py", line 472, in __init__
+    data, index = self._init_dict(data, index, dtype)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/pandas/core/series.py", line 546, in _init_dict
+    if data:
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/pandas/core/generic.py", line 1466, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 50, in trainingModel
+    data = preprocessor.impute_missing_values(data, cols_with_missing_values)  # missing value imputation
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 177, in impute_missing_values
+    raise Exception(error_message)
+Exception: Exception occurred in impute_missing_values method of the Preprocessor class. Exception message: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 266, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 105, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/14:43:28		Training request received.
+2025-03-17/14:43:28		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/14:43:28		Start of Validation on files for Training!!
+2025-03-17/14:43:28		Schema details extracted successfully.
+2025-03-17/14:43:28		Regex pattern created successfully.
+2025-03-17/14:43:28		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/14:43:28		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/14:43:28		File name validation completed.
+2025-03-17/14:43:28		Column Length Validation Started!!
+2025-03-17/14:43:28		Column Length Validation Completed!!
+2025-03-17/14:43:28		Missing Values Validation Started!!
+2025-03-17/14:43:28		Missing Values Validation Completed!!
+2025-03-17/14:43:28		Raw Data Validation Complete!!
+2025-03-17/14:43:28		Starting Data Transforamtion!!
+2025-03-17/14:43:28		DataTransformation Completed!!!
+2025-03-17/14:43:28		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/14:43:28		Table creation Completed!!
+2025-03-17/14:43:28		Insertion of Data into Table started!!!!
+2025-03-17/14:43:30		Insertion in Table completed!!!
+2025-03-17/14:43:30		Deleting Good Data Folder!!!
+2025-03-17/14:43:30		Good Data folder deleted successfully.
+2025-03-17/14:43:30		Good_Data folder deleted!!!
+2025-03-17/14:43:30		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/14:43:30		Bad files moved to archive
+2025-03-17/14:43:30		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/14:43:30		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/14:43:30		Validation Operation completed!!
+2025-03-17/14:43:30		Extracting csv file from table
+2025-03-17/14:43:30		Unexpected error: 
+2025-03-17/14:43:30		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 165, in impute_missing_values
+    self.data[col] = categorical_imputer.fit_transform(self.data[[col]])  # Use double brackets to keep DataFrame structure
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn_pandas/transformers.py", line 95, in fit
+    modes = pd.Series(X).mode()
+            ^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/pandas/core/series.py", line 472, in __init__
+    data, index = self._init_dict(data, index, dtype)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/pandas/core/series.py", line 546, in _init_dict
+    if data:
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/pandas/core/generic.py", line 1466, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 50, in trainingModel
+    data = preprocessor.impute_missing_values(data, cols_with_missing_values)  # missing value imputation
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 177, in impute_missing_values
+    raise Exception(error_message)
+Exception: Exception occurred in impute_missing_values method of the Preprocessor class. Exception message: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 266, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 105, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/14:43:52		Training request received.
+2025-03-17/14:43:52		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/14:43:52		Start of Validation on files for Training!!
+2025-03-17/14:43:52		Schema details extracted successfully.
+2025-03-17/14:43:52		Regex pattern created successfully.
+2025-03-17/14:43:52		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/14:43:52		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/14:43:52		File name validation completed.
+2025-03-17/14:43:52		Column Length Validation Started!!
+2025-03-17/14:43:52		Column Length Validation Completed!!
+2025-03-17/14:43:52		Missing Values Validation Started!!
+2025-03-17/14:43:52		Missing Values Validation Completed!!
+2025-03-17/14:43:52		Raw Data Validation Complete!!
+2025-03-17/14:43:52		Starting Data Transforamtion!!
+2025-03-17/14:43:52		DataTransformation Completed!!!
+2025-03-17/14:43:52		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/14:43:52		Table creation Completed!!
+2025-03-17/14:43:52		Insertion of Data into Table started!!!!
+2025-03-17/14:43:54		Insertion in Table completed!!!
+2025-03-17/14:43:54		Deleting Good Data Folder!!!
+2025-03-17/14:43:54		Good Data folder deleted successfully.
+2025-03-17/14:43:54		Good_Data folder deleted!!!
+2025-03-17/14:43:54		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/14:43:54		Bad files moved to archive
+2025-03-17/14:43:54		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/14:43:54		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/14:43:54		Validation Operation completed!!
+2025-03-17/14:43:54		Extracting csv file from table
+2025-03-17/14:43:54		Unexpected error: 
+2025-03-17/14:43:54		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 165, in impute_missing_values
+    self.data[col] = categorical_imputer.fit_transform(self.data[[col]])  # Use double brackets to keep DataFrame structure
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn_pandas/transformers.py", line 95, in fit
+    modes = pd.Series(X).mode()
+            ^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/pandas/core/series.py", line 472, in __init__
+    data, index = self._init_dict(data, index, dtype)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/pandas/core/series.py", line 546, in _init_dict
+    if data:
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/pandas/core/generic.py", line 1466, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 50, in trainingModel
+    data = preprocessor.impute_missing_values(data, cols_with_missing_values)  # missing value imputation
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 177, in impute_missing_values
+    raise Exception(error_message)
+Exception: Exception occurred in impute_missing_values method of the Preprocessor class. Exception message: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 266, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 105, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/14:50:10		Training request received.
+2025-03-17/14:50:10		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/14:50:10		Start of Validation on files for Training!!
+2025-03-17/14:50:10		Schema details extracted successfully.
+2025-03-17/14:50:10		Regex pattern created successfully.
+2025-03-17/14:50:10		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/14:50:10		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/14:50:10		File name validation completed.
+2025-03-17/14:50:10		Column Length Validation Started!!
+2025-03-17/14:50:10		Column Length Validation Completed!!
+2025-03-17/14:50:10		Missing Values Validation Started!!
+2025-03-17/14:50:10		Missing Values Validation Completed!!
+2025-03-17/14:50:10		Raw Data Validation Complete!!
+2025-03-17/14:50:10		Starting Data Transforamtion!!
+2025-03-17/14:50:10		DataTransformation Completed!!!
+2025-03-17/14:50:10		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/14:50:10		Table creation Completed!!
+2025-03-17/14:50:10		Insertion of Data into Table started!!!!
+2025-03-17/14:50:12		Insertion in Table completed!!!
+2025-03-17/14:50:12		Deleting Good Data Folder!!!
+2025-03-17/14:50:12		Good Data folder deleted successfully.
+2025-03-17/14:50:12		Good_Data folder deleted!!!
+2025-03-17/14:50:12		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/14:50:12		Bad files moved to archive
+2025-03-17/14:50:12		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/14:50:12		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/14:50:12		Validation Operation completed!!
+2025-03-17/14:50:12		Extracting csv file from table
+2025-03-17/14:50:12		Unexpected error: 
+2025-03-17/14:50:12		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 166, in impute_missing_values
+    transformed = categorical_imputer.fit_transform(self.data[col])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn_pandas/transformers.py", line 101, in fit
+    raise ValueError('No value is repeated more than '
+ValueError: No value is repeated more than once in the column
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 50, in trainingModel
+    data = preprocessor.impute_missing_values(data, cols_with_missing_values)  # missing value imputation
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 184, in impute_missing_values
+    raise Exception(error_message)
+Exception: Exception occurred in impute_missing_values method of the Preprocessor class. Exception message: No value is repeated more than once in the column
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 266, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 105, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/14:59:46		Training request received.
+2025-03-17/14:59:46		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/14:59:46		Start of Validation on files for Training!!
+2025-03-17/14:59:46		Schema details extracted successfully.
+2025-03-17/14:59:46		Regex pattern created successfully.
+2025-03-17/14:59:46		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/14:59:46		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/14:59:46		File name validation completed.
+2025-03-17/14:59:46		Column Length Validation Started!!
+2025-03-17/14:59:46		Column Length Validation Completed!!
+2025-03-17/14:59:46		Missing Values Validation Started!!
+2025-03-17/14:59:46		Missing Values Validation Completed!!
+2025-03-17/14:59:46		Raw Data Validation Complete!!
+2025-03-17/14:59:46		Starting Data Transforamtion!!
+2025-03-17/14:59:46		DataTransformation Completed!!!
+2025-03-17/14:59:46		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/14:59:46		Table creation Completed!!
+2025-03-17/14:59:46		Insertion of Data into Table started!!!!
+2025-03-17/14:59:48		Insertion in Table completed!!!
+2025-03-17/14:59:48		Deleting Good Data Folder!!!
+2025-03-17/14:59:48		Good Data folder deleted successfully.
+2025-03-17/14:59:48		Good_Data folder deleted!!!
+2025-03-17/14:59:48		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/14:59:48		Bad files moved to archive
+2025-03-17/14:59:48		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/14:59:48		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/14:59:48		Validation Operation completed!!
+2025-03-17/14:59:48		Extracting csv file from table
+2025-03-17/14:59:48		Unexpected error: 
+2025-03-17/14:59:48		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 169, in impute_missing_values
+    transformed = categorical_imputer.fit_transform(self.data[col])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn_pandas/transformers.py", line 101, in fit
+    raise ValueError('No value is repeated more than '
+ValueError: No value is repeated more than once in the column
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 50, in trainingModel
+    data = preprocessor.impute_missing_values(data, cols_with_missing_values)  # missing value imputation
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 186, in impute_missing_values
+    raise Exception(error_message)
+Exception: Exception occurred in impute_missing_values method of the Preprocessor class. Exception message: No value is repeated more than once in the column
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 266, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 105, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/15:15:10		Training request received.
+2025-03-17/15:15:10		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/15:15:10		Start of Validation on files for Training!!
+2025-03-17/15:15:10		Schema details extracted successfully.
+2025-03-17/15:15:10		Regex pattern created successfully.
+2025-03-17/15:15:10		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/15:15:10		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/15:15:10		File name validation completed.
+2025-03-17/15:15:10		Column Length Validation Started!!
+2025-03-17/15:15:10		Column Length Validation Completed!!
+2025-03-17/15:15:10		Missing Values Validation Started!!
+2025-03-17/15:15:10		Missing Values Validation Completed!!
+2025-03-17/15:15:10		Raw Data Validation Complete!!
+2025-03-17/15:15:10		Starting Data Transforamtion!!
+2025-03-17/15:15:10		DataTransformation Completed!!!
+2025-03-17/15:15:10		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/15:15:10		Table creation Completed!!
+2025-03-17/15:15:10		Insertion of Data into Table started!!!!
+2025-03-17/15:15:12		Insertion in Table completed!!!
+2025-03-17/15:15:12		Deleting Good Data Folder!!!
+2025-03-17/15:15:12		Good Data folder deleted successfully.
+2025-03-17/15:15:12		Good_Data folder deleted!!!
+2025-03-17/15:15:12		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/15:15:12		Bad files moved to archive
+2025-03-17/15:15:12		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/15:15:12		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/15:15:12		Validation Operation completed!!
+2025-03-17/15:15:12		Extracting csv file from table
+2025-03-17/15:15:12		Unexpected error: 
+2025-03-17/15:15:12		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 207, in impute_missing_values
+    self.data[col] = self.imputer.fit_transform(self.data[col])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn_pandas/transformers.py", line 101, in fit
+    raise ValueError('No value is repeated more than '
+ValueError: No value is repeated more than once in the column
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 50, in trainingModel
+    data = preprocessor.impute_missing_values(data, cols_with_missing_values)  # missing value imputation
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 213, in impute_missing_values
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 266, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 105, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/15:21:56		Training request received.
+2025-03-17/15:21:56		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/15:21:56		Start of Validation on files for Training!!
+2025-03-17/15:21:56		Schema details extracted successfully.
+2025-03-17/15:21:56		Regex pattern created successfully.
+2025-03-17/15:21:56		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/15:21:56		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/15:21:56		File name validation completed.
+2025-03-17/15:21:56		Column Length Validation Started!!
+2025-03-17/15:21:56		Column Length Validation Completed!!
+2025-03-17/15:21:56		Missing Values Validation Started!!
+2025-03-17/15:21:56		Missing Values Validation Completed!!
+2025-03-17/15:21:56		Raw Data Validation Complete!!
+2025-03-17/15:21:56		Starting Data Transforamtion!!
+2025-03-17/15:21:56		DataTransformation Completed!!!
+2025-03-17/15:21:56		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/15:21:56		Table creation Completed!!
+2025-03-17/15:21:56		Insertion of Data into Table started!!!!
+2025-03-17/15:21:58		Insertion in Table completed!!!
+2025-03-17/15:21:58		Deleting Good Data Folder!!!
+2025-03-17/15:21:58		Good Data folder deleted successfully.
+2025-03-17/15:21:58		Good_Data folder deleted!!!
+2025-03-17/15:21:58		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/15:21:58		Bad files moved to archive
+2025-03-17/15:21:58		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/15:21:58		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/15:21:58		Validation Operation completed!!
+2025-03-17/15:21:58		Extracting csv file from table
+2025-03-17/15:21:58		Unexpected error: 
+2025-03-17/15:21:58		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/clustering.py", line 31, in elbow_plot
+    kmeans.fit(data) # fitting the data to the KMeans Algorithm
+    ^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py", line 1461, in fit
+    X = self._validate_data(
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 633, in _validate_data
+    out = check_array(X, input_name="X", **check_params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1059, in check_array
+    _assert_all_finite(
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 126, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 175, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+KMeans does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 61, in trainingModel
+    number_of_clusters=kmeans.elbow_plot(X)  #  using the elbow plot to find the number of optimum clusters
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/clustering.py", line 47, in elbow_plot
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 266, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 105, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/15:29:04		Training request received.
+2025-03-17/15:29:04		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/15:29:04		Start of Validation on files for Training!!
+2025-03-17/15:29:04		Schema details extracted successfully.
+2025-03-17/15:29:04		Regex pattern created successfully.
+2025-03-17/15:29:04		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/15:29:04		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/15:29:04		File name validation completed.
+2025-03-17/15:29:04		Column Length Validation Started!!
+2025-03-17/15:29:04		Column Length Validation Completed!!
+2025-03-17/15:29:04		Missing Values Validation Started!!
+2025-03-17/15:29:04		Missing Values Validation Completed!!
+2025-03-17/15:29:04		Raw Data Validation Complete!!
+2025-03-17/15:29:04		Starting Data Transforamtion!!
+2025-03-17/15:29:04		DataTransformation Completed!!!
+2025-03-17/15:29:04		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/15:29:04		Table creation Completed!!
+2025-03-17/15:29:04		Insertion of Data into Table started!!!!
+2025-03-17/15:29:06		Insertion in Table completed!!!
+2025-03-17/15:29:06		Deleting Good Data Folder!!!
+2025-03-17/15:29:06		Good Data folder deleted successfully.
+2025-03-17/15:29:06		Good_Data folder deleted!!!
+2025-03-17/15:29:06		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/15:29:06		Bad files moved to archive
+2025-03-17/15:29:06		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/15:29:06		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/15:29:06		Validation Operation completed!!
+2025-03-17/15:29:06		Extracting csv file from table
+2025-03-17/15:29:31		Unexpected error: I/O operation on closed file.
+2025-03-17/15:29:31		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 268, in trainRouteClient
+    logger.log(log_file, "Training successful.")
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/application_logging/logger.py", line 12, in log
+    file_object.write(
+ValueError: I/O operation on closed file.
+
+2025-03-17/15:35:23		Training request received.
+2025-03-17/15:35:23		Created upload directory: uploads and put fraudDetection_03032025_010223.csv there.
+2025-03-17/15:35:23		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/15:35:23		Start of Validation on files for Training!!
+2025-03-17/15:35:23		Schema details extracted successfully.
+2025-03-17/15:35:23		Regex pattern created successfully.
+2025-03-17/15:35:23		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/15:35:23		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/15:35:23		File name validation completed.
+2025-03-17/15:35:23		Column Length Validation Started!!
+2025-03-17/15:35:23		Column Length Validation Completed!!
+2025-03-17/15:35:23		Missing Values Validation Started!!
+2025-03-17/15:35:23		Missing Values Validation Completed!!
+2025-03-17/15:35:23		Raw Data Validation Complete!!
+2025-03-17/15:35:23		Starting Data Transforamtion!!
+2025-03-17/15:35:23		DataTransformation Completed!!!
+2025-03-17/15:35:23		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/15:35:23		Table creation Completed!!
+2025-03-17/15:35:23		Insertion of Data into Table started!!!!
+2025-03-17/15:35:25		Insertion in Table completed!!!
+2025-03-17/15:35:25		Deleting Good Data Folder!!!
+2025-03-17/15:35:25		Good Data folder deleted successfully.
+2025-03-17/15:35:25		Good_Data folder deleted!!!
+2025-03-17/15:35:25		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/15:35:25		Bad files moved to archive
+2025-03-17/15:35:25		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/15:35:25		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/15:35:25		Validation Operation completed!!
+2025-03-17/15:35:25		Extracting csv file from table
+2025-03-17/15:35:25		Unexpected error: I/O operation on closed file.
+2025-03-17/15:35:25		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 262, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 143, in trainingModel
+    self.log_writer.log(self.file_object, 'Start of Training')
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/application_logging/logger.py", line 12, in log
+    file_object.write(
+ValueError: I/O operation on closed file.
+
+2025-03-17/15:45:10		Training request received.
+2025-03-17/15:45:10		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/15:45:10		Start of Validation on files for Training!!
+2025-03-17/15:45:10		Schema details extracted successfully.
+2025-03-17/15:45:10		Regex pattern created successfully.
+2025-03-17/15:45:10		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/15:45:10		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/15:45:10		File name validation completed.
+2025-03-17/15:45:10		Column Length Validation Started!!
+2025-03-17/15:45:10		Column Length Validation Completed!!
+2025-03-17/15:45:10		Missing Values Validation Started!!
+2025-03-17/15:45:10		Missing Values Validation Completed!!
+2025-03-17/15:45:10		Raw Data Validation Complete!!
+2025-03-17/15:45:10		Starting Data Transforamtion!!
+2025-03-17/15:45:11		DataTransformation Completed!!!
+2025-03-17/15:45:11		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/15:45:11		Table creation Completed!!
+2025-03-17/15:45:11		Insertion of Data into Table started!!!!
+2025-03-17/15:45:12		Insertion in Table completed!!!
+2025-03-17/15:45:12		Deleting Good Data Folder!!!
+2025-03-17/15:45:12		Good Data folder deleted successfully.
+2025-03-17/15:45:12		Good_Data folder deleted!!!
+2025-03-17/15:45:12		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/15:45:12		Bad files moved to archive
+2025-03-17/15:45:12		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/15:45:12		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/15:45:12		Validation Operation completed!!
+2025-03-17/15:45:12		Extracting csv file from table
+2025-03-17/15:45:13		Unexpected error: I/O operation on closed file.
+2025-03-17/15:45:13		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 250, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 143, in trainingModel
+    self.log_writer.log(self.file_object, 'Start of Training')
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/application_logging/logger.py", line 12, in log
+    file_object.write(
+ValueError: I/O operation on closed file.
+
+2025-03-17/15:45:25		Training request received.
+2025-03-17/15:45:25		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/15:45:25		Start of Validation on files for Training!!
+2025-03-17/15:45:25		Schema details extracted successfully.
+2025-03-17/15:45:25		Regex pattern created successfully.
+2025-03-17/15:45:25		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/15:45:25		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/15:45:25		File name validation completed.
+2025-03-17/15:45:25		Column Length Validation Started!!
+2025-03-17/15:45:25		Column Length Validation Completed!!
+2025-03-17/15:45:25		Missing Values Validation Started!!
+2025-03-17/15:45:25		Missing Values Validation Completed!!
+2025-03-17/15:45:25		Raw Data Validation Complete!!
+2025-03-17/15:45:25		Starting Data Transforamtion!!
+2025-03-17/15:45:26		DataTransformation Completed!!!
+2025-03-17/15:45:26		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/15:45:26		Table creation Completed!!
+2025-03-17/15:45:26		Insertion of Data into Table started!!!!
+2025-03-17/15:45:27		Insertion in Table completed!!!
+2025-03-17/15:45:27		Deleting Good Data Folder!!!
+2025-03-17/15:45:27		Good Data folder deleted successfully.
+2025-03-17/15:45:27		Good_Data folder deleted!!!
+2025-03-17/15:45:27		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/15:45:27		Bad files moved to archive
+2025-03-17/15:45:27		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/15:45:27		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/15:45:27		Validation Operation completed!!
+2025-03-17/15:45:27		Extracting csv file from table
+2025-03-17/15:45:28		Unexpected error: I/O operation on closed file.
+2025-03-17/15:45:28		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 250, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 143, in trainingModel
+    self.log_writer.log(self.file_object, 'Start of Training')
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/application_logging/logger.py", line 12, in log
+    file_object.write(
+ValueError: I/O operation on closed file.
+
+2025-03-17/15:49:31		Training request received.
+2025-03-17/15:49:31		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/15:49:31		Start of Validation on files for Training!!
+2025-03-17/15:49:31		Schema details extracted successfully.
+2025-03-17/15:49:31		Regex pattern created successfully.
+2025-03-17/15:49:31		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/15:49:31		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/15:49:31		File name validation completed.
+2025-03-17/15:49:31		Column Length Validation Started!!
+2025-03-17/15:49:31		Column Length Validation Completed!!
+2025-03-17/15:49:31		Missing Values Validation Started!!
+2025-03-17/15:49:31		Missing Values Validation Completed!!
+2025-03-17/15:49:31		Raw Data Validation Complete!!
+2025-03-17/15:49:31		Starting Data Transforamtion!!
+2025-03-17/15:49:31		DataTransformation Completed!!!
+2025-03-17/15:49:31		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/15:49:31		Table creation Completed!!
+2025-03-17/15:49:31		Insertion of Data into Table started!!!!
+2025-03-17/15:49:33		Insertion in Table completed!!!
+2025-03-17/15:49:33		Deleting Good Data Folder!!!
+2025-03-17/15:49:33		Good Data folder deleted successfully.
+2025-03-17/15:49:33		Good_Data folder deleted!!!
+2025-03-17/15:49:33		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/15:49:33		Bad files moved to archive
+2025-03-17/15:49:33		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/15:49:33		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/15:49:33		Validation Operation completed!!
+2025-03-17/15:49:33		Extracting csv file from table
+2025-03-17/15:49:33		Unexpected error: 
+2025-03-17/15:49:33		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 274, in trainingModel
+    data = data_getter.get_data()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_ingestion/data_loader.py", line 26, in get_data
+    self.logger_object.log(self.file_object,'Entered the get_data method of the Data_Getter class')
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/application_logging/logger.py", line 12, in log
+    file_object.write(
+ValueError: I/O operation on closed file.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 250, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 336, in trainingModel
+    raise Exception
+Exception
+
+2025-03-17/16:18:16		Training request received.
+2025-03-17/16:18:16		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-17/16:18:16		Start of Validation on files for Training!!
+2025-03-17/16:18:16		Schema details extracted successfully.
+2025-03-17/16:18:16		Regex pattern created successfully.
+2025-03-17/16:18:16		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/16:18:16		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-17/16:18:16		File name validation completed.
+2025-03-17/16:18:16		Column Length Validation Started!!
+2025-03-17/16:18:16		Column Length Validation Completed!!
+2025-03-17/16:18:16		Missing Values Validation Started!!
+2025-03-17/16:18:16		Missing Values Validation Completed!!
+2025-03-17/16:18:16		Raw Data Validation Complete!!
+2025-03-17/16:18:16		Starting Data Transforamtion!!
+2025-03-17/16:18:16		DataTransformation Completed!!!
+2025-03-17/16:18:16		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-17/16:18:16		Table creation Completed!!
+2025-03-17/16:18:16		Insertion of Data into Table started!!!!
+2025-03-17/16:18:18		Insertion in Table completed!!!
+2025-03-17/16:18:18		Deleting Good Data Folder!!!
+2025-03-17/16:18:18		Good Data folder deleted successfully.
+2025-03-17/16:18:18		Good_Data folder deleted!!!
+2025-03-17/16:18:18		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-17/16:18:18		Bad files moved to archive
+2025-03-17/16:18:18		Bad Raw Data Folder Deleted successfully!!
+2025-03-17/16:18:18		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-17/16:18:18		Validation Operation completed!!
+2025-03-17/16:18:18		Extracting csv file from table
+2025-03-17/16:18:18		Unexpected error: 
+2025-03-17/16:18:18		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 274, in trainingModel
+    data = data_getter.get_data()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_ingestion/data_loader.py", line 18, in get_data
+    self.logger_object.log(self.file_object, "Entered the get_data method of the Data_Getter class")
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/application_logging/logger.py", line 25, in log
+    file_object.write(
+ValueError: I/O operation on closed file.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 250, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 336, in trainingModel
+    raise Exception
+Exception
+
+2025-03-18/08:20:14		Training request received.
+2025-03-18/08:20:14		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-18/08:20:14		Start of Validation on files for Training!!
+2025-03-18/08:20:14		Schema details extracted successfully.
+2025-03-18/08:20:14		Regex pattern created successfully.
+2025-03-18/08:20:14		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-18/08:20:14		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-18/08:20:14		File name validation completed.
+2025-03-18/08:20:14		Column Length Validation Started!!
+2025-03-18/08:20:14		Column Length Validation Completed!!
+2025-03-18/08:20:14		Missing Values Validation Started!!
+2025-03-18/08:20:14		Missing Values Validation Completed!!
+2025-03-18/08:20:14		Raw Data Validation Complete!!
+2025-03-18/08:20:14		Starting Data Transforamtion!!
+2025-03-18/08:20:14		DataTransformation Completed!!!
+2025-03-18/08:20:14		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-18/08:20:14		Table creation Completed!!
+2025-03-18/08:20:14		Insertion of Data into Table started!!!!
+2025-03-18/08:20:16		Insertion in Table completed!!!
+2025-03-18/08:20:16		Deleting Good Data Folder!!!
+2025-03-18/08:20:16		Good Data folder deleted successfully.
+2025-03-18/08:20:16		Good_Data folder deleted!!!
+2025-03-18/08:20:16		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-18/08:20:16		Bad files moved to archive
+2025-03-18/08:20:16		Bad Raw Data Folder Deleted successfully!!
+2025-03-18/08:20:16		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-18/08:20:16		Validation Operation completed!!
+2025-03-18/08:20:16		Extracting csv file from table
+2025-03-18/08:20:16		Unexpected error: 
+2025-03-18/08:20:16		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 274, in trainingModel
+    data = data_getter.get_data()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_ingestion/data_loader.py", line 26, in get_data
+    self.logger_object.log(self.file_object,'Entered the get_data method of the Data_Getter class')
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/application_logging/logger.py", line 12, in log
+    file_object.write(
+ValueError: I/O operation on closed file.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 250, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 336, in trainingModel
+    raise Exception
+Exception
+
+2025-03-18/08:27:49		Training request received.
+2025-03-18/08:27:49		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-18/08:27:49		Start of Validation on files for Training!!
+2025-03-18/08:27:49		Schema details extracted successfully.
+2025-03-18/08:27:49		Regex pattern created successfully.
+2025-03-18/08:27:49		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-18/08:27:49		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-18/08:27:49		File name validation completed.
+2025-03-18/08:27:49		Column Length Validation Started!!
+2025-03-18/08:27:49		Column Length Validation Completed!!
+2025-03-18/08:27:49		Missing Values Validation Started!!
+2025-03-18/08:27:49		Missing Values Validation Completed!!
+2025-03-18/08:27:49		Raw Data Validation Complete!!
+2025-03-18/08:27:49		Starting Data Transforamtion!!
+2025-03-18/08:27:49		DataTransformation Completed!!!
+2025-03-18/08:27:49		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-18/08:27:49		Table creation Completed!!
+2025-03-18/08:27:49		Insertion of Data into Table started!!!!
+2025-03-18/08:27:51		Insertion in Table completed!!!
+2025-03-18/08:27:51		Deleting Good Data Folder!!!
+2025-03-18/08:27:51		Good Data folder deleted successfully.
+2025-03-18/08:27:51		Good_Data folder deleted!!!
+2025-03-18/08:27:51		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-18/08:27:51		Bad files moved to archive
+2025-03-18/08:27:51		Bad Raw Data Folder Deleted successfully!!
+2025-03-18/08:27:51		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-18/08:27:51		Validation Operation completed!!
+2025-03-18/08:27:51		Extracting csv file from table
+2025-03-18/08:27:51		Unexpected error: 
+2025-03-18/08:27:51		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/application_logging/logger.py", line 30, in log
+    raise ValueError("Cannot log: file object is closed")
+ValueError: Cannot log: file object is closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 274, in trainingModel
+    data = data_getter.get_data()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_ingestion/data_loader.py", line 26, in get_data
+    self.logger_object.log(self.file_object,'Entered the get_data method of the Data_Getter class')
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/application_logging/logger.py", line 36, in log
+    raise Exception(f"Logging failed: {str(e)}")
+Exception: Logging failed: Cannot log: file object is closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 250, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 336, in trainingModel
+    raise Exception
+Exception
+
+2025-03-18/09:25:54		Training request received.
+2025-03-18/09:25:55		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-18/09:25:55		Start of Validation on files for Training!!
+2025-03-18/09:25:55		Schema details extracted successfully.
+2025-03-18/09:25:55		Regex pattern created successfully.
+2025-03-18/09:25:55		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-18/09:25:55		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-18/09:25:55		File name validation completed.
+2025-03-18/09:25:55		Column Length Validation Started!!
+2025-03-18/09:25:55		Column Length Validation Completed!!
+2025-03-18/09:25:55		Missing Values Validation Started!!
+2025-03-18/09:25:55		Missing Values Validation Completed!!
+2025-03-18/09:25:55		Raw Data Validation Complete!!
+2025-03-18/09:25:55		Starting Data Transforamtion!!
+2025-03-18/09:25:55		DataTransformation Completed!!!
+2025-03-18/09:25:55		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-18/09:25:55		Table creation Completed!!
+2025-03-18/09:25:55		Insertion of Data into Table started!!!!
+2025-03-18/09:25:57		Insertion in Table completed!!!
+2025-03-18/09:25:57		Deleting Good Data Folder!!!
+2025-03-18/09:25:57		Good Data folder deleted successfully.
+2025-03-18/09:25:57		Good_Data folder deleted!!!
+2025-03-18/09:25:57		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-18/09:25:57		Bad files moved to archive
+2025-03-18/09:25:57		Bad Raw Data Folder Deleted successfully!!
+2025-03-18/09:25:57		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-18/09:25:57		Validation Operation completed!!
+2025-03-18/09:25:57		Extracting csv file from table
+2025-03-18/09:25:57		Entered the get_data method of the Data_Getter class
+2025-03-18/09:25:57		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-18/09:25:57		Entered the remove_columns method of the Preprocessor class
+2025-03-18/09:25:57		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-03-18/09:25:57		Entered the is_null_present method of the Preprocessor class
+2025-03-18/09:25:57		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-18/09:25:57		Entered the impute_missing_values method of the Preprocessor class
+2025-03-18/09:25:57		Error processing column police_report_available: No value is repeated more than once in the column
+2025-03-18/09:25:57		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-18/09:25:57		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-18/09:25:57		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-18/09:25:57		Entered the separate_label_feature method of the Preprocessor class
+2025-03-18/09:25:57		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-03-18/09:25:57		Entered the elbow_plot method of the KMeansClustering class
+2025-03-18/09:25:57		Exception occured in elbow_plot method of the KMeansClustering class. Exception message:  Input X contains NaN.
+KMeans does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2025-03-18/09:25:57		Finding the number of clusters failed. Exited the elbow_plot method of the KMeansClustering class
+2025-03-18/09:25:57		Error in elbow plot: . Defaulting to 2 clusters.
+2025-03-18/09:25:57		Entered the create_clusters method of the KMeansClustering class
+2025-03-18/09:25:57		Exception occured in create_clusters method of the KMeansClustering class. Exception message:  Input X contains NaN.
+KMeans does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+2025-03-18/09:25:57		Fitting the data to clusters failed. Exited the create_clusters method of the KMeansClustering class
+2025-03-18/09:25:57		Unexpected error: 
+2025-03-18/09:25:57		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/clustering.py", line 67, in create_clusters
+    self.y_kmeans=self.kmeans.fit_predict(data) #  divide data into clusters
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py", line 1067, in fit_predict
+    return self.fit(X, sample_weight=sample_weight).labels_
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py", line 1461, in fit
+    X = self._validate_data(
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 633, in _validate_data
+    out = check_array(X, input_name="X", **check_params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1059, in check_array
+    _assert_all_finite(
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 126, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 175, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+KMeans does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 305, in trainingModel
+    X = kmeans.create_clusters(X, number_of_clusters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/data_preprocessing/clustering.py", line 79, in create_clusters
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 250, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-03-18/09:41:16		Training request received.
+2025-03-18/09:41:16		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-18/09:41:16		Start of Validation on files for Training!!
+2025-03-18/09:41:16		Schema details extracted successfully.
+2025-03-18/09:41:16		Regex pattern created successfully.
+2025-03-18/09:41:16		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-18/09:41:16		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-18/09:41:16		File name validation completed.
+2025-03-18/09:41:16		Column Length Validation Started!!
+2025-03-18/09:41:16		Column Length Validation Completed!!
+2025-03-18/09:41:16		Missing Values Validation Started!!
+2025-03-18/09:41:16		Missing Values Validation Completed!!
+2025-03-18/09:41:16		Raw Data Validation Complete!!
+2025-03-18/09:41:16		Starting Data Transforamtion!!
+2025-03-18/09:41:16		DataTransformation Completed!!!
+2025-03-18/09:41:16		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-18/09:41:16		Table creation Completed!!
+2025-03-18/09:41:16		Insertion of Data into Table started!!!!
+2025-03-18/09:41:18		Insertion in Table completed!!!
+2025-03-18/09:41:18		Deleting Good Data Folder!!!
+2025-03-18/09:41:18		Good Data folder deleted successfully.
+2025-03-18/09:41:18		Good_Data folder deleted!!!
+2025-03-18/09:41:18		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-18/09:41:18		Bad files moved to archive
+2025-03-18/09:41:18		Bad Raw Data Folder Deleted successfully!!
+2025-03-18/09:41:18		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-18/09:41:18		Validation Operation completed!!
+2025-03-18/09:41:18		Extracting csv file from table
+2025-03-18/09:41:18		Entered the get_data method of the Data_Getter class
+2025-03-18/09:41:18		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-18/09:41:18		Entered the remove_columns method of the Preprocessor class
+2025-03-18/09:41:18		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-03-18/09:41:18		Entered the is_null_present method of the Preprocessor class
+2025-03-18/09:41:18		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-18/09:41:18		Entered the impute_missing_values method of the Preprocessor class
+2025-03-18/09:41:18		Error processing column police_report_available: No value is repeated more than once in the column
+2025-03-18/09:41:18		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-18/09:41:18		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-18/09:41:18		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-18/09:41:18		Entered the separate_label_feature method of the Preprocessor class
+2025-03-18/09:41:18		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-03-18/09:41:18		Entered the elbow_plot method of the KMeansClustering class
+2025-03-18/09:41:18		Entered the handle_missing_values method of the KMeansClustering class
+2025-03-18/09:41:18		Successfully handled missing values in the dataset
+2025-03-18/09:41:20		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-03-18/09:41:20		Entered the create_clusters method of the KMeansClustering class
+2025-03-18/09:41:20		Entered the handle_missing_values method of the KMeansClustering class
+2025-03-18/09:41:20		Successfully handled missing values in the dataset
+2025-03-18/09:41:20		Entered the save_model method of the File_Operation class
+2025-03-18/09:41:20		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-03-18/09:41:20		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-03-18/09:41:20		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:41:20		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:41:20		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:41:20		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:41:20		Entered the get_best_model method of the Model_Finder class
+2025-03-18/09:41:20		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-18/09:41:31		XGBoost best params: {'criterion': 'gini', 'max_depth': 8, 'n_estimators': 100}. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-18/09:41:31		AUC for XGBoost:1.0
+2025-03-18/09:41:31		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-03-18/09:41:33		Exception occured in get_best_params_for_svm method of the Model_Finder class. Exception message:  
+All the 120 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+120 fits failed with the following error:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 888, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/svm/_base.py", line 190, in fit
+    X, y = self._validate_data(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 650, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1273, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1059, in check_array
+    _assert_all_finite(
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 126, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 175, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+
+2025-03-18/09:41:33		SVM training  failed. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-03-18/09:41:33		Exception occured in get_best_model method of the Model_Finder class. Exception message:  
+2025-03-18/09:41:33		Model Selection Failed. Exited the get_best_model method of the Model_Finder class
+2025-03-18/09:41:33		Unexpected error: 
+2025-03-18/09:41:33		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/best_model_finder/tuner.py", line 28, in get_best_params_for_svm
+    self.grid.fit(train_x, train_y)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 968, in fit
+    self._run_search(evaluate_candidates)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 1543, in _run_search
+    evaluate_candidates(ParameterGrid(self.param_grid))
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 945, in evaluate_candidates
+    _warn_or_raise_about_fit_failures(out, self.error_score)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 529, in _warn_or_raise_about_fit_failures
+    raise ValueError(all_fits_failed_message)
+ValueError: 
+All the 120 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+120 fits failed with the following error:
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 888, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/svm/_base.py", line 190, in fit
+    X, y = self._validate_data(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/base.py", line 650, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1273, in check_X_y
+    X = check_array(
+        ^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1059, in check_array
+    _assert_all_finite(
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 126, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/proenv/lib/python3.11/site-packages/sklearn/utils/validation.py", line 175, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+SVC does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/best_model_finder/tuner.py", line 110, in get_best_model
+    self.svm=self.get_best_params_for_svm(train_x,train_y)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/best_model_finder/tuner.py", line 50, in get_best_params_for_svm
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 320, in trainingModel
+    best_model_name, best_model = model_finder.get_best_model(x_train, y_train, x_test, y_test)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/best_model_finder/tuner.py", line 132, in get_best_model
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/main.py", line 250, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Downloads/project 1 - Copy/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-03-18/09:50:49		Training request received.
+2025-03-18/09:50:49		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-18/09:50:49		Start of Validation on files for Training!!
+2025-03-18/09:50:49		Schema details extracted successfully.
+2025-03-18/09:50:49		Regex pattern created successfully.
+2025-03-18/09:50:49		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-18/09:50:49		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-18/09:50:49		File name validation completed.
+2025-03-18/09:50:49		Column Length Validation Started!!
+2025-03-18/09:50:49		Column Length Validation Completed!!
+2025-03-18/09:50:49		Missing Values Validation Started!!
+2025-03-18/09:50:49		Missing Values Validation Completed!!
+2025-03-18/09:50:49		Raw Data Validation Complete!!
+2025-03-18/09:50:49		Starting Data Transforamtion!!
+2025-03-18/09:50:49		DataTransformation Completed!!!
+2025-03-18/09:50:49		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-18/09:50:49		Table creation Completed!!
+2025-03-18/09:50:49		Insertion of Data into Table started!!!!
+2025-03-18/09:50:51		Insertion in Table completed!!!
+2025-03-18/09:50:51		Deleting Good Data Folder!!!
+2025-03-18/09:50:51		Good Data folder deleted successfully.
+2025-03-18/09:50:51		Good_Data folder deleted!!!
+2025-03-18/09:50:51		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-18/09:50:51		Bad files moved to archive
+2025-03-18/09:50:51		Bad Raw Data Folder Deleted successfully!!
+2025-03-18/09:50:51		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-18/09:50:51		Validation Operation completed!!
+2025-03-18/09:50:51		Extracting csv file from table
+2025-03-18/09:50:51		Entered the get_data method of the Data_Getter class
+2025-03-18/09:50:51		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-18/09:50:51		Entered the remove_columns method of the Preprocessor class
+2025-03-18/09:50:51		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-03-18/09:50:51		Entered the is_null_present method of the Preprocessor class
+2025-03-18/09:50:51		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-18/09:50:51		Entered the impute_missing_values method of the Preprocessor class
+2025-03-18/09:50:51		Error processing column police_report_available: No value is repeated more than once in the column
+2025-03-18/09:50:51		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-18/09:50:51		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-18/09:50:51		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-18/09:50:51		Entered the separate_label_feature method of the Preprocessor class
+2025-03-18/09:50:51		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-03-18/09:50:51		Entered the elbow_plot method of the KMeansClustering class
+2025-03-18/09:50:51		Entered the handle_missing_values method of the KMeansClustering class
+2025-03-18/09:50:51		Successfully handled missing values in the dataset
+2025-03-18/09:50:52		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-03-18/09:50:52		Entered the create_clusters method of the KMeansClustering class
+2025-03-18/09:50:52		Entered the handle_missing_values method of the KMeansClustering class
+2025-03-18/09:50:52		Successfully handled missing values in the dataset
+2025-03-18/09:50:52		Entered the save_model method of the File_Operation class
+2025-03-18/09:50:52		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-03-18/09:50:52		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-03-18/09:50:52		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:50:52		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:50:52		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:50:52		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:50:52		Entered the get_best_model method of the Model_Finder class
+2025-03-18/09:50:52		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-18/09:51:01		XGBoost best params: {'criterion': 'gini', 'max_depth': 8, 'n_estimators': 100}. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-18/09:51:01		AUC for XGBoost:0.9390243902439024
+2025-03-18/09:51:01		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-03-18/09:51:06		SVM best params: {'C': 1.0, 'kernel': 'sigmoid', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-03-18/09:51:06		AUC for SVM:0.5281382859700158
+2025-03-18/09:51:06		Entered the save_model method of the File_Operation class
+2025-03-18/09:51:06		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-03-18/09:51:06		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:51:06		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:51:06		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:51:06		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-18/09:51:06		Entered the get_best_model method of the Model_Finder class
+2025-03-18/09:51:06		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-18/09:51:12		XGBoost best params: {'criterion': 'gini', 'max_depth': 8, 'n_estimators': 100}. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-18/09:51:12		AUC for XGBoost:1.0
+2025-03-18/09:51:12		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-03-18/09:51:14		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-03-18/09:51:14		AUC for SVM:0.5
+2025-03-18/09:51:14		Entered the save_model method of the File_Operation class
+2025-03-18/09:51:14		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-03-18/09:51:14		Training successful.
+2025-03-18/09:52:14		Training request received.
+2025-03-18/09:52:14		Error: No file part in request.
+2025-03-18/09:52:16		Training request received.
+2025-03-18/09:52:16		Error: No file part in request.
+2025-03-18/10:01:07		Training request received.
+2025-03-18/10:01:07		Error: No file part in request.
+2025-03-18/10:12:11		Training request received.
+2025-03-18/10:12:11		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Content-Type: application/json
+X-Requested-With: XMLHttpRequest
+Content-Length: 51
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-03-18/10:12:11		Request form data: ImmutableMultiDict([])
+2025-03-18/10:12:11		Request files: ImmutableMultiDict([])
+2025-03-18/10:12:11		Error: No file part in request.
+2025-03-19/22:39:42		Training request received.
+2025-03-19/22:39:42		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=---------------------------383060318714033106242337265389
+Content-Length: 14044
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-03-19/22:39:42		Request form data: ImmutableMultiDict([])
+2025-03-19/22:39:42		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-03-19/22:39:42		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-03-19/22:39:42		Start of Validation on files for Training!!
+2025-03-19/22:39:42		Schema details extracted successfully.
+2025-03-19/22:39:42		Regex pattern created successfully.
+2025-03-19/22:39:42		Bad Data folder deleted successfully.
+2025-03-19/22:39:42		Good Data folder deleted successfully.
+2025-03-19/22:39:42		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-19/22:39:42		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-19/22:39:42		File name validation completed.
+2025-03-19/22:39:42		Column Length Validation Started!!
+2025-03-19/22:39:42		Column Length Validation Completed!!
+2025-03-19/22:39:42		Missing Values Validation Started!!
+2025-03-19/22:39:42		Missing Values Validation Completed!!
+2025-03-19/22:39:42		Raw Data Validation Complete!!
+2025-03-19/22:39:42		Starting Data Transforamtion!!
+2025-03-19/22:39:42		DataTransformation Completed!!!
+2025-03-19/22:39:42		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-19/22:39:42		Table creation Completed!!
+2025-03-19/22:39:42		Insertion of Data into Table started!!!!
+2025-03-19/22:39:45		Insertion in Table completed!!!
+2025-03-19/22:39:45		Deleting Good Data Folder!!!
+2025-03-19/22:39:45		Good Data folder deleted successfully.
+2025-03-19/22:39:45		Good_Data folder deleted!!!
+2025-03-19/22:39:45		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-19/22:39:45		Bad files moved to archive
+2025-03-19/22:39:45		Bad Raw Data Folder Deleted successfully!!
+2025-03-19/22:39:45		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-19/22:39:45		Validation Operation completed!!
+2025-03-19/22:39:45		Extracting csv file from table
+2025-03-19/22:39:46		Entered the get_data method of the Data_Getter class
+2025-03-19/22:39:46		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-19/22:39:46		Entered the remove_columns method of the Preprocessor class
+2025-03-19/22:39:46		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-03-19/22:39:46		Entered the is_null_present method of the Preprocessor class
+2025-03-19/22:39:46		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-19/22:39:46		Entered the impute_missing_values method of the Preprocessor class
+2025-03-19/22:39:46		Error processing column police_report_available: No value is repeated more than once in the column
+2025-03-19/22:39:46		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-19/22:39:46		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-19/22:39:46		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-19/22:39:46		Entered the separate_label_feature method of the Preprocessor class
+2025-03-19/22:39:46		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-03-19/22:39:46		Entered the elbow_plot method of the KMeansClustering class
+2025-03-19/22:39:46		Entered the handle_missing_values method of the KMeansClustering class
+2025-03-19/22:39:46		Successfully handled missing values in the dataset
+2025-03-19/22:39:51		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-03-19/22:39:51		Entered the create_clusters method of the KMeansClustering class
+2025-03-19/22:39:51		Entered the handle_missing_values method of the KMeansClustering class
+2025-03-19/22:39:51		Successfully handled missing values in the dataset
+2025-03-19/22:39:51		Entered the save_model method of the File_Operation class
+2025-03-19/22:39:51		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-03-19/22:39:51		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-03-19/22:39:51		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-19/22:39:51		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-19/22:39:51		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-19/22:39:51		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-19/22:39:51		Entered the get_best_model method of the Model_Finder class
+2025-03-19/22:39:51		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-19/22:42:30		XGBoost best params: {'criterion': 'gini', 'max_depth': 8, 'n_estimators': 100}. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-19/22:42:30		AUC for XGBoost:1.0
+2025-03-19/22:42:30		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-03-19/22:42:40		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-03-19/22:42:40		AUC for SVM:0.5
+2025-03-19/22:42:40		Entered the save_model method of the File_Operation class
+2025-03-19/22:42:40		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-03-19/22:42:40		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-19/22:42:40		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-19/22:42:40		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-19/22:42:40		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-19/22:42:40		Entered the get_best_model method of the Model_Finder class
+2025-03-19/22:42:40		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-19/22:43:30		XGBoost best params: {'criterion': 'gini', 'max_depth': 8, 'n_estimators': 100}. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-19/22:43:30		AUC for XGBoost:1.0
+2025-03-19/22:43:30		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-03-19/22:43:34		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-03-19/22:43:34		AUC for SVM:0.5
+2025-03-19/22:43:34		Entered the save_model method of the File_Operation class
+2025-03-19/22:43:34		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-03-19/22:43:34		Training successful.

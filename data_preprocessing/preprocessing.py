@@ -1,8 +1,11 @@
 import pandas as pd
 import numpy as np
+import os
 from sklearn_pandas import CategoricalImputer
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import RandomOverSampler
+from sklearn.impute import KNNImputer
+
 class Preprocessor:
     """
         This class shall  be used to clean and transform the data before training.
@@ -130,31 +133,77 @@ class Preprocessor:
             self.logger_object.log(self.file_object,'Exception occured in is_null_present method of the Preprocessor class. Exception message:  ' + str(e))
             self.logger_object.log(self.file_object,'Finding missing values failed. Exited the is_null_present method of the Preprocessor class')
             raise Exception()
+        
 
     def impute_missing_values(self, data, cols_with_missing_values):
         """
-                                        Method Name: impute_missing_values
-                                        Description: This method replaces all the missing values in the Dataframe using KNN Imputer.
-                                        Output: A Dataframe which has all the missing values imputed.
-                                        On Failure: Raise Exception
-
-                                        Written By: iNeuron Intelligence
-                                        Version: 1.0
-                                        Revisions: None
-                     """
+        Method Name: impute_missing_values
+        Description: This method replaces all the missing values in the Dataframe using KNN Imputer.
+        Output: A Dataframe which has all the missing values imputed.
+        On Failure: Raise Exception
+        """
         self.logger_object.log(self.file_object, 'Entered the impute_missing_values method of the Preprocessor class')
-        self.data= data
-        self.cols_with_missing_values=cols_with_missing_values
+        self.data = data
+        self.cols_with_missing_values = cols_with_missing_values
         try:
             self.imputer = CategoricalImputer()
             for col in self.cols_with_missing_values:
-                self.data[col] = self.imputer.fit_transform(self.data[col])
+                try:
+                    # First, check if the column actually has missing values
+                    if self.data[col].isnull().sum() > 0:
+                        # Check if there are repeated values in the column
+                        value_counts = self.data[col].value_counts()
+                        if value_counts.max() > 1:
+                            # If there are repeated values, use the imputer
+                            self.data[col] = self.imputer.fit_transform(self.data[col])
+                        else:
+                            # If there are no repeated values, you can use a different strategy
+                            # For example, fill with a specific value or drop the rows
+                            self.logger_object.log(self.file_object, f"Column {col} has no repeated values. Using alternative strategy.")
+                            # Option 1: Fill with a specific value (e.g., "Unknown" for categorical data)
+                            self.data[col] = self.data[col].fillna("Unknown")
+                            # Option 2: Drop rows with missing values in this column
+                            # self.data = self.data.dropna(subset=[col])
+                except Exception as col_error:
+                    self.logger_object.log(self.file_object, f"Error processing column {col}: {str(col_error)}")
+                    # Handle the error for this column and continue with the next column
+                    # You could choose to fill with a default value or drop rows with missing values
+                    self.data[col] = self.data[col].fillna("Unknown")
+                    
             self.logger_object.log(self.file_object, 'Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class')
             return self.data
         except Exception as e:
-            self.logger_object.log(self.file_object,'Exception occured in impute_missing_values method of the Preprocessor class. Exception message:  ' + str(e))
-            self.logger_object.log(self.file_object,'Imputing missing values failed. Exited the impute_missing_values method of the Preprocessor class')
+            self.logger_object.log(self.file_object, 'Exception occurred in impute_missing_values method of the Preprocessor class. Exception message: ' + str(e))
+            self.logger_object.log(self.file_object, 'Imputing missing values failed. Exited the impute_missing_values method of the Preprocessor class')
             raise Exception()
+
+
+    # def impute_missing_values(self, data, cols_with_missing_values):
+    #     """
+    #                                     Method Name: impute_missing_values
+    #                                     Description: This method replaces all the missing values in the Dataframe using KNN Imputer.
+    #                                     Output: A Dataframe which has all the missing values imputed.
+    #                                     On Failure: Raise Exception
+
+    #                                     Written By: iNeuron Intelligence
+    #                                     Version: 1.0
+    #                                     Revisions: None
+    #                  """
+    #     self.logger_object.log(self.file_object, 'Entered the impute_missing_values method of the Preprocessor class')
+    #     self.data= data
+    #     self.cols_with_missing_values=cols_with_missing_values
+    #     try:
+    #         self.imputer = CategoricalImputer()
+    #         for col in self.cols_with_missing_values:
+    #             self.data[col] = self.imputer.fit_transform(self.data[col])
+    #         self.logger_object.log(self.file_object, 'Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class')
+    #         return self.data
+    #     except Exception as e:
+    #         self.logger_object.log(self.file_object,'Exception occured in impute_missing_values method of the Preprocessor class. Exception message:  ' + str(e))
+    #         self.logger_object.log(self.file_object,'Imputing missing values failed. Exited the impute_missing_values method of the Preprocessor class')
+    #         raise Exception()
+
+
     def scale_numerical_columns(self,data):
         """
                                                         Method Name: scale_numerical_columns

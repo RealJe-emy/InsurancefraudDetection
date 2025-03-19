@@ -212,32 +212,24 @@
 
             // Train Model
             $("#trainmodel").click(function(e) {
-                e.preventDefault();
-                $('#loading').show();
-                $(".json-result").html('<div class="alert alert-info" role="alert">Training model... Please wait.</div>');
+            e.preventDefault();
+            $('#loading').show();
+            $(".json-result").html('<div class="alert alert-info" role="alert">Training model... Please wait.</div>');
 
-                // Create a FormData object to send the file
+            var fileInput = document.getElementById('csvfile');
+            if (fileInput.files.length > 0) {
+                var file = fileInput.files[0];
                 var formData = new FormData();
-                var fileInput = document.getElementById('csvfile');
-                if (fileInput.files.length > 0) {
-                    formData.append('file', fileInput.files[0]);
-                } else {
-                    $(".json-result").html('<div class="alert alert-danger" role="alert">Please upload a file before training.</div>');
-                    $('#loading').hide();
-                    return;
-                }
+                formData.append('file', file); // Ensure the key is 'file'
 
-                // Send the request to the /train endpoint
                 $.ajax({
                     url: "/train",
                     type: "POST",
                     data: formData,
-                    processData: false, // Prevent jQuery from processing the data
-                    contentType: false, // Prevent jQuery from setting the Content-Type header
+                    processData: false, // Required for FormData
+                    contentType: false, // Required for FormData
                     success: function(response) {
-                        $(".json-result").html('<div class="alert alert-success" role="alert">' +
-                                              '<strong>Success!</strong> ' + response +
-                                              '</div>');
+                        $(".json-result").html('<div class="alert alert-success" role="alert"><strong>Success!</strong> ' + response + '</div>');
                         $('#loading').hide();
                     },
                     error: function(xhr, status, error) {
@@ -247,14 +239,16 @@
                         } else if (xhr.status === 500) {
                             errorMessage = "A server error occurred. Please try again later.";
                         }
-                        $(".json-result").html('<div class="alert alert-danger" role="alert">' +
-                                              '<strong>Error:</strong> ' + errorMessage +
-                                              '</div>');
+                        $(".json-result").html('<div class="alert alert-danger" role="alert"><strong>Error:</strong> ' + errorMessage + '</div>');
                         $('#loading').hide();
                     }
                 });
-            });
+            } else {
+                $(".json-result").html('<div class="alert alert-danger" role="alert">Please upload a file before training.</div>');
+                $('#loading').hide();
+            }
         });
+    });
     </script>
 </body>
 </html>

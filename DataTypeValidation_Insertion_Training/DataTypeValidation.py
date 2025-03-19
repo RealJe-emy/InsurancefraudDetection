@@ -1,8 +1,8 @@
 import shutil
 import sqlite3
 from datetime import datetime
-from os import listdir
 import os
+from os import listdir
 import csv
 from application_logging.logger import App_Logger
 
@@ -35,13 +35,13 @@ class dBOperation:
         try:
             conn = sqlite3.connect(self.path+DatabaseName+'.db')
 
-            file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
+            file = "Training_Logs/DataBaseConnectionLog.txt"
             self.logger.log(file, "Opened %s database successfully" % DatabaseName)
-            file.close()
+            # file.close()
         except ConnectionError:
-            file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
+            file = "Training_Logs/DataBaseConnectionLog.txt"
             self.logger.log(file, "Error while connecting to database: %s" %ConnectionError)
-            file.close()
+            # file.close()
             raise ConnectionError
         return conn
 
@@ -56,18 +56,19 @@ class dBOperation:
 
                         """
         try:
+            conn = None
             conn = self.dataBaseConnection(DatabaseName)
             c=conn.cursor()
             c.execute("SELECT count(name)  FROM sqlite_master WHERE type = 'table'AND name = 'Good_Raw_Data'")
             if c.fetchone()[0] ==1:
                 conn.close()
-                file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
+                file = "Training_Logs/DbTableCreateLog.txt"
                 self.logger.log(file, "Tables created successfully!!")
-                file.close()
+                # file.close()
 
-                file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
+                file = "Training_Logs/DataBaseConnectionLog.txt"
                 self.logger.log(file, "Closed %s database successfully" % DatabaseName)
-                file.close()
+                # file.close()
 
             else:
 
@@ -93,22 +94,22 @@ class dBOperation:
 
                 conn.close()
 
-                file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
+                file = "Training_Logs/DbTableCreateLog.txt"
                 self.logger.log(file, "Tables created successfully!!")
-                file.close()
+                # file.close()
 
-                file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
+                file = "Training_Logs/DataBaseConnectionLog.txt"
                 self.logger.log(file, "Closed %s database successfully" % DatabaseName)
-                file.close()
+                # file.close()
 
         except Exception as e:
-            file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
+            file = "Training_Logs/DbTableCreateLog.txt"
             self.logger.log(file, "Error while creating table: %s " % e)
-            file.close()
+            # file.close()
             conn.close()
-            file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
+            file = "Training_Logs/DataBaseConnectionLog.txt"
             self.logger.log(file, "Closed %s database successfully" % DatabaseName)
-            file.close()
+            # file.close()
             raise e
 
 
@@ -124,12 +125,12 @@ class dBOperation:
 
 
         """
-
+        conn = None
         conn = self.dataBaseConnection(Database)
         goodFilePath= self.goodFilePath
         badFilePath = self.badFilePath
         onlyfiles = [f for f in listdir(goodFilePath)]
-        log_file = open("Training_Logs/DbInsertLog.txt", 'a+')
+        log_file = "Training_Logs/DbInsertLog.txt"
 
         for file in onlyfiles:
             try:
@@ -151,11 +152,11 @@ class dBOperation:
                 self.logger.log(log_file,"Error while creating table: %s " % e)
                 shutil.move(goodFilePath+'/' + file, badFilePath)
                 self.logger.log(log_file, "File Moved Successfully %s" % file)
-                log_file.close()
+                # log_file.close()
                 conn.close()
 
         conn.close()
-        log_file.close()
+        # log_file.close()
 
 
     def selectingDatafromtableintocsv(self,Database):
@@ -173,8 +174,9 @@ class dBOperation:
 
         self.fileFromDb = 'Training_FileFromDB/'
         self.fileName = 'InputFile.csv'
-        log_file = open("Training_Logs/ExportToCsv.txt", 'a+')
+        log_file = "Training_Logs/ExportToCsv.txt"
         try:
+            conn = None
             conn = self.dataBaseConnection(Database)
             sqlSelect = "SELECT *  FROM Good_Raw_Data"
             cursor = conn.cursor()
@@ -197,11 +199,11 @@ class dBOperation:
             csvFile.writerows(results)
 
             self.logger.log(log_file, "File exported successfully!!!")
-            log_file.close()
+            # log_file.close()
 
         except Exception as e:
             self.logger.log(log_file, "File exporting failed. Error : %s" %e)
-            log_file.close()
+            # log_file.close()
 
 
 

@@ -8,15 +8,20 @@ from trainingModel import trainModel
 from training_Validation_Insertion import train_validation
 import flask_monitoringdashboard as dashboard
 from predictFromModel import prediction
+import traceback
 
 # Initialize the Flask app
 app = Flask(__name__, template_folder='templates')
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB
 dashboard.bind(app)
 CORS(app)  # Enable CORS for all routes
 
 # Define the folder to save uploaded files
 UPLOAD_FOLDER = "Training_Batch_Files"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+UPLOAD_FOLDER_CSV = "uploads"
+os.makedirs(UPLOAD_FOLDER_CSV, exist_ok=True)
 
 # Initialize the logger
 logger = App_Logger()
@@ -51,14 +56,14 @@ def train_page():
 @app.route('/validate', methods=['POST'])
 @cross_origin()
 def validate_file():
-    log_file = open("Training_Logs/validationLog.txt", "a+")
+    log_file = "Training_Logs/validationLog.txt"
     try:
         logger.log(log_file, "Request received at /validate")
 
         # Check if a file is included in the request
         if 'file' not in request.files:
             logger.log(log_file, "No file provided in request")
-            log_file.close()
+            # log_file.close()
             return jsonify({
                 "status": "error",
                 "message": "No file provided. Please upload a file."
@@ -70,7 +75,7 @@ def validate_file():
         # Check if the file has a filename
         if file.filename == '':
             logger.log(log_file, "Empty filename")
-            log_file.close()
+            # log_file.close()
             return jsonify({
                 "status": "error",
                 "message": "Please select a file before validating."
@@ -103,7 +108,7 @@ def validate_file():
         bad_raw_path = os.path.join("Training_Raw_files_validated/Bad_Raw/", file.filename)
         if os.path.exists(bad_raw_path):
             logger.log(log_file, f"File failed name validation: {file.filename}")
-            log_file.close()
+            # log_file.close()
             return jsonify({
                 "status": "error",
                 "message": f"The file name format is incorrect. Please ensure it follows the required naming convention: {regex}"
@@ -135,7 +140,7 @@ def validate_file():
         # Final check if the file was moved to Bad_Raw during any validation
         if os.path.exists(bad_raw_path):
             logger.log(log_file, f"File failed validation: {file.filename}")
-            log_file.close()
+            # log_file.close()
             return jsonify({
                 "status": "error",
                 "message": "The file contains invalid data. Please check for correct column count and missing values."
@@ -143,7 +148,7 @@ def validate_file():
 
         # If the file passes all validations
         logger.log(log_file, "Validation Successful!")
-        log_file.close()
+        # log_file.close()
         return jsonify({
             "status": "success",
             "message": "File validation successful! Your file has been accepted for processing."
@@ -152,7 +157,7 @@ def validate_file():
     except Exception as e:
         error_message = str(e)
         logger.log(log_file, f"Validation Failed: {error_message}")
-        log_file.close()
+        # log_file.close()
 
         # Provide user-friendly error messages based on the exception
         if "schema" in error_message.lower():
@@ -170,6 +175,164 @@ def validate_file():
             "status": "error",
             "message": message
         }), 500
+
+
+# @app.route("/train", methods=['POST'])
+# @cross_origin()
+# def trainRouteClient():
+#     log_file = open("Training_Logs/trainingLog.txt", "a+")
+#     try:
+#         logger.log(log_file, "Training request received.")
+#         if request.json and 'folderPath' in request.json:
+            
+#             path = os.path.abspath(request.json['folderPath'])
+#             print(f"Absolute path received: {path}")
+#             logger.log(log_file, f"Absolute path received: {path}")
+#             path = request.json['folderPath']
+#             print(f"Folder path received: {path}")
+#             logger.log(log_file, f"Folder path received: {path}")
+            
+#             # Make sure path is a directory, not a file
+#             if os.path.isfile(path):
+#                 path = os.path.dirname(path)  # Get the directory of the file
+#                 logger.log(log_file, f"Path was a file. Using directory: {path}")
+            
+#             # Initialize validation with log file
+#             train_valObj = train_validation(path, log_file)
+#             train_valObj.train_validation()
+            
+#             # Initialize and train model
+#             trainModelObj = trainModel(log_file)
+#             trainModelObj.trainingModel()
+            
+#             logger.log(log_file, "Training successful.")
+#             log_file.close()
+#             return Response("Training successful!!")
+#         else:
+#             logger.log(log_file, "Error: folderPath not provided in request.")
+#             log_file.close()
+#             return Response("Error: folderPath is required!", status=400)
+#     except Exception as e:
+#         error_trace = traceback.format_exc()
+#         logger.log(log_file, f"Unexpected error: {str(e)}")
+#         logger.log(log_file, f"Traceback:\n{error_trace}")
+#         print(f"Unexpected error: {e}\nTraceback:\n{error_trace}")  # Print full error to terminal
+#         log_file.close()
+#         return Response(f"Error Occurred! {str(e)}", status=500)
+    
+
+
+@app.route("/train", methods=['POST'])
+@cross_origin()
+def trainRouteClient():
+    log_file = "Training_Logs/trainingLog.txt"
+    try:
+        logger.log(log_file, "Training request received.")
+
+        # Debug: Log request headers and form data
+        logger.log(log_file, f"Request headers: {request.headers}")
+        logger.log(log_file, f"Request form data: {request.form}")
+        logger.log(log_file, f"Request files: {request.files}")
+
+        # Check if the file is present in the request
+        if 'file' not in request.files:
+            logger.log(log_file, "Error: No file part in request.")
+            return Response("Error: No file provided!", status=400)
+        
+        file = request.files['file']
+        if file.filename == '':
+            logger.log(log_file, "Error: No selected file.")
+            return Response("Error: No file selected!", status=400)
+            
+        # Ensure the upload folder exists
+        if not os.path.exists(UPLOAD_FOLDER_CSV):
+            os.makedirs(UPLOAD_FOLDER_CSV)
+        
+        # Save the file
+        file_path = os.path.join(UPLOAD_FOLDER_CSV, file.filename)
+        file.save(file_path)
+        logger.log(log_file, f"File saved at: {file_path}")
+
+        # Perform training validation
+        train_valObj = train_validation(UPLOAD_FOLDER_CSV, log_file)
+        train_valObj.train_validation()
+        
+        # Train the model
+        trainModelObj = trainModel(log_file)
+        trainModelObj.trainingModel()
+
+        logger.log(log_file, "Training successful.")
+        return Response("Training successful!!")
+        
+    except Exception as e:
+        error_trace = traceback.format_exc()
+        logger.log(log_file, f"Unexpected error: {str(e)}")
+        logger.log(log_file, f"Traceback:\n{error_trace}")
+        return Response(f"Error Occurred! {str(e)}", status=500)
+
+
+    # finally:
+    #     if not log_file.closed:
+    #         log_file.close()  # Ensure file is closed only at the end
+
+
+# @app.route("/train", methods=['POST'])
+# @cross_origin()
+# def trainRouteClient():
+#     log_file = open("Training_Logs/trainingLog.txt", "a+")
+#     try:
+#         logger.log(log_file, "Training request received.")
+#         # Ensure a file is included in the request
+#         if 'file' not in request.files:
+#             logger.log(log_file, "Error: No file part in request.")
+#             log_file.close()
+#             return Response("Error: No file provided!", status=400)
+        
+#         file = request.files['file']
+#         # Ensure a filename exists
+#         if file.filename == '':
+#             logger.log(log_file, "Error: No selected file.")
+#             log_file.close()
+#             return Response("Error: No file selected!", status=400)
+            
+#         if not os.path.exists(UPLOAD_FOLDER_CSV):
+#             os.makedirs(UPLOAD_FOLDER_CSV)
+#         logger.log(log_file, f"Created upload directory: {UPLOAD_FOLDER_CSV} and put {file.filename} there.")
+        
+#         # Define file save path
+#         file_path = os.path.join(UPLOAD_FOLDER_CSV, file.filename)
+#         # Save the file
+#         file.save(file_path)
+#         logger.log(log_file, f"File saved at: {file_path}")
+        
+#         # Initialize validation with the stored file directory
+#         train_valObj = train_validation(UPLOAD_FOLDER_CSV, log_file)
+#         train_valObj.train_validation()
+        
+#         # Initialize and train the model
+#         # Pass the log_file to trainModel so it uses the same file
+#         trainModelObj = trainModel(log_file)
+#         trainModelObj.trainingModel()
+        
+#         logger.log(log_file, "Training successful.")
+#         log_file.close()
+#         return Response("Training successful!!")
+        
+#     except Exception as e:
+#         error_trace = traceback.format_exc()
+#         try:
+#             # Check if the file is closed and reopen if necessary
+#             if log_file.closed:
+#                 log_file = open("Training_Logs/trainingLog.txt", "a+")
+#             logger.log(log_file, f"Unexpected error: {str(e)}")
+#             logger.log(log_file, f"Traceback:\n{error_trace}")
+#             print(f"Unexpected error: {e}\nTraceback:\n{error_trace}")  # Print full error to terminal
+#         finally:
+#             # Always close the file, but only if it's open
+#             if not log_file.closed:
+#                 log_file.close()
+#         return Response(f"Error Occurred! {str(e)}", status=500)
+
 
 
 # Predict route
@@ -226,6 +389,69 @@ def predictRouteClient():
         return Response("Error Occurred! %s" % e)
 
 
+
+# @app.route("/train", methods=['POST'])
+# @cross_origin()
+# def trainRouteClient():
+#     try:
+#         if request.json['folderPath'] is not None:
+#             path = request.json['folderPath']
+#             train_valObj = train_validation(path)  # object initialization
+#             train_valObj.train_validation()  # calling the training_validation function
+
+#             trainModelObj = trainModel()  # object initialization
+#             trainModelObj.trainingModel()  # training the model for the files in the table
+
+#     except ValueError:
+#         return Response("Error Occurred! %s" % ValueError)
+#     except KeyError:
+#         return Response("Error Occurred! %s" % KeyError)
+#     except Exception as e:
+#         return Response("Error Occurred! %s" % e)
+#     return Response("Training successful!!")
+
+# @app.route("/train", methods=['POST'])
+# @cross_origin()
+# def trainRouteClient():
+#     log_file = open("Training_Logs/trainingLog.txt", "a+")
+#     try:
+#         logger.log(log_file, "Training request received.")
+        
+#         if 'folderPath' not in request.json:
+#             logger.log(log_file, "No folder path provided in request.")
+#             log_file.close()
+#             return jsonify({"status": "error", "message": "No folder path provided."}), 400
+        
+#         path = request.json['folderPath']
+#         logger.log(log_file, f"Folder path received: {path}")
+        
+#         # Validate training data
+#         train_valObj = train_validation(path)
+#         logger.log(log_file, "Starting training data validation...")
+#         train_valObj.train_validation()
+#         logger.log(log_file, "Training data validation completed successfully.")
+        
+#         # Train model
+#         trainModelObj = trainModel()
+#         logger.log(log_file, "Starting model training...")
+#         trainModelObj.trainingModel()
+#         logger.log(log_file, "Model training completed successfully.")
+        
+#         log_file.close()
+#         return jsonify({"status": "success", "message": "Training successful!"}), 200
+    
+#     except ValueError as e:
+#         logger.log(log_file, f"ValueError occurred: {str(e)}")
+#         log_file.close()
+#         return jsonify({"status": "error", "message": str(e)}), 400
+#     except KeyError as e:
+#         logger.log(log_file, f"KeyError occurred: {str(e)}")
+#         log_file.close()
+#         return jsonify({"status": "error", "message": str(e)}), 400
+#     except Exception as e:
+#         logger.log(log_file, f"Unexpected error: {str(e)}")
+#         log_file.close()
+#         return jsonify({"status": "error", "message": "An unexpected error occurred during training."}), 500
 
 # Run the Flask app
 if __name__ == "__main__":

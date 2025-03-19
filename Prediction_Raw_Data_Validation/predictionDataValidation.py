@@ -1,7 +1,7 @@
 import sqlite3
 from datetime import datetime
-from os import listdir
 import os
+from os import listdir
 import re
 import json
 import shutil
@@ -46,30 +46,30 @@ class Prediction_Data_validation:
             column_names = dic['ColName']
             NumberofColumns = dic['NumberofColumns']
 
-            file = open("Training_Logs/valuesfromSchemaValidationLog.txt", 'a+')
+            file = "Training_Logs/valuesfromSchemaValidationLog.txt"
             message ="LengthOfDateStampInFile:: %s" %LengthOfDateStampInFile + "\t" + "LengthOfTimeStampInFile:: %s" % LengthOfTimeStampInFile +"\t " + "NumberofColumns:: %s" % NumberofColumns + "\n"
             self.logger.log(file,message)
 
-            file.close()
+            # file.close()
 
 
 
         except ValueError:
-            file = open("Prediction_Logs/valuesfromSchemaValidationLog.txt", 'a+')
+            file = "Prediction_Logs/valuesfromSchemaValidationLog.txt"
             self.logger.log(file,"ValueError:Value not found inside schema_training.json")
-            file.close()
+            # file.close()
             raise ValueError
 
         except KeyError:
-            file = open("Prediction_Logs/valuesfromSchemaValidationLog.txt", 'a+')
+            file = "Prediction_Logs/valuesfromSchemaValidationLog.txt"
             self.logger.log(file, "KeyError:Key value error incorrect key passed")
-            file.close()
+            # file.close()
             raise KeyError
 
         except Exception as e:
-            file = open("Prediction_Logs/valuesfromSchemaValidationLog.txt", 'a+')
+            file = "Prediction_Logs/valuesfromSchemaValidationLog.txt"
             self.logger.log(file, str(e))
-            file.close()
+            # file.close()
             raise e
 
         return LengthOfDateStampInFile, LengthOfTimeStampInFile, column_names, NumberofColumns
@@ -111,9 +111,9 @@ class Prediction_Data_validation:
                 os.makedirs(path)
 
         except OSError as ex:
-            file = open("Prediction_Logs/GeneralLog.txt", 'a+')
+            file = "Prediction_Logs/GeneralLog.txt"
             self.logger.log(file,"Error while creating Directory %s:" % ex)
-            file.close()
+            # file.close()
             raise OSError
 
     def deleteExistingGoodDataTrainingFolder(self):
@@ -135,13 +135,13 @@ class Prediction_Data_validation:
             #     shutil.rmtree(path + 'Bad_Raw/')
             if os.path.isdir(path + 'Good_Raw/'):
                 shutil.rmtree(path + 'Good_Raw/')
-                file = open("Prediction_Logs/GeneralLog.txt", 'a+')
+                file = "Prediction_Logs/GeneralLog.txt"
                 self.logger.log(file,"GoodRaw directory deleted successfully!!!")
-                file.close()
+                # file.close()
         except OSError as s:
-            file = open("Prediction_Logs/GeneralLog.txt", 'a+')
+            file = "Prediction_Logs/GeneralLog.txt"
             self.logger.log(file,"Error while Deleting Directory : %s" %s)
-            file.close()
+            # file.close()
             raise OSError
     def deleteExistingBadDataTrainingFolder(self):
 
@@ -159,13 +159,13 @@ class Prediction_Data_validation:
             path = 'Prediction_Raw_Files_Validated/'
             if os.path.isdir(path + 'Bad_Raw/'):
                 shutil.rmtree(path + 'Bad_Raw/')
-                file = open("Prediction_Logs/GeneralLog.txt", 'a+')
+                file = "Prediction_Logs/GeneralLog.txt"
                 self.logger.log(file,"BadRaw directory deleted before starting validation!!!")
-                file.close()
+                # file.close()
         except OSError as s:
-            file = open("Prediction_Logs/GeneralLog.txt", 'a+')
+            file = "Prediction_Logs/GeneralLog.txt"
             self.logger.log(file,"Error while Deleting Directory : %s" %s)
-            file.close()
+            # file.close()
             raise OSError
 
     def moveBadFilesToArchiveBad(self):
@@ -197,17 +197,17 @@ class Prediction_Data_validation:
             for f in files:
                 if f not in os.listdir(dest):
                     shutil.move(source + f, dest)
-            file = open("Prediction_Logs/GeneralLog.txt", 'a+')
+            file = "Prediction_Logs/GeneralLog.txt"
             self.logger.log(file,"Bad files moved to archive")
             path = 'Prediction_Raw_Files_Validated/'
             if os.path.isdir(path + 'Bad_Raw/'):
                 shutil.rmtree(path + 'Bad_Raw/')
             self.logger.log(file,"Bad Raw Data Folder Deleted successfully!!")
-            file.close()
+            # file.close()
         except OSError as e:
-            file = open("Prediction_Logs/GeneralLog.txt", 'a+')
+            file = "Prediction_Logs/GeneralLog.txt"
             self.logger.log(file, "Error while moving bad files to archive:: %s" % e)
-            file.close()
+            # file.close()
             raise OSError
 
 
@@ -230,7 +230,7 @@ class Prediction_Data_validation:
         self.createDirectoryForGoodBadRawData()
         onlyfiles = [f for f in listdir(self.Batch_Directory)]
         try:
-            f = open("Prediction_Logs/nameValidationLog.txt", 'a+')
+            f = "Prediction_Logs/nameValidationLog.txt"
             for filename in onlyfiles:
                 if (re.match(regex, filename)):
                     splitAtDot = re.split('.csv', filename)
@@ -250,12 +250,12 @@ class Prediction_Data_validation:
                     shutil.copy("Prediction_Batch_files/" + filename, "Prediction_Raw_Files_Validated/Bad_Raw")
                     self.logger.log(f, "Invalid File Name!! File moved to Bad Raw Folder :: %s" % filename)
 
-            f.close()
+            # f.close()
 
         except Exception as e:
-            f = open("Prediction_Logs/nameValidationLog.txt", 'a+')
+            f = "Prediction_Logs/nameValidationLog.txt"
             self.logger.log(f, "Error occured while validating FileName %s" % e)
-            f.close()
+            # f.close()
             raise e
 
 
@@ -276,7 +276,7 @@ class Prediction_Data_validation:
 
              """
         try:
-            f = open("Prediction_Logs/columnValidationLog.txt", 'a+')
+            f = "Prediction_Logs/columnValidationLog.txt"
             self.logger.log(f,"Column Length Validation Started!!")
             for file in listdir('Prediction_Raw_Files_Validated/Good_Raw/'):
                 csv = pd.read_csv("Prediction_Raw_Files_Validated/Good_Raw/" + file)
@@ -288,17 +288,17 @@ class Prediction_Data_validation:
 
             self.logger.log(f, "Column Length Validation Completed!!")
         except OSError:
-            f = open("Prediction_Logs/columnValidationLog.txt", 'a+')
+            f = "Prediction_Logs/columnValidationLog.txt"
             self.logger.log(f, "Error Occured while moving the file :: %s" % OSError)
-            f.close()
+            # f.close()
             raise OSError
         except Exception as e:
-            f = open("Prediction_Logs/columnValidationLog.txt", 'a+')
+            f = "Prediction_Logs/columnValidationLog.txt"
             self.logger.log(f, "Error Occured:: %s" % e)
-            f.close()
+            # f.close()
             raise e
 
-        f.close()
+        # f.close()
 
     def deletePredictionFile(self):
 
@@ -318,7 +318,7 @@ class Prediction_Data_validation:
 
                               """
         try:
-            f = open("Prediction_Logs/missingValuesInColumn.txt", 'a+')
+            f = "Prediction_Logs/missingValuesInColumn.txt"
             self.logger.log(f, "Missing Values Validation Started!!")
 
             for file in listdir('Prediction_Raw_Files_Validated/Good_Raw/'):
@@ -334,16 +334,16 @@ class Prediction_Data_validation:
                 if count==0:
                     csv.to_csv("Prediction_Raw_Files_Validated/Good_Raw/" + file, index=None, header=True)
         except OSError:
-            f = open("Prediction_Logs/missingValuesInColumn.txt", 'a+')
+            f = "Prediction_Logs/missingValuesInColumn.txt"
             self.logger.log(f, "Error Occured while moving the file :: %s" % OSError)
-            f.close()
+            # f.close()
             raise OSError
         except Exception as e:
-            f = open("Prediction_Logs/missingValuesInColumn.txt", 'a+')
+            f = "Prediction_Logs/missingValuesInColumn.txt"
             self.logger.log(f, "Error Occured:: %s" % e)
-            f.close()
+            # f.close()
             raise e
-        f.close()
+        # f.close()
 
 
 

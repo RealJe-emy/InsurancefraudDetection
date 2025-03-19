@@ -1,7 +1,7 @@
 import sqlite3
 from datetime import datetime
-from os import listdir
 import os
+from os import listdir
 import re
 import json
 import shutil
@@ -20,7 +20,8 @@ class Raw_Data_validation:
         self.Batch_Directory = path
         self.schema_path = 'schema_training.json'
         self.logger = App_Logger()
-        self.log_file = log_file  # Use the provided log_file for logging
+        self.log_file = log_file
+        # self.log_file = log_file   # Use the provided log_file for logging
 
     def valuesFromSchema(self):
         """

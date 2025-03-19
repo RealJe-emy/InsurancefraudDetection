@@ -5,12 +5,13 @@ from data_preprocessing import preprocessing
 from data_ingestion import data_loader_prediction
 from application_logging import logger
 from Prediction_Raw_Data_Validation.predictionDataValidation import Prediction_Data_validation
+import os
 
 
 class prediction:
 
     def __init__(self,path):
-        self.file_object = open("Prediction_Logs/Prediction_Log.txt", 'a+')
+        self.file_object = "Prediction_Logs/Prediction_Log.txt"
         self.log_writer = logger.App_Logger()
         self.pred_data_val = Prediction_Data_validation(path)
 

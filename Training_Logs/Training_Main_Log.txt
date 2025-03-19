@@ -124,3 +124,17 @@
 2020-02-15/16:42:32		Bad files moved to archive!! Bad folder Deleted!!
 2020-02-15/16:42:32		Validation Operation completed!!
 2020-02-15/16:42:32		Extracting csv file from table
+2025-03-17/08:50:22		Start of Validation on files for Training!!
+2025-03-17/08:50:22		Schema details extracted successfully.
+2025-03-17/08:50:22		Regex pattern created successfully.
+2025-03-17/08:50:22		Bad Data folder deleted successfully.
+2025-03-17/08:50:22		Good Data folder deleted successfully.
+2025-03-17/08:50:22		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/08:50:22		File name validation failed: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
+2025-03-17/09:03:27		Start of Validation on files for Training!!
+2025-03-17/09:03:27		Schema details extracted successfully.
+2025-03-17/09:03:27		Regex pattern created successfully.
+2025-03-17/09:03:27		Bad Data folder deleted successfully.
+2025-03-17/09:03:27		Good Data folder deleted successfully.
+2025-03-17/09:03:27		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-17/09:03:27		File name validation failed: [Errno 2] No such file or directory: 'fraudDetection_03032025_010223.csv'
