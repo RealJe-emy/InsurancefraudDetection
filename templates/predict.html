@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gauge.js"></script>
     <style>
         body {
             font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -55,10 +57,10 @@
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
-            padding: 15px;
+            padding: 20px;
             margin-top: 20px;
-            height: 300px;
             overflow-y: auto;
+            height: 80vh; /* Increased height */
         }
         #loading {
             position: fixed;
@@ -87,6 +89,32 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .chart-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #fff;
+        }
+        .chart-card h6 {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .summary-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+        .summary-card h6 {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -114,7 +142,7 @@
     <section class="container my-5">
         <h2 class="text-center mb-4">Predict Fraud</h2>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <!-- Batch Prediction Form -->
                 <form id="batch_predict_form" enctype="multipart/form-data">
                     <div class="form-group">
@@ -128,8 +156,31 @@
                 <form id="single_predict_form" class="mt-5">
                     <h5 class="mb-3">Single Client Prediction</h5>
                     <div class="form-group">
+                        <label for="months_as_customer">Months as Customer</label>
+                        <input type="number" class="form-control" id="months_as_customer" name="months_as_customer" min="1" required>
+                        <small class="text-muted">Must be a positive number.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" min="18" max="120" required>
+                        <small class="text-muted">Must be between 18 and 120 years.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="policy_bind_date">Policy Bind Date</label>
+                        <input type="date" class="form-control" id="policy_bind_date" name="policy_bind_date" max="" required>
+                        <small class="text-muted">Must be a past date.</small>
+                    </div>
+                    <div class="form-group">
                         <label for="policy_number">Policy Number</label>
                         <input type="text" class="form-control" id="policy_number" name="policy_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="policy_state">Policy State</label>
+                        <input type="text" class="form-control" id="policy_state" name="policy_state" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="policy_deductable">Policy Deductible</label>
+                        <input type="number" class="form-control" id="policy_deductable" name="policy_deductable" required>
                     </div>
                     <div class="form-group">
                         <label for="incident_severity">Incident Severity</label>
@@ -139,13 +190,35 @@
                         <label for="property_damage">Property Damage</label>
                         <input type="text" class="form-control" id="property_damage" name="property_damage" required>
                     </div>
+                    <div class="form-group">
+                        <label for="total_claim_amount">Total Claim Amount</label>
+                        <input type="number" class="form-control" id="total_claim_amount" name="total_claim_amount" required>
+                    </div>
                     <button type="submit" class="btn btn-success btn-block" id="singlepredict">Single Predict</button>
                 </form>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="result-box">
                     <h6 class="title">Prediction Results</h6>
-                    <div class="json-result"></div>
+                    <div class="summary-card">
+                        <h6>Summary</h6>
+                        <p><strong>Prediction:</strong> <span id="predictionResult"></span></p>
+                        <p><strong>Confidence Score:</strong> <span id="confidenceScore"></span></p>
+                    </div>
+                    <div class="chart-grid">
+                        <div class="chart-card">
+                            <h6>Feature Importance</h6>
+                            <canvas id="featureImportanceChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h6>Fraud Trends</h6>
+                            <canvas id="fraudTrendsChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h6>Fraud Risk Distribution</h6>
+                            <canvas id="fraudRiskDistribution"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,6 +245,10 @@
     <script>
         $(document).ready(function() {
             $('#loading').hide();
+
+            // Set max date for policy_bind_date to yesterday
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('policy_bind_date').max = today;
 
             // Batch Prediction
             $("#batch_predict_form").submit(function(e) {
@@ -208,9 +285,15 @@
                 e.preventDefault();
                 $('#loading').show();
                 var formData = {
+                    months_as_customer: $("#months_as_customer").val(),
+                    age: $("#age").val(),
                     policy_number: $("#policy_number").val(),
+                    policy_bind_date: $("#policy_bind_date").val(),
+                    policy_state: $("#policy_state").val(),
+                    policy_deductable: $("#policy_deductable").val(),
                     incident_severity: $("#incident_severity").val(),
-                    property_damage: $("#property_damage").val()
+                    property_damage: $("#property_damage").val(),
+                    total_claim_amount: $("#total_claim_amount").val()
                 };
 
                 $.ajax({
@@ -219,10 +302,8 @@
                     data: JSON.stringify(formData),
                     contentType: "application/json",
                     success: function(response) {
-                        $(".json-result").html('<div class="alert alert-success" role="alert">' +
-                                              '<strong>Success!</strong> ' + response +
-                                              '</div>');
                         $('#loading').hide();
+                        renderCharts(response);
                     },
                     error: function(xhr, status, error) {
                         $(".json-result").html('<div class="alert alert-danger" role="alert">' +
@@ -232,6 +313,66 @@
                     }
                 });
             });
+
+            // Function to render charts
+            function renderCharts(data) {
+                // Update summary
+                $('#predictionResult').text(data.prediction);
+                $('#confidenceScore').text(data.confidenceScore + '%');
+
+                // Feature Importance Chart
+                const featureImportanceCtx = document.getElementById('featureImportanceChart').getContext('2d');
+                new Chart(featureImportanceCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.featureImportance.labels,
+                        datasets: [{
+                            label: 'Feature Importance',
+                            data: data.featureImportance.values,
+                            backgroundColor: '#36A2EB'
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        scales: { x: { beginAtZero: true } }
+                    }
+                });
+
+                // Fraud Trends Chart
+                const fraudTrendsCtx = document.getElementById('fraudTrendsChart').getContext('2d');
+                new Chart(fraudTrendsCtx, {
+                    type: 'line',
+                    data: {
+                        labels: data.fraudTrends.labels,
+                        datasets: [{
+                            label: 'Fraud Rate',
+                            data: data.fraudTrends.values,
+                            borderColor: '#FF6384',
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+
+                // Fraud Risk Distribution Chart
+                const fraudRiskCtx = document.getElementById('fraudRiskDistribution').getContext('2d');
+                new Chart(fraudRiskCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.fraudRiskDistribution.labels,
+                        datasets: [{
+                            label: 'Fraud Risk Distribution',
+                            data: data.fraudRiskDistribution.values,
+                            backgroundColor: '#FFCE56'
+                        }]
+                    },
+                    options: {
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+            }
         });
     </script>
 </body>
