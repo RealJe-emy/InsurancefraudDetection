@@ -1996,3 +1996,106 @@ Sec-Gpc: 1
 2025-03-21/12:22:17		Entered the save_model method of the File_Operation class
 2025-03-21/12:22:17		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
 2025-03-21/12:22:17		Training successful.
+2025-03-25/14:43:34		Training request received.
+2025-03-25/14:43:34		Request headers: Host: 127.0.0.1:5001
+Connection: keep-alive
+Content-Length: 14006
+Sec-Ch-Ua-Platform: "Windows"
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36
+Accept: */*
+Sec-Ch-Ua: "Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryAmaEUYdZkhEMqJLO
+Sec-Ch-Ua-Mobile: ?0
+Origin: http://127.0.0.1:5001
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://127.0.0.1:5001/train.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9,en-GB;q=0.8
+Dnt: 1
+Sec-Gpc: 1
+
+
+2025-03-25/14:43:34		Request form data: ImmutableMultiDict([])
+2025-03-25/14:43:34		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-03-25/14:43:34		File saved at: uploads\fraudDetection_03032025_010223.csv
+2025-03-25/14:43:34		Start of Validation on files for Training!!
+2025-03-25/14:43:34		Schema details extracted successfully.
+2025-03-25/14:43:34		Regex pattern created successfully.
+2025-03-25/14:43:34		Bad Data folder deleted successfully.
+2025-03-25/14:43:34		Good Data folder deleted successfully.
+2025-03-25/14:43:34		Directories for Good_Raw and Bad_Raw created successfully.
+2025-03-25/14:43:34		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-03-25/14:43:34		File name validation completed.
+2025-03-25/14:43:34		Column Length Validation Started!!
+2025-03-25/14:43:34		Column Length Validation Completed!!
+2025-03-25/14:43:34		Missing Values Validation Started!!
+2025-03-25/14:43:34		Missing Values Validation Completed!!
+2025-03-25/14:43:34		Raw Data Validation Complete!!
+2025-03-25/14:43:34		Starting Data Transforamtion!!
+2025-03-25/14:43:34		DataTransformation Completed!!!
+2025-03-25/14:43:34		Creating Training_Database and tables on the basis of given schema!!!
+2025-03-25/14:43:34		Table creation Completed!!
+2025-03-25/14:43:34		Insertion of Data into Table started!!!!
+2025-03-25/14:43:35		Insertion in Table completed!!!
+2025-03-25/14:43:35		Deleting Good Data Folder!!!
+2025-03-25/14:43:35		Good Data folder deleted successfully.
+2025-03-25/14:43:35		Good_Data folder deleted!!!
+2025-03-25/14:43:35		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-25/14:43:35		Bad files moved to archive
+2025-03-25/14:43:35		Bad Raw Data Folder Deleted successfully!!
+2025-03-25/14:43:35		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-25/14:43:35		Validation Operation completed!!
+2025-03-25/14:43:35		Extracting csv file from table
+2025-03-25/14:43:35		Entered the get_data method of the Data_Getter class
+2025-03-25/14:43:35		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-25/14:43:35		Entered the remove_columns method of the Preprocessor class
+2025-03-25/14:43:35		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-03-25/14:43:35		Entered the is_null_present method of the Preprocessor class
+2025-03-25/14:43:36		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-25/14:43:36		Entered the impute_missing_values method of the Preprocessor class
+2025-03-25/14:43:36		Error processing column police_report_available: No value is repeated more than once in the column
+2025-03-25/14:43:36		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-25/14:43:36		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-25/14:43:36		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-25/14:43:36		Entered the separate_label_feature method of the Preprocessor class
+2025-03-25/14:43:36		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-03-25/14:43:36		Entered the elbow_plot method of the KMeansClustering class
+2025-03-25/14:43:36		Entered the handle_missing_values method of the KMeansClustering class
+2025-03-25/14:43:36		Successfully handled missing values in the dataset
+2025-03-25/14:43:50		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-03-25/14:43:50		Entered the create_clusters method of the KMeansClustering class
+2025-03-25/14:43:50		Entered the handle_missing_values method of the KMeansClustering class
+2025-03-25/14:43:50		Successfully handled missing values in the dataset
+2025-03-25/14:43:50		Entered the save_model method of the File_Operation class
+2025-03-25/14:43:50		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-03-25/14:43:50		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-03-25/14:43:50		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-25/14:43:50		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-25/14:43:50		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-25/14:43:50		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-25/14:43:50		Entered the get_best_model method of the Model_Finder class
+2025-03-25/14:43:50		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-25/14:44:11		XGBoost best params: {'criterion': 'gini', 'max_depth': 8, 'n_estimators': 100}. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-25/14:44:11		AUC for XGBoost:0.8888888888888888
+2025-03-25/14:44:11		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-03-25/14:44:20		SVM best params: {'C': 1.0, 'kernel': 'sigmoid', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-03-25/14:44:20		AUC for SVM:0.5152732140683948
+2025-03-25/14:44:20		Entered the save_model method of the File_Operation class
+2025-03-25/14:44:20		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-03-25/14:44:20		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-25/14:44:20		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-25/14:44:20		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-25/14:44:20		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-25/14:44:20		Entered the get_best_model method of the Model_Finder class
+2025-03-25/14:44:20		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-25/14:44:27		XGBoost best params: {'criterion': 'gini', 'max_depth': 8, 'n_estimators': 100}. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-03-25/14:44:27		AUC for XGBoost:0.8256549232158988
+2025-03-25/14:44:27		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-03-25/14:44:29		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-03-25/14:44:29		AUC for SVM:0.5
+2025-03-25/14:44:29		Entered the save_model method of the File_Operation class
+2025-03-25/14:44:30		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-03-25/14:44:30		Training successful.
