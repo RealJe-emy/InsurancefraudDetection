@@ -519,3 +519,328 @@ Traceback (most recent call last):
     raise Exception()
 Exception
 
+2025-03-29/10:04:14		Start of Validation on files for prediction!!
+2025-03-29/10:04:14		Raw Data Validation Complete!!
+2025-03-29/10:04:14		Starting Data Transforamtion!!
+2025-03-29/10:04:14		DataTransformation Completed!!!
+2025-03-29/10:04:14		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/10:04:14		Table creation Completed!!
+2025-03-29/10:04:14		Insertion of Data into Table started!!!!
+2025-03-29/10:04:18		Insertion in Table completed!!!
+2025-03-29/10:04:18		Deleting Good Data Folder!!!
+2025-03-29/10:04:18		Good_Data folder deleted!!!
+2025-03-29/10:04:18		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/10:04:18		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/10:04:18		Validation Operation completed!!
+2025-03-29/10:04:18		Extracting csv file from table
+2025-03-29/10:04:18		=== Starting Prediction Process ===
+2025-03-29/10:04:18		Loading data...
+2025-03-29/10:04:18		Entered the get_data method of the Data_Getter class
+2025-03-29/10:04:18		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/10:04:18		Initial data shape: (500, 38)
+2025-03-29/10:04:18		Dropping columns: ['policy_number', 'policy_bind_date', 'policy_state', 'insured_zip', 'incident_location', 'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make', 'auto_model', 'auto_year', 'age', 'total_claim_amount']
+2025-03-29/10:04:18		Final data columns: ['months_as_customer', 'policy_deductable', 'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'bodily_injuries', 'property_damage', 'police_report_available']
+2025-03-29/10:04:18		Entered the is_null_present method of the Preprocessor class
+2025-03-29/10:04:18		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/10:04:18		Imputing missing values in: ['property_damage', 'police_report_available']
+2025-03-29/10:04:18		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/10:04:18		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/10:04:18		Encoding categorical columns...
+2025-03-29/10:04:18		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:04:18		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/10:04:18		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:04:18		Prediction failed: 
+2025-03-29/10:04:18		Full error traceback:
+Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+
+2025-03-29/10:06:11		Start of Validation on files for prediction!!
+2025-03-29/10:06:11		Raw Data Validation Complete!!
+2025-03-29/10:06:11		Starting Data Transforamtion!!
+2025-03-29/10:06:11		DataTransformation Completed!!!
+2025-03-29/10:06:11		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/10:06:11		Table creation Completed!!
+2025-03-29/10:06:11		Insertion of Data into Table started!!!!
+2025-03-29/10:06:14		Insertion in Table completed!!!
+2025-03-29/10:06:14		Deleting Good Data Folder!!!
+2025-03-29/10:06:14		Good_Data folder deleted!!!
+2025-03-29/10:06:14		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/10:06:14		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/10:06:14		Validation Operation completed!!
+2025-03-29/10:06:14		Extracting csv file from table
+2025-03-29/10:06:14		=== Starting Prediction Process ===
+2025-03-29/10:06:14		Loading data...
+2025-03-29/10:06:14		Entered the get_data method of the Data_Getter class
+2025-03-29/10:06:14		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/10:06:14		Initial data shape: (500, 38)
+2025-03-29/10:06:14		Dropping columns: ['policy_number', 'policy_bind_date', 'policy_state', 'insured_zip', 'incident_location', 'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make', 'auto_model', 'auto_year', 'age', 'total_claim_amount']
+2025-03-29/10:06:14		Final data columns: ['months_as_customer', 'policy_deductable', 'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'bodily_injuries', 'property_damage', 'police_report_available']
+2025-03-29/10:06:14		Entered the is_null_present method of the Preprocessor class
+2025-03-29/10:06:14		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/10:06:14		Imputing missing values in: ['property_damage', 'police_report_available']
+2025-03-29/10:06:14		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/10:06:14		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/10:06:14		Encoding categorical columns...
+2025-03-29/10:06:14		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:06:14		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/10:06:14		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:06:14		Prediction failed: 
+2025-03-29/10:06:14		Full error traceback:
+Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+
+2025-03-29/10:06:18		Start of Validation on files for prediction!!
+2025-03-29/10:06:18		Raw Data Validation Complete!!
+2025-03-29/10:06:18		Starting Data Transforamtion!!
+2025-03-29/10:06:18		DataTransformation Completed!!!
+2025-03-29/10:06:18		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/10:06:18		Table creation Completed!!
+2025-03-29/10:06:18		Insertion of Data into Table started!!!!
+2025-03-29/10:06:22		Insertion in Table completed!!!
+2025-03-29/10:06:22		Deleting Good Data Folder!!!
+2025-03-29/10:06:22		Good_Data folder deleted!!!
+2025-03-29/10:06:22		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/10:06:22		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/10:06:22		Validation Operation completed!!
+2025-03-29/10:06:22		Extracting csv file from table
+2025-03-29/10:06:22		=== Starting Prediction Process ===
+2025-03-29/10:06:22		Loading data...
+2025-03-29/10:06:22		Entered the get_data method of the Data_Getter class
+2025-03-29/10:06:22		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/10:06:22		Initial data shape: (500, 38)
+2025-03-29/10:06:22		Dropping columns: ['policy_number', 'policy_bind_date', 'policy_state', 'insured_zip', 'incident_location', 'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make', 'auto_model', 'auto_year', 'age', 'total_claim_amount']
+2025-03-29/10:06:22		Final data columns: ['months_as_customer', 'policy_deductable', 'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'bodily_injuries', 'property_damage', 'police_report_available']
+2025-03-29/10:06:22		Entered the is_null_present method of the Preprocessor class
+2025-03-29/10:06:22		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/10:06:22		Imputing missing values in: ['property_damage', 'police_report_available']
+2025-03-29/10:06:22		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/10:06:22		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/10:06:22		Encoding categorical columns...
+2025-03-29/10:06:22		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:06:22		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/10:06:22		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:06:22		Prediction failed: 
+2025-03-29/10:06:22		Full error traceback:
+Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+
+2025-03-29/10:06:23		Start of Validation on files for prediction!!
+2025-03-29/10:06:23		Raw Data Validation Complete!!
+2025-03-29/10:06:23		Starting Data Transforamtion!!
+2025-03-29/10:06:23		DataTransformation Completed!!!
+2025-03-29/10:06:23		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/10:06:23		Table creation Completed!!
+2025-03-29/10:06:23		Insertion of Data into Table started!!!!
+2025-03-29/10:06:29		Insertion in Table completed!!!
+2025-03-29/10:06:29		Deleting Good Data Folder!!!
+2025-03-29/10:06:29		Good_Data folder deleted!!!
+2025-03-29/10:06:29		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/10:06:29		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/10:06:29		Validation Operation completed!!
+2025-03-29/10:06:29		Extracting csv file from table
+2025-03-29/10:06:29		=== Starting Prediction Process ===
+2025-03-29/10:06:29		Loading data...
+2025-03-29/10:06:29		Entered the get_data method of the Data_Getter class
+2025-03-29/10:06:29		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/10:06:29		Initial data shape: (500, 38)
+2025-03-29/10:06:29		Dropping columns: ['policy_number', 'policy_bind_date', 'policy_state', 'insured_zip', 'incident_location', 'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make', 'auto_model', 'auto_year', 'age', 'total_claim_amount']
+2025-03-29/10:06:29		Final data columns: ['months_as_customer', 'policy_deductable', 'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'bodily_injuries', 'property_damage', 'police_report_available']
+2025-03-29/10:06:29		Entered the is_null_present method of the Preprocessor class
+2025-03-29/10:06:29		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/10:06:29		Imputing missing values in: ['property_damage', 'police_report_available']
+2025-03-29/10:06:29		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/10:06:29		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/10:06:29		Encoding categorical columns...
+2025-03-29/10:06:29		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:06:29		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/10:06:29		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:06:29		Prediction failed: 
+2025-03-29/10:06:29		Full error traceback:
+Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+
+2025-03-29/10:06:31		Start of Validation on files for prediction!!
+2025-03-29/10:06:31		Raw Data Validation Complete!!
+2025-03-29/10:06:31		Starting Data Transforamtion!!
+2025-03-29/10:06:31		DataTransformation Completed!!!
+2025-03-29/10:06:31		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/10:06:32		Table creation Completed!!
+2025-03-29/10:06:32		Insertion of Data into Table started!!!!
+2025-03-29/10:06:37		Insertion in Table completed!!!
+2025-03-29/10:06:37		Deleting Good Data Folder!!!
+2025-03-29/10:06:37		Good_Data folder deleted!!!
+2025-03-29/10:06:37		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/10:06:37		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/10:06:37		Validation Operation completed!!
+2025-03-29/10:06:37		Extracting csv file from table
+2025-03-29/10:06:37		=== Starting Prediction Process ===
+2025-03-29/10:06:37		Loading data...
+2025-03-29/10:06:37		Entered the get_data method of the Data_Getter class
+2025-03-29/10:06:37		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/10:06:37		Initial data shape: (500, 38)
+2025-03-29/10:06:37		Dropping columns: ['policy_number', 'policy_bind_date', 'policy_state', 'insured_zip', 'incident_location', 'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make', 'auto_model', 'auto_year', 'age', 'total_claim_amount']
+2025-03-29/10:06:37		Final data columns: ['months_as_customer', 'policy_deductable', 'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'bodily_injuries', 'property_damage', 'police_report_available']
+2025-03-29/10:06:37		Entered the is_null_present method of the Preprocessor class
+2025-03-29/10:06:37		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/10:06:37		Imputing missing values in: ['property_damage', 'police_report_available']
+2025-03-29/10:06:37		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/10:06:37		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/10:06:37		Encoding categorical columns...
+2025-03-29/10:06:37		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:06:37		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/10:06:37		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/10:06:37		Prediction failed: 
+2025-03-29/10:06:37		Full error traceback:
+Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+

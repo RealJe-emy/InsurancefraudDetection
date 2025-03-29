@@ -197,3 +197,63 @@ Traceback (most recent call last):
     raise Exception(error_msg) from None
 Exception: Prediction failed: 
 
+2025-03-29/10:04:13		Single prediction request received
+2025-03-29/10:04:13		Received data: {'policy_number': '10546', 'months_as_customer': '10', 'policy_deductable': '1000', 'policy_annual_premium': '1200', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '13', 'number_of_vehicles_involved': '2', 'bodily_injuries': '1', 'property_damage': 'YES', 'police_report_available': 'NO'}
+2025-03-29/10:04:14		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/10:04:18		Prediction failed: Prediction failed: 
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 493, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 125, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed: 
+
+2025-03-29/10:06:11		Single prediction request received
+2025-03-29/10:06:11		Received data: {'policy_number': '10546', 'months_as_customer': '10', 'policy_deductable': '1000', 'policy_annual_premium': '1200', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '13', 'number_of_vehicles_involved': '2', 'bodily_injuries': '1', 'property_damage': 'YES', 'police_report_available': 'NO'}
+2025-03-29/10:06:11		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/10:06:14		Prediction failed: Prediction failed: 
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 493, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 125, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed: 
+
+2025-03-29/10:06:18		Single prediction request received
+2025-03-29/10:06:18		Received data: {'policy_number': '10546', 'months_as_customer': '10', 'policy_deductable': '1000', 'policy_annual_premium': '1200', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '13', 'number_of_vehicles_involved': '2', 'bodily_injuries': '1', 'property_damage': 'YES', 'police_report_available': 'NO'}
+2025-03-29/10:06:18		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/10:06:22		Prediction failed: Prediction failed: 
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 493, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 125, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed: 
+
+2025-03-29/10:06:23		Single prediction request received
+2025-03-29/10:06:23		Received data: {'policy_number': '10546', 'months_as_customer': '10', 'policy_deductable': '1000', 'policy_annual_premium': '1200', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '13', 'number_of_vehicles_involved': '2', 'bodily_injuries': '1', 'property_damage': 'YES', 'police_report_available': 'NO'}
+2025-03-29/10:06:23		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/10:06:29		Prediction failed: Prediction failed: 
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 493, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 125, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed: 
+
+2025-03-29/10:06:31		Single prediction request received
+2025-03-29/10:06:31		Received data: {'policy_number': '10546', 'months_as_customer': '10', 'policy_deductable': '1000', 'policy_annual_premium': '1200', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '13', 'number_of_vehicles_involved': '2', 'bodily_injuries': '1', 'property_damage': 'YES', 'police_report_available': 'NO'}
+2025-03-29/10:06:31		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/10:06:37		Prediction failed: Prediction failed: 
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 493, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 125, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed: 
+

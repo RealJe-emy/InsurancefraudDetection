@@ -29,3 +29,18 @@
 2025-03-29/09:55:46		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_021119920_010222.csv
 2025-03-29/09:55:46		Invalid File Name!! File moved to Bad Raw Folder :: InputFile.csv
 2025-03-29/09:55:46		Invalid File Name!! File moved to Bad Raw Folder :: single_prediction_input.csv
+2025-03-29/10:04:14		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_021119920_010222.csv
+2025-03-29/10:04:14		Invalid File Name!! File moved to Bad Raw Folder :: InputFile.csv
+2025-03-29/10:04:14		Invalid File Name!! File moved to Bad Raw Folder :: single_prediction_input.csv
+2025-03-29/10:06:11		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_021119920_010222.csv
+2025-03-29/10:06:11		Invalid File Name!! File moved to Bad Raw Folder :: InputFile.csv
+2025-03-29/10:06:11		Invalid File Name!! File moved to Bad Raw Folder :: single_prediction_input.csv
+2025-03-29/10:06:18		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_021119920_010222.csv
+2025-03-29/10:06:18		Invalid File Name!! File moved to Bad Raw Folder :: InputFile.csv
+2025-03-29/10:06:18		Invalid File Name!! File moved to Bad Raw Folder :: single_prediction_input.csv
+2025-03-29/10:06:23		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_021119920_010222.csv
+2025-03-29/10:06:23		Invalid File Name!! File moved to Bad Raw Folder :: InputFile.csv
+2025-03-29/10:06:23		Invalid File Name!! File moved to Bad Raw Folder :: single_prediction_input.csv
+2025-03-29/10:06:31		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_021119920_010222.csv
+2025-03-29/10:06:31		Invalid File Name!! File moved to Bad Raw Folder :: InputFile.csv
+2025-03-29/10:06:31		Invalid File Name!! File moved to Bad Raw Folder :: single_prediction_input.csv

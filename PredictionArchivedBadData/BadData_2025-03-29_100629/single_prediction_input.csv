@@ -1,0 +1,2 @@
+policy_number,months_as_customer,policy_deductable,policy_annual_premium,incident_severity,incident_hour_of_the_day,number_of_vehicles_involved,bodily_injuries,property_damage,police_report_available,total_claim_amount
+100389,30,20099,506000,Minor Damage,19,3,10,YES,YES,100000000

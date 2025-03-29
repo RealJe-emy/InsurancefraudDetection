@@ -493,24 +493,15 @@ def single_predict():
         output_path = pred.predictionFromModel()
 
         # Read and return results
-        results = []
-        with open(output_path, 'r') as f:
-            reader = csv.reader(f)
-            headers = next(reader)
-            for row in reader:
-                results.append({
-                    "policy_number": row[0],
-                    "prediction": row[1],
-                    "probability": 0.95 if row[1] == 'Y' else 0.15
-                })
+        results = pd.read_csv(output_path)
+        prediction_result = results.iloc[0]['Predictions']
+        confidence = 0.95 if prediction_result == 'Y' else 0.15
 
         return jsonify({
             "status": "success",
-            "results": results,
-            "summary": {
-                "total_records": len(results),
-                "fraud_count": sum(1 for r in results if r['prediction'] == 'Y')
-            }
+            "prediction": prediction_result,
+            "confidence": confidence,
+            "factors": get_important_factors(input_data)
         })
 
     except Exception as e:
