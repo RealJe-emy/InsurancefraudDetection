@@ -431,6 +431,7 @@ def predictRouteClient():
 
 
 # single prediction endpoint
+# single prediction endpoint
 @app.route('/single_predict', methods=['POST'])
 @cross_origin()
 def single_predict():
@@ -485,34 +486,39 @@ def single_predict():
         logger.log(log_file, f"Input data saved to {input_path}")
 
         # Validate and predict
-        try:
-            pred_val = pred_validation(pred_folder)
-            pred_val.prediction_validation()
-            logger.log(log_file, "Data validation completed")
+        pred_val = pred_validation(pred_folder)
+        pred_val.prediction_validation()
 
-            pred = prediction(pred_folder)
-            output_path = pred.predictionFromModel()
-            logger.log(log_file, f"Prediction completed, results at {output_path}")
+        pred = prediction(pred_folder)
+        output_path = pred.predictionFromModel()
 
-            # Read results
-            results = pd.read_csv(output_path)
-            prediction_result = results.iloc[0]['Predictions']
+        # Read and return results
+        results = []
+        with open(output_path, 'r') as f:
+            reader = csv.reader(f)
+            headers = next(reader)
+            for row in reader:
+                results.append({
+                    "policy_number": row[0],
+                    "prediction": row[1],
+                    "probability": 0.95 if row[1] == 'Y' else 0.15
+                })
 
-            return jsonify({
-                "status": "success",
-                "prediction": prediction_result,
-                "probability": 0.95 if prediction_result == 'Y' else 0.15,
-                "policy_number": input_data['policy_number'],
-                "important_factors": get_important_factors(data)
-            })
-
-        except Exception as e:
-            logger.log(log_file, f"Prediction failed: {str(e)}\n{traceback.format_exc()}")
-            return jsonify({"status": "error", "message": f"Prediction processing failed: {str(e)}"}), 500
+        return jsonify({
+            "status": "success",
+            "results": results,
+            "summary": {
+                "total_records": len(results),
+                "fraud_count": sum(1 for r in results if r['prediction'] == 'Y')
+            }
+        })
 
     except Exception as e:
-        logger.log(log_file, f"Unexpected error: {str(e)}\n{traceback.format_exc()}")
-        return jsonify({"status": "error", "message": "Internal server error"}), 500
+        logger.log(log_file, f"Prediction failed: {str(e)}\n{traceback.format_exc()}")
+        return jsonify({
+            "status": "error",
+            "message": f"Prediction failed: {str(e)}"
+        }), 500
 
 
 #helper function

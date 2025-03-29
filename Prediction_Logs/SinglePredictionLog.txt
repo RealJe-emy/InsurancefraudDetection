@@ -185,3 +185,15 @@ Traceback (most recent call last):
     raise Exception(error_msg) from None
 Exception: Prediction failed: 
 
+2025-03-29/09:55:46		Single prediction request received
+2025-03-29/09:55:46		Received data: {'policy_number': '123474', 'months_as_customer': '30', 'policy_deductable': '21000', 'policy_annual_premium': '100000', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '22', 'number_of_vehicles_involved': '2', 'bodily_injuries': '3', 'property_damage': 'YES', 'police_report_available': 'YES'}
+2025-03-29/09:55:46		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/09:55:48		Prediction failed: Prediction failed: 
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 493, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 125, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed: 
+
