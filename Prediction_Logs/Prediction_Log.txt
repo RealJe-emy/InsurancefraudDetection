@@ -112,3 +112,345 @@
 2025-01-25/13:08:32		Entered the load_model method of the File_Operation class
 2025-01-25/13:08:32		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
 2025-01-25/13:08:32		Error occured while running the prediction!! Error:: 'KMeans' object has no attribute '_n_threads'
+2025-03-27/11:57:58		Start of Validation on files for prediction!!
+2025-03-27/11:57:58		Raw Data Validation Complete!!
+2025-03-27/11:57:58		Starting Data Transforamtion!!
+2025-03-27/11:57:58		DataTransformation Completed!!!
+2025-03-27/11:57:58		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-27/11:57:58		Table creation Completed!!
+2025-03-27/11:57:58		Insertion of Data into Table started!!!!
+2025-03-27/11:58:03		Insertion in Table completed!!!
+2025-03-27/11:58:03		Deleting Good Data Folder!!!
+2025-03-27/11:58:03		Good_Data folder deleted!!!
+2025-03-27/11:58:03		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-27/11:58:03		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-27/11:58:03		Validation Operation completed!!
+2025-03-27/11:58:03		Extracting csv file from table
+2025-03-27/11:58:03		Start of Prediction
+2025-03-27/11:58:03		Entered the get_data method of the Data_Getter class
+2025-03-27/11:58:03		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-27/11:58:03		Entered the remove_columns method of the Preprocessor class
+2025-03-27/11:58:03		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-03-27/11:58:03		Entered the is_null_present method of the Preprocessor class
+2025-03-27/11:58:03		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-27/11:58:03		Entered the impute_missing_values method of the Preprocessor class
+2025-03-27/11:58:03		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-27/11:58:03		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-27/11:58:03		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-27/11:58:03		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-27/11:58:03		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-27/11:58:03		Entered the load_model method of the File_Operation class
+2025-03-27/11:58:03		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2025-03-27/11:58:03		Error occured while running the prediction!! Error:: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-03-27/17:32:58		Start of Validation on files for prediction!!
+2025-03-27/17:32:58		Raw Data Validation Complete!!
+2025-03-27/17:32:58		Starting Data Transforamtion!!
+2025-03-27/17:32:58		DataTransformation Completed!!!
+2025-03-27/17:32:58		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-27/17:32:59		Table creation Completed!!
+2025-03-27/17:32:59		Insertion of Data into Table started!!!!
+2025-03-27/17:33:04		Insertion in Table completed!!!
+2025-03-27/17:33:04		Deleting Good Data Folder!!!
+2025-03-27/17:33:04		Good_Data folder deleted!!!
+2025-03-27/17:33:04		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-27/17:33:04		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-27/17:33:04		Validation Operation completed!!
+2025-03-27/17:33:04		Extracting csv file from table
+2025-03-27/17:33:04		Start of Prediction
+2025-03-27/17:33:04		Entered the get_data method of the Data_Getter class
+2025-03-27/17:33:04		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-27/17:33:04		Entered the remove_columns method of the Preprocessor class
+2025-03-27/17:33:04		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-03-27/17:33:04		Entered the is_null_present method of the Preprocessor class
+2025-03-27/17:33:04		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-27/17:33:04		Entered the impute_missing_values method of the Preprocessor class
+2025-03-27/17:33:04		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-27/17:33:04		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-27/17:33:04		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-27/17:33:04		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-27/17:33:04		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-27/17:33:04		Entered the load_model method of the File_Operation class
+2025-03-27/17:33:04		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2025-03-27/17:33:04		Error occured while running the prediction!! Error:: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-03-27/17:47:33		Start of Validation on files for prediction!!
+2025-03-27/17:47:33		Raw Data Validation Complete!!
+2025-03-27/17:47:33		Starting Data Transforamtion!!
+2025-03-27/17:47:33		DataTransformation Completed!!!
+2025-03-27/17:47:33		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-27/17:47:34		Table creation Completed!!
+2025-03-27/17:47:34		Insertion of Data into Table started!!!!
+2025-03-27/17:47:39		Insertion in Table completed!!!
+2025-03-27/17:47:39		Deleting Good Data Folder!!!
+2025-03-27/17:47:39		Good_Data folder deleted!!!
+2025-03-27/17:47:39		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-27/17:47:39		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-27/17:47:39		Validation Operation completed!!
+2025-03-27/17:47:39		Extracting csv file from table
+2025-03-27/17:47:39		Start of Prediction
+2025-03-27/17:47:39		Entered the get_data method of the Data_Getter class
+2025-03-27/17:47:39		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-27/17:47:39		Entered the remove_columns method of the Preprocessor class
+2025-03-27/17:47:39		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-03-27/17:47:39		Entered the is_null_present method of the Preprocessor class
+2025-03-27/17:47:39		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-27/17:47:39		Entered the impute_missing_values method of the Preprocessor class
+2025-03-27/17:47:39		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-27/17:47:39		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-27/17:47:39		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-27/17:47:39		Entered the scale_numerical_columns method of the Preprocessor class
+2025-03-27/17:47:39		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-03-27/17:47:39		Entered the load_model method of the File_Operation class
+2025-03-27/17:47:39		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2025-03-27/17:47:39		Error occured while running the prediction!! Error:: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-03-29/09:17:35		Start of Validation on files for prediction!!
+2025-03-29/09:17:35		Raw Data Validation Complete!!
+2025-03-29/09:17:35		Starting Data Transforamtion!!
+2025-03-29/09:17:35		DataTransformation Completed!!!
+2025-03-29/09:17:35		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/09:17:35		Table creation Completed!!
+2025-03-29/09:17:35		Insertion of Data into Table started!!!!
+2025-03-29/09:17:38		Insertion in Table completed!!!
+2025-03-29/09:17:38		Deleting Good Data Folder!!!
+2025-03-29/09:17:38		Good_Data folder deleted!!!
+2025-03-29/09:17:38		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/09:17:38		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/09:17:38		Validation Operation completed!!
+2025-03-29/09:17:38		Extracting csv file from table
+2025-03-29/09:17:38		Start of Prediction
+2025-03-29/09:17:38		Entered the get_data method of the Data_Getter class
+2025-03-29/09:17:38		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/09:17:38		Entered the is_null_present method of the Preprocessor class
+2025-03-29/09:17:38		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/09:17:38		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/09:17:38		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/09:17:38		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:17:38		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/09:17:38		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:17:38		Error occurred while running prediction: 
+2025-03-29/09:21:32		Start of Validation on files for prediction!!
+2025-03-29/09:21:32		Raw Data Validation Complete!!
+2025-03-29/09:21:32		Starting Data Transforamtion!!
+2025-03-29/09:21:32		DataTransformation Completed!!!
+2025-03-29/09:21:32		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/09:21:32		Table creation Completed!!
+2025-03-29/09:21:32		Insertion of Data into Table started!!!!
+2025-03-29/09:21:35		Insertion in Table completed!!!
+2025-03-29/09:21:35		Deleting Good Data Folder!!!
+2025-03-29/09:21:35		Good_Data folder deleted!!!
+2025-03-29/09:21:35		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/09:21:35		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/09:21:35		Validation Operation completed!!
+2025-03-29/09:21:35		Extracting csv file from table
+2025-03-29/09:21:35		Starting prediction process
+2025-03-29/09:21:35		Entered the get_data method of the Data_Getter class
+2025-03-29/09:21:35		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/09:21:35		Raw data shape: (500, 38)
+2025-03-29/09:21:35		Columns before drop: ['months_as_customer', 'age', 'policy_number', 'policy_bind_date', 'policy_state', 'policy_csl', 'policy_deductable', 'policy_annual_premium', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'incident_severity', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'property_damage', 'bodily_injuries', 'witnesses', 'police_report_available', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year']
+2025-03-29/09:21:35		Columns after drop: ['months_as_customer', 'policy_csl', 'policy_deductable', 'policy_annual_premium', 'umbrella_limit', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_type', 'collision_type', 'incident_severity', 'authorities_contacted', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'property_damage', 'bodily_injuries', 'witnesses', 'police_report_available', 'injury_claim', 'property_claim', 'vehicle_claim']
+2025-03-29/09:21:35		Columns ordered correctly
+2025-03-29/09:21:35		Entered the is_null_present method of the Preprocessor class
+2025-03-29/09:21:35		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/09:21:35		Imputing missing values in: ['property_damage', 'police_report_available']
+2025-03-29/09:21:35		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/09:21:35		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/09:21:35		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:21:35		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/09:21:35		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:25:58		Start of Validation on files for prediction!!
+2025-03-29/09:25:58		Raw Data Validation Complete!!
+2025-03-29/09:25:58		Starting Data Transforamtion!!
+2025-03-29/09:25:58		DataTransformation Completed!!!
+2025-03-29/09:25:58		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/09:25:58		Table creation Completed!!
+2025-03-29/09:25:58		Insertion of Data into Table started!!!!
+2025-03-29/09:26:02		Insertion in Table completed!!!
+2025-03-29/09:26:02		Deleting Good Data Folder!!!
+2025-03-29/09:26:02		Good_Data folder deleted!!!
+2025-03-29/09:26:02		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/09:26:02		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/09:26:02		Validation Operation completed!!
+2025-03-29/09:26:02		Extracting csv file from table
+2025-03-29/09:26:02		Starting prediction process
+2025-03-29/09:26:02		Entered the get_data method of the Data_Getter class
+2025-03-29/09:26:02		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/09:26:02		Raw data shape: (500, 38)
+2025-03-29/09:26:02		Columns before drop: ['months_as_customer', 'age', 'policy_number', 'policy_bind_date', 'policy_state', 'policy_csl', 'policy_deductable', 'policy_annual_premium', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'incident_severity', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'property_damage', 'bodily_injuries', 'witnesses', 'police_report_available', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year']
+2025-03-29/09:26:02		Columns after drop: ['months_as_customer', 'policy_csl', 'policy_deductable', 'policy_annual_premium', 'umbrella_limit', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_type', 'collision_type', 'incident_severity', 'authorities_contacted', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'property_damage', 'bodily_injuries', 'witnesses', 'police_report_available', 'injury_claim', 'property_claim', 'vehicle_claim']
+2025-03-29/09:26:02		Columns ordered correctly
+2025-03-29/09:26:02		Entered the is_null_present method of the Preprocessor class
+2025-03-29/09:26:02		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/09:26:02		Imputing missing values in: ['property_damage', 'police_report_available']
+2025-03-29/09:26:02		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/09:26:02		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/09:26:02		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:26:02		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/09:26:02		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:26:02		Error in predictionFromModel: 
+2025-03-29/09:26:02		Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+
+2025-03-29/09:29:22		Start of Validation on files for prediction!!
+2025-03-29/09:29:22		Raw Data Validation Complete!!
+2025-03-29/09:29:22		Starting Data Transforamtion!!
+2025-03-29/09:29:22		DataTransformation Completed!!!
+2025-03-29/09:29:22		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/09:29:22		Table creation Completed!!
+2025-03-29/09:29:22		Insertion of Data into Table started!!!!
+2025-03-29/09:29:24		Insertion in Table completed!!!
+2025-03-29/09:29:24		Deleting Good Data Folder!!!
+2025-03-29/09:29:24		Good_Data folder deleted!!!
+2025-03-29/09:29:24		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/09:29:24		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/09:29:24		Validation Operation completed!!
+2025-03-29/09:29:24		Extracting csv file from table
+2025-03-29/09:29:24		=== Starting Prediction Process ===
+2025-03-29/09:29:24		Loading data...
+2025-03-29/09:29:24		Entered the get_data method of the Data_Getter class
+2025-03-29/09:29:24		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/09:29:24		Initial data shape: (500, 38)
+2025-03-29/09:29:24		Dropping columns: ['policy_number', 'policy_bind_date', 'policy_state', 'insured_zip', 'incident_location', 'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make', 'auto_model', 'auto_year', 'age', 'total_claim_amount']
+2025-03-29/09:29:24		Final data columns: ['months_as_customer', 'policy_deductable', 'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'bodily_injuries', 'property_damage', 'police_report_available']
+2025-03-29/09:29:24		Entered the is_null_present method of the Preprocessor class
+2025-03-29/09:29:24		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/09:29:24		Imputing missing values in: ['property_damage', 'police_report_available']
+2025-03-29/09:29:24		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/09:29:24		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/09:29:24		Encoding categorical columns...
+2025-03-29/09:29:24		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:29:24		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/09:29:24		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:29:24		Prediction failed at step: Exception - 
+2025-03-29/09:29:24		Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+
+2025-03-29/09:33:52		Start of Validation on files for prediction!!
+2025-03-29/09:33:52		Raw Data Validation Complete!!
+2025-03-29/09:33:52		Starting Data Transforamtion!!
+2025-03-29/09:33:52		DataTransformation Completed!!!
+2025-03-29/09:33:52		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-03-29/09:33:52		Table creation Completed!!
+2025-03-29/09:33:52		Insertion of Data into Table started!!!!
+2025-03-29/09:33:54		Insertion in Table completed!!!
+2025-03-29/09:33:54		Deleting Good Data Folder!!!
+2025-03-29/09:33:54		Good_Data folder deleted!!!
+2025-03-29/09:33:54		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-03-29/09:33:54		Bad files moved to archive!! Bad folder Deleted!!
+2025-03-29/09:33:54		Validation Operation completed!!
+2025-03-29/09:33:54		Extracting csv file from table
+2025-03-29/09:33:54		=== Starting Prediction Process ===
+2025-03-29/09:33:54		Loading data...
+2025-03-29/09:33:54		Entered the get_data method of the Data_Getter class
+2025-03-29/09:33:54		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-03-29/09:33:54		Initial data shape: (500, 38)
+2025-03-29/09:33:54		Dropping columns: ['policy_number', 'policy_bind_date', 'policy_state', 'insured_zip', 'incident_location', 'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make', 'auto_model', 'auto_year', 'age', 'total_claim_amount']
+2025-03-29/09:33:54		Final data columns: ['months_as_customer', 'policy_deductable', 'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'bodily_injuries', 'property_damage', 'police_report_available']
+2025-03-29/09:33:54		Entered the is_null_present method of the Preprocessor class
+2025-03-29/09:33:54		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-03-29/09:33:54		Imputing missing values in: ['property_damage', 'police_report_available']
+2025-03-29/09:33:54		Entered the impute_missing_values method of the Preprocessor class
+2025-03-29/09:33:54		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-03-29/09:33:54		Encoding categorical columns...
+2025-03-29/09:33:54		Entered the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:33:54		Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  'policy_csl'
+2025-03-29/09:33:54		encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class
+2025-03-29/09:33:54		Prediction failed: 
+2025-03-29/09:33:54		Full error traceback:
+Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+

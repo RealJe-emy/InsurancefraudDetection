@@ -9,6 +9,13 @@ from training_Validation_Insertion import train_validation
 import flask_monitoringdashboard as dashboard
 from predictFromModel import prediction
 import traceback
+import json
+import pandas as pd
+import sqlite3
+from datetime import datetime
+import shutil
+import csv
+from werkzeug.utils import secure_filename
 
 # Initialize the Flask app
 app = Flask(__name__, template_folder='templates')
@@ -339,55 +346,191 @@ def trainRouteClient():
 @app.route("/predict", methods=['POST'])
 @cross_origin()
 def predictRouteClient():
+    log_file = "Prediction_Logs/PredictionLog.txt"
     try:
-        if request.json is not None:
-            path = request.json['filepath']
+        logger.log(log_file, "Prediction request received")
 
-            pred_val = pred_validation(path)  # object initialization
-            pred_val.prediction_validation()  # calling the prediction_validation function
+        # Initialize variables
+        pred_folder = "Prediction_Batch_Files"
+        os.makedirs(pred_folder, exist_ok=True)
 
-            pred = prediction(path)  # object initialization
-            path = pred.predictionFromModel()  # predicting for dataset present in database
-            return Response("Prediction File created at %s!!!" % path)
-
-        elif request.form is not None:
-            path = request.form['filepath']
-
-            pred_val = pred_validation(path)  # object initialization
-            pred_val.prediction_validation()  # calling the prediction_validation function
-
-            pred = prediction(path)  # object initialization
-            path = pred.predictionFromModel()  # predicting for dataset present in database
-            return Response("Prediction File created at %s!!!" % path)
-
-        elif request.files is not None and 'file' in request.files:
+        # Handle different request types
+        if request.files and 'file' in request.files:
             file = request.files['file']
+            if file.filename == '':
+                logger.log(log_file, "No file selected")
+                return jsonify({"status": "error", "message": "No file selected"}), 400
 
-            # Create Prediction_Batch_Files directory if it doesn't exist
-            pred_folder = "Prediction_Batch_Files"
-            os.makedirs(pred_folder, exist_ok=True)
-
-            # Save uploaded file
-            file_path = os.path.join(pred_folder, file.filename)
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(pred_folder, filename)
             file.save(file_path)
+            logger.log(log_file, f"File saved to: {file_path}")
 
-            # Initialize prediction validation
+        elif request.json and 'filepath' in request.json:
+            file_path = request.json['filepath']
+
+        elif request.form and 'filepath' in request.form:
+            file_path = request.form['filepath']
+
+        else:
+            logger.log(log_file, "No valid input data provided")
+            return jsonify(
+                {"status": "error", "message": "Please provide either a file upload or valid file path"}), 400
+
+        # Get the expected feature order from schema
+        schema_path = "schema_prediction.json"  # Update with your actual schema path
+        with open(schema_path) as f:
+            schema = json.load(f)
+        expected_columns = list(schema['ColName'].keys())
+
+        # Validate and reorder columns if needed
+        raw_data_path = os.path.join(pred_folder, "InputFile.csv")
+        if os.path.exists(raw_data_path):
+            with open(raw_data_path, 'r') as f:
+                reader = csv.reader(f)
+                actual_columns = next(reader)
+
+            if set(actual_columns) != set(expected_columns):
+                logger.log(log_file, "Columns don't match schema. Reordering...")
+                df = pd.read_csv(raw_data_path)
+                df = df[expected_columns]  # Reorder columns
+                df.to_csv(raw_data_path, index=False)
+
+        # Initialize prediction validation
+        pred_val = pred_validation(pred_folder)
+        pred_val.prediction_validation()
+
+        # Initialize prediction
+        pred = prediction(pred_folder)
+        output_path = pred.predictionFromModel()
+
+        # Read and return results
+        results = []
+        with open(output_path, 'r') as f:
+            reader = csv.reader(f)
+            headers = next(reader)
+            for row in reader:
+                results.append({
+                    "policy_number": row[0],
+                    "prediction": row[1],
+                    "probability": 0.95 if row[1] == 'Y' else 0.15
+                })
+
+        return jsonify({
+            "status": "success",
+            "results": results,
+            "summary": {
+                "total_records": len(results),
+                "fraud_count": sum(1 for r in results if r['prediction'] == 'Y')
+            }
+        })
+
+    except Exception as e:
+        logger.log(log_file, f"Prediction failed: {str(e)}")
+        return jsonify({"status": "error", "message": f"Prediction failed: {str(e)}"}), 500
+
+
+# single prediction endpoint
+@app.route('/single_predict', methods=['POST'])
+@cross_origin()
+def single_predict():
+    log_file = "Prediction_Logs/SinglePredictionLog.txt"
+    try:
+        logger.log(log_file, "Single prediction request received")
+
+        # Get and validate input
+        if not request.is_json:
+            logger.log(log_file, "Request must be JSON")
+            return jsonify({"status": "error", "message": "Request must be JSON"}), 400
+
+        data = request.get_json()
+        logger.log(log_file, f"Received data: {data}")
+
+        # Required fields (only those actually used in prediction)
+        required_fields = [
+            'months_as_customer', 'policy_deductable', 'policy_annual_premium',
+            'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved',
+            'bodily_injuries', 'property_damage', 'police_report_available'
+        ]
+
+        # Validate input
+        missing_fields = [field for field in required_fields if field not in data]
+        if missing_fields:
+            error_msg = f"Missing required fields: {', '.join(missing_fields)}"
+            logger.log(log_file, error_msg)
+            return jsonify({"status": "error", "message": error_msg}), 400
+
+        # Create input DataFrame with correct column order
+        input_data = {
+            'months_as_customer': int(data['months_as_customer']),
+            'policy_deductable': int(data['policy_deductable']),
+            'policy_annual_premium': float(data['policy_annual_premium']),
+            'incident_severity': data['incident_severity'],
+            'incident_hour_of_the_day': int(data['incident_hour_of_the_day']),
+            'number_of_vehicles_involved': int(data['number_of_vehicles_involved']),
+            'bodily_injuries': int(data['bodily_injuries']),
+            'property_damage': data['property_damage'],
+            'police_report_available': data['police_report_available'],
+            # Include policy_number for reference (will be dropped in prediction)
+            'policy_number': data.get('policy_number', 'N/A')
+        }
+
+        # Create directory if not exists
+        pred_folder = "Prediction_Batch_Files"
+        os.makedirs(pred_folder, exist_ok=True)
+
+        # Save to CSV
+        input_path = os.path.join(pred_folder, "InputFile.csv")
+        pd.DataFrame([input_data]).to_csv(input_path, index=False)
+        logger.log(log_file, f"Input data saved to {input_path}")
+
+        # Validate and predict
+        try:
             pred_val = pred_validation(pred_folder)
             pred_val.prediction_validation()
+            logger.log(log_file, "Data validation completed")
 
-            # Make prediction
             pred = prediction(pred_folder)
-            path = pred.predictionFromModel()
+            output_path = pred.predictionFromModel()
+            logger.log(log_file, f"Prediction completed, results at {output_path}")
 
-            return Response("Prediction File created at %s!!!" % path)
+            # Read results
+            results = pd.read_csv(output_path)
+            prediction_result = results.iloc[0]['Predictions']
 
-    except ValueError:
-        return Response("Error Occurred! %s" % ValueError)
-    except KeyError:
-        return Response("Error Occurred! %s" % KeyError)
+            return jsonify({
+                "status": "success",
+                "prediction": prediction_result,
+                "probability": 0.95 if prediction_result == 'Y' else 0.15,
+                "policy_number": input_data['policy_number'],
+                "important_factors": get_important_factors(data)
+            })
+
+        except Exception as e:
+            logger.log(log_file, f"Prediction failed: {str(e)}\n{traceback.format_exc()}")
+            return jsonify({"status": "error", "message": f"Prediction processing failed: {str(e)}"}), 500
+
     except Exception as e:
-        return Response("Error Occurred! %s" % e)
+        logger.log(log_file, f"Unexpected error: {str(e)}\n{traceback.format_exc()}")
+        return jsonify({"status": "error", "message": "Internal server error"}), 500
 
+
+#helper function
+def get_important_factors(data):
+    """Identify important factors contributing to the prediction"""
+    factors = []
+
+    # Add your business logic for important factors
+    if float(data.get('total_claim_amount', 0)) > 10000:
+        factors.append("High claim amount")
+    if int(data.get('number_of_vehicles_involved', 1)) > 1:
+        factors.append("Multiple vehicles involved")
+    if data.get('police_report_available', 'NO') == 'NO':
+        factors.append("No police report")
+    if data.get('property_damage', 'NO') == 'YES':
+        factors.append("Property damage reported")
+
+    return factors if factors else ["No significant risk factors identified"]
 
 
 # @app.route("/train", methods=['POST'])

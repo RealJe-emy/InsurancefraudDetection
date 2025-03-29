@@ -1,0 +1,187 @@
+2025-03-25/16:15:05		Single prediction request received
+2025-03-25/16:15:05		Error in single prediction: name 'pd' is not defined
+2025-03-25/16:19:03		Single prediction request received
+2025-03-25/16:19:03		Error in single prediction: name 'pd' is not defined
+2025-03-27/11:51:52		Single prediction request received
+2025-03-27/11:51:52		Error in single prediction: name 'pd' is not defined
+2025-03-27/11:57:58		Single prediction request received
+2025-03-27/11:58:03		Error in single prediction: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-03-27/12:06:01		Single prediction request received
+2025-03-27/12:06:01		Single prediction failed: name 'json' is not defined
+2025-03-27/12:07:31		Single prediction request received
+2025-03-27/12:07:31		Single prediction failed: name 'json' is not defined
+2025-03-27/12:29:34		Single prediction request received
+2025-03-27/17:07:25		Single prediction request received
+2025-03-27/17:32:58		Single prediction request received
+2025-03-27/17:33:04		Single prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-03-27/17:47:33		Single prediction request received
+2025-03-27/17:47:39		Single prediction failed: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
+2025-03-29/09:15:21		Single prediction request received
+2025-03-29/09:15:21		Single prediction failed: name 'pd' is not defined
+2025-03-29/09:17:35		Single prediction request received
+2025-03-29/09:17:38		Single prediction failed: 
+2025-03-29/09:21:32		Single prediction request received
+2025-03-29/09:21:32		Received data: {'policy_number': '123474', 'months_as_customer': '30', 'policy_deductable': '21000', 'policy_annual_premium': '100000', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '22', 'number_of_vehicles_involved': '2', 'bodily_injuries': '3', 'property_damage': 'YES', 'police_report_available': 'YES'}
+2025-03-29/09:21:32		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/09:21:35		Data validation completed
+2025-03-29/09:21:36		Prediction failed: name 'traceback' is not defined
+Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 67, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 494, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 102, in predictionFromModel
+    self.log_writer.log(self.file_object, f'Error in predictionFromModel: {str(ex)}\n{traceback.format_exc()}')
+                                                                                      ^^^^^^^^^
+NameError: name 'traceback' is not defined
+
+2025-03-29/09:25:57		Single prediction request received
+2025-03-29/09:25:57		Received data: {'policy_number': '123474', 'months_as_customer': '30', 'policy_deductable': '21000', 'policy_annual_premium': '100000', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '22', 'number_of_vehicles_involved': '2', 'bodily_injuries': '3', 'property_damage': 'YES', 'police_report_available': 'YES'}
+2025-03-29/09:25:58		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/09:26:02		Data validation completed
+2025-03-29/09:26:02		Prediction failed: Error in predictionFromModel: 
+Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 494, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 107, in predictionFromModel
+    raise Exception(error_msg)  # Re-raise with cleaned message
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception: Error in predictionFromModel: 
+
+2025-03-29/09:29:22		Single prediction request received
+2025-03-29/09:29:22		Received data: {'policy_number': '123474', 'months_as_customer': '30', 'policy_deductable': '21000', 'policy_annual_premium': '100000', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '22', 'number_of_vehicles_involved': '2', 'bodily_injuries': '3', 'property_damage': 'YES', 'police_report_available': 'YES'}
+2025-03-29/09:29:22		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/09:29:24		Data validation completed
+2025-03-29/09:29:24		Prediction failed: Prediction processing failed: Prediction failed at step: Exception - 
+Traceback (most recent call last):
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'policy_csl'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 259, in encode_categorical_columns
+    self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
+                                ~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\PycharmProjects\pythonProject\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'policy_csl'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 68, in predictionFromModel
+    data = preprocessor.encode_categorical_columns(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\data_preprocessing\preprocessing.py", line 289, in encode_categorical_columns
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 494, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 117, in predictionFromModel
+    raise Exception(f'Prediction processing failed: {error_msg}')
+Exception: Prediction processing failed: Prediction failed at step: Exception - 
+
+2025-03-29/09:33:52		Single prediction request received
+2025-03-29/09:33:52		Received data: {'policy_number': '123474', 'months_as_customer': '30', 'policy_deductable': '21000', 'policy_annual_premium': '100000', 'incident_severity': 'Major Damage', 'incident_hour_of_the_day': '22', 'number_of_vehicles_involved': '2', 'bodily_injuries': '3', 'property_damage': 'YES', 'police_report_available': 'YES'}
+2025-03-29/09:33:52		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-29/09:33:54		Data validation completed
+2025-03-29/09:33:54		Prediction failed: Prediction failed: 
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 494, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 125, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed: 
+
