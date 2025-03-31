@@ -278,67 +278,6 @@ def trainRouteClient():
         return Response(f"Error Occurred! {str(e)}", status=500)
 
 
-    # finally:
-    #     if not log_file.closed:
-    #         log_file.close()  # Ensure file is closed only at the end
-
-
-# @app.route("/train", methods=['POST'])
-# @cross_origin()
-# def trainRouteClient():
-#     log_file = open("Training_Logs/trainingLog.txt", "a+")
-#     try:
-#         logger.log(log_file, "Training request received.")
-#         # Ensure a file is included in the request
-#         if 'file' not in request.files:
-#             logger.log(log_file, "Error: No file part in request.")
-#             log_file.close()
-#             return Response("Error: No file provided!", status=400)
-        
-#         file = request.files['file']
-#         # Ensure a filename exists
-#         if file.filename == '':
-#             logger.log(log_file, "Error: No selected file.")
-#             log_file.close()
-#             return Response("Error: No file selected!", status=400)
-            
-#         if not os.path.exists(UPLOAD_FOLDER_CSV):
-#             os.makedirs(UPLOAD_FOLDER_CSV)
-#         logger.log(log_file, f"Created upload directory: {UPLOAD_FOLDER_CSV} and put {file.filename} there.")
-        
-#         # Define file save path
-#         file_path = os.path.join(UPLOAD_FOLDER_CSV, file.filename)
-#         # Save the file
-#         file.save(file_path)
-#         logger.log(log_file, f"File saved at: {file_path}")
-        
-#         # Initialize validation with the stored file directory
-#         train_valObj = train_validation(UPLOAD_FOLDER_CSV, log_file)
-#         train_valObj.train_validation()
-        
-#         # Initialize and train the model
-#         # Pass the log_file to trainModel so it uses the same file
-#         trainModelObj = trainModel(log_file)
-#         trainModelObj.trainingModel()
-        
-#         logger.log(log_file, "Training successful.")
-#         log_file.close()
-#         return Response("Training successful!!")
-        
-#     except Exception as e:
-#         error_trace = traceback.format_exc()
-#         try:
-#             # Check if the file is closed and reopen if necessary
-#             if log_file.closed:
-#                 log_file = open("Training_Logs/trainingLog.txt", "a+")
-#             logger.log(log_file, f"Unexpected error: {str(e)}")
-#             logger.log(log_file, f"Traceback:\n{error_trace}")
-#             print(f"Unexpected error: {e}\nTraceback:\n{error_trace}")  # Print full error to terminal
-#         finally:
-#             # Always close the file, but only if it's open
-#             if not log_file.closed:
-#                 log_file.close()
-#         return Response(f"Error Occurred! {str(e)}", status=500)
 
 
 
@@ -431,84 +370,210 @@ def predictRouteClient():
 
 
 # single prediction endpoint
-# single prediction endpoint
 @app.route('/single_predict', methods=['POST'])
 @cross_origin()
 def single_predict():
     log_file = "Prediction_Logs/SinglePredictionLog.txt"
     try:
-        logger.log(log_file, "Single prediction request received")
+        logger.log(log_file, "\n" + "=" * 80)
+        logger.log(log_file, "=== NEW PREDICTION REQUEST ===")
+        logger.log(log_file, f"Timestamp: {datetime.now().isoformat()}")
 
-        # Get and validate input
+        # ===== 1. REQUEST VALIDATION =====
         if not request.is_json:
-            logger.log(log_file, "Request must be JSON")
-            return jsonify({"status": "error", "message": "Request must be JSON"}), 400
-
-        data = request.get_json()
-        logger.log(log_file, f"Received data: {data}")
-
-        # Required fields (only those actually used in prediction)
-        required_fields = [
-            'months_as_customer', 'policy_deductable', 'policy_annual_premium',
-            'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved',
-            'bodily_injuries', 'property_damage', 'police_report_available'
-        ]
-
-        # Validate input
-        missing_fields = [field for field in required_fields if field not in data]
-        if missing_fields:
-            error_msg = f"Missing required fields: {', '.join(missing_fields)}"
+            error_msg = "Request must be JSON"
             logger.log(log_file, error_msg)
-            return jsonify({"status": "error", "message": error_msg}), 400
+            return jsonify({
+                "status": "error",
+                "message": error_msg,
+                "resolution": "Set Content-Type to application/json"
+            }), 400
 
-        # Create input DataFrame with correct column order
-        input_data = {
-            'months_as_customer': int(data['months_as_customer']),
-            'policy_deductable': int(data['policy_deductable']),
-            'policy_annual_premium': float(data['policy_annual_premium']),
-            'incident_severity': data['incident_severity'],
-            'incident_hour_of_the_day': int(data['incident_hour_of_the_day']),
-            'number_of_vehicles_involved': int(data['number_of_vehicles_involved']),
-            'bodily_injuries': int(data['bodily_injuries']),
-            'property_damage': data['property_damage'],
-            'police_report_available': data['police_report_available'],
-            # Include policy_number for reference (will be dropped in prediction)
-            'policy_number': data.get('policy_number', 'N/A')
+        # ===== 2. DATA PARSING =====
+        try:
+            data = request.get_json()
+            logger.log(log_file, "Raw JSON data received")
+        except Exception as e:
+            error_msg = f"JSON parsing failed: {str(e)}"
+            logger.log(log_file, error_msg)
+            return jsonify({
+                "status": "error",
+                "message": "Invalid JSON format",
+                "details": str(e)
+            }), 400
+
+        # ===== 3. INPUT VALIDATION =====
+        required_fields = {
+            'months_as_customer': int,
+            'policy_deductable': int,
+            'policy_annual_premium': float,
+            'incident_severity': str,
+            'incident_hour_of_the_day': int,
+            'number_of_vehicles_involved': int,
+            'bodily_injuries': int,
+            'property_damage': str,
+            'police_report_available': str
         }
 
-        # Create directory if not exists
+        validation_errors = []
+        input_data = {'policy_number': data.get('policy_number', 'N/A')}
+
+        for field, field_type in required_fields.items():
+            if field not in data:
+                validation_errors.append(f"Missing field: {field}")
+                continue
+            try:
+                input_data[field] = field_type(data[field])
+            except (ValueError, TypeError):
+                validation_errors.append(
+                    f"Invalid type for {field}: expected {field_type.__name__}, got {type(data[field]).__name__}"
+                )
+
+        if validation_errors:
+            logger.log(log_file, "Input validation failed:")
+            logger.log(log_file, "\n".join(validation_errors))
+            return jsonify({
+                "status": "error",
+                "message": "Input validation failed",
+                "errors": validation_errors,
+                "required_fields": list(required_fields.keys())
+            }), 400
+
+        # ===== 4. DATA PREPARATION =====
         pred_folder = "Prediction_Batch_Files"
+        bad_data_folder = os.path.join(pred_folder, "Bad_Data")
         os.makedirs(pred_folder, exist_ok=True)
+        os.makedirs(bad_data_folder, exist_ok=True)
 
-        # Save to CSV
         input_path = os.path.join(pred_folder, "InputFile.csv")
-        pd.DataFrame([input_data]).to_csv(input_path, index=False)
-        logger.log(log_file, f"Input data saved to {input_path}")
+        try:
+            input_df = pd.DataFrame([input_data])
+            input_df.to_csv(input_path, index=False)
+            logger.log(log_file, f"Input data saved to {input_path}")
+        except Exception as e:
+            error_msg = f"Failed to save input data: {str(e)}"
+            logger.log(log_file, error_msg)
+            return jsonify({
+                "status": "error",
+                "message": "Data preparation failed",
+                "details": str(e)
+            }), 500
 
-        # Validate and predict
-        pred_val = pred_validation(pred_folder)
-        pred_val.prediction_validation()
+        # ===== 5. DATA VALIDATION =====
+        try:
+            pred_val = pred_validation(pred_folder)
 
-        pred = prediction(pred_folder)
-        output_path = pred.predictionFromModel()
+            # Add debug logging for validation
+            logger.log(log_file, "Starting data validation...")
+            validation_result = pred_val.prediction_validation()
 
-        # Read and return results
-        results = pd.read_csv(output_path)
-        prediction_result = results.iloc[0]['Predictions']
-        confidence = 0.95 if prediction_result == 'Y' else 0.15
+            # Check if file was moved to Bad_Data
+            bad_data_path = os.path.join(bad_data_folder, "InputFile.csv")
+            if os.path.exists(bad_data_path):
+                error_msg = "Data validation failed - file moved to Bad_Data"
+                logger.log(log_file, error_msg)
 
-        return jsonify({
-            "status": "success",
-            "prediction": prediction_result,
-            "confidence": confidence,
-            "factors": get_important_factors(input_data)
-        })
+                # Read validation log for details
+                validation_log = os.path.join("Prediction_Logs", "Prediction_Validation_Log.txt")
+                validation_details = ""
+                if os.path.exists(validation_log):
+                    with open(validation_log, 'r') as f:
+                        validation_details = f.read().splitlines()[-5:]  # Get last 5 lines
+
+                return jsonify({
+                    "status": "error",
+                    "message": "Data validation failed",
+                    "details": validation_details,
+                    "resolution": "Check your input data against schema requirements"
+                }), 400
+
+            logger.log(log_file, "Data validation passed")
+        except Exception as e:
+            error_msg = f"Validation process failed: {str(e)}"
+            logger.log(log_file, error_msg)
+            return jsonify({
+                "status": "error",
+                "message": "Data validation system error",
+                "details": str(e)
+            }), 500
+
+        # ===== 6. PREDICTION EXECUTION =====
+        try:
+            logger.log(log_file, "Starting prediction...")
+            pred = prediction(pred_folder)
+
+            # Add debug logging for model files
+            model_dir = "models/"
+            logger.log(log_file, f"Model directory contents: {os.listdir(model_dir)}")
+
+            output_path = pred.predictionFromModel()
+            logger.log(log_file, f"Prediction completed, results at: {output_path}")
+
+            # ===== 7. RESULT PROCESSING =====
+            try:
+                results = pd.read_csv(output_path)
+                if results.empty:
+                    raise ValueError("Empty prediction results")
+
+                prediction_result = results.iloc[0]['Predictions']
+                confidence = 0.95 if prediction_result == 'Y' else 0.15
+                factors = get_important_factors(input_data)
+
+                return jsonify({
+                    "status": "success",
+                    "prediction": prediction_result,
+                    "confidence": confidence,
+                    "factors": factors,
+                    "timestamp": datetime.now().isoformat()
+                })
+
+            except Exception as e:
+                error_msg = f"Result processing failed: {str(e)}"
+                logger.log(log_file, error_msg)
+                return jsonify({
+                    "status": "error",
+                    "message": "Could not process results",
+                    "details": str(e)
+                }), 500
+
+        except Exception as e:
+            error_msg = f"Prediction failed: {str(e)}"
+            logger.log(log_file, error_msg)
+
+            # Check for common prediction errors
+            if "KMeans" in str(e):
+                return jsonify({
+                    "status": "error",
+                    "message": "Model loading failed",
+                    "details": "KMeans model not found or invalid",
+                    "resolution": "Please retrain your models"
+                }), 503
+
+            elif "Cluster" in str(e):
+                return jsonify({
+                    "status": "error",
+                    "message": "Cluster prediction failed",
+                    "details": str(e),
+                    "resolution": "Check your training data distribution"
+                }), 500
+
+            else:
+                return jsonify({
+                    "status": "error",
+                    "message": "Prediction processing failed",
+                    "details": str(e) if app.debug else None,
+                    "resolution": "Contact support with error details"
+                }), 500
 
     except Exception as e:
-        logger.log(log_file, f"Prediction failed: {str(e)}\n{traceback.format_exc()}")
+        error_id = datetime.now().strftime("%Y%m%d-%H%M%S")
+        logger.log(log_file, f"UNHANDLED ERROR [{error_id}]: {str(e)}\n{traceback.format_exc()}")
+
         return jsonify({
             "status": "error",
-            "message": f"Prediction failed: {str(e)}"
+            "message": "Internal server error",
+            "error_id": error_id,
+            "resolution": "Contact support with this error ID"
         }), 500
 
 
@@ -529,69 +594,6 @@ def get_important_factors(data):
 
     return factors if factors else ["No significant risk factors identified"]
 
-
-# @app.route("/train", methods=['POST'])
-# @cross_origin()
-# def trainRouteClient():
-#     try:
-#         if request.json['folderPath'] is not None:
-#             path = request.json['folderPath']
-#             train_valObj = train_validation(path)  # object initialization
-#             train_valObj.train_validation()  # calling the training_validation function
-
-#             trainModelObj = trainModel()  # object initialization
-#             trainModelObj.trainingModel()  # training the model for the files in the table
-
-#     except ValueError:
-#         return Response("Error Occurred! %s" % ValueError)
-#     except KeyError:
-#         return Response("Error Occurred! %s" % KeyError)
-#     except Exception as e:
-#         return Response("Error Occurred! %s" % e)
-#     return Response("Training successful!!")
-
-# @app.route("/train", methods=['POST'])
-# @cross_origin()
-# def trainRouteClient():
-#     log_file = open("Training_Logs/trainingLog.txt", "a+")
-#     try:
-#         logger.log(log_file, "Training request received.")
-        
-#         if 'folderPath' not in request.json:
-#             logger.log(log_file, "No folder path provided in request.")
-#             log_file.close()
-#             return jsonify({"status": "error", "message": "No folder path provided."}), 400
-        
-#         path = request.json['folderPath']
-#         logger.log(log_file, f"Folder path received: {path}")
-        
-#         # Validate training data
-#         train_valObj = train_validation(path)
-#         logger.log(log_file, "Starting training data validation...")
-#         train_valObj.train_validation()
-#         logger.log(log_file, "Training data validation completed successfully.")
-        
-#         # Train model
-#         trainModelObj = trainModel()
-#         logger.log(log_file, "Starting model training...")
-#         trainModelObj.trainingModel()
-#         logger.log(log_file, "Model training completed successfully.")
-        
-#         log_file.close()
-#         return jsonify({"status": "success", "message": "Training successful!"}), 200
-    
-#     except ValueError as e:
-#         logger.log(log_file, f"ValueError occurred: {str(e)}")
-#         log_file.close()
-#         return jsonify({"status": "error", "message": str(e)}), 400
-#     except KeyError as e:
-#         logger.log(log_file, f"KeyError occurred: {str(e)}")
-#         log_file.close()
-#         return jsonify({"status": "error", "message": str(e)}), 400
-#     except Exception as e:
-#         logger.log(log_file, f"Unexpected error: {str(e)}")
-#         log_file.close()
-#         return jsonify({"status": "error", "message": "An unexpected error occurred during training."}), 500
 
 # Run the Flask app
 if __name__ == "__main__":

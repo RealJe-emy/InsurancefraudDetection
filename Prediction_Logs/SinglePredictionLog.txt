@@ -257,3 +257,272 @@ Traceback (most recent call last):
     raise Exception(error_msg) from None
 Exception: Prediction failed: 
 
+2025-03-31/23:37:38		Single prediction request received
+2025-03-31/23:37:38		Received data: {'policy_number': '142567', 'months_as_customer': '24', 'policy_deductable': '1000', 'policy_annual_premium': '1406', 'incident_severity': 'Minor Damage', 'incident_hour_of_the_day': '05', 'number_of_vehicles_involved': '2', 'bodily_injuries': '1', 'property_damage': 'YES', 'police_report_available': 'YES'}
+2025-03-31/23:37:38		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-31/23:37:41		Prediction failed: Prediction failed: 
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 493, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 125, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed: 
+
+2025-03-31/23:52:00		=== New Single Prediction Request ===
+2025-03-31/23:52:00		Headers: {'Host': '127.0.0.1:5001', 'Connection': 'keep-alive', 'Content-Length': '289', 'Sec-Ch-Ua-Platform': '"Windows"', 'X-Requested-With': 'XMLHttpRequest', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'Accept': '*/*', 'Sec-Ch-Ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://127.0.0.1:5001', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5001/predict.html', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9,en-GB;q=0.8', 'Dnt': '1', 'Sec-Gpc': '1'}
+2025-03-31/23:52:00		Content-Type: application/json
+2025-03-31/23:52:00		Raw input data: {
+  "policy_number": "142567",
+  "months_as_customer": "24",
+  "policy_deductable": "1000",
+  "policy_annual_premium": "1406",
+  "incident_severity": "Minor Damage",
+  "incident_hour_of_the_day": "05",
+  "number_of_vehicles_involved": "2",
+  "bodily_injuries": "1",
+  "property_damage": "YES",
+  "police_report_available": "YES"
+}
+2025-03-31/23:52:00		Input data validated successfully
+2025-03-31/23:52:00		Ensured prediction directory exists: Prediction_Batch_Files
+2025-03-31/23:52:01		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-31/23:52:04		Input file validation completed
+2025-03-31/23:52:04		Initializing prediction pipeline
+2025-03-31/23:52:04		Prediction failed: Prediction failed at stage: Exception
+Details: 
+Check logs for complete traceback
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 547, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 194, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed at stage: Exception
+Details: 
+Check logs for complete traceback
+
+2025-03-31/23:52:04		Prediction pipeline failed: Prediction failed at stage: Exception
+Details: 
+Check logs for complete traceback
+2025-03-31/23:56:22		
+==================================================
+2025-03-31/23:56:22		=== New Single Prediction Request ===
+2025-03-31/23:56:22		Timestamp: 2025-03-31T23:56:22.874172
+2025-03-31/23:56:22		Headers: {'Host': '127.0.0.1:5001', 'Connection': 'keep-alive', 'Content-Length': '289', 'Sec-Ch-Ua-Platform': '"Windows"', 'X-Requested-With': 'XMLHttpRequest', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'Accept': '*/*', 'Sec-Ch-Ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"', 'Content-Type': 'application/json', 'Sec-Ch-Ua-Mobile': '?0', 'Origin': 'http://127.0.0.1:5001', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Dest': 'empty', 'Referer': 'http://127.0.0.1:5001/predict.html', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9,en-GB;q=0.8', 'Dnt': '1', 'Sec-Gpc': '1'}
+2025-03-31/23:56:22		Content-Type: application/json
+2025-03-31/23:56:22		Raw input data received:
+2025-03-31/23:56:22		{
+  "policy_number": "142567",
+  "months_as_customer": "24",
+  "policy_deductable": "1000",
+  "policy_annual_premium": "1406",
+  "incident_severity": "Minor Damage",
+  "incident_hour_of_the_day": "05",
+  "number_of_vehicles_involved": "2",
+  "bodily_injuries": "1",
+  "property_damage": "YES",
+  "police_report_available": "YES"
+}
+2025-03-31/23:56:22		Input data validated successfully
+2025-03-31/23:56:22		Ensured prediction directory exists: Prediction_Batch_Files
+2025-03-31/23:56:22		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-03-31/23:56:24		Input file validation completed
+2025-03-31/23:56:24		Initializing prediction pipeline
+2025-03-31/23:56:24		Model directory contents: ['KMeans', 'XGBoost0', 'XGBoost1']
+2025-03-31/23:56:24		Starting prediction process...
+2025-03-31/23:56:24		Prediction Error Type: Exception
+2025-03-31/23:56:24		Prediction Error Message: Prediction failed at stage: Exception
+Details: 
+Check logs for complete traceback
+2025-03-31/23:56:24		Traceback:
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 554, in single_predict
+    output_path = pred.predictionFromModel()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\predictFromModel.py", line 194, in predictionFromModel
+    raise Exception(error_msg) from None
+Exception: Prediction failed at stage: Exception
+Details: 
+Check logs for complete traceback
+
+2025-04-01/00:03:34		
+================================================================================
+2025-04-01/00:03:34		=== NEW PREDICTION REQUEST ===
+2025-04-01/00:03:34		Timestamp: 2025-04-01T00:03:34.357524
+2025-04-01/00:03:34		Raw JSON data received
+2025-04-01/00:03:34		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-04-01/00:03:34		Starting data validation...
+2025-04-01/00:03:34		Validation process failed: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
+2025-04-01/00:07:35		
+================================================================================
+2025-04-01/00:07:35		=== NEW PREDICTION REQUEST ===
+2025-04-01/00:07:35		Starting data validation...
+2025-04-01/00:07:35		Using schema: {
+  "SampleFileName": "fraudDetection_021119920_010222.csv",
+  "LengthOfDateStampInFile": 9,
+  "LengthOfTimeStampInFile": 6,
+  "NumberofColumns": 38,
+  "ColName": {
+    "months_as_customer": "Integer",
+    "age": "Integer",
+    "policy_number": "Integer",
+    "policy_bind_date": "varchar",
+    "policy_state": "varchar",
+    "policy_csl": "varchar",
+    "policy_deductable": "Integer",
+    "policy_annual_premium": "Integer",
+    "umbrella_limit": "Integer",
+    "insured_zip": "Integer",
+    "insured_sex": "varchar",
+    "insured_education_level": "varchar",
+    "insured_occupation": "varchar",
+    "insured_hobbies": "varchar",
+    "insured_relationship": "varchar",
+    "capital-gains": "Integer",
+    "capital-loss": "Integer",
+    "incident_date": "varchar",
+    "incident_type": "varchar",
+    "collision_type": "varchar",
+    "incident_severity": "varchar",
+    "authorities_contacted": "varchar",
+    "incident_state": "varchar",
+    "incident_city": "varchar",
+    "incident_location": "varchar",
+    "incident_hour_of_the_day": "Integer",
+    "number_of_vehicles_involved": "Integer",
+    "property_damage": "varchar",
+    "bodily_injuries": "Integer",
+    "witnesses": "Integer",
+    "police_report_available": "varchar",
+    "total_claim_amount": "Integer",
+    "injury_claim": "Integer",
+    "property_claim": "Integer",
+    "vehicle_claim": "Integer",
+    "auto_make": "varchar",
+    "auto_model": "varchar",
+    "auto_year": "Integer"
+  }
+}
+2025-04-01/00:07:35		Validation process crashed: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 520, in single_predict
+    validation_result = pred_val.prediction_validation()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\prediction_Validation_Insertion.py", line 61, in prediction_validation
+    raise e
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\prediction_Validation_Insertion.py", line 26, in prediction_validation
+    self.raw_data.validationFileNameRaw(regex,LengthOfDateStampInFile,LengthOfTimeStampInFile)
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\Prediction_Raw_Data_Validation\predictionDataValidation.py", line 259, in validationFileNameRaw
+    raise e
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\Prediction_Raw_Data_Validation\predictionDataValidation.py", line 250, in validationFileNameRaw
+    shutil.copy("Prediction_Batch_files/" + filename, "Prediction_Raw_Files_Validated/Bad_Raw")
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\shutil.py", line 431, in copy
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\shutil.py", line 256, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
+
+2025-04-01/00:07:38		
+================================================================================
+2025-04-01/00:07:38		=== NEW PREDICTION REQUEST ===
+2025-04-01/00:07:38		Starting data validation...
+2025-04-01/00:07:38		Using schema: {
+  "SampleFileName": "fraudDetection_021119920_010222.csv",
+  "LengthOfDateStampInFile": 9,
+  "LengthOfTimeStampInFile": 6,
+  "NumberofColumns": 38,
+  "ColName": {
+    "months_as_customer": "Integer",
+    "age": "Integer",
+    "policy_number": "Integer",
+    "policy_bind_date": "varchar",
+    "policy_state": "varchar",
+    "policy_csl": "varchar",
+    "policy_deductable": "Integer",
+    "policy_annual_premium": "Integer",
+    "umbrella_limit": "Integer",
+    "insured_zip": "Integer",
+    "insured_sex": "varchar",
+    "insured_education_level": "varchar",
+    "insured_occupation": "varchar",
+    "insured_hobbies": "varchar",
+    "insured_relationship": "varchar",
+    "capital-gains": "Integer",
+    "capital-loss": "Integer",
+    "incident_date": "varchar",
+    "incident_type": "varchar",
+    "collision_type": "varchar",
+    "incident_severity": "varchar",
+    "authorities_contacted": "varchar",
+    "incident_state": "varchar",
+    "incident_city": "varchar",
+    "incident_location": "varchar",
+    "incident_hour_of_the_day": "Integer",
+    "number_of_vehicles_involved": "Integer",
+    "property_damage": "varchar",
+    "bodily_injuries": "Integer",
+    "witnesses": "Integer",
+    "police_report_available": "varchar",
+    "total_claim_amount": "Integer",
+    "injury_claim": "Integer",
+    "property_claim": "Integer",
+    "vehicle_claim": "Integer",
+    "auto_make": "varchar",
+    "auto_model": "varchar",
+    "auto_year": "Integer"
+  }
+}
+2025-04-01/00:07:38		Validation process crashed: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
+Traceback (most recent call last):
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\main.py", line 520, in single_predict
+    validation_result = pred_val.prediction_validation()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\prediction_Validation_Insertion.py", line 61, in prediction_validation
+    raise e
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\prediction_Validation_Insertion.py", line 26, in prediction_validation
+    self.raw_data.validationFileNameRaw(regex,LengthOfDateStampInFile,LengthOfTimeStampInFile)
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\Prediction_Raw_Data_Validation\predictionDataValidation.py", line 259, in validationFileNameRaw
+    raise e
+  File "C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection\Prediction_Raw_Data_Validation\predictionDataValidation.py", line 250, in validationFileNameRaw
+    shutil.copy("Prediction_Batch_files/" + filename, "Prediction_Raw_Files_Validated/Bad_Raw")
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\shutil.py", line 431, in copy
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\shutil.py", line 256, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
+
+2025-04-01/00:10:20		
+================================================================================
+2025-04-01/00:10:20		=== NEW PREDICTION REQUEST ===
+2025-04-01/00:10:20		Timestamp: 2025-04-01T00:10:20.473652
+2025-04-01/00:10:20		Raw JSON data received
+2025-04-01/00:10:20		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-04-01/00:10:20		Starting data validation...
+2025-04-01/00:10:20		Validation process failed: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
+2025-04-01/00:10:42		
+================================================================================
+2025-04-01/00:10:42		=== NEW PREDICTION REQUEST ===
+2025-04-01/00:10:42		Timestamp: 2025-04-01T00:10:42.710513
+2025-04-01/00:10:42		Raw JSON data received
+2025-04-01/00:10:42		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-04-01/00:10:42		Starting data validation...
+2025-04-01/00:10:42		Validation process failed: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
+2025-04-01/00:10:44		
+================================================================================
+2025-04-01/00:10:44		=== NEW PREDICTION REQUEST ===
+2025-04-01/00:10:44		Timestamp: 2025-04-01T00:10:44.661910
+2025-04-01/00:10:44		Raw JSON data received
+2025-04-01/00:10:44		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-04-01/00:10:44		Starting data validation...
+2025-04-01/00:10:44		Validation process failed: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
+2025-04-01/00:14:45		
+================================================================================
+2025-04-01/00:14:45		=== NEW PREDICTION REQUEST ===
+2025-04-01/00:14:45		Timestamp: 2025-04-01T00:14:45.209364
+2025-04-01/00:14:45		Raw JSON data received
+2025-04-01/00:14:45		Input data saved to Prediction_Batch_Files\InputFile.csv
+2025-04-01/00:14:45		Starting data validation...
+2025-04-01/00:14:45		Validation process failed: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
