@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Predict Fraud</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 700;
+        }
+        .navbar {
+            background-color: #273582 !important;
+        }
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: 700;
+        }
+        .btn-primary {
+            background-color: #ff7f00;
+            border-color: #ff7f00;
+        }
+        .btn-primary:hover {
+            background-color: #e67300;
+            border-color: #e67300;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+        .footer {
+            background-color: #273582;
+            color: #fff;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .footer a {
+            color: #ff7f00;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #e67300;
+        }
+        .result-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            height: 300px;
+            overflow-y: auto;
+        }
+        #loading {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+            display: none;
+        }
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #273582;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -30px;
+            margin-left: -30px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .form-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .tab-content {
+            padding: 15px 0;
+        }
+        .nav-tabs .nav-link.active {
+            font-weight: bold;
+            color: #273582;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Insurance Fraud Detection System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="train.html">Train Model</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="predict.html">Predict Fraud</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Predict Fraud Section -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Predict Fraud</h2>
+
+        <ul class="nav nav-tabs" id="predictionTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="single-tab" data-toggle="tab" href="#single" role="tab">Single Prediction</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="batch-tab" data-toggle="tab" href="#batch" role="tab">Batch Prediction</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="predictionTabsContent">
+            <!-- Single Prediction Tab -->
+            <div class="tab-pane fade show active" id="single" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form id="single_predict_form" class="form-section">
+                            <h5 class="mb-4">Essential Claim Information</h5>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="policy_number">Policy Number *</label>
+                                    <input type="text" class="form-control" id="policy_number" name="policy_number" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="months_as_customer">Months as Customer *</label>
+                                    <input type="number" class="form-control" id="months_as_customer" name="months_as_customer" min="1" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="policy_deductable">Policy Deductible ($) *</label>
+                                    <input type="number" class="form-control" id="policy_deductable" name="policy_deductable" min="0" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="policy_annual_premium">Annual Premium ($) *</label>
+                                    <input type="number" class="form-control" id="policy_annual_premium" name="policy_annual_premium" min="0" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="incident_severity">Incident Severity *</label>
+                                    <select class="form-control" id="incident_severity" name="incident_severity" required>
+                                        <option value="">Select severity</option>
+                                        <option value="Minor Damage">Minor Damage</option>
+                                        <option value="Major Damage">Major Damage</option>
+                                        <option value="Total Loss">Total Loss</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="incident_hour_of_the_day">Incident Hour (0-23) *</label>
+                                    <input type="number" class="form-control" id="incident_hour_of_the_day" name="incident_hour_of_the_day" min="0" max="23" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="number_of_vehicles_involved">Vehicles Involved *</label>
+                                    <input type="number" class="form-control" id="number_of_vehicles_involved" name="number_of_vehicles_involved" min="1" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="bodily_injuries">Bodily Injuries *</label>
+                                    <input type="number" class="form-control" id="bodily_injuries" name="bodily_injuries" min="0" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="property_damage">Property Damage *</label>
+                                    <select class="form-control" id="property_damage" name="property_damage" required>
+                                        <option value="">Select option</option>
+                                        <option value="YES">Yes</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="police_report_available">Police Report Available *</label>
+                                    <select class="form-control" id="police_report_available" name="police_report_available" required>
+                                        <option value="">Select option</option>
+                                        <option value="YES">Yes</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-block mt-4" id="singlepredict">Predict Fraud</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="result-box">
+                            <h6 class="title">Prediction Results</h6>
+                            <div class="json-result" id="single_result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Batch Prediction Tab -->
+            <div class="tab-pane fade" id="batch" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form id="batch_predict_form" class="form-section" enctype="multipart/form-data">
+                            <h5 class="mb-4">Batch Prediction</h5>
+
+                            <div class="form-group">
+                                <label for="csvfile">Upload CSV File *</label>
+                                <input type="file" class="form-control-file" id="csvfile" name="csvfile" accept=".csv" required>
+                                <small class="form-text text-muted">
+                                    File must contain all required fields in CSV format.
+                                    <a href="/sample_fraud_data.csv" download>Download sample file</a>
+                                </small>
+                            </div>
+
+                            <div class="alert alert-info">
+                                <strong>Required fields:</strong> policy_number, months_as_customer, policy_deductable,
+                                policy_annual_premium, incident_severity, incident_hour_of_the_day,
+                                number_of_vehicles_involved, bodily_injuries, property_damage,
+                                police_report_available
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" id="batchpredict">Process Batch Prediction</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="result-box">
+                            <h6 class="title">Batch Results</h6>
+                            <div class="json-result" id="batch_result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Insurance Fraud Detection System. All rights reserved.</p>
+            <p class="mb-0"><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#loading').hide();
+
+            // Batch Prediction
+            $("#batch_predict_form").submit(function(e) {
+                e.preventDefault();
+                $('#loading').show();
+                var fileInput = document.getElementById('csvfile');
+                var file = fileInput.files[0];
+
+                // Validate file type
+                if (!file.name.endsWith('.csv')) {
+                    $("#batch_result").html('<div class="alert alert-danger">Please upload a CSV file</div>');
+                    $('#loading').hide();
+                    return;
+                }
+
+                // Validate file content
+                Papa.parse(file, {
+                    header: true,
+                    preview: 1,
+                    complete: function(results) {
+                        var requiredFields = [
+                            'policy_number', 'months_as_customer', 'policy_deductable',
+                            'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day',
+                            'number_of_vehicles_involved', 'bodily_injuries', 'property_damage',
+                            'police_report_available'
+                        ];
+
+                        var missingFields = [];
+                        if (results.meta.fields) {
+                            missingFields = requiredFields.filter(field => !results.meta.fields.includes(field));
+                        }
+
+                        if (missingFields.length > 0) {
+                            $("#batch_result").html('<div class="alert alert-danger">Missing required fields: ' +
+                                missingFields.join(', ') + '</div>');
+                            $('#loading').hide();
+                            return;
+                        }
+
+                        // Proceed with upload if validation passes
+                        var formData = new FormData();
+                        formData.append('file', file);
+
+                        $.ajax({
+                            url: "/predict",
+                            type: "POST",
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function(response) {
+                                displayBatchResults(response);
+                                $('#loading').hide();
+                            },
+                            error: function(xhr, status, error) {
+                                $("#batch_result").html('<div class="alert alert-danger">Error: ' +
+                                    (xhr.responseJSON?.message || error) + '</div>');
+                                $('#loading').hide();
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        $("#batch_result").html('<div class="alert alert-danger">Error parsing CSV: ' + error + '</div>');
+                        $('#loading').hide();
+                    }
+                });
+            });
+
+            // Single Client Prediction
+            $("#single_predict_form").submit(function(e) {
+                e.preventDefault();
+                $('#loading').show();
+
+                var formData = {
+                    policy_number: $("#policy_number").val(),
+                    months_as_customer: $("#months_as_customer").val(),
+                    policy_deductable: $("#policy_deductable").val(),
+                    policy_annual_premium: $("#policy_annual_premium").val(),
+                    incident_severity: $("#incident_severity").val(),
+                    incident_hour_of_the_day: $("#incident_hour_of_the_day").val(),
+                    number_of_vehicles_involved: $("#number_of_vehicles_involved").val(),
+                    bodily_injuries: $("#bodily_injuries").val(),
+                    property_damage: $("#property_damage").val(),
+                    police_report_available: $("#police_report_available").val()
+                };
+
+                $.ajax({
+                    url: "/single_predict",
+                    type: "POST",
+                    data: JSON.stringify(formData),
+                    contentType: "application/json",
+                    success: function(response) {
+                        displaySingleResult(response);
+                        $('#loading').hide();
+                    },
+                    error: function(xhr, status, error) {
+                        $("#single_result").html('<div class="alert alert-danger">Error: ' +
+                            (xhr.responseJSON?.message || error) + '</div>');
+                        $('#loading').hide();
+                    }
+                });
+            });
+
+            function displaySingleResult(response) {
+                let html = '<div class="card">';
+                html += '<div class="card-header ' + (response.prediction === 'Y' ? 'bg-danger' : 'bg-success') + ' text-white">';
+                html += '<h5 class="mb-0">Prediction: ' + (response.prediction === 'Y' ? 'FRAUD DETECTED' : 'No Fraud Detected') + '</h5>';
+                html += '</div>';
+                html += '<div class="card-body">';
+                html += '<p><strong>Confidence:</strong> ' + (response.probability * 100).toFixed(2) + '%</p>';
+
+                if (response.important_factors) {
+                    html += '<h6>Key Factors:</h6><ul>';
+                    response.important_factors.forEach(factor => {
+                        html += '<li>' + factor + '</li>';
+                    });
+                    html += '</ul>';
+                }
+
+                html += '<h6>Details:</h6>';
+                html += '<pre>' + JSON.stringify(response, null, 2) + '</pre>';
+                html += '</div></div>';
+
+                $("#single_result").html(html);
+            }
+
+            function displayBatchResults(response) {
+                if (response.results && response.results.length > 0) {
+                    let html = '<div class="table-responsive"><table class="table table-striped">';
+                    html += '<thead><tr><th>Policy #</th><th>Prediction</th><th>Confidence</th><th>Details</th></tr></thead><tbody>';
+
+                    response.results.forEach(result => {
+                        html += '<tr class="' + (result.prediction === 'Y' ? 'table-danger' : 'table-success') + '">';
+                        html += '<td>' + result.policy_number + '</td>';
+                        html += '<td>' + (result.prediction === 'Y' ? 'FRAUD' : 'Clean') + '</td>';
+                        html += '<td>' + (result.probability * 100).toFixed(2) + '%</td>';
+                        html += '<td><button class="btn btn-sm btn-info view-details" data-id="' + result.policy_number + '">View</button></td>';
+                        html += '</tr>';
+                    });
+
+                    html += '</tbody></table></div>';
+                    html += '<div class="mt-3">';
+                    html += '<strong>Summary:</strong> ' + response.summary.fraud_count + ' fraud cases detected out of ' + response.results.length;
+                    html += '</div>';
+
+                    $("#batch_result").html(html);
+                } else {
+                    $("#batch_result").html('<div class="alert alert-warning">No results returned from prediction</div>');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
