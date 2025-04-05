@@ -150,105 +150,146 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
     <script>
-        $(document).ready(function() {
-            $('#loading').hide();
+    $(document).ready(function() {
+        $('#loading').hide();
 
+        // First check authentication
+        checkAuth().then(() => {
+            // Authentication successful, proceed with setup
+            setupTrainPage();
+        }).catch(() => {
+            // Not authenticated, redirect to login
+            window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+        });
+
+        function setupTrainPage() {
             // Validate File
             $("#validatefile").click(function(e) {
                 e.preventDefault();
+                if (!validateAuth()) return;
+
                 $('#loading').show();
                 var fileInput = document.getElementById('csvfile');
                 var file = fileInput.files[0];
+
+                if (!file) {
+                    showAlert('Please select a file first', 'danger');
+                    $('#loading').hide();
+                    return;
+                }
+
                 var formData = new FormData();
                 formData.append('file', file);
 
-                $.ajax({
+                makeAuthenticatedRequest({
                     url: "/validate",
                     type: "POST",
                     data: formData,
                     processData: false,
                     contentType: false,
                     success: function(response) {
-                        var resultHtml = '';
-                        if (response.status === "success") {
-                            resultHtml = '<div class="alert alert-success" role="alert">' +
-                                        '<strong>Success!</strong> ' + response.message +
-                                        '</div>';
-                        } else if (response.status === "error") {
-                            resultHtml = '<div class="alert alert-danger" role="alert">' +
-                                        '<strong>Error:</strong> ' + response.message +
-                                        '</div>';
-                        } else {
-                            resultHtml = '<div class="alert alert-warning" role="alert">' +
-                                        '<strong>Warning:</strong> Unexpected response format.' +
-                                        '</div>';
-                        }
-                        $(".json-result").html(resultHtml);
+                        showAlert(response.message, response.status);
                         $('#loading').hide();
                     },
-                    error: function(xhr, status, error) {
-                        var errorMessage = "An error occurred during validation.";
-                        try {
-                            var response = JSON.parse(xhr.responseText);
-                            if (response && response.message) {
-                                errorMessage = response.message;
-                            }
-                        } catch (e) {
-                            if (xhr.status === 400) {
-                                errorMessage = "The file format is incorrect or missing required information.";
-                            } else if (xhr.status === 500) {
-                                errorMessage = "A server error occurred. Please try again later.";
-                            }
-                        }
-                        $(".json-result").html('<div class="alert alert-danger" role="alert">' +
-                                              '<strong>Error:</strong> ' + errorMessage +
-                                              '</div>');
-                        $('#loading').hide();
-                    }
+                    error: handleAjaxError
                 });
             });
 
             // Train Model
             $("#trainmodel").click(function(e) {
-            e.preventDefault();
-            $('#loading').show();
-            $(".json-result").html('<div class="alert alert-info" role="alert">Training model... Please wait.</div>');
+                e.preventDefault();
+                if (!validateAuth()) return;
 
-            var fileInput = document.getElementById('csvfile');
-            if (fileInput.files.length > 0) {
+                $('#loading').show();
+                $(".json-result").html('<div class="alert alert-info">Training model... Please wait.</div>');
+
+                var fileInput = document.getElementById('csvfile');
+                if (fileInput.files.length === 0) {
+                    showAlert('Please upload a file before training', 'danger');
+                    $('#loading').hide();
+                    return;
+                }
+
                 var file = fileInput.files[0];
                 var formData = new FormData();
-                formData.append('file', file); // Ensure the key is 'file'
+                formData.append('file', file);
 
-                $.ajax({
+                makeAuthenticatedRequest({
                     url: "/train",
                     type: "POST",
                     data: formData,
-                    processData: false, // Required for FormData
-                    contentType: false, // Required for FormData
+                    processData: false,
+                    contentType: false,
                     success: function(response) {
-                        $(".json-result").html('<div class="alert alert-success" role="alert"><strong>Success!</strong> ' + response + '</div>');
+                        showAlert(response, 'success');
                         $('#loading').hide();
                     },
-                    error: function(xhr, status, error) {
-                        var errorMessage = "An error occurred during training.";
-                        if (xhr.status === 415) {
-                            errorMessage = "Unsupported Media Type: Ensure the request includes a valid file.";
-                        } else if (xhr.status === 500) {
-                            errorMessage = "A server error occurred. Please try again later.";
-                        }
-                        $(".json-result").html('<div class="alert alert-danger" role="alert"><strong>Error:</strong> ' + errorMessage + '</div>');
-                        $('#loading').hide();
-                    }
+                    error: handleAjaxError
                 });
-            } else {
-                $(".json-result").html('<div class="alert alert-danger" role="alert">Please upload a file before training.</div>');
-                $('#loading').hide();
+            });
+        }
+
+        // Helper functions
+        function checkAuth() {
+            return new Promise((resolve, reject) => {
+                const token = localStorage.getItem('authToken');
+                if (!token) return reject();
+
+                $.ajax({
+                    url: "/api/auth/me",
+                    headers: { 'Authorization': 'Bearer ' + token },
+                    success: () => resolve(),
+                    error: () => reject()
+                });
+            });
+        }
+
+        function validateAuth() {
+            if (!localStorage.getItem('authToken')) {
+                window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+                return false;
             }
-        });
+            return true;
+        }
+
+        function makeAuthenticatedRequest(options) {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+                return;
+            }
+
+            $.ajax({
+                ...options,
+                headers: {
+                    ...options.headers,
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+        }
+
+        function showAlert(message, type) {
+            const alertClass = type === 'success' ? 'alert-success' :
+                              type === 'error' ? 'alert-danger' : 'alert-info';
+            $(".json-result").html(`<div class="alert ${alertClass}">${message}</div>`);
+        }
+
+        function handleAjaxError(xhr) {
+            let errorMessage = "An error occurred";
+            if (xhr.status === 401) {
+                errorMessage = "Session expired. Please login again.";
+                localStorage.removeItem('authToken');
+                window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+            } else if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMessage = xhr.responseJSON.message;
+            }
+            showAlert(errorMessage, 'danger');
+            $('#loading').hide();
+        }
     });
-    </script>
+</script>
+
+
 </body>
 </html>

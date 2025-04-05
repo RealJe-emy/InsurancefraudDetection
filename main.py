@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template, Response
 from flask_cors import CORS, cross_origin
+from functools import wraps
 import os
 from Training_Raw_data_validation.rawValidation import Raw_Data_validation
 from application_logging.logger import App_Logger
@@ -8,11 +9,15 @@ from trainingModel import trainModel
 from training_Validation_Insertion import train_validation
 import flask_monitoringdashboard as dashboard
 from predictFromModel import prediction
+from flask import send_from_directory
 import traceback
 import json
 import pandas as pd
+from werkzeug.security import generate_password_hash, check_password_hash
+import secrets
+from datetime import datetime, timedelta
+
 import sqlite3
-from datetime import datetime
 import shutil
 import csv
 from werkzeug.utils import secure_filename
@@ -30,33 +35,228 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 UPLOAD_FOLDER_CSV = "uploads"
 os.makedirs(UPLOAD_FOLDER_CSV, exist_ok=True)
 
+def get_db():
+    db = sqlite3.connect('database.db')
+    db.row_factory = sqlite3.Row  # For dictionary-style access
+    return db
+
+db = get_db()
+
 # Initialize the logger
 logger = App_Logger()
 
 
-# Serve the HTML files
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        # Skip auth for GET requests to HTML pages
+        if request.method == 'GET' and request.accept_mimetypes.accept_html:
+            return f(*args, **kwargs)
+
+        # Original token verification for API requests
+        auth_header = request.headers.get('Authorization')
+        if not auth_header or not auth_header.startswith('Bearer '):
+            return jsonify({"error": "Authorization header missing or invalid"}), 401
+
+        token = auth_header.split(' ')[1]
+        employee = db.execute(
+            "SELECT e.id, e.username, e.role FROM employee_sessions s "
+            "JOIN employees e ON s.employee_id = e.id "
+            "WHERE s.session_token = ? AND s.expires_at > datetime('now') AND e.is_active = 1",
+            (token,)
+        ).fetchone()
+
+        if not employee:
+            return jsonify({"error": "Invalid or expired token"}), 401
+
+        request.employee = employee
+        return f(*args, **kwargs)
+
+    return decorated_function
+
+
+@app.route('/debug-routes')
+def debug_routes():
+    routes = []
+    for rule in app.url_map.iter_rules():
+        routes.append({
+            'route': str(rule),
+            'methods': sorted(rule.methods),
+            'endpoint': rule.endpoint
+        })
+    return jsonify(routes)
+
+
+
+# Ensure these routes exist (add if missing)
 @app.route("/", methods=['GET'])
 @cross_origin()
 def home():
     return render_template('index.html')
 
+@app.route('/login.html')
+def login_page():
+    return render_template('login.html')
 
-@app.route("/predict.html", methods=['GET'])
-@cross_origin()
+@app.route('/registration.html')
+def register_page():
+    return render_template('registration.html')
+
+@app.route('/train.html')
+@login_required
+def train_page():
+    return render_template('train.html')
+
+@app.route('/predict.html')
+@login_required
 def predict_page():
     return render_template('predict.html')
 
-
-@app.route("/validation.html", methods=['GET'])
-@cross_origin()
+@app.route('/validation.html')
+@login_required
 def validation_page():
     return render_template('validation.html')
 
 
-@app.route("/train.html", methods=['GET'])
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('500.html'), 500
+
+
+
+
+# Auth Service Class
+class AuthService:
+    def __init__(self, db):
+        self.db = db
+
+    def register_user(self, username, email, password):
+        # Check if email exists
+        existing = self.db.execute(
+            "SELECT id FROM employees WHERE email = %s",
+            (email,)
+        ).fetchone()
+
+        if existing:
+            return None, "Email already registered"
+
+        # Hash password and create user
+        hashed_pw = generate_password_hash(password)
+        result = self.db.execute(
+            "INSERT INTO employees (username, email, password_hash) "
+            "VALUES (%s, %s, %s) RETURNING id",
+            (username, email, hashed_pw)
+        )
+        user_id = result.fetchone()[0]
+        return user_id, None
+
+    def login_user(self, email, password):
+        # Get user from database
+        user = self.db.execute(
+            "SELECT id, password_hash FROM employees WHERE email = %s",
+            (email,)
+        ).fetchone()
+
+        if not user or not check_password_hash(user['password_hash'], password):
+            return None, "Invalid email or password"
+
+        # Create session token
+        token = secrets.token_hex(32)
+        expires_at = datetime.now() + timedelta(days=7)
+
+        self.db.execute(
+            "INSERT INTO employee_sessions (employee_id, session_token, expires_at) "
+            "VALUES (%s, %s, %s)",
+            (user['id'], token, expires_at)
+        )
+
+        return token, None
+
+
+# Initialize auth service
+auth_service = AuthService(db)
+
+
+# Auth API Endpoints
+@app.route('/api/auth/register', methods=['POST'])
 @cross_origin()
-def train_page():
-    return render_template('train.html')
+def register():
+    # Ensure it only accepts JSON
+    if not request.is_json:
+        return jsonify({"error": "Request must be JSON"}), 400
+
+    data = request.get_json()
+
+    # Required fields validation
+    required_fields = ['username', 'email', 'password']
+    if not all(field in data for field in required_fields):
+        return jsonify({"error": f"Missing required fields: {required_fields}"}), 400
+
+    try:
+        # Check if email exists
+        existing = db.execute(
+            "SELECT id FROM employees WHERE email = ?",
+            (data['email'],)
+        ).fetchone()
+
+        if existing:
+            return jsonify({"error": "Email already registered"}), 400
+
+        # Hash password and create user
+        hashed_pw = generate_password_hash(data['password'])
+        db.execute(
+            "INSERT INTO employees (username, email, password_hash) "
+            "VALUES (?, ?, ?)",
+            (data['username'], data['email'], hashed_pw)
+        )
+        db.commit()
+
+        return jsonify({"message": "Registration successful"}), 201
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/auth/login', methods=['POST'])
+@cross_origin()
+def login():
+    data = request.get_json()
+    if not data or 'email' not in data or 'password' not in data:
+        return jsonify({"error": "Email and password required"}), 400
+
+    token, error = auth_service.login_user(
+        data['email'],
+        data['password']
+    )
+
+    if error:
+        return jsonify({"error": error}), 401
+
+    return jsonify({"token": token})
+
+
+# Protected route example
+@app.route('/api/auth/me', methods=['GET'])
+@cross_origin()
+def get_current_user():
+    token = request.headers.get('Authorization', '').replace('Bearer ', '')
+    if not token:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user = db.execute(
+        "SELECT e.id, e.username, e.email FROM employee_sessions s "
+        "JOIN employees e ON s.employee_id = e.id "
+        "WHERE s.session_token = %s AND s.expires_at > NOW()",
+        (token,)
+    ).fetchone()
+
+    if not user:
+        return jsonify({"error": "Invalid token"}), 401
+
+    return jsonify(user)
 
 
 # To validate the file
@@ -184,52 +384,11 @@ def validate_file():
         }), 500
 
 
-# @app.route("/train", methods=['POST'])
-# @cross_origin()
-# def trainRouteClient():
-#     log_file = open("Training_Logs/trainingLog.txt", "a+")
-#     try:
-#         logger.log(log_file, "Training request received.")
-#         if request.json and 'folderPath' in request.json:
-            
-#             path = os.path.abspath(request.json['folderPath'])
-#             print(f"Absolute path received: {path}")
-#             logger.log(log_file, f"Absolute path received: {path}")
-#             path = request.json['folderPath']
-#             print(f"Folder path received: {path}")
-#             logger.log(log_file, f"Folder path received: {path}")
-            
-#             # Make sure path is a directory, not a file
-#             if os.path.isfile(path):
-#                 path = os.path.dirname(path)  # Get the directory of the file
-#                 logger.log(log_file, f"Path was a file. Using directory: {path}")
-            
-#             # Initialize validation with log file
-#             train_valObj = train_validation(path, log_file)
-#             train_valObj.train_validation()
-            
-#             # Initialize and train model
-#             trainModelObj = trainModel(log_file)
-#             trainModelObj.trainingModel()
-            
-#             logger.log(log_file, "Training successful.")
-#             log_file.close()
-#             return Response("Training successful!!")
-#         else:
-#             logger.log(log_file, "Error: folderPath not provided in request.")
-#             log_file.close()
-#             return Response("Error: folderPath is required!", status=400)
-#     except Exception as e:
-#         error_trace = traceback.format_exc()
-#         logger.log(log_file, f"Unexpected error: {str(e)}")
-#         logger.log(log_file, f"Traceback:\n{error_trace}")
-#         print(f"Unexpected error: {e}\nTraceback:\n{error_trace}")  # Print full error to terminal
-#         log_file.close()
-#         return Response(f"Error Occurred! {str(e)}", status=500)
+
     
 
 
-@app.route("/train", methods=['POST'])
+@app.route('/api/train', methods=['POST'])
 @cross_origin()
 def trainRouteClient():
     log_file = "Training_Logs/trainingLog.txt"
@@ -282,8 +441,9 @@ def trainRouteClient():
 
 
 # Predict route
-@app.route("/predict", methods=['POST'])
+@app.route('/api/predict', methods=['POST'])
 @cross_origin()
+@login_required
 def predictRouteClient():
     log_file = "Prediction_Logs/PredictionLog.txt"
     try:

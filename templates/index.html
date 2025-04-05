@@ -75,6 +75,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="predict.html">Predict Fraud</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+
                 </ul>
             </div>
         </div>
@@ -91,6 +96,73 @@
             <a class="btn btn-secondary btn-lg" href="predict.html" role="button">Predict Fraud</a>
         </div>
     </div>
+
+<script>
+    // Add this script to handle authenticated requests
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get token from localStorage (where login stores it)
+        const token = localStorage.getItem('authToken');
+
+        // Train button click handler
+        document.getElementById('trainBtn').addEventListener('click', function() {
+            if (!token) {
+                window.location.href = '/login.html';
+                return;
+            }
+
+            fetch('/train.html', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (response.ok) return response.text();
+                if (response.status === 401) window.location.href = '/login.html';
+                throw new Error('Request failed');
+            })
+            .then(html => {
+                // Handle successful navigation
+                document.open();
+                document.write(html);
+                document.close();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Please login first');
+                window.location.href = '/login.html';
+            });
+        });
+
+        // Predict button click handler (similar to train)
+        document.getElementById('predictBtn').addEventListener('click', function() {
+            if (!token) {
+                window.location.href = '/login.html';
+                return;
+            }
+
+            fetch('/predict.html', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (response.ok) return response.text();
+                if (response.status === 401) window.location.href = '/login.html';
+                throw new Error('Request failed');
+            })
+            .then(html => {
+                document.open();
+                document.write(html);
+                document.close();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Please login first');
+                window.location.href = '/login.html';
+            });
+        });
+    });
+</script>
 
     <!-- Footer -->
     <footer class="footer text-center">
