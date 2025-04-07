@@ -113,30 +113,18 @@ logger = App_Logger()
 def handle_db_errors(e):
     return jsonify({"error": "Database operation failed"}), 500
 
-
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        # Try to get token from both headers and cookies
-        token = None
-
-        # Check Authorization header first
-        auth_header = request.headers.get('Authorization')
-        if auth_header and auth_header.startswith('Bearer '):
-            token = auth_header.split(' ')[1]
-
-        # Fallback to cookie if using cookie-based auth
-        if not token and 'auth_token' in request.cookies:
-            token = request.cookies.get('auth_token')
-
+        token = request.headers.get('Authorization', '').replace('Bearer ', '')
         if not token:
             if request.accept_mimetypes.accept_html:
-                return redirect(url_for('login_page'))
+                return redirect(url_for('login_page', next=request.url))
             return jsonify({"error": "Authorization required"}), 401
 
         db = get_db()
         user = db.execute(
-            "SELECT e.id, e.username, e.email FROM employee_sessions s "
+            "SELECT e.id, e.username, e.email, e.role FROM employee_sessions s "
             "JOIN employees e ON s.employee_id = e.id "
             "WHERE s.session_token = ? AND s.expires_at > datetime('now')",
             (token,)
@@ -144,12 +132,11 @@ def login_required(f):
 
         if not user:
             if request.accept_mimetypes.accept_html:
-                return redirect(url_for('login_page'))
+                return redirect(url_for('login_page', next=request.url))
             return jsonify({"error": "Invalid token"}), 401
 
         request.user = dict(user)
         return f(*args, **kwargs)
-
     return decorated_function
 
 
@@ -292,35 +279,65 @@ def login():
 
     db = get_db()
     try:
-        # Get user with email
+        # Get user with all necessary fields
         user = db.execute(
-            "SELECT id, password_hash FROM employees WHERE email = ?",
+            "SELECT id, username, email, role, password_hash FROM employees WHERE email = ?",
             (data['email'],)
         ).fetchone()
 
-        if not user or not check_password_hash(user['password_hash'], data['password']):
-            return jsonify({"error": "Invalid credentials"}), 401
+        if not user:
+            return jsonify({"error": "Invalid email or password"}), 401
 
-        # Create new session token
+        user_dict = dict(user)
+
+        if not check_password_hash(user_dict['password_hash'], data['password']):
+            return jsonify({"error": "Invalid email or password"}), 401
+
+        # Create session token
         token = secrets.token_hex(32)
         expires_at = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')
 
         db.execute(
             "INSERT INTO employee_sessions (employee_id, session_token, expires_at) "
             "VALUES (?, ?, ?)",
-            (user['id'], token, expires_at)
+            (user_dict['id'], token, expires_at)
         )
         db.commit()
 
-        return jsonify({
+        # Prepare response without sensitive data
+        response_data = {
             "token": token,
             "expires_at": expires_at,
-            "user_id": user['id']
-        }), 200
+            "user": {
+                "id": user_dict['id'],
+                "username": user_dict['username'],
+                "email": user_dict['email'],
+                "role": user_dict['role']
+            }
+        }
+
+        return jsonify(response_data), 200
 
     except Exception as e:
         db.rollback()
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "Login failed. Please try again."}), 500
+
+
+@app.route('/api/auth/verify', methods=['GET'])
+@cross_origin()
+def verify_token():
+    token = request.headers.get('Authorization', '').replace('Bearer ', '')
+    if not token:
+        return jsonify({"valid": False}), 401
+
+    db = get_db()
+    session = db.execute(
+        "SELECT * FROM employee_sessions "
+        "WHERE session_token = ? AND expires_at > datetime('now')",
+        (token,)
+    ).fetchone()
+
+    return jsonify({"valid": bool(session)}), 200
 
 
 
