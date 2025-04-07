@@ -151,144 +151,108 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script>
-    $(document).ready(function() {
+
+            $(document).ready(function() {
         $('#loading').hide();
 
-        // First check authentication
-        checkAuth().then(() => {
-            // Authentication successful, proceed with setup
-            setupTrainPage();
-        }).catch(() => {
-            // Not authenticated, redirect to login
-            window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+        // Check authentication on page load
+        checkAuthStatus();
+
+        // Validate File Button
+        $("#validatefile").click(function(e) {
+            e.preventDefault();
+            if (!checkAuthStatus()) return;
+
+            processFileValidation();
         });
 
-        function setupTrainPage() {
-            // Validate File
-            $("#validatefile").click(function(e) {
-                e.preventDefault();
-                if (!validateAuth()) return;
+        // Train Model Button
+        $("#trainmodel").click(function(e) {
+            e.preventDefault();
+            if (!checkAuthStatus()) return;
 
-                $('#loading').show();
-                var fileInput = document.getElementById('csvfile');
-                var file = fileInput.files[0];
+            processModelTraining();
+        });
 
-                if (!file) {
-                    showAlert('Please select a file first', 'danger');
-                    $('#loading').hide();
-                    return;
-                }
-
-                var formData = new FormData();
-                formData.append('file', file);
-
-                makeAuthenticatedRequest({
-                    url: "/validate",
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        showAlert(response.message, response.status);
-                        $('#loading').hide();
-                    },
-                    error: handleAjaxError
-                });
-            });
-
-            // Train Model
-            $("#trainmodel").click(function(e) {
-                e.preventDefault();
-                if (!validateAuth()) return;
-
-                $('#loading').show();
-                $(".json-result").html('<div class="alert alert-info">Training model... Please wait.</div>');
-
-                var fileInput = document.getElementById('csvfile');
-                if (fileInput.files.length === 0) {
-                    showAlert('Please upload a file before training', 'danger');
-                    $('#loading').hide();
-                    return;
-                }
-
-                var file = fileInput.files[0];
-                var formData = new FormData();
-                formData.append('file', file);
-
-                makeAuthenticatedRequest({
-                    url: "/train",
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        showAlert(response, 'success');
-                        $('#loading').hide();
-                    },
-                    error: handleAjaxError
-                });
-            });
-        }
-
-        // Helper functions
-        function checkAuth() {
-            return new Promise((resolve, reject) => {
-                const token = localStorage.getItem('authToken');
-                if (!token) return reject();
-
-                $.ajax({
-                    url: "/api/auth/me",
-                    headers: { 'Authorization': 'Bearer ' + token },
-                    success: () => resolve(),
-                    error: () => reject()
-                });
-            });
-        }
-
-        function validateAuth() {
-            if (!localStorage.getItem('authToken')) {
+        // Authentication Check
+        function checkAuthStatus() {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
                 window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
                 return false;
             }
             return true;
         }
 
-        function makeAuthenticatedRequest(options) {
-            const token = localStorage.getItem('authToken');
-            if (!token) {
-                window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+        // File Validation
+        function processFileValidation() {
+            $('#loading').show();
+            const fileInput = document.getElementById('csvfile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                showAlert('Please select a file first', 'danger');
+                $('#loading').hide();
                 return;
             }
 
-            $.ajax({
-                ...options,
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/validate', {
+                method: 'POST',
                 headers: {
-                    ...options.headers,
-                    'Authorization': 'Bearer ' + token
-                }
-            });
+                    'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                },
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) throw new Error(response.statusText);
+                return response.json();
+            })
+            .then(data => showAlert(data.message, data.status))
+            .catch(error => showAlert(error.message || 'Validation failed', 'danger'))
+            .finally(() => $('#loading').hide());
         }
 
-        function showAlert(message, type) {
-            const alertClass = type === 'success' ? 'alert-success' :
-                              type === 'error' ? 'alert-danger' : 'alert-info';
-            $(".json-result").html(`<div class="alert ${alertClass}">${message}</div>`);
-        }
+        // Model Training
+        function processModelTraining() {
+            $('#loading').show();
+            $(".json-result").html('<div class="alert alert-info">Training model... Please wait.</div>');
 
-        function handleAjaxError(xhr) {
-            let errorMessage = "An error occurred";
-            if (xhr.status === 401) {
-                errorMessage = "Session expired. Please login again.";
-                localStorage.removeItem('authToken');
-                window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
-            } else if (xhr.responseJSON && xhr.responseJSON.message) {
-                errorMessage = xhr.responseJSON.message;
+            const fileInput = document.getElementById('csvfile');
+            if (fileInput.files.length === 0) {
+                showAlert('Please upload a file before training', 'danger');
+                $('#loading').hide();
+                return;
             }
-            showAlert(errorMessage, 'danger');
-            $('#loading').hide();
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            fetch('/api/train', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                },
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) throw new Error(response.statusText);
+                return response.text();
+            })
+            .then(text => showAlert(text, 'success'))
+            .catch(error => showAlert(error.message || 'Training failed', 'danger'))
+            .finally(() => $('#loading').hide());
+        }
+
+        // Helper function
+        function showAlert(message, type) {
+            const alertClass = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'}`;
+            $(".json-result").html(`<div class="${alertClass}">${message}</div>`);
         }
     });
-</script>
+    </script>
 
 
 </body>

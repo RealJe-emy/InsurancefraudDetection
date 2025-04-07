@@ -44,8 +44,7 @@
     </div>
 
     <script>
-        // In your login.html script
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const email = document.getElementById('email').value;
@@ -66,12 +65,15 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             throw new Error(data.error || 'Login failed');
         }
 
-        // Store token in localStorage and session
+        // Store token and user data
         localStorage.setItem('authToken', data.token);
-        sessionStorage.setItem('authToken', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
 
-        // Redirect to home page
-        window.location.href = '/index.html';
+        // Redirect to original page or home
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectTo = urlParams.get('redirect') || '/index.html';
+        window.location.href = redirectTo;
+
     } catch (error) {
         const errorAlert = document.getElementById('errorAlert');
         errorAlert.textContent = error.message;

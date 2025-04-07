@@ -282,27 +282,44 @@
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
 
     <script>
-    $(document).ready(function() {
-    $('#loading').hide();
 
-    // First check authentication
-    checkAuth().then(() => {
-        // Authentication successful, proceed with setup
-        setupPredictPage();
-    }).catch(() => {
-        // Not authenticated, redirect to login
-        window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
-    });
+        $(document).ready(function() {
+        $('#loading').hide();
 
-    function setupPredictPage() {
-        // Batch Prediction
+        // Check authentication on page load
+        checkAuthStatus();
+
+        // Batch Prediction Form
         $("#batch_predict_form").submit(function(e) {
             e.preventDefault();
-            if (!validateAuth()) return;
+            if (!checkAuthStatus()) return;
 
+            processBatchPrediction();
+        });
+
+        // Single Prediction Form
+        $("#single_predict_form").submit(function(e) {
+            e.preventDefault();
+            if (!checkAuthStatus()) return;
+
+            processSinglePrediction();
+        });
+
+        // Authentication Check
+        function checkAuthStatus() {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+                return false;
+            }
+            return true;
+        }
+
+        // Batch Prediction
+        function processBatchPrediction() {
             $('#loading').show();
-            var fileInput = document.getElementById('csvfile');
-            var file = fileInput.files[0];
+            const fileInput = document.getElementById('csvfile');
+            const file = fileInput.files[0];
 
             if (!file) {
                 showBatchAlert('Please select a file first', 'danger');
@@ -310,68 +327,30 @@
                 return;
             }
 
-            // Validate file type
-            if (!file.name.endsWith('.csv')) {
-                showBatchAlert('Please upload a CSV file', 'danger');
-                $('#loading').hide();
-                return;
-            }
+            const formData = new FormData();
+            formData.append('file', file);
 
-            // Validate file content
-            Papa.parse(file, {
-                header: true,
-                preview: 1,
-                complete: function(results) {
-                    var requiredFields = [
-                        'policy_number', 'months_as_customer', 'policy_deductable',
-                        'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day',
-                        'number_of_vehicles_involved', 'bodily_injuries', 'property_damage',
-                        'police_report_available'
-                    ];
-
-                    var missingFields = [];
-                    if (results.meta.fields) {
-                        missingFields = requiredFields.filter(field => !results.meta.fields.includes(field));
-                    }
-
-                    if (missingFields.length > 0) {
-                        showBatchAlert('Missing required fields: ' + missingFields.join(', '), 'danger');
-                        $('#loading').hide();
-                        return;
-                    }
-
-                    // Proceed with upload if validation passes
-                    var formData = new FormData();
-                    formData.append('file', file);
-
-                    makeAuthenticatedRequest({
-                        url: "/predict",
-                        type: "POST",
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(response) {
-                            displayBatchResults(response);
-                            $('#loading').hide();
-                        },
-                        error: handleAjaxError
-                    });
+            fetch('/api/predict', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('authToken')
                 },
-                error: function(error) {
-                    showBatchAlert('Error parsing CSV: ' + error, 'danger');
-                    $('#loading').hide();
-                }
-            });
-        });
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) throw new Error(response.statusText);
+                return response.json();
+            })
+            .then(data => displayBatchResults(data))
+            .catch(error => showBatchAlert(error.message || 'Prediction failed', 'danger'))
+            .finally(() => $('#loading').hide());
+        }
 
-        // Single Client Prediction
-        $("#single_predict_form").submit(function(e) {
-            e.preventDefault();
-            if (!validateAuth()) return;
-
+        // Single Prediction
+        function processSinglePrediction() {
             $('#loading').show();
 
-            var formData = {
+            const formData = {
                 policy_number: $("#policy_number").val(),
                 months_as_customer: $("#months_as_customer").val(),
                 policy_deductable: $("#policy_deductable").val(),
@@ -384,92 +363,70 @@
                 police_report_available: $("#police_report_available").val()
             };
 
-            makeAuthenticatedRequest({
-                url: "/single_predict",
-                type: "POST",
-                data: JSON.stringify(formData),
-                contentType: "application/json",
-                success: function(response) {
-                    displaySingleResult(response);
-                    $('#loading').hide();
+            fetch('/single_predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('authToken')
                 },
-                error: handleAjaxError
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) throw new Error(response.statusText);
+                return response.json();
+            })
+            .then(data => displaySingleResult(data))
+            .catch(error => showSingleAlert(error.message || 'Prediction failed', 'danger'))
+            .finally(() => $('#loading').hide());
+        }
+
+        // Display Functions
+        function displayBatchResults(data) {
+            let html = '<table class="table table-striped"><thead><tr>';
+            html += '<th>Policy Number</th><th>Prediction</th><th>Confidence</th></tr></thead><tbody>';
+
+            data.results.forEach(result => {
+                const badgeClass = result.prediction === 'Y' ? 'badge-danger' : 'badge-success';
+                html += `<tr>
+                    <td>${result.policy_number}</td>
+                    <td><span class="badge ${badgeClass}">${result.prediction === 'Y' ? 'Fraud' : 'Valid'}</span></td>
+                    <td>${(result.probability * 100).toFixed(1)}%</td>
+                </tr>`;
             });
-        });
 
-        // Keep your existing display functions unchanged
-        function displaySingleResult(response) {
-            // ... (keep your existing implementation)
+            html += '</tbody></table>';
+            $("#batch_result").html(html);
         }
 
-        function displayBatchResults(response) {
-            // ... (keep your existing implementation)
-        }
-    }
-
-    // Shared helper functions (same as in train script)
-    function checkAuth() {
-        return new Promise((resolve, reject) => {
-            const token = localStorage.getItem('authToken');
-            if (!token) return reject();
-
-            $.ajax({
-                url: "/api/auth/me",
-                headers: { 'Authorization': 'Bearer ' + token },
-                success: () => resolve(),
-                error: () => reject()
-            });
-        });
-    }
-
-    function validateAuth() {
-        if (!localStorage.getItem('authToken')) {
-            window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
-            return false;
-        }
-        return true;
-    }
-
-    function makeAuthenticatedRequest(options) {
-        const token = localStorage.getItem('authToken');
-        if (!token) {
-            window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
-            return;
+        function displaySingleResult(data) {
+            const badgeClass = data.prediction === 'Y' ? 'badge-danger' : 'badge-success';
+            const html = `
+                <div class="alert alert-info">
+                    <h5>Prediction Result</h5>
+                    <p>Policy: ${data.policy_number}</p>
+                    <p>Status: <span class="badge ${badgeClass}">${
+                        data.prediction === 'Y' ? 'Potential Fraud' : 'Likely Valid'
+                    }</span></p>
+                    <p>Confidence: ${(data.confidence * 100).toFixed(1)}%</p>
+                    <hr>
+                    <h6>Key Factors:</h6>
+                    <ul>${data.factors.map(f => `<li>${f}</li>`).join('')}</ul>
+                </div>
+            `;
+            $("#single_result").html(html);
         }
 
-        $.ajax({
-            ...options,
-            headers: {
-                ...options.headers,
-                'Authorization': 'Bearer ' + token
-            }
-        });
-    }
-
-    function showBatchAlert(message, type) {
-        const alertClass = type === 'danger' ? 'alert-danger' : 'alert-warning';
-        $("#batch_result").html(`<div class="alert ${alertClass}">${message}</div>`);
-    }
-
-    function handleAjaxError(xhr) {
-        let errorMessage = "An error occurred";
-        if (xhr.status === 401) {
-            errorMessage = "Session expired. Please login again.";
-            localStorage.removeItem('authToken');
-            window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
-        } else if (xhr.responseJSON && xhr.responseJSON.message) {
-            errorMessage = xhr.responseJSON.message;
+        // Alert Functions
+        function showBatchAlert(message, type) {
+            const alertClass = `alert alert-${type === 'danger' ? 'danger' : 'warning'}`;
+            $("#batch_result").html(`<div class="${alertClass}">${message}</div>`);
         }
 
-        if (xhr.statusText === 'abort') {
-            return; // Don't show alert for aborted requests
+        function showSingleAlert(message, type) {
+            const alertClass = `alert alert-${type === 'danger' ? 'danger' : 'warning'}`;
+            $("#single_result").html(`<div class="${alertClass}">${message}</div>`);
         }
-
-        const target = xhr.url.includes('single_predict') ? '#single_result' : '#batch_result';
-        $(target).html(`<div class="alert alert-danger">${errorMessage}</div>`);
-        $('#loading').hide();
-    }
-});
-</script>
+    });
+    </script>
 </body>
 </html>

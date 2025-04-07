@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, render_template, Response
+from flask import Flask, request, jsonify, render_template, Response, redirect, url_for
 from flask_cors import CORS, cross_origin
 from functools import wraps
 import os
@@ -16,7 +17,7 @@ import pandas as pd
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
 from datetime import datetime, timedelta
-
+from flask import g
 import sqlite3
 import shutil
 import csv
@@ -35,41 +36,118 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 UPLOAD_FOLDER_CSV = "uploads"
 os.makedirs(UPLOAD_FOLDER_CSV, exist_ok=True)
 
-def get_db():
-    db = sqlite3.connect('database.db')
-    db.row_factory = sqlite3.Row  # For dictionary-style access
-    return db
 
-db = get_db()
+def get_db():
+    """Get a thread-local database connection"""
+    if 'db' not in g:
+        g.db = sqlite3.connect('database.db')
+        g.db.row_factory = sqlite3.Row
+        g.db.execute("PRAGMA foreign_keys = ON")
+        g.db.execute("PRAGMA journal_mode = WAL")
+    return g.db
+
+
+
+def init_db():
+    """Initialize database tables"""
+    with app.app_context():
+        db = get_db()
+        try:
+            db.execute("""
+                CREATE TABLE IF NOT EXISTS employees (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    username TEXT NOT NULL,
+                    email TEXT UNIQUE NOT NULL,
+                    password_hash TEXT NOT NULL,
+                    is_active BOOLEAN DEFAULT 1,
+                    role TEXT DEFAULT 'employee'
+                )
+            """)
+            db.execute("""
+                CREATE TABLE IF NOT EXISTS employee_sessions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    employee_id INTEGER NOT NULL,
+                    session_token TEXT NOT NULL,
+                    expires_at DATETIME NOT NULL,
+                    FOREIGN KEY (employee_id) REFERENCES employees(id)
+                )
+            """)
+            db.commit()
+        except Exception as e:
+            print(f"Database initialization error: {e}")
+            db.rollback()
+
+# # Call this when starting your app
+# if __name__ == '__main__':
+#     init_db()
+#     app.run(debug=True)
+#
+# def get_db():
+#     """Get a thread-local database connection"""
+#     if 'db' not in g:
+#         g.db = sqlite3.connect('database.db')
+#         g.db.row_factory = sqlite3.Row  # For dictionary-style results
+#         g.db.execute("PRAGMA foreign_keys = ON")  # Enable FK constraints
+#         g.db.execute("PRAGMA busy_timeout = 5000")  # Wait up to 5s if locked
+#     return g.db
+
+@app.teardown_appcontext
+def close_db(exception=None):
+    """Close the database at the end of each request"""
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
+
+# def get_db():
+#     db = sqlite3.connect('database.db')
+#     db.row_factory = sqlite3.Row  # For dictionary-style access
+#     return db
+
+
+
 
 # Initialize the logger
 logger = App_Logger()
+
+@app.errorhandler(sqlite3.Error)
+def handle_db_errors(e):
+    return jsonify({"error": "Database operation failed"}), 500
 
 
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        # Skip auth for GET requests to HTML pages
-        if request.method == 'GET' and request.accept_mimetypes.accept_html:
-            return f(*args, **kwargs)
+        # Try to get token from both headers and cookies
+        token = None
 
-        # Original token verification for API requests
+        # Check Authorization header first
         auth_header = request.headers.get('Authorization')
-        if not auth_header or not auth_header.startswith('Bearer '):
-            return jsonify({"error": "Authorization header missing or invalid"}), 401
+        if auth_header and auth_header.startswith('Bearer '):
+            token = auth_header.split(' ')[1]
 
-        token = auth_header.split(' ')[1]
-        employee = db.execute(
-            "SELECT e.id, e.username, e.role FROM employee_sessions s "
+        # Fallback to cookie if using cookie-based auth
+        if not token and 'auth_token' in request.cookies:
+            token = request.cookies.get('auth_token')
+
+        if not token:
+            if request.accept_mimetypes.accept_html:
+                return redirect(url_for('login_page'))
+            return jsonify({"error": "Authorization required"}), 401
+
+        db = get_db()
+        user = db.execute(
+            "SELECT e.id, e.username, e.email FROM employee_sessions s "
             "JOIN employees e ON s.employee_id = e.id "
-            "WHERE s.session_token = ? AND s.expires_at > datetime('now') AND e.is_active = 1",
+            "WHERE s.session_token = ? AND s.expires_at > datetime('now')",
             (token,)
         ).fetchone()
 
-        if not employee:
-            return jsonify({"error": "Invalid or expired token"}), 401
+        if not user:
+            if request.accept_mimetypes.accept_html:
+                return redirect(url_for('login_page'))
+            return jsonify({"error": "Invalid token"}), 401
 
-        request.employee = employee
+        request.user = dict(user)
         return f(*args, **kwargs)
 
     return decorated_function
@@ -127,75 +205,60 @@ def internal_error(error):
     return render_template('500.html'), 500
 
 
+@app.route('/protected')
+@login_required
+def protected():
+    db = get_db()  # Safe connection
+    user_data = db.execute(
+        "SELECT * FROM employees WHERE email = ?",
+        (request.employee['email'],)
+    ).fetchone()
+
+    return jsonify(dict(user_data))
 
 
 # Auth Service Class
 class AuthService:
-    def __init__(self, db):
-        self.db = db
-
     def register_user(self, username, email, password):
-        # Check if email exists
-        existing = self.db.execute(
-            "SELECT id FROM employees WHERE email = %s",
-            (email,)
-        ).fetchone()
+        db = get_db()  # Get fresh connection per call
+        try:
+            # Check if email exists
+            existing = db.execute(
+                "SELECT id FROM employees WHERE email = ?",
+                (email,)
+            ).fetchone()
 
-        if existing:
-            return None, "Email already registered"
+            if existing:
+                return None, "Email already registered"
 
-        # Hash password and create user
-        hashed_pw = generate_password_hash(password)
-        result = self.db.execute(
-            "INSERT INTO employees (username, email, password_hash) "
-            "VALUES (%s, %s, %s) RETURNING id",
-            (username, email, hashed_pw)
-        )
-        user_id = result.fetchone()[0]
-        return user_id, None
-
-    def login_user(self, email, password):
-        # Get user from database
-        user = self.db.execute(
-            "SELECT id, password_hash FROM employees WHERE email = %s",
-            (email,)
-        ).fetchone()
-
-        if not user or not check_password_hash(user['password_hash'], password):
-            return None, "Invalid email or password"
-
-        # Create session token
-        token = secrets.token_hex(32)
-        expires_at = datetime.now() + timedelta(days=7)
-
-        self.db.execute(
-            "INSERT INTO employee_sessions (employee_id, session_token, expires_at) "
-            "VALUES (%s, %s, %s)",
-            (user['id'], token, expires_at)
-        )
-
-        return token, None
-
-
-# Initialize auth service
-auth_service = AuthService(db)
+            # Hash password and create user
+            hashed_pw = generate_password_hash(password)
+            db.execute(
+                "INSERT INTO employees (username, email, password_hash) "
+                "VALUES (?, ?, ?)",
+                (username, email, hashed_pw)
+            )
+            db.commit()
+            return email, None
+        except Exception as e:
+            db.rollback()
+            return None, str(e)
 
 
 # Auth API Endpoints
 @app.route('/api/auth/register', methods=['POST'])
 @cross_origin()
 def register():
-    # Ensure it only accepts JSON
     if not request.is_json:
         return jsonify({"error": "Request must be JSON"}), 400
 
     data = request.get_json()
-
-    # Required fields validation
     required_fields = ['username', 'email', 'password']
+
     if not all(field in data for field in required_fields):
         return jsonify({"error": f"Missing required fields: {required_fields}"}), 400
 
+    db = get_db()  # 🔴 ADD THIS LINE - Get fresh connection
     try:
         # Check if email exists
         existing = db.execute(
@@ -214,11 +277,11 @@ def register():
             (data['username'], data['email'], hashed_pw)
         )
         db.commit()
-
         return jsonify({"message": "Registration successful"}), 201
-
     except Exception as e:
+        db.rollback()
         return jsonify({"error": str(e)}), 500
+
 
 @app.route('/api/auth/login', methods=['POST'])
 @cross_origin()
@@ -227,15 +290,38 @@ def login():
     if not data or 'email' not in data or 'password' not in data:
         return jsonify({"error": "Email and password required"}), 400
 
-    token, error = auth_service.login_user(
-        data['email'],
-        data['password']
-    )
+    db = get_db()
+    try:
+        # Get user with email
+        user = db.execute(
+            "SELECT id, password_hash FROM employees WHERE email = ?",
+            (data['email'],)
+        ).fetchone()
 
-    if error:
-        return jsonify({"error": error}), 401
+        if not user or not check_password_hash(user['password_hash'], data['password']):
+            return jsonify({"error": "Invalid credentials"}), 401
 
-    return jsonify({"token": token})
+        # Create new session token
+        token = secrets.token_hex(32)
+        expires_at = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')
+
+        db.execute(
+            "INSERT INTO employee_sessions (employee_id, session_token, expires_at) "
+            "VALUES (?, ?, ?)",
+            (user['id'], token, expires_at)
+        )
+        db.commit()
+
+        return jsonify({
+            "token": token,
+            "expires_at": expires_at,
+            "user_id": user['id']
+        }), 200
+
+    except Exception as e:
+        db.rollback()
+        return jsonify({"error": str(e)}), 500
+
 
 
 # Protected route example
@@ -246,17 +332,18 @@ def get_current_user():
     if not token:
         return jsonify({"error": "Unauthorized"}), 401
 
+    db = get_db()  # 🔴 ADD THIS LINE
     user = db.execute(
         "SELECT e.id, e.username, e.email FROM employee_sessions s "
         "JOIN employees e ON s.employee_id = e.id "
-        "WHERE s.session_token = %s AND s.expires_at > NOW()",
+        "WHERE s.session_token = ? AND s.expires_at > datetime('now')",
         (token,)
     ).fetchone()
 
     if not user:
         return jsonify({"error": "Invalid token"}), 401
 
-    return jsonify(user)
+    return jsonify(dict(user))
 
 
 # To validate the file
@@ -757,5 +844,10 @@ def get_important_factors(data):
 
 # Run the Flask app
 if __name__ == "__main__":
+    init_db()
     port = int(os.getenv("PORT", 5001))
     app.run(port=port, debug=True)
+
+# if __name__ == '__main__':
+#     init_db()  # Now this can safely call get_db()
+#     app.run(debug=True)
