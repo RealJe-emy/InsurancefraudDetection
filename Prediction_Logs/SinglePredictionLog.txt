@@ -526,3 +526,11 @@ PermissionError: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
 2025-04-01/00:14:45		Input data saved to Prediction_Batch_Files\InputFile.csv
 2025-04-01/00:14:45		Starting data validation...
 2025-04-01/00:14:45		Validation process failed: [Errno 13] Permission denied: 'Prediction_Batch_files/Bad_Data'
+2025-04-08/11:11:20		
+================================================================================
+2025-04-08/11:11:20		=== NEW PREDICTION REQUEST ===
+2025-04-08/11:11:20		Timestamp: 2025-04-08T11:11:20.962116
+2025-04-08/11:11:20		Raw JSON data received
+2025-04-08/11:11:20		Input data saved to Prediction_Batch_Files/InputFile.csv
+2025-04-08/11:11:20		Starting data validation...
+2025-04-08/11:11:20		Validation process failed: [Errno 2] No such file or directory: 'Prediction_Batch_files/fraudDetection_021119920_222.csv'

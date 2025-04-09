@@ -1998,3 +1998,1843 @@ Sec-Gpc: 1
 2025-03-27/17:51:44		Entered the save_model method of the File_Operation class
 2025-03-27/17:51:44		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
 2025-03-27/17:51:44		Training successful.
+2025-04-08/13:50:29		Training request received.
+2025-04-08/13:50:29		Request headers: User-Agent: PostmanRuntime/7.43.2
+Accept: */*
+Postman-Token: 5c376545-e0d1-4c8c-b608-7ea2823e96ee
+Host: 127.0.0.1:5001
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Type: multipart/form-data; boundary=--------------------------876630475614505814913206
+Content-Length: 14030
+
+
+2025-04-08/13:50:29		Request form data: ImmutableMultiDict([])
+2025-04-08/13:50:29		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/13:50:29		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/13:50:29		Start of Validation on files for Training!!
+2025-04-08/13:50:29		Schema details extracted successfully.
+2025-04-08/13:50:29		Regex pattern created successfully.
+2025-04-08/13:50:29		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/13:50:29		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/13:50:29		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/13:50:29		File name validation completed.
+2025-04-08/13:50:29		Column Length Validation Started!!
+2025-04-08/13:50:29		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/13:50:29		Column Length Validation Completed!!
+2025-04-08/13:50:29		Missing Values Validation Started!!
+2025-04-08/13:50:29		Missing Values Validation Completed!!
+2025-04-08/13:50:29		Raw Data Validation Complete!!
+2025-04-08/13:50:29		Starting Data Transforamtion!!
+2025-04-08/13:50:29		DataTransformation Completed!!!
+2025-04-08/13:50:29		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/13:50:29		Table creation Completed!!
+2025-04-08/13:50:29		Insertion of Data into Table started!!!!
+2025-04-08/13:50:31		Insertion in Table completed!!!
+2025-04-08/13:50:31		Deleting Good Data Folder!!!
+2025-04-08/13:50:31		Good Data folder deleted successfully.
+2025-04-08/13:50:31		Good_Data folder deleted!!!
+2025-04-08/13:50:31		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/13:50:31		Bad files moved to archive
+2025-04-08/13:50:31		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/13:50:31		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/13:50:31		Validation Operation completed!!
+2025-04-08/13:50:31		Extracting csv file from table
+2025-04-08/13:50:31		Entered the get_data method of the Data_Getter class
+2025-04-08/13:50:31		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/13:50:31		Entered the remove_columns method of the Preprocessor class
+2025-04-08/13:50:31		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/13:50:31		Entered the is_null_present method of the Preprocessor class
+2025-04-08/13:50:31		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/13:50:31		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/13:50:31		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/13:50:31		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/13:50:31		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/13:50:31		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/13:50:31		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/13:50:31		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/13:50:31		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/13:50:31		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/13:50:31		Successfully handled missing values in the dataset
+2025-04-08/13:50:32		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/13:50:32		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/13:50:32		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/13:50:32		Successfully handled missing values in the dataset
+2025-04-08/13:50:32		Entered the save_model method of the File_Operation class
+2025-04-08/13:50:32		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/13:50:32		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/13:50:32		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/13:50:32		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/13:50:32		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/13:50:32		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/13:50:32		Entered the get_best_model method of the Model_Finder class
+2025-04-08/13:50:32		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/13:50:32		Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/13:50:32		XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/13:50:32		Exception occurred in get_best_model method of the Model_Finder class. Exception message: 
+2025-04-08/13:50:32		Model Selection Failed. Exited the get_best_model method of the Model_Finder class
+2025-04-08/13:50:32		Unexpected error: 
+2025-04-08/13:50:32		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 78, in get_best_params_for_xgboost
+    self.grid.fit(train_x, train_y)
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 933, in fit
+    cv_orig = check_cv(self.cv, y, classifier=is_classifier(estimator))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1237, in is_classifier
+    return get_tags(estimator).estimator_type == "classifier"
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/utils/_tags.py", line 430, in get_tags
+    sklearn_tags_provider[klass] = klass.__sklearn_tags__(estimator)  # type: ignore[attr-defined]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 540, in __sklearn_tags__
+    tags = super().__sklearn_tags__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 111, in get_best_model
+    self.xgboost = self.get_best_params_for_xgboost(train_x, train_y)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 99, in get_best_params_for_xgboost
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 320, in trainingModel
+    best_model_name, best_model = model_finder.get_best_model(x_train, y_train, x_test, y_test)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 143, in get_best_model
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/main.py", line 269, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-04-08/13:54:50		Training request received.
+2025-04-08/13:54:50		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary2149a960aa83722a7bb3366828e0b945
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/13:54:50		Request form data: ImmutableMultiDict([])
+2025-04-08/13:54:50		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/13:54:50		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/13:54:50		Start of Validation on files for Training!!
+2025-04-08/13:54:50		Schema details extracted successfully.
+2025-04-08/13:54:50		Regex pattern created successfully.
+2025-04-08/13:54:50		Bad Data folder deleted successfully.
+2025-04-08/13:54:50		Good Data folder deleted successfully.
+2025-04-08/13:54:50		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/13:54:50		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/13:54:50		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/13:54:50		File name validation completed.
+2025-04-08/13:54:50		Column Length Validation Started!!
+2025-04-08/13:54:50		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/13:54:50		Column Length Validation Completed!!
+2025-04-08/13:54:50		Missing Values Validation Started!!
+2025-04-08/13:54:50		Missing Values Validation Completed!!
+2025-04-08/13:54:50		Raw Data Validation Complete!!
+2025-04-08/13:54:50		Starting Data Transforamtion!!
+2025-04-08/13:54:50		DataTransformation Completed!!!
+2025-04-08/13:54:50		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/13:54:50		Table creation Completed!!
+2025-04-08/13:54:50		Insertion of Data into Table started!!!!
+2025-04-08/13:54:53		Insertion in Table completed!!!
+2025-04-08/13:54:53		Deleting Good Data Folder!!!
+2025-04-08/13:54:53		Good Data folder deleted successfully.
+2025-04-08/13:54:53		Good_Data folder deleted!!!
+2025-04-08/13:54:53		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/13:54:53		Bad files moved to archive
+2025-04-08/13:54:53		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/13:54:53		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/13:54:53		Validation Operation completed!!
+2025-04-08/13:54:53		Extracting csv file from table
+2025-04-08/13:54:53		Entered the get_data method of the Data_Getter class
+2025-04-08/13:54:53		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/13:54:53		Entered the remove_columns method of the Preprocessor class
+2025-04-08/13:54:53		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/13:54:53		Entered the is_null_present method of the Preprocessor class
+2025-04-08/13:54:53		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/13:54:53		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/13:54:53		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/13:54:53		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/13:54:53		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/13:54:53		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/13:54:53		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/13:54:53		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/13:54:53		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/13:54:53		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/13:54:53		Successfully handled missing values in the dataset
+2025-04-08/13:54:54		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/13:54:54		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/13:54:54		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/13:54:54		Successfully handled missing values in the dataset
+2025-04-08/13:54:54		Entered the save_model method of the File_Operation class
+2025-04-08/13:54:54		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/13:54:54		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/13:54:54		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/13:54:54		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/13:54:54		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/13:54:54		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/13:54:54		Entered the get_best_model method of the Model_Finder class
+2025-04-08/13:54:54		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/13:54:54		Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/13:54:54		XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/13:54:54		Exception occurred in get_best_model method of the Model_Finder class. Exception message: 
+2025-04-08/13:54:54		Model Selection Failed. Exited the get_best_model method of the Model_Finder class
+2025-04-08/13:54:54		Unexpected error: 
+2025-04-08/13:54:54		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 78, in get_best_params_for_xgboost
+    self.grid.fit(train_x, train_y)
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 933, in fit
+    cv_orig = check_cv(self.cv, y, classifier=is_classifier(estimator))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1237, in is_classifier
+    return get_tags(estimator).estimator_type == "classifier"
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/utils/_tags.py", line 430, in get_tags
+    sklearn_tags_provider[klass] = klass.__sklearn_tags__(estimator)  # type: ignore[attr-defined]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 540, in __sklearn_tags__
+    tags = super().__sklearn_tags__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 111, in get_best_model
+    self.xgboost = self.get_best_params_for_xgboost(train_x, train_y)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 99, in get_best_params_for_xgboost
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 320, in trainingModel
+    best_model_name, best_model = model_finder.get_best_model(x_train, y_train, x_test, y_test)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 143, in get_best_model
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/main.py", line 269, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-04-08/14:12:52		Training request received.
+2025-04-08/14:12:52		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundarydb8917452d834a86894ecf43496e802
+Content-Length: 14034
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/14:12:52		Request form data: ImmutableMultiDict([])
+2025-04-08/14:12:52		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/14:12:52		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/14:12:52		Start of Validation on files for Training!!
+2025-04-08/14:12:52		Schema details extracted successfully.
+2025-04-08/14:12:52		Regex pattern created successfully.
+2025-04-08/14:12:52		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/14:12:52		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/14:12:52		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/14:12:52		File name validation completed.
+2025-04-08/14:12:52		Column Length Validation Started!!
+2025-04-08/14:12:52		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/14:12:52		Column Length Validation Completed!!
+2025-04-08/14:12:52		Missing Values Validation Started!!
+2025-04-08/14:12:52		Missing Values Validation Completed!!
+2025-04-08/14:12:52		Raw Data Validation Complete!!
+2025-04-08/14:12:52		Starting Data Transforamtion!!
+2025-04-08/14:12:52		DataTransformation Completed!!!
+2025-04-08/14:12:52		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/14:12:52		Table creation Completed!!
+2025-04-08/14:12:52		Insertion of Data into Table started!!!!
+2025-04-08/14:12:55		Insertion in Table completed!!!
+2025-04-08/14:12:55		Deleting Good Data Folder!!!
+2025-04-08/14:12:55		Good Data folder deleted successfully.
+2025-04-08/14:12:55		Good_Data folder deleted!!!
+2025-04-08/14:12:55		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/14:12:55		Bad files moved to archive
+2025-04-08/14:12:55		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/14:12:55		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/14:12:55		Validation Operation completed!!
+2025-04-08/14:12:55		Extracting csv file from table
+2025-04-08/14:12:55		Entered the get_data method of the Data_Getter class
+2025-04-08/14:12:55		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/14:12:55		Entered the remove_columns method of the Preprocessor class
+2025-04-08/14:12:55		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/14:12:55		Entered the is_null_present method of the Preprocessor class
+2025-04-08/14:12:55		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/14:12:55		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/14:12:55		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/14:12:55		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/14:12:55		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:12:55		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:12:55		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/14:12:55		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/14:12:55		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/14:12:55		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:12:55		Successfully handled missing values in the dataset
+2025-04-08/14:12:56		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/14:12:56		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/14:12:56		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:12:56		Successfully handled missing values in the dataset
+2025-04-08/14:12:56		Entered the save_model method of the File_Operation class
+2025-04-08/14:12:56		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:12:56		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/14:12:56		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:12:56		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:12:56		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:12:56		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:12:56		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:12:56		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:12:56		Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/14:12:56		XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:12:56		Exception occurred in get_best_model method of the Model_Finder class. Exception message: 
+2025-04-08/14:12:56		Model Selection Failed. Exited the get_best_model method of the Model_Finder class
+2025-04-08/14:12:56		Unexpected error: 
+2025-04-08/14:12:56		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 79, in get_best_params_for_xgboost
+    self.grid.fit(train_x, train_y)
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 933, in fit
+    cv_orig = check_cv(self.cv, y, classifier=is_classifier(estimator))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1237, in is_classifier
+    return get_tags(estimator).estimator_type == "classifier"
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/utils/_tags.py", line 430, in get_tags
+    sklearn_tags_provider[klass] = klass.__sklearn_tags__(estimator)  # type: ignore[attr-defined]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 540, in __sklearn_tags__
+    tags = super().__sklearn_tags__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 112, in get_best_model
+    self.xgboost = self.get_best_params_for_xgboost(train_x, train_y)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 100, in get_best_params_for_xgboost
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 320, in trainingModel
+    best_model_name, best_model = model_finder.get_best_model(x_train, y_train, x_test, y_test)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 144, in get_best_model
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/main.py", line 269, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-04-08/14:15:25		Training request received.
+2025-04-08/14:15:25		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary2b5339682f31589929989d43bea35a36
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/14:15:25		Request form data: ImmutableMultiDict([])
+2025-04-08/14:15:25		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/14:15:25		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/14:15:25		Start of Validation on files for Training!!
+2025-04-08/14:15:25		Schema details extracted successfully.
+2025-04-08/14:15:25		Regex pattern created successfully.
+2025-04-08/14:15:25		Bad Data folder deleted successfully.
+2025-04-08/14:15:25		Good Data folder deleted successfully.
+2025-04-08/14:15:25		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/14:15:25		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/14:15:25		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/14:15:25		File name validation completed.
+2025-04-08/14:15:25		Column Length Validation Started!!
+2025-04-08/14:15:25		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/14:15:25		Column Length Validation Completed!!
+2025-04-08/14:15:25		Missing Values Validation Started!!
+2025-04-08/14:15:25		Missing Values Validation Completed!!
+2025-04-08/14:15:25		Raw Data Validation Complete!!
+2025-04-08/14:15:25		Starting Data Transforamtion!!
+2025-04-08/14:15:25		DataTransformation Completed!!!
+2025-04-08/14:15:25		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/14:15:25		Table creation Completed!!
+2025-04-08/14:15:25		Insertion of Data into Table started!!!!
+2025-04-08/14:15:28		Insertion in Table completed!!!
+2025-04-08/14:15:28		Deleting Good Data Folder!!!
+2025-04-08/14:15:28		Good Data folder deleted successfully.
+2025-04-08/14:15:28		Good_Data folder deleted!!!
+2025-04-08/14:15:28		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/14:15:28		Bad files moved to archive
+2025-04-08/14:15:28		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/14:15:28		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/14:15:28		Validation Operation completed!!
+2025-04-08/14:15:28		Extracting csv file from table
+2025-04-08/14:15:28		Entered the get_data method of the Data_Getter class
+2025-04-08/14:15:28		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/14:15:28		Entered the remove_columns method of the Preprocessor class
+2025-04-08/14:15:28		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/14:15:28		Entered the is_null_present method of the Preprocessor class
+2025-04-08/14:15:28		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/14:15:28		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/14:15:28		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/14:15:28		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/14:15:28		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:15:28		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:15:28		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/14:15:28		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/14:15:28		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/14:15:28		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:15:28		Successfully handled missing values in the dataset
+2025-04-08/14:15:29		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/14:15:29		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/14:15:29		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:15:29		Successfully handled missing values in the dataset
+2025-04-08/14:15:29		Entered the save_model method of the File_Operation class
+2025-04-08/14:15:29		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:15:29		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/14:15:29		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:15:29		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:15:29		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:15:29		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:15:29		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:15:29		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:15:29		Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/14:15:29		XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:15:29		Exception occurred in get_best_model method of the Model_Finder class. Exception message: 
+2025-04-08/14:15:29		Model Selection Failed. Exited the get_best_model method of the Model_Finder class
+2025-04-08/14:15:29		Unexpected error: 
+2025-04-08/14:15:29		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 79, in get_best_params_for_xgboost
+    self.grid.fit(train_x, train_y)
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 933, in fit
+    cv_orig = check_cv(self.cv, y, classifier=is_classifier(estimator))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1237, in is_classifier
+    return get_tags(estimator).estimator_type == "classifier"
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/utils/_tags.py", line 430, in get_tags
+    sklearn_tags_provider[klass] = klass.__sklearn_tags__(estimator)  # type: ignore[attr-defined]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 540, in __sklearn_tags__
+    tags = super().__sklearn_tags__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 112, in get_best_model
+    self.xgboost = self.get_best_params_for_xgboost(train_x, train_y)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 100, in get_best_params_for_xgboost
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 320, in trainingModel
+    best_model_name, best_model = model_finder.get_best_model(x_train, y_train, x_test, y_test)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 144, in get_best_model
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/main.py", line 269, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-04-08/14:20:08		Training request received.
+2025-04-08/14:20:08		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary7266800ace2f3db61b83ac26ed810047
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/14:20:08		Request form data: ImmutableMultiDict([])
+2025-04-08/14:20:08		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/14:20:08		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/14:20:08		Start of Validation on files for Training!!
+2025-04-08/14:20:08		Schema details extracted successfully.
+2025-04-08/14:20:08		Regex pattern created successfully.
+2025-04-08/14:20:08		Bad Data folder deleted successfully.
+2025-04-08/14:20:08		Good Data folder deleted successfully.
+2025-04-08/14:20:08		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/14:20:08		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/14:20:08		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/14:20:08		File name validation completed.
+2025-04-08/14:20:08		Column Length Validation Started!!
+2025-04-08/14:20:08		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/14:20:08		Column Length Validation Completed!!
+2025-04-08/14:20:08		Missing Values Validation Started!!
+2025-04-08/14:20:08		Missing Values Validation Completed!!
+2025-04-08/14:20:08		Raw Data Validation Complete!!
+2025-04-08/14:20:08		Starting Data Transforamtion!!
+2025-04-08/14:20:08		DataTransformation Completed!!!
+2025-04-08/14:20:08		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/14:20:08		Table creation Completed!!
+2025-04-08/14:20:08		Insertion of Data into Table started!!!!
+2025-04-08/14:20:10		Insertion in Table completed!!!
+2025-04-08/14:20:10		Deleting Good Data Folder!!!
+2025-04-08/14:20:10		Good Data folder deleted successfully.
+2025-04-08/14:20:10		Good_Data folder deleted!!!
+2025-04-08/14:20:10		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/14:20:10		Bad files moved to archive
+2025-04-08/14:20:10		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/14:20:10		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/14:20:10		Validation Operation completed!!
+2025-04-08/14:20:10		Extracting csv file from table
+2025-04-08/14:20:10		Entered the get_data method of the Data_Getter class
+2025-04-08/14:20:10		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/14:20:10		Entered the remove_columns method of the Preprocessor class
+2025-04-08/14:20:10		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/14:20:10		Entered the is_null_present method of the Preprocessor class
+2025-04-08/14:20:10		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/14:20:10		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/14:20:10		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/14:20:10		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/14:20:10		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:20:10		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:20:10		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/14:20:10		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/14:20:10		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/14:20:10		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:20:10		Successfully handled missing values in the dataset
+2025-04-08/14:20:11		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/14:20:11		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/14:20:11		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:20:11		Successfully handled missing values in the dataset
+2025-04-08/14:20:11		Entered the save_model method of the File_Operation class
+2025-04-08/14:20:11		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:20:11		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/14:20:11		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:20:11		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:20:11		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:20:11		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:20:11		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:20:12		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:20:12		Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/14:20:12		XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:20:12		Exception occurred in get_best_model method of the Model_Finder class. Exception message: XGBoost parameter tuning failed: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/14:20:12		Model Selection Failed. Exited the get_best_model method of the Model_Finder class
+2025-04-08/14:20:12		Unexpected error: 
+2025-04-08/14:20:12		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 84, in get_best_params_for_xgboost
+    self.grid.fit(train_x, train_y)
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 933, in fit
+    cv_orig = check_cv(self.cv, y, classifier=is_classifier(estimator))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1237, in is_classifier
+    return get_tags(estimator).estimator_type == "classifier"
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/utils/_tags.py", line 430, in get_tags
+    sklearn_tags_provider[klass] = klass.__sklearn_tags__(estimator)  # type: ignore[attr-defined]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 540, in __sklearn_tags__
+    tags = super().__sklearn_tags__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 126, in get_best_model
+    self.xgboost = self.get_best_params_for_xgboost(train_x, train_y)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 114, in get_best_params_for_xgboost
+    raise Exception(f"XGBoost parameter tuning failed: {str(e)}")
+Exception: XGBoost parameter tuning failed: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 320, in trainingModel
+    best_model_name, best_model = model_finder.get_best_model(x_train, y_train, x_test, y_test)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 158, in get_best_model
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/main.py", line 269, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-04-08/14:21:34		Training request received.
+2025-04-08/14:21:34		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundaryc3388dc045a13f253868ffa44474ad96
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/14:21:34		Request form data: ImmutableMultiDict([])
+2025-04-08/14:21:34		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/14:21:34		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/14:21:34		Start of Validation on files for Training!!
+2025-04-08/14:21:34		Schema details extracted successfully.
+2025-04-08/14:21:34		Regex pattern created successfully.
+2025-04-08/14:21:34		Bad Data folder deleted successfully.
+2025-04-08/14:21:34		Good Data folder deleted successfully.
+2025-04-08/14:21:34		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/14:21:34		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/14:21:34		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/14:21:34		File name validation completed.
+2025-04-08/14:21:34		Column Length Validation Started!!
+2025-04-08/14:21:34		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/14:21:34		Column Length Validation Completed!!
+2025-04-08/14:21:34		Missing Values Validation Started!!
+2025-04-08/14:21:34		Missing Values Validation Completed!!
+2025-04-08/14:21:34		Raw Data Validation Complete!!
+2025-04-08/14:21:34		Starting Data Transforamtion!!
+2025-04-08/14:21:34		DataTransformation Completed!!!
+2025-04-08/14:21:34		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/14:21:34		Table creation Completed!!
+2025-04-08/14:21:34		Insertion of Data into Table started!!!!
+2025-04-08/14:21:36		Insertion in Table completed!!!
+2025-04-08/14:21:36		Deleting Good Data Folder!!!
+2025-04-08/14:21:36		Good Data folder deleted successfully.
+2025-04-08/14:21:36		Good_Data folder deleted!!!
+2025-04-08/14:21:36		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/14:21:36		Bad files moved to archive
+2025-04-08/14:21:36		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/14:21:36		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/14:21:36		Validation Operation completed!!
+2025-04-08/14:21:36		Extracting csv file from table
+2025-04-08/14:21:36		Entered the get_data method of the Data_Getter class
+2025-04-08/14:21:36		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/14:21:36		Entered the remove_columns method of the Preprocessor class
+2025-04-08/14:21:36		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/14:21:36		Entered the is_null_present method of the Preprocessor class
+2025-04-08/14:21:36		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/14:21:36		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/14:21:36		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/14:21:36		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/14:21:36		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:21:36		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:21:36		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/14:21:36		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/14:21:36		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/14:21:36		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:21:36		Successfully handled missing values in the dataset
+2025-04-08/14:21:37		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/14:21:37		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/14:21:37		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:21:37		Successfully handled missing values in the dataset
+2025-04-08/14:21:37		Entered the save_model method of the File_Operation class
+2025-04-08/14:21:37		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:21:37		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/14:21:37		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:21:37		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:21:37		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:21:37		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:21:37		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:21:37		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:21:37		Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/14:21:37		XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:21:37		Exception occurred in get_best_model method of the Model_Finder class. Exception message: XGBoost parameter tuning failed: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/14:21:37		Model Selection Failed. Exited the get_best_model method of the Model_Finder class
+2025-04-08/14:21:37		Unexpected error: 
+2025-04-08/14:21:37		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 84, in get_best_params_for_xgboost
+    self.grid.fit(train_x, train_y)
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 933, in fit
+    cv_orig = check_cv(self.cv, y, classifier=is_classifier(estimator))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1237, in is_classifier
+    return get_tags(estimator).estimator_type == "classifier"
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/utils/_tags.py", line 430, in get_tags
+    sklearn_tags_provider[klass] = klass.__sklearn_tags__(estimator)  # type: ignore[attr-defined]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 540, in __sklearn_tags__
+    tags = super().__sklearn_tags__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 125, in get_best_model
+    self.xgboost = self.get_best_params_for_xgboost(train_x, train_y)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 113, in get_best_params_for_xgboost
+    raise Exception(f"XGBoost parameter tuning failed: {str(e)}")
+Exception: XGBoost parameter tuning failed: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 320, in trainingModel
+    best_model_name, best_model = model_finder.get_best_model(x_train, y_train, x_test, y_test)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 157, in get_best_model
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/main.py", line 269, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-04-08/14:24:48		Training request received.
+2025-04-08/14:24:48		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary4f85547acf2c6abda543d85267be3554
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/14:24:48		Request form data: ImmutableMultiDict([])
+2025-04-08/14:24:48		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/14:24:48		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/14:24:48		Start of Validation on files for Training!!
+2025-04-08/14:24:48		Schema details extracted successfully.
+2025-04-08/14:24:48		Regex pattern created successfully.
+2025-04-08/14:24:48		Bad Data folder deleted successfully.
+2025-04-08/14:24:48		Good Data folder deleted successfully.
+2025-04-08/14:24:48		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/14:24:48		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/14:24:48		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/14:24:48		File name validation completed.
+2025-04-08/14:24:48		Column Length Validation Started!!
+2025-04-08/14:24:48		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/14:24:48		Column Length Validation Completed!!
+2025-04-08/14:24:48		Missing Values Validation Started!!
+2025-04-08/14:24:48		Missing Values Validation Completed!!
+2025-04-08/14:24:48		Raw Data Validation Complete!!
+2025-04-08/14:24:48		Starting Data Transforamtion!!
+2025-04-08/14:24:48		DataTransformation Completed!!!
+2025-04-08/14:24:48		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/14:24:48		Table creation Completed!!
+2025-04-08/14:24:48		Insertion of Data into Table started!!!!
+2025-04-08/14:24:50		Insertion in Table completed!!!
+2025-04-08/14:24:50		Deleting Good Data Folder!!!
+2025-04-08/14:24:50		Good Data folder deleted successfully.
+2025-04-08/14:24:50		Good_Data folder deleted!!!
+2025-04-08/14:24:50		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/14:24:50		Bad files moved to archive
+2025-04-08/14:24:50		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/14:24:50		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/14:24:50		Validation Operation completed!!
+2025-04-08/14:24:50		Extracting csv file from table
+2025-04-08/14:24:51		Entered the get_data method of the Data_Getter class
+2025-04-08/14:24:51		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/14:24:51		Entered the remove_columns method of the Preprocessor class
+2025-04-08/14:24:51		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/14:24:51		Entered the is_null_present method of the Preprocessor class
+2025-04-08/14:24:51		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/14:24:51		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/14:24:51		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/14:24:51		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/14:24:51		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:24:51		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:24:51		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/14:24:51		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/14:24:51		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/14:24:51		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:24:51		Successfully handled missing values in the dataset
+2025-04-08/14:24:52		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/14:24:52		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/14:24:52		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:24:52		Successfully handled missing values in the dataset
+2025-04-08/14:24:52		Entered the save_model method of the File_Operation class
+2025-04-08/14:24:52		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:24:52		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/14:24:52		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:24:52		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:24:52		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:24:52		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:24:52		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:24:52		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:24:52		Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/14:24:52		XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:24:52		Exception occurred in get_best_model method of the Model_Finder class. Exception message: XGBoost parameter tuning failed: 'super' object has no attribute '__sklearn_tags__'
+2025-04-08/14:24:52		Model Selection Failed. Exited the get_best_model method of the Model_Finder class
+2025-04-08/14:24:52		Unexpected error: 
+2025-04-08/14:24:52		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 84, in get_best_params_for_xgboost
+    self.grid.fit(train_x, train_y)
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 933, in fit
+    cv_orig = check_cv(self.cv, y, classifier=is_classifier(estimator))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 1237, in is_classifier
+    return get_tags(estimator).estimator_type == "classifier"
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/utils/_tags.py", line 430, in get_tags
+    sklearn_tags_provider[klass] = klass.__sklearn_tags__(estimator)  # type: ignore[attr-defined]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/sklearn/base.py", line 540, in __sklearn_tags__
+    tags = super().__sklearn_tags__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 125, in get_best_model
+    self.xgboost = self.get_best_params_for_xgboost(train_x, train_y)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 113, in get_best_params_for_xgboost
+    raise Exception(f"XGBoost parameter tuning failed: {str(e)}")
+Exception: XGBoost parameter tuning failed: 'super' object has no attribute '__sklearn_tags__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 320, in trainingModel
+    best_model_name, best_model = model_finder.get_best_model(x_train, y_train, x_test, y_test)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/best_model_finder/tuner.py", line 157, in get_best_model
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/main.py", line 269, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-04-08/14:32:59		Training request received.
+2025-04-08/14:32:59		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary349ab82ba3b6eeacd5fd255164c10ad4
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/14:32:59		Request form data: ImmutableMultiDict([])
+2025-04-08/14:32:59		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/14:32:59		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/14:32:59		Start of Validation on files for Training!!
+2025-04-08/14:32:59		Schema details extracted successfully.
+2025-04-08/14:32:59		Regex pattern created successfully.
+2025-04-08/14:32:59		Bad Data folder deleted successfully.
+2025-04-08/14:32:59		Good Data folder deleted successfully.
+2025-04-08/14:32:59		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/14:32:59		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/14:32:59		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/14:32:59		File name validation completed.
+2025-04-08/14:32:59		Column Length Validation Started!!
+2025-04-08/14:32:59		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/14:32:59		Column Length Validation Completed!!
+2025-04-08/14:32:59		Missing Values Validation Started!!
+2025-04-08/14:32:59		Missing Values Validation Completed!!
+2025-04-08/14:32:59		Raw Data Validation Complete!!
+2025-04-08/14:32:59		Starting Data Transforamtion!!
+2025-04-08/14:33:00		DataTransformation Completed!!!
+2025-04-08/14:33:00		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/14:33:00		Table creation Completed!!
+2025-04-08/14:33:00		Insertion of Data into Table started!!!!
+2025-04-08/14:33:02		Insertion in Table completed!!!
+2025-04-08/14:33:02		Deleting Good Data Folder!!!
+2025-04-08/14:33:02		Good Data folder deleted successfully.
+2025-04-08/14:33:02		Good_Data folder deleted!!!
+2025-04-08/14:33:02		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/14:33:02		Bad files moved to archive
+2025-04-08/14:33:02		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/14:33:02		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/14:33:02		Validation Operation completed!!
+2025-04-08/14:33:02		Extracting csv file from table
+2025-04-08/14:33:02		Entered the get_data method of the Data_Getter class
+2025-04-08/14:33:02		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/14:33:02		Entered the remove_columns method of the Preprocessor class
+2025-04-08/14:33:02		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/14:33:02		Entered the is_null_present method of the Preprocessor class
+2025-04-08/14:33:02		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/14:33:02		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/14:33:02		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/14:33:02		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/14:33:02		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:33:02		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:33:02		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/14:33:02		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/14:33:02		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/14:33:02		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:33:02		Successfully handled missing values in the dataset
+2025-04-08/14:33:03		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/14:33:03		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/14:33:03		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:33:03		Successfully handled missing values in the dataset
+2025-04-08/14:33:03		Entered the save_model method of the File_Operation class
+2025-04-08/14:33:03		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:33:03		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/14:33:03		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:03		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:03		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:03		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:03		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:33:03		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:33:04		Successfully trained XGBoost with default parameters
+2025-04-08/14:33:04		AUC for XGBoost:1.0
+2025-04-08/14:33:04		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:33:12		SVM best params: {'C': 0.5, 'kernel': 'sigmoid', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:33:12		AUC for SVM:0.555
+2025-04-08/14:33:12		Entered the save_model method of the File_Operation class
+2025-04-08/14:33:12		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:33:12		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:12		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:12		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:12		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:12		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:33:12		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:33:12		Successfully trained XGBoost with default parameters
+2025-04-08/14:33:12		AUC for XGBoost:1.0
+2025-04-08/14:33:12		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:33:16		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:33:16		AUC for SVM:0.5
+2025-04-08/14:33:16		Entered the save_model method of the File_Operation class
+2025-04-08/14:33:16		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:33:16		Training successful.
+2025-04-08/14:33:45		Training request received.
+2025-04-08/14:33:45		Request headers: User-Agent: PostmanRuntime/7.43.2
+Accept: */*
+Postman-Token: 04d4dfb1-9296-4c7c-b3f1-d2a649927bbe
+Host: 127.0.0.1:5001
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Content-Type: multipart/form-data; boundary=--------------------------133885028613057888180039
+Content-Length: 14030
+
+
+2025-04-08/14:33:45		Request form data: ImmutableMultiDict([])
+2025-04-08/14:33:45		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/14:33:45		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/14:33:45		Start of Validation on files for Training!!
+2025-04-08/14:33:45		Schema details extracted successfully.
+2025-04-08/14:33:45		Regex pattern created successfully.
+2025-04-08/14:33:45		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/14:33:45		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/14:33:45		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/14:33:45		File name validation completed.
+2025-04-08/14:33:45		Column Length Validation Started!!
+2025-04-08/14:33:45		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/14:33:45		Column Length Validation Completed!!
+2025-04-08/14:33:45		Missing Values Validation Started!!
+2025-04-08/14:33:45		Missing Values Validation Completed!!
+2025-04-08/14:33:45		Raw Data Validation Complete!!
+2025-04-08/14:33:45		Starting Data Transforamtion!!
+2025-04-08/14:33:45		DataTransformation Completed!!!
+2025-04-08/14:33:45		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/14:33:45		Table creation Completed!!
+2025-04-08/14:33:45		Insertion of Data into Table started!!!!
+2025-04-08/14:33:47		Insertion in Table completed!!!
+2025-04-08/14:33:47		Deleting Good Data Folder!!!
+2025-04-08/14:33:47		Good Data folder deleted successfully.
+2025-04-08/14:33:47		Good_Data folder deleted!!!
+2025-04-08/14:33:47		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/14:33:47		Bad files moved to archive
+2025-04-08/14:33:47		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/14:33:47		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/14:33:47		Validation Operation completed!!
+2025-04-08/14:33:47		Extracting csv file from table
+2025-04-08/14:33:47		Entered the get_data method of the Data_Getter class
+2025-04-08/14:33:47		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/14:33:47		Entered the remove_columns method of the Preprocessor class
+2025-04-08/14:33:47		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/14:33:47		Entered the is_null_present method of the Preprocessor class
+2025-04-08/14:33:47		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/14:33:47		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/14:33:47		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/14:33:47		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/14:33:47		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:33:47		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:33:47		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/14:33:47		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/14:33:47		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/14:33:47		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:33:47		Successfully handled missing values in the dataset
+2025-04-08/14:33:49		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/14:33:49		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/14:33:49		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:33:49		Successfully handled missing values in the dataset
+2025-04-08/14:33:49		Entered the save_model method of the File_Operation class
+2025-04-08/14:33:49		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:33:49		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/14:33:49		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:49		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:49		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:49		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:49		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:33:49		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:33:50		Successfully trained XGBoost with default parameters
+2025-04-08/14:33:50		AUC for XGBoost:0.9132231404958677
+2025-04-08/14:33:50		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:33:58		SVM best params: {'C': 0.5, 'kernel': 'sigmoid', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:33:58		AUC for SVM:0.5537190082644629
+2025-04-08/14:33:58		Entered the save_model method of the File_Operation class
+2025-04-08/14:33:58		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:33:58		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:58		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:58		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:58		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:33:58		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:33:58		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:33:58		Successfully trained XGBoost with default parameters
+2025-04-08/14:33:58		AUC for XGBoost:1.0
+2025-04-08/14:33:58		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:34:01		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:34:01		AUC for SVM:0.5
+2025-04-08/14:34:01		Entered the save_model method of the File_Operation class
+2025-04-08/14:34:01		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:34:01		Training successful.
+2025-04-08/14:41:10		Training request received.
+2025-04-08/14:41:10		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundarya610a0df7d0eb99a5c52b9083969237e
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/14:41:10		Request form data: ImmutableMultiDict([])
+2025-04-08/14:41:10		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/14:41:10		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/14:41:10		Start of Validation on files for Training!!
+2025-04-08/14:41:10		Schema details extracted successfully.
+2025-04-08/14:41:10		Regex pattern created successfully.
+2025-04-08/14:41:10		Bad Data folder deleted successfully.
+2025-04-08/14:41:10		Good Data folder deleted successfully.
+2025-04-08/14:41:10		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/14:41:10		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/14:41:10		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/14:41:10		File name validation completed.
+2025-04-08/14:41:10		Column Length Validation Started!!
+2025-04-08/14:41:10		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/14:41:10		Column Length Validation Completed!!
+2025-04-08/14:41:10		Missing Values Validation Started!!
+2025-04-08/14:41:10		Missing Values Validation Completed!!
+2025-04-08/14:41:10		Raw Data Validation Complete!!
+2025-04-08/14:41:10		Starting Data Transforamtion!!
+2025-04-08/14:41:10		DataTransformation Completed!!!
+2025-04-08/14:41:10		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/14:41:12		Table creation Completed!!
+2025-04-08/14:41:12		Insertion of Data into Table started!!!!
+2025-04-08/14:41:14		Insertion in Table completed!!!
+2025-04-08/14:41:14		Deleting Good Data Folder!!!
+2025-04-08/14:41:14		Good Data folder deleted successfully.
+2025-04-08/14:41:14		Good_Data folder deleted!!!
+2025-04-08/14:41:14		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/14:41:14		Bad files moved to archive
+2025-04-08/14:41:14		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/14:41:14		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/14:41:14		Validation Operation completed!!
+2025-04-08/14:41:14		Extracting csv file from table
+2025-04-08/14:41:14		Entered the get_data method of the Data_Getter class
+2025-04-08/14:41:14		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/14:41:14		Entered the remove_columns method of the Preprocessor class
+2025-04-08/14:41:14		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/14:41:14		Entered the is_null_present method of the Preprocessor class
+2025-04-08/14:41:14		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/14:41:14		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/14:41:14		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/14:41:14		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/14:41:14		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:41:14		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/14:41:14		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/14:41:14		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/14:41:14		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/14:41:14		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:41:14		Successfully handled missing values in the dataset
+2025-04-08/14:41:15		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/14:41:15		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/14:41:15		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/14:41:15		Successfully handled missing values in the dataset
+2025-04-08/14:41:15		Entered the save_model method of the File_Operation class
+2025-04-08/14:41:15		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:41:15		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/14:41:15		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:41:15		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:41:15		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:41:15		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:41:15		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:41:15		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:41:16		Successfully trained XGBoost with default parameters
+2025-04-08/14:41:16		AUC for XGBoost:0.5625
+2025-04-08/14:41:16		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:41:18		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:41:18		AUC for SVM:0.5
+2025-04-08/14:41:18		Entered the save_model method of the File_Operation class
+2025-04-08/14:41:18		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:41:18		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:41:18		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:41:18		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:41:18		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/14:41:18		Entered the get_best_model method of the Model_Finder class
+2025-04-08/14:41:18		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/14:41:18		Successfully trained XGBoost with default parameters
+2025-04-08/14:41:18		AUC for XGBoost:0.25
+2025-04-08/14:41:18		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:41:20		SVM best params: {'C': 0.1, 'kernel': 'sigmoid', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/14:41:20		AUC for SVM:0.5
+2025-04-08/14:41:20		Entered the save_model method of the File_Operation class
+2025-04-08/14:41:20		Model File SVM1 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/14:41:20		Training successful.
+2025-04-08/15:05:15		Training request received.
+2025-04-08/15:05:15		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary40ef02805b2fa4cdab73974d83e88859
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/15:05:15		Request form data: ImmutableMultiDict([])
+2025-04-08/15:05:15		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/15:05:15		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/15:05:15		Start of Validation on files for Training!!
+2025-04-08/15:05:15		Schema details extracted successfully.
+2025-04-08/15:05:15		Regex pattern created successfully.
+2025-04-08/15:05:15		Bad Data folder deleted successfully.
+2025-04-08/15:05:15		Good Data folder deleted successfully.
+2025-04-08/15:05:15		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/15:05:15		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/15:05:15		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/15:05:15		File name validation completed.
+2025-04-08/15:05:15		Column Length Validation Started!!
+2025-04-08/15:05:15		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/15:05:15		Column Length Validation Completed!!
+2025-04-08/15:05:15		Missing Values Validation Started!!
+2025-04-08/15:05:15		Missing Values Validation Completed!!
+2025-04-08/15:05:15		Raw Data Validation Complete!!
+2025-04-08/15:05:15		Starting Data Transforamtion!!
+2025-04-08/15:05:15		DataTransformation Completed!!!
+2025-04-08/15:05:15		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/15:05:15		Table creation Completed!!
+2025-04-08/15:05:15		Insertion of Data into Table started!!!!
+2025-04-08/15:05:17		Insertion in Table completed!!!
+2025-04-08/15:05:17		Deleting Good Data Folder!!!
+2025-04-08/15:05:17		Good Data folder deleted successfully.
+2025-04-08/15:05:17		Good_Data folder deleted!!!
+2025-04-08/15:05:17		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/15:05:17		Bad files moved to archive
+2025-04-08/15:05:17		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/15:05:17		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/15:05:17		Validation Operation completed!!
+2025-04-08/15:05:17		Extracting csv file from table
+2025-04-08/15:05:17		Entered the get_data method of the Data_Getter class
+2025-04-08/15:05:17		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/15:05:17		Entered the remove_columns method of the Preprocessor class
+2025-04-08/15:05:17		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/15:05:17		Entered the is_null_present method of the Preprocessor class
+2025-04-08/15:05:17		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/15:05:17		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/15:05:17		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/15:05:17		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/15:05:17		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/15:05:17		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/15:05:17		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/15:05:17		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/15:05:17		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/15:05:17		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/15:05:17		Successfully handled missing values in the dataset
+2025-04-08/15:05:18		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/15:05:18		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/15:05:18		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/15:05:18		Successfully handled missing values in the dataset
+2025-04-08/15:05:18		Entered the save_model method of the File_Operation class
+2025-04-08/15:05:18		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/15:05:18		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/15:05:18		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:05:18		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:05:18		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:05:18		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:05:18		Entered the get_best_model method of the Model_Finder class
+2025-04-08/15:05:18		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/15:05:19		Successfully trained XGBoost with default parameters
+2025-04-08/15:05:19		AUC for XGBoost:0.7473684210526316
+2025-04-08/15:05:19		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:05:20		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:05:20		AUC for SVM:0.5
+2025-04-08/15:05:20		Entered the save_model method of the File_Operation class
+2025-04-08/15:05:20		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/15:05:20		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:05:20		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:05:20		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:05:20		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:05:20		Entered the get_best_model method of the Model_Finder class
+2025-04-08/15:05:20		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/15:05:21		Successfully trained XGBoost with default parameters
+2025-04-08/15:05:21		AUC for XGBoost:1.0
+2025-04-08/15:05:21		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:05:23		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:05:23		AUC for SVM:0.5
+2025-04-08/15:05:23		Entered the save_model method of the File_Operation class
+2025-04-08/15:05:23		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/15:05:23		Training successful.
+2025-04-08/15:31:59		Training request received.
+2025-04-08/15:31:59		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary1eeaa88050fe005558644a6b84ad91c1
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/15:31:59		Request form data: ImmutableMultiDict([])
+2025-04-08/15:31:59		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/15:31:59		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/15:31:59		Start of Validation on files for Training!!
+2025-04-08/15:31:59		Schema details extracted successfully.
+2025-04-08/15:31:59		Regex pattern created successfully.
+2025-04-08/15:31:59		Bad Data folder deleted successfully.
+2025-04-08/15:31:59		Good Data folder deleted successfully.
+2025-04-08/15:31:59		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/15:31:59		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/15:31:59		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/15:31:59		File name validation completed.
+2025-04-08/15:31:59		Column Length Validation Started!!
+2025-04-08/15:31:59		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/15:31:59		Column Length Validation Completed!!
+2025-04-08/15:31:59		Missing Values Validation Started!!
+2025-04-08/15:31:59		Missing Values Validation Completed!!
+2025-04-08/15:31:59		Raw Data Validation Complete!!
+2025-04-08/15:31:59		Starting Data Transforamtion!!
+2025-04-08/15:31:59		DataTransformation Completed!!!
+2025-04-08/15:31:59		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/15:31:59		Table creation Completed!!
+2025-04-08/15:31:59		Insertion of Data into Table started!!!!
+2025-04-08/15:32:02		Insertion in Table completed!!!
+2025-04-08/15:32:02		Deleting Good Data Folder!!!
+2025-04-08/15:32:02		Good Data folder deleted successfully.
+2025-04-08/15:32:02		Good_Data folder deleted!!!
+2025-04-08/15:32:02		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/15:32:02		Bad files moved to archive
+2025-04-08/15:32:02		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/15:32:02		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/15:32:02		Validation Operation completed!!
+2025-04-08/15:32:02		Extracting csv file from table
+2025-04-08/15:32:02		Entered the get_data method of the Data_Getter class
+2025-04-08/15:32:02		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/15:32:02		Entered the remove_columns method of the Preprocessor class
+2025-04-08/15:32:02		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/15:32:02		Entered the is_null_present method of the Preprocessor class
+2025-04-08/15:32:02		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/15:32:02		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/15:32:02		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/15:32:02		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/15:32:02		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/15:32:02		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/15:32:02		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/15:32:02		Exception occured in separate_label_feature method of the Preprocessor class. Exception message:  'Series' object has no attribute 'columns'
+2025-04-08/15:32:02		Label Separation Unsuccessful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/15:32:02		Unexpected error: 
+2025-04-08/15:32:02		Traceback:
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 95, in separate_label_feature
+    print(f"These are the columns in the Y: {self.Y.columns}")
+                                             ^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/myenv/lib/python3.11/site-packages/pandas/core/generic.py", line 5989, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Series' object has no attribute 'columns'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 295, in trainingModel
+    X, Y = preprocessor.separate_label_feature(data, label_column_name='fraud_reported')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ephym/Desktop/InsurancefraudDetection/data_preprocessing/preprocessing.py", line 102, in separate_label_feature
+    raise Exception()
+Exception
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ephym/Desktop/InsurancefraudDetection/main.py", line 269, in trainRouteClient
+    trainModelObj.trainingModel()
+  File "/home/ephym/Desktop/InsurancefraudDetection/trainingModel.py", line 337, in trainingModel
+    raise Exception
+Exception
+
+2025-04-08/15:37:11		Training request received.
+2025-04-08/15:37:11		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary10f3ec2e928cee555672177fedc0bd28
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/15:37:11		Request form data: ImmutableMultiDict([])
+2025-04-08/15:37:11		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/15:37:11		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/15:37:11		Start of Validation on files for Training!!
+2025-04-08/15:37:11		Schema details extracted successfully.
+2025-04-08/15:37:11		Regex pattern created successfully.
+2025-04-08/15:37:11		Bad Data folder deleted successfully.
+2025-04-08/15:37:11		Good Data folder deleted successfully.
+2025-04-08/15:37:11		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/15:37:11		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/15:37:11		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/15:37:11		File name validation completed.
+2025-04-08/15:37:11		Column Length Validation Started!!
+2025-04-08/15:37:11		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/15:37:11		Column Length Validation Completed!!
+2025-04-08/15:37:11		Missing Values Validation Started!!
+2025-04-08/15:37:11		Missing Values Validation Completed!!
+2025-04-08/15:37:11		Raw Data Validation Complete!!
+2025-04-08/15:37:11		Starting Data Transforamtion!!
+2025-04-08/15:37:11		DataTransformation Completed!!!
+2025-04-08/15:37:11		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/15:37:11		Table creation Completed!!
+2025-04-08/15:37:11		Insertion of Data into Table started!!!!
+2025-04-08/15:37:14		Insertion in Table completed!!!
+2025-04-08/15:37:14		Deleting Good Data Folder!!!
+2025-04-08/15:37:14		Good Data folder deleted successfully.
+2025-04-08/15:37:14		Good_Data folder deleted!!!
+2025-04-08/15:37:14		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/15:37:14		Bad files moved to archive
+2025-04-08/15:37:14		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/15:37:14		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/15:37:14		Validation Operation completed!!
+2025-04-08/15:37:14		Extracting csv file from table
+2025-04-08/15:37:14		Entered the get_data method of the Data_Getter class
+2025-04-08/15:37:14		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/15:37:14		Entered the remove_columns method of the Preprocessor class
+2025-04-08/15:37:14		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/15:37:14		Entered the is_null_present method of the Preprocessor class
+2025-04-08/15:37:14		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/15:37:14		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/15:37:14		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/15:37:14		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/15:37:14		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/15:37:14		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/15:37:14		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/15:37:14		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/15:37:14		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/15:37:14		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/15:37:14		Successfully handled missing values in the dataset
+2025-04-08/15:37:15		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/15:37:15		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/15:37:15		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/15:37:15		Successfully handled missing values in the dataset
+2025-04-08/15:37:15		Entered the save_model method of the File_Operation class
+2025-04-08/15:37:15		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/15:37:15		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/15:37:15		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:37:15		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:37:15		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:37:15		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:37:15		Entered the get_best_model method of the Model_Finder class
+2025-04-08/15:37:15		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/15:37:15		Successfully trained XGBoost with default parameters
+2025-04-08/15:37:15		AUC for XGBoost:0.95
+2025-04-08/15:37:15		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:37:17		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:37:17		AUC for SVM:0.5
+2025-04-08/15:37:17		Entered the save_model method of the File_Operation class
+2025-04-08/15:37:17		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/15:37:17		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:37:17		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:37:17		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:37:17		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:37:17		Entered the get_best_model method of the Model_Finder class
+2025-04-08/15:37:17		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/15:37:18		Successfully trained XGBoost with default parameters
+2025-04-08/15:37:18		AUC for XGBoost:1.0
+2025-04-08/15:37:18		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:37:19		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:37:19		AUC for SVM:0.5
+2025-04-08/15:37:19		Entered the save_model method of the File_Operation class
+2025-04-08/15:37:19		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/15:37:19		Training successful.
+2025-04-08/15:51:02		Training request received.
+2025-04-08/15:51:02		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary3d99f0004749d631f793c6de9c1a9423
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/15:51:02		Request form data: ImmutableMultiDict([])
+2025-04-08/15:51:02		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/15:51:02		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/15:51:02		Start of Validation on files for Training!!
+2025-04-08/15:51:02		Schema details extracted successfully.
+2025-04-08/15:51:02		Regex pattern created successfully.
+2025-04-08/15:51:02		Bad Data folder deleted successfully.
+2025-04-08/15:51:02		Good Data folder deleted successfully.
+2025-04-08/15:51:02		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/15:51:02		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/15:51:02		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/15:51:02		File name validation completed.
+2025-04-08/15:51:02		Column Length Validation Started!!
+2025-04-08/15:51:02		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/15:51:02		Column Length Validation Completed!!
+2025-04-08/15:51:02		Missing Values Validation Started!!
+2025-04-08/15:51:02		Missing Values Validation Completed!!
+2025-04-08/15:51:02		Raw Data Validation Complete!!
+2025-04-08/15:51:02		Starting Data Transforamtion!!
+2025-04-08/15:51:02		DataTransformation Completed!!!
+2025-04-08/15:51:02		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/15:51:02		Table creation Completed!!
+2025-04-08/15:51:02		Insertion of Data into Table started!!!!
+2025-04-08/15:51:05		Insertion in Table completed!!!
+2025-04-08/15:51:05		Deleting Good Data Folder!!!
+2025-04-08/15:51:05		Good Data folder deleted successfully.
+2025-04-08/15:51:05		Good_Data folder deleted!!!
+2025-04-08/15:51:05		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/15:51:05		Bad files moved to archive
+2025-04-08/15:51:05		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/15:51:05		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/15:51:05		Validation Operation completed!!
+2025-04-08/15:51:05		Extracting csv file from table
+2025-04-08/15:51:05		Entered the get_data method of the Data_Getter class
+2025-04-08/15:51:05		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/15:51:05		Entered the remove_columns method of the Preprocessor class
+2025-04-08/15:51:05		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/15:51:05		Entered the is_null_present method of the Preprocessor class
+2025-04-08/15:51:05		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/15:51:05		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/15:51:05		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/15:51:05		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/15:51:05		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/15:51:05		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/15:51:05		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/15:51:05		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/15:51:05		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/15:51:05		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/15:51:05		Successfully handled missing values in the dataset
+2025-04-08/15:51:06		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/15:51:06		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/15:51:06		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/15:51:06		Successfully handled missing values in the dataset
+2025-04-08/15:51:06		Entered the save_model method of the File_Operation class
+2025-04-08/15:51:06		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/15:51:06		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/15:51:06		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:51:06		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:51:06		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:51:06		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:51:06		Entered the get_best_model method of the Model_Finder class
+2025-04-08/15:51:06		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/15:51:06		Successfully trained XGBoost with default parameters
+2025-04-08/15:51:06		AUC for XGBoost:1.0
+2025-04-08/15:51:06		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:51:08		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:51:08		AUC for SVM:0.5
+2025-04-08/15:51:08		Entered the save_model method of the File_Operation class
+2025-04-08/15:51:08		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/15:51:08		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:51:08		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:51:08		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:51:08		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/15:51:08		Entered the get_best_model method of the Model_Finder class
+2025-04-08/15:51:08		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/15:51:09		Successfully trained XGBoost with default parameters
+2025-04-08/15:51:09		AUC for XGBoost:0.7571428571428572
+2025-04-08/15:51:09		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:51:10		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/15:51:10		AUC for SVM:0.5
+2025-04-08/15:51:10		Entered the save_model method of the File_Operation class
+2025-04-08/15:51:10		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/15:51:10		Training successful.
+2025-04-08/18:01:33		Training request received.
+2025-04-08/18:01:33		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary50409201bde0046a950343c8a7a7b1
+Content-Length: 14032
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/18:01:33		Request form data: ImmutableMultiDict([])
+2025-04-08/18:01:33		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/18:01:33		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/18:01:33		Start of Validation on files for Training!!
+2025-04-08/18:01:33		Schema details extracted successfully.
+2025-04-08/18:01:33		Regex pattern created successfully.
+2025-04-08/18:01:33		Bad Data folder deleted successfully.
+2025-04-08/18:01:33		Good Data folder deleted successfully.
+2025-04-08/18:01:33		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/18:01:33		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/18:01:33		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/18:01:33		File name validation completed.
+2025-04-08/18:01:33		Column Length Validation Started!!
+2025-04-08/18:01:33		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/18:01:33		Column Length Validation Completed!!
+2025-04-08/18:01:33		Missing Values Validation Started!!
+2025-04-08/18:01:33		Missing Values Validation Completed!!
+2025-04-08/18:01:33		Raw Data Validation Complete!!
+2025-04-08/18:01:33		Starting Data Transforamtion!!
+2025-04-08/18:01:33		DataTransformation Completed!!!
+2025-04-08/18:01:33		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/18:01:33		Table creation Completed!!
+2025-04-08/18:01:33		Insertion of Data into Table started!!!!
+2025-04-08/18:01:35		Insertion in Table completed!!!
+2025-04-08/18:01:35		Deleting Good Data Folder!!!
+2025-04-08/18:01:35		Good Data folder deleted successfully.
+2025-04-08/18:01:35		Good_Data folder deleted!!!
+2025-04-08/18:01:35		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/18:01:35		Bad files moved to archive
+2025-04-08/18:01:35		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/18:01:35		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/18:01:35		Validation Operation completed!!
+2025-04-08/18:01:35		Extracting csv file from table
+2025-04-08/18:01:35		Entered the get_data method of the Data_Getter class
+2025-04-08/18:01:36		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/18:01:36		Entered the remove_columns method of the Preprocessor class
+2025-04-08/18:01:36		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/18:01:36		Entered the is_null_present method of the Preprocessor class
+2025-04-08/18:01:36		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/18:01:36		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/18:01:36		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/18:01:36		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/18:01:36		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/18:01:36		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/18:01:36		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/18:01:36		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/18:01:36		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/18:01:36		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/18:01:36		Successfully handled missing values in the dataset
+2025-04-08/18:01:37		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/18:01:37		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/18:01:37		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/18:01:37		Successfully handled missing values in the dataset
+2025-04-08/18:01:37		Entered the save_model method of the File_Operation class
+2025-04-08/18:01:37		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/18:01:37		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/18:01:37		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:01:37		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:01:37		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:01:37		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:01:37		Entered the get_best_model method of the Model_Finder class
+2025-04-08/18:01:37		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/18:01:37		Successfully trained XGBoost with default parameters
+2025-04-08/18:01:37		AUC for XGBoost:0.9736842105263157
+2025-04-08/18:01:37		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/18:01:39		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/18:01:39		AUC for SVM:0.5
+2025-04-08/18:01:39		Entered the save_model method of the File_Operation class
+2025-04-08/18:01:39		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/18:01:39		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:01:39		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:01:39		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:01:39		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:01:39		Entered the get_best_model method of the Model_Finder class
+2025-04-08/18:01:39		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/18:01:39		Successfully trained XGBoost with default parameters
+2025-04-08/18:01:39		AUC for XGBoost:0.8125
+2025-04-08/18:01:39		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/18:01:41		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/18:01:41		AUC for SVM:0.5
+2025-04-08/18:01:41		Entered the save_model method of the File_Operation class
+2025-04-08/18:01:41		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/18:01:41		Training successful.
+2025-04-08/18:02:29		Training request received.
+2025-04-08/18:02:29		Request headers: Host: 127.0.0.1:5001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+X-Requested-With: XMLHttpRequest
+Content-Type: multipart/form-data; boundary=----geckoformboundary4d25c3eca2045667f3f68520d56088c8
+Content-Length: 14036
+Origin: http://127.0.0.1:5001
+Connection: keep-alive
+Referer: http://127.0.0.1:5001/train.html
+Cookie: csrftoken=RnI5zDaBlKrYM8Jdl38IkvLly2wrLMsG
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=0
+
+
+2025-04-08/18:02:29		Request form data: ImmutableMultiDict([])
+2025-04-08/18:02:29		Request files: ImmutableMultiDict([('file', <FileStorage: 'fraudDetection_03032025_010223.csv' ('text/csv')>)])
+2025-04-08/18:02:29		File saved at: uploads/fraudDetection_03032025_010223.csv
+2025-04-08/18:02:29		Start of Validation on files for Training!!
+2025-04-08/18:02:29		Schema details extracted successfully.
+2025-04-08/18:02:29		Regex pattern created successfully.
+2025-04-08/18:02:29		Directories for Good_Raw and Bad_Raw created successfully.
+2025-04-08/18:02:29		Valid File name: fraudDetection_03032025_010223.csv. File moved to Good_Raw folder.
+2025-04-08/18:02:29		Valid File name: fraudDetection_24032025_082600.csv. File moved to Good_Raw folder.
+2025-04-08/18:02:29		File name validation completed.
+2025-04-08/18:02:29		Column Length Validation Started!!
+2025-04-08/18:02:29		Invalid Column Length for the file!! File moved to Bad Raw Folder :: fraudDetection_24032025_082600.csv
+2025-04-08/18:02:29		Column Length Validation Completed!!
+2025-04-08/18:02:29		Missing Values Validation Started!!
+2025-04-08/18:02:29		Missing Values Validation Completed!!
+2025-04-08/18:02:29		Raw Data Validation Complete!!
+2025-04-08/18:02:29		Starting Data Transforamtion!!
+2025-04-08/18:02:29		DataTransformation Completed!!!
+2025-04-08/18:02:29		Creating Training_Database and tables on the basis of given schema!!!
+2025-04-08/18:02:29		Table creation Completed!!
+2025-04-08/18:02:29		Insertion of Data into Table started!!!!
+2025-04-08/18:02:31		Insertion in Table completed!!!
+2025-04-08/18:02:31		Deleting Good Data Folder!!!
+2025-04-08/18:02:31		Good Data folder deleted successfully.
+2025-04-08/18:02:31		Good_Data folder deleted!!!
+2025-04-08/18:02:31		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-08/18:02:31		Bad files moved to archive
+2025-04-08/18:02:31		Bad Raw Data Folder Deleted successfully!!
+2025-04-08/18:02:31		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-08/18:02:31		Validation Operation completed!!
+2025-04-08/18:02:31		Extracting csv file from table
+2025-04-08/18:02:31		Entered the get_data method of the Data_Getter class
+2025-04-08/18:02:31		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-08/18:02:31		Entered the remove_columns method of the Preprocessor class
+2025-04-08/18:02:31		Column removal Successful.Exited the remove_columns method of the Preprocessor class
+2025-04-08/18:02:31		Entered the is_null_present method of the Preprocessor class
+2025-04-08/18:02:31		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-08/18:02:31		Entered the impute_missing_values method of the Preprocessor class
+2025-04-08/18:02:31		Error processing column police_report_available: No value is repeated more than once in the column
+2025-04-08/18:02:31		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-08/18:02:31		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-08/18:02:31		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-08/18:02:31		Entered the separate_label_feature method of the Preprocessor class
+2025-04-08/18:02:31		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2025-04-08/18:02:31		Entered the elbow_plot method of the KMeansClustering class
+2025-04-08/18:02:31		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/18:02:31		Successfully handled missing values in the dataset
+2025-04-08/18:02:32		The optimum number of clusters is: 2 . Exited the elbow_plot method of the KMeansClustering class
+2025-04-08/18:02:32		Entered the create_clusters method of the KMeansClustering class
+2025-04-08/18:02:32		Entered the handle_missing_values method of the KMeansClustering class
+2025-04-08/18:02:32		Successfully handled missing values in the dataset
+2025-04-08/18:02:32		Entered the save_model method of the File_Operation class
+2025-04-08/18:02:32		Model File KMeans saved. Exited the save_model method of the Model_Finder class
+2025-04-08/18:02:32		Successfully created 2 clusters. Exited the create_clusters method of the KMeansClustering class
+2025-04-08/18:02:32		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:02:32		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:02:32		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:02:32		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:02:32		Entered the get_best_model method of the Model_Finder class
+2025-04-08/18:02:32		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/18:02:32		Successfully trained XGBoost with default parameters
+2025-04-08/18:02:32		AUC for XGBoost:1.0
+2025-04-08/18:02:32		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/18:02:35		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/18:02:35		AUC for SVM:0.5
+2025-04-08/18:02:35		Entered the save_model method of the File_Operation class
+2025-04-08/18:02:35		Model File XGBoost1 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/18:02:35		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:02:35		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:02:35		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:02:35		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-08/18:02:35		Entered the get_best_model method of the Model_Finder class
+2025-04-08/18:02:35		Entered the get_best_params_for_xgboost method of the Model_Finder class
+2025-04-08/18:02:35		Successfully trained XGBoost with default parameters
+2025-04-08/18:02:35		AUC for XGBoost:0.84375
+2025-04-08/18:02:35		Entered the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/18:02:37		SVM best params: {'C': 0.1, 'kernel': 'rbf', 'random_state': 0}. Exited the get_best_params_for_svm method of the Model_Finder class
+2025-04-08/18:02:37		AUC for SVM:0.5
+2025-04-08/18:02:37		Entered the save_model method of the File_Operation class
+2025-04-08/18:02:37		Model File XGBoost0 saved. Exited the save_model method of the Model_Finder class
+2025-04-08/18:02:37		Training successful.

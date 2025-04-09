@@ -91,6 +91,8 @@ class Preprocessor:
         try:
             self.X=data.drop(labels=label_column_name,axis=1) # drop the columns specified and separate the feature columns
             self.Y=data[label_column_name] # Filter the Label columns
+            print(f"These are the columns in the X: {self.X.columns}")
+            print(f"These are the columns in the Y: {self.Y.name}")
             self.logger_object.log(self.file_object,
                                    'Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class')
             return self.X,self.Y
@@ -240,6 +242,36 @@ class Preprocessor:
             self.logger_object.log(self.file_object,'Exception occured in scale_numerical_columns method of the Preprocessor class. Exception message:  ' + str(e))
             self.logger_object.log(self.file_object, 'scaling for numerical columns Failed. Exited the scale_numerical_columns method of the Preprocessor class')
             raise Exception()
+        
+    def oneHotEncoding(self,data):
+        """
+                                                Method Name: oneHotEncoding
+                                                Description: This method encodes the categorical values to numeric values.
+                                                Output: dataframe with categorical values converted to numerical values
+                                                On Failure: Raise Exception
+
+                                                Written By: iNeuron Intelligence
+                                                Version: 1.0
+                                                Revisions: None
+                             """
+        self.logger_object.log(self.file_object, 'Entered the oneHotEncoding method of the Preprocessor class')
+
+        self.data=data
+        print(f"These are the columns in the data to go through one-hot-encoding: {self.data.columns}")
+        try:
+            self.data = pd.get_dummies(self.data, drop_first=True)
+            print(f"These are the columns in the data after being encoded: {self.data.columns}")
+            self.logger_object.log(self.file_object, 'one hot encoding for categorical values successful. Exited the oneHotEncoding method of the Preprocessor class')
+            return self.data
+            
+
+        except Exception as e:
+            self.logger_object.log(self.file_object,'Exception occured in oneHotEncoding method of the Preprocessor class. Exception message:  ' + str(e))
+            self.logger_object.log(self.file_object, 'one hot encoding for categorical columns Failed. Exited the oneHotEncoding method of the Preprocessor class')
+            raise Exception()
+
+
+
     def encode_categorical_columns(self,data):
         """
                                                 Method Name: encode_categorical_columns
@@ -254,8 +286,10 @@ class Preprocessor:
         self.logger_object.log(self.file_object, 'Entered the encode_categorical_columns method of the Preprocessor class')
 
         self.data=data
+        print(f"These are the columns in the data: {self.data.columns}")
         try:
             self.cat_df = self.data.select_dtypes(include=['object']).copy()
+            print(f"These are the columns in the cat_df: {self.cat_df.columns}")
             self.cat_df['policy_csl'] = self.cat_df['policy_csl'].map({'100/300': 1, '250/500': 2.5, '500/1000': 5})
             self.cat_df['insured_education_level'] = self.cat_df['insured_education_level'].map(
                 {'JD': 1, 'High School': 2, 'College': 3, 'Masters': 4, 'Associate': 5, 'MD': 6, 'PhD': 7})

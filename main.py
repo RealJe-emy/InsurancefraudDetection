@@ -16,6 +16,7 @@ from datetime import datetime
 import shutil
 import csv
 from werkzeug.utils import secure_filename
+from order import add_policy_numbers_to_csv
 
 # Initialize the Flask app
 app = Flask(__name__, template_folder='templates')
@@ -321,19 +322,39 @@ def predictRouteClient():
         with open(schema_path) as f:
             schema = json.load(f)
         expected_columns = list(schema['ColName'].keys())
+        print(f"Expected columns: {expected_columns}")
+        logger.log(log_file, f"Expected columns: {expected_columns}")
 
         # Validate and reorder columns if needed
-        raw_data_path = os.path.join(pred_folder, "InputFile.csv")
-        if os.path.exists(raw_data_path):
-            with open(raw_data_path, 'r') as f:
-                reader = csv.reader(f)
-                actual_columns = next(reader)
+        raw_data_path = os.path.join(pred_folder, "fraudDetection_extended.csv")
+        print(raw_data_path)
+        try:
+            if os.path.exists(raw_data_path):
+                with open(raw_data_path, 'r') as f:
+                    reader = csv.reader(f)
+                    actual_columns = next(reader)
+                    print(f"Actual columns: {actual_columns}")
+                    logger.log(log_file, f"Actual columns: {actual_columns}")
 
-            if set(actual_columns) != set(expected_columns):
-                logger.log(log_file, "Columns don't match schema. Reordering...")
-                df = pd.read_csv(raw_data_path)
-                df = df[expected_columns]  # Reorder columns
-                df.to_csv(raw_data_path, index=False)
+                if set(actual_columns) != set(expected_columns):
+                    logger.log(log_file, "Columns don't match schema. Reordering...")
+                    df = pd.read_csv(raw_data_path)
+                    df = df[expected_columns]  # Reorder columns
+                    df.to_csv(raw_data_path, index=True)
+        except Exception as e:
+            logger.log(log_file, f"Error reordering columns: {str(e)}")
+            return jsonify({"status": "error", "message": f"Error reordering columns: {str(e)}"}), 500
+        
+        missing = [col for col in expected_columns if col not in df.columns]
+        extra = [col for col in df.columns if col not in expected_columns]
+        print(f"Missing columns: {missing}")
+        print(f"Extra columns: {extra}")
+
+        logger.log(log_file, "Column reordering completed")
+        # Extract policy_number from the dataframe
+        policy_numbers = df['policy_number'].tolist()
+        print(f"length of policy_numbers is : {len(policy_numbers)}")
+        logger.log(log_file, f"Extracted policy numbers: {policy_numbers}")
 
         # Initialize prediction validation
         pred_val = pred_validation(pred_folder)
@@ -342,17 +363,22 @@ def predictRouteClient():
         # Initialize prediction
         pred = prediction(pred_folder)
         output_path = pred.predictionFromModel()
+        print(f"Tis is the output path file {output_path}")
 
         # Read and return results
         results = []
+        add_policy_numbers_to_csv(policy_numbers, output_path)
+        logger.log(log_file, f"Policy numbers added to output file: {output_path}")
+        print(f"Policy numbers added to output file: {output_path}")
+        
         with open(output_path, 'r') as f:
             reader = csv.reader(f)
             headers = next(reader)
             for row in reader:
                 results.append({
-                    "policy_number": row[0],
-                    "prediction": row[1],
-                    "probability": 0.95 if row[1] == 'Y' else 0.15
+                    "policy_number": row[2],
+                    "prediction": row[0],
+                    "probability": row[1]
                 })
 
         return jsonify({
@@ -361,13 +387,13 @@ def predictRouteClient():
             "summary": {
                 "total_records": len(results),
                 "fraud_count": sum(1 for r in results if r['prediction'] == 'Y')
-            }
+            },
+            "policy_numbers": policy_numbers
         })
 
     except Exception as e:
         logger.log(log_file, f"Prediction failed: {str(e)}")
         return jsonify({"status": "error", "message": f"Prediction failed: {str(e)}"}), 500
-
 
 # single prediction endpoint
 @app.route('/single_predict', methods=['POST'])
