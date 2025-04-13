@@ -17,15 +17,23 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-         .spinner-border {
-        vertical-align: middle;
-        margin-right: 8px;
-          }
+        .spinner-border {
+            vertical-align: middle;
+            margin-right: 8px;
+        }
         #loginBtn:disabled {
-        cursor: not-allowed;
-        opacity: 0.7;
-           }
-   </style>
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .shake {
+            animation: shake 0.5s;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -53,54 +61,97 @@
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+            e.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const errorAlert = document.getElementById('errorAlert');
-    const submitBtn = document.getElementById('loginBtn');
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorAlert = document.getElementById('errorAlert');
+            const submitBtn = document.getElementById('loginBtn');
 
-    // Clear previous errors and disable button
-    errorAlert.classList.add('d-none');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Logging in...';
+            // Clear previous errors and show loading state
+            errorAlert.classList.add('d-none');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Logging in...';
 
-    try {
-        const response = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                // First check if we got any response at all
+                if (!response) {
+                    throw new Error('No response from server');
+                }
+
+                // Check if response is JSON
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    const text = await response.text();
+                    throw new Error(text || 'Invalid server response');
+                }
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || `Login failed with status ${response.status}`);
+                }
+
+                // Store authentication data
+                localStorage.setItem('authToken', data.token);
+                localStorage.setItem('userData', JSON.stringify(data.user));
+
+                // Set cookie for server-side access
+                document.cookie = `authToken=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}`;
+
+                // Get redirect target safely
+                const urlParams = new URLSearchParams(window.location.search);
+                let redirectTo = urlParams.get('redirect') || '/train.html';
+
+                // Validate redirect path
+                const allowedPaths = ['/train.html', '/predict.html', '/'];
+                if (!allowedPaths.includes(redirectTo)) {
+                    redirectTo = '/train.html';
+                }
+
+                console.log('Login successful, redirecting to:', redirectTo);
+                window.location.href = redirectTo;
+
+            } catch (error) {
+                console.error('Login error:', error);
+                errorAlert.textContent = error.message || 'Login failed. Please try again.';
+                errorAlert.classList.remove('d-none');
+                errorAlert.classList.add('shake');
+                setTimeout(() => errorAlert.classList.remove('shake'), 500);
+
+                // Focus back on email field for quick retry
+                document.getElementById('email').focus();
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Login';
+            }
         });
 
-        const data = await response.json();
+        // Add a timeout fallback
+        const loginTimeout = setTimeout(() => {
+            const submitBtn = document.getElementById('loginBtn');
+            if (submitBtn.disabled) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Login';
+                const errorAlert = document.getElementById('errorAlert');
+                errorAlert.textContent = 'Request timed out. Please try again.';
+                errorAlert.classList.remove('d-none');
+            }
+        }, 10000); // 10 second timeout
 
-        if (!response.ok) {
-            throw new Error(data.error || 'Login failed. Please try again.');
-        }
-
-        // Store authentication data
-        localStorage.setItem('authToken', data.token);
-        localStorage.setItem('userData', JSON.stringify(data.user));
-
-        // Get redirect URL or default to index
-        const urlParams = new URLSearchParams(window.location.search);
-        const redirectTo = urlParams.get('redirect') || '/index.html';
-
-        // Redirect after slight delay for UX
-        setTimeout(() => {
-            window.location.href = redirectTo;
-        }, 500);
-
-    } catch (error) {
-        errorAlert.textContent = error.message;
-        errorAlert.classList.remove('d-none');
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Login';
-    }
-});
+        // Clear timeout when form is submitted successfully
+        document.getElementById('loginForm').addEventListener('submit', () => {
+            clearTimeout(loginTimeout);
+        });
     </script>
 </body>
 </html>

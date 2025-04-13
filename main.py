@@ -36,6 +36,20 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 UPLOAD_FOLDER_CSV = "uploads"
 os.makedirs(UPLOAD_FOLDER_CSV, exist_ok=True)
 
+# Add this after app initialization
+REQUIRED_TEMPLATES = ['index.html', 'login.html', 'registration.html',
+                     'train.html', 'predict.html', 'validate.html',
+                     '404.html', '500.html']
+
+@app.before_first_request
+def check_templates():
+    missing = []
+    for template in REQUIRED_TEMPLATES:
+        if not os.path.exists(os.path.join(app.template_folder, template)):
+            missing.append(template)
+    if missing:
+        raise RuntimeError(f"Missing required templates: {', '.join(missing)}")
+
 
 def get_db():
     """Get a thread-local database connection"""
@@ -155,9 +169,28 @@ def debug_routes():
 
 # Ensure these routes exist (add if missing)
 @app.route("/", methods=['GET'])
+@app.route("/index.html", methods=['GET'])
 @cross_origin()
 def home():
-    return render_template('index.html')
+    # Check for auth token in headers or cookies
+    token = request.headers.get('Authorization', '').replace('Bearer ', '') or request.cookies.get('authToken')
+
+    if token:
+        try:
+            db = get_db()
+            user = db.execute(
+                "SELECT e.id, e.username, e.email FROM employee_sessions s "
+                "JOIN employees e ON s.employee_id = e.id "
+                "WHERE s.session_token = ? AND s.expires_at > datetime('now')",
+                (token,)
+            ).fetchone()
+
+            if user:
+                return redirect(url_for('train_page'))  # Redirect authenticated users to train page
+        except Exception as e:
+            app.logger.error(f"Token verification error: {str(e)}")
+
+    return render_template('index.html')  # Show regular index for unauthenticated users
 
 @app.route('/login.html')
 def login_page():
@@ -202,6 +235,9 @@ def protected():
     ).fetchone()
 
     return jsonify(dict(user_data))
+
+
+
 
 
 # Auth Service Class
@@ -297,6 +333,13 @@ def login():
         token = secrets.token_hex(32)
         expires_at = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')
 
+        # Delete any existing sessions for this user
+        db.execute(
+            "DELETE FROM employee_sessions WHERE employee_id = ?",
+            (user_dict['id'],)
+        )
+
+        # Create new session
         db.execute(
             "INSERT INTO employee_sessions (employee_id, session_token, expires_at) "
             "VALUES (?, ?, ?)",
@@ -304,23 +347,22 @@ def login():
         )
         db.commit()
 
-        # Prepare response without sensitive data
-        response_data = {
+        # Prepare response
+        return jsonify({
             "token": token,
-            "expires_at": expires_at,
             "user": {
                 "id": user_dict['id'],
                 "username": user_dict['username'],
                 "email": user_dict['email'],
                 "role": user_dict['role']
             }
-        }
-
-        return jsonify(response_data), 200
+        }), 200
 
     except Exception as e:
         db.rollback()
-        return jsonify({"error": "Login failed. Please try again."}), 500
+        app.logger.error(f"Login error: {str(e)}")
+        return jsonify({"error": "An error occurred during login"}), 500
+
 
 
 @app.route('/api/auth/verify', methods=['GET'])
@@ -331,14 +373,23 @@ def verify_token():
         return jsonify({"valid": False}), 401
 
     db = get_db()
-    session = db.execute(
-        "SELECT * FROM employee_sessions "
-        "WHERE session_token = ? AND expires_at > datetime('now')",
-        (token,)
-    ).fetchone()
+    try:
+        session = db.execute(
+            "SELECT e.id, e.username, e.email, e.role "
+            "FROM employee_sessions s "
+            "JOIN employees e ON s.employee_id = e.id "
+            "WHERE s.session_token = ? AND s.expires_at > datetime('now')",
+            (token,)
+        ).fetchone()
 
-    return jsonify({"valid": bool(session)}), 200
+        return jsonify({
+            "valid": bool(session),
+            "user": dict(session) if session else None
+        }), 200
 
+    except Exception as e:
+        app.logger.error(f"Token verification error: {str(e)}")
+        return jsonify({"valid": False}), 500
 
 
 # Protected route example
