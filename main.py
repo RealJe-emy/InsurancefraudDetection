@@ -91,19 +91,6 @@ def init_db():
             print(f"Database initialization error: {e}")
             db.rollback()
 
-# # Call this when starting your app
-# if __name__ == '__main__':
-#     init_db()
-#     app.run(debug=True)
-#
-# def get_db():
-#     """Get a thread-local database connection"""
-#     if 'db' not in g:
-#         g.db = sqlite3.connect('database.db')
-#         g.db.row_factory = sqlite3.Row  # For dictionary-style results
-#         g.db.execute("PRAGMA foreign_keys = ON")  # Enable FK constraints
-#         g.db.execute("PRAGMA busy_timeout = 5000")  # Wait up to 5s if locked
-#     return g.db
 
 @app.teardown_appcontext
 def close_db(exception=None):
@@ -127,14 +114,24 @@ logger = App_Logger()
 def handle_db_errors(e):
     return jsonify({"error": "Database operation failed"}), 500
 
+
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        # For API requests, check Authorization header
         token = request.headers.get('Authorization', '').replace('Bearer ', '')
+
+        # For browser requests, also check cookies
+        if not token and request.cookies:
+            token = request.cookies.get('authToken')
+
         if not token:
-            if request.accept_mimetypes.accept_html:
-                return redirect(url_for('login_page', next=request.url))
-            return jsonify({"error": "Authorization required"}), 401
+            # If it's an API request (expecting JSON)
+            if request.is_json or request.headers.get('Accept') == 'application/json':
+                return jsonify({"error": "Authorization required"}), 401
+            # If it's a browser request
+            else:
+                return redirect(url_for('login_page', next=request.path))
 
         db = get_db()
         user = db.execute(
@@ -145,14 +142,15 @@ def login_required(f):
         ).fetchone()
 
         if not user:
-            if request.accept_mimetypes.accept_html:
-                return redirect(url_for('login_page', next=request.url))
-            return jsonify({"error": "Invalid token"}), 401
+            if request.is_json or request.headers.get('Accept') == 'application/json':
+                return jsonify({"error": "Invalid token"}), 401
+            else:
+                return redirect(url_for('login_page', next=request.path))
 
         request.user = dict(user)
         return f(*args, **kwargs)
-    return decorated_function
 
+    return decorated_function
 
 @app.route('/debug-routes')
 def debug_routes():
@@ -167,7 +165,6 @@ def debug_routes():
 
 
 
-# Ensure these routes exist (add if missing)
 @app.route("/", methods=['GET'])
 @app.route("/index.html", methods=['GET'])
 @cross_origin()
@@ -186,7 +183,8 @@ def home():
             ).fetchone()
 
             if user:
-                return redirect(url_for('train_page'))  # Redirect authenticated users to train page
+                # Don't redirect, just show index.html to authenticated users too
+                return render_template('index.html')
         except Exception as e:
             app.logger.error(f"Token verification error: {str(e)}")
 
@@ -355,9 +353,9 @@ def login():
                 "username": user_dict['username'],
                 "email": user_dict['email'],
                 "role": user_dict['role']
-            }
+            },
+            "redirect": "/index.html"  # Add this line to specify redirect URL
         }), 200
-
     except Exception as e:
         db.rollback()
         app.logger.error(f"Login error: {str(e)}")

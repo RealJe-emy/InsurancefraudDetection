@@ -110,12 +110,12 @@
 
                 // Get redirect target safely
                 const urlParams = new URLSearchParams(window.location.search);
-                let redirectTo = urlParams.get('redirect') || '/train.html';
+                let redirectTo = urlParams.get('redirect') || '/index.html';
 
                 // Validate redirect path
-                const allowedPaths = ['/train.html', '/predict.html', '/'];
+                const allowedPaths = ['/index.html', '/train.html', '/predict.html', '/'];
                 if (!allowedPaths.includes(redirectTo)) {
-                    redirectTo = '/train.html';
+                    redirectTo = '/index.html';
                 }
 
                 console.log('Login successful, redirecting to:', redirectTo);
