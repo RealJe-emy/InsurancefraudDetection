@@ -287,3 +287,8 @@
 2025-04-08/19:12:48		Invalid File Name!! File moved to Bad Raw Folder :: fraudDetection_021119920_222.csv
 2025-04-08/19:12:48		Invalid File Name!! File moved to Bad Raw Folder :: .~lock.fraudDetection_021119920_010222.csv#
 2025-04-08/19:12:48		Invalid File Name!! File moved to Bad Raw Folder :: fraudDetection_extended.csv
+2025-04-14/09:36:43		Valid File name!! File moved to GoodRaw Folder :: fraudDetection_021119920_010222.csv
+2025-04-14/09:36:43		Invalid File Name!! File moved to Bad Raw Folder :: fraudDetection_021119920_222.csv
+2025-04-14/09:36:43		Invalid File Name!! File moved to Bad Raw Folder :: fraudDetection_03032025_010223.csv
+2025-04-14/09:36:43		Invalid File Name!! File moved to Bad Raw Folder :: fraudDetection_extended.csv
+2025-04-14/09:36:43		Invalid File Name!! File moved to Bad Raw Folder :: InputFile.csv
