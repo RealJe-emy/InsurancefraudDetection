@@ -1,0 +1,32 @@
+2025-04-19/09:05:20		Prediction request received
+2025-04-19/09:05:20		File saved to: Prediction_Batch_Files\fraudDetection_extended.csv
+2025-04-19/09:05:20		Columns don't match schema. Reordering...
+2025-04-19/09:05:20		Prediction failed: "['age', 'policy_bind_date', 'policy_state', 'policy_csl', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'witnesses', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year'] not in index"
+2025-04-19/09:05:22		Prediction request received
+2025-04-19/09:05:22		File saved to: Prediction_Batch_Files\fraudDetection_extended.csv
+2025-04-19/09:05:22		Columns don't match schema. Reordering...
+2025-04-19/09:05:23		Prediction failed: "['age', 'policy_bind_date', 'policy_state', 'policy_csl', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'witnesses', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year'] not in index"
+2025-04-19/09:05:23		Prediction request received
+2025-04-19/09:05:23		File saved to: Prediction_Batch_Files\fraudDetection_extended.csv
+2025-04-19/09:05:23		Columns don't match schema. Reordering...
+2025-04-19/09:05:23		Prediction failed: "['age', 'policy_bind_date', 'policy_state', 'policy_csl', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'witnesses', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year'] not in index"
+2025-04-19/09:05:23		Prediction request received
+2025-04-19/09:05:23		File saved to: Prediction_Batch_Files\fraudDetection_extended.csv
+2025-04-19/09:05:23		Columns don't match schema. Reordering...
+2025-04-19/09:05:23		Prediction failed: "['age', 'policy_bind_date', 'policy_state', 'policy_csl', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'witnesses', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year'] not in index"
+2025-04-19/09:05:24		Prediction request received
+2025-04-19/09:05:24		File saved to: Prediction_Batch_Files\fraudDetection_extended.csv
+2025-04-19/09:05:24		Columns don't match schema. Reordering...
+2025-04-19/09:05:24		Prediction failed: "['age', 'policy_bind_date', 'policy_state', 'policy_csl', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'witnesses', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year'] not in index"
+2025-04-19/09:05:25		Prediction request received
+2025-04-19/09:05:25		File saved to: Prediction_Batch_Files\fraudDetection_extended.csv
+2025-04-19/09:05:25		Columns don't match schema. Reordering...
+2025-04-19/09:05:25		Prediction failed: "['age', 'policy_bind_date', 'policy_state', 'policy_csl', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'witnesses', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year'] not in index"
+2025-04-19/09:05:25		Prediction request received
+2025-04-19/09:05:25		File saved to: Prediction_Batch_Files\fraudDetection_extended.csv
+2025-04-19/09:05:25		Columns don't match schema. Reordering...
+2025-04-19/09:05:25		Prediction failed: "['age', 'policy_bind_date', 'policy_state', 'policy_csl', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'witnesses', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year'] not in index"
+2025-04-19/09:05:25		Prediction request received
+2025-04-19/09:05:25		File saved to: Prediction_Batch_Files\fraudDetection_extended.csv
+2025-04-19/09:05:25		Columns don't match schema. Reordering...
+2025-04-19/09:05:25		Prediction failed: "['age', 'policy_bind_date', 'policy_state', 'policy_csl', 'umbrella_limit', 'insured_zip', 'insured_sex', 'insured_education_level', 'insured_occupation', 'insured_hobbies', 'insured_relationship', 'capital-gains', 'capital-loss', 'incident_date', 'incident_type', 'collision_type', 'authorities_contacted', 'incident_state', 'incident_city', 'incident_location', 'witnesses', 'total_claim_amount', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make', 'auto_model', 'auto_year'] not in index"
