@@ -1,156 +1,196 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insurance Fraud Detection - Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login - Insurance Fraud Detection System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <style>
         body {
+            font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: #f8f9fa;
         }
-        .auth-container {
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 700;
+        }
+        .navbar {
+            background-color: #273582 !important;
+        }
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: 700;
+        }
+        .login-container {
             max-width: 400px;
-            margin: 100px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 80px auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .spinner-border {
-            vertical-align: middle;
-            margin-right: 8px;
+        .btn-primary {
+            background-color: #ff7f00;
+            border-color: #ff7f00;
         }
-        #loginBtn:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
+        .btn-primary:hover {
+            background-color: #e67300;
+            border-color: #e67300;
         }
-        .shake {
-            animation: shake 0.5s;
+        .footer {
+            background-color: #273582;
+            color: #fff;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
         }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        .footer a {
+            color: #ff7f00;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #e67300;
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Insurance Fraud Detection System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registration.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
     <div class="container">
-        <div class="auth-container">
+        <div class="login-container">
             <h2 class="text-center mb-4">Login</h2>
-            <div id="errorAlert" class="alert alert-danger d-none"></div>
-
+            <div id="loginMessage"></div>
             <form id="loginForm">
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" required>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" required>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" required>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" required>
                 </div>
-                <button type="submit" id="loginBtn" class="btn btn-primary w-100">Login</button>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
-
-            <div class="mt-3 text-center">
-                <p>Don't have an account? <a href="/registration.html">Register here</a></p>
+            <div class="text-center mt-3">
+                <p>Don't have an account? <a href="registration.html">Register</a></p>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Insurance Fraud Detection System. All rights reserved.</p>
+            <p class="mb-0"><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        $(document).ready(function() {
+            // Check if user is already logged in
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                // Verify the token is still valid
+                fetch('/api/auth/verify', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.valid) {
+                        // Get redirect parameter or go to index
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const redirectPath = urlParams.get('redirect') || '/index.html';
+                        window.location.href = redirectPath;
+                    }
+                })
+                .catch(error => {
+                    console.error('Token verification error:', error);
+                    // Clear invalid token
+                    localStorage.removeItem('authToken');
+                });
+            }
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorAlert = document.getElementById('errorAlert');
-            const submitBtn = document.getElementById('loginBtn');
+            // Login form submission
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
 
-            // Clear previous errors and show loading state
-            errorAlert.classList.add('d-none');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Logging in...';
+                const email = $('#email').val();
+                const password = $('#password').val();
 
-            try {
-                const response = await fetch('/api/auth/login', {
+                // Show loading message
+                $('#loginMessage').html('<div class="alert alert-info">Logging in...</div>');
+
+                // Send login request
+                fetch('/api/auth/login', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email, password })
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Login failed. Please check your credentials.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.token) {
+                        // Store token in localStorage
+                        localStorage.setItem('authToken', data.token);
+
+                        // Show success message
+                        $('#loginMessage').html('<div class="alert alert-success">Login successful! Redirecting...</div>');
+
+                        // Get redirect parameter or use default
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const redirectPath = urlParams.get('redirect') || '/index.html';
+
+                        // Redirect to the appropriate page
+                        setTimeout(() => {
+                            window.location.href = redirectPath;
+                        }, 1000);
+                    } else {
+                        $('#loginMessage').html('<div class="alert alert-danger">Login failed. Please try again.</div>');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    $('#loginMessage').html(`<div class="alert alert-danger">${error.message}</div>`);
                 });
-
-                // First check if we got any response at all
-                if (!response) {
-                    throw new Error('No response from server');
-                }
-
-                // Check if response is JSON
-                const contentType = response.headers.get('content-type');
-                if (!contentType || !contentType.includes('application/json')) {
-                    const text = await response.text();
-                    throw new Error(text || 'Invalid server response');
-                }
-
-                const data = await response.json();
-
-                if (!response.ok) {
-                    throw new Error(data.error || `Login failed with status ${response.status}`);
-                }
-
-                // Store authentication data
-                localStorage.setItem('authToken', data.token);
-                localStorage.setItem('userData', JSON.stringify(data.user));
-
-                // Set cookie for server-side access
-                document.cookie = `authToken=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}`;
-
-                // Get redirect target safely
-                const urlParams = new URLSearchParams(window.location.search);
-                let redirectTo = urlParams.get('redirect') || '/index.html';
-
-                // Validate redirect path
-                const allowedPaths = ['/index.html', '/train.html', '/predict.html', '/'];
-                if (!allowedPaths.includes(redirectTo)) {
-                    redirectTo = '/index.html';
-                }
-
-                console.log('Login successful, redirecting to:', redirectTo);
-                window.location.href = redirectTo;
-
-            } catch (error) {
-                console.error('Login error:', error);
-                errorAlert.textContent = error.message || 'Login failed. Please try again.';
-                errorAlert.classList.remove('d-none');
-                errorAlert.classList.add('shake');
-                setTimeout(() => errorAlert.classList.remove('shake'), 500);
-
-                // Focus back on email field for quick retry
-                document.getElementById('email').focus();
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Login';
-            }
-        });
-
-        // Add a timeout fallback
-        const loginTimeout = setTimeout(() => {
-            const submitBtn = document.getElementById('loginBtn');
-            if (submitBtn.disabled) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Login';
-                const errorAlert = document.getElementById('errorAlert');
-                errorAlert.textContent = 'Request timed out. Please try again.';
-                errorAlert.classList.remove('d-none');
-            }
-        }, 10000); // 10 second timeout
-
-        // Clear timeout when form is submitted successfully
-        document.getElementById('loginForm').addEventListener('submit', () => {
-            clearTimeout(loginTimeout);
+            });
         });
     </script>
 </body>

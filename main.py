@@ -23,6 +23,7 @@ import shutil
 import csv
 from werkzeug.utils import secure_filename
 
+
 # Initialize the Flask app
 app = Flask(__name__, template_folder='templates')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB
@@ -299,10 +300,38 @@ def register():
         )
         db.commit()
         return jsonify({"message": "Registration successful"}), 201
+        from employee_behavior_logger import log_employee_action, calculate_suspicion_score
+
+        # Log initial registration activity
+        user_id = db.execute("SELECT id FROM employees WHERE email = ?", (data['email'],)).fetchone()['id']
+        claim_id = f"REG_{user_id}"
+
+        log_employee_action(user_id, "register", claim_id)
+
+        # Optional: calculate initial behavior score
+        score = calculate_suspicion_score(user_id)
+        if score >= 7:
+            log_employee_action(user_id, "flagged", claim_id, score)
+
+
     except Exception as e:
         db.rollback()
         return jsonify({"error": str(e)}), 500
 
+@app.route('/api/auth/logout', methods=['POST'])
+@cross_origin()
+def logout():
+    token = request.headers.get('Authorization', '').replace('Bearer ', '') or request.cookies.get('authToken')
+    if not token:
+        return jsonify({"message": "Already logged out"}), 200
+
+    db = get_db()
+    db.execute("DELETE FROM employee_sessions WHERE session_token = ?", (token,))
+    db.commit()
+
+    response = jsonify({"message": "Logged out successfully"})
+    response.delete_cookie('authToken')
+    return response
 
 @app.route('/api/auth/login', methods=['POST'])
 @cross_origin()
@@ -345,8 +374,7 @@ def login():
         )
         db.commit()
 
-        # Prepare response
-        return jsonify({
+        response = jsonify({
             "token": token,
             "user": {
                 "id": user_dict['id'],
@@ -354,8 +382,17 @@ def login():
                 "email": user_dict['email'],
                 "role": user_dict['role']
             },
-            "redirect": "/index.html"  # Add this line to specify redirect URL
-        }), 200
+            "redirect": "/index.html"
+        })
+        response.set_cookie(
+            "authToken",
+            token,
+            httponly=True,  # Prevents JS access
+            samesite='Lax',  # Basic protection
+            max_age=60 * 60 * 24 * 7  # 7 days
+        )
+        return response
+
     except Exception as e:
         db.rollback()
         app.logger.error(f"Login error: {str(e)}")
