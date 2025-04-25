@@ -1,3 +1,4 @@
+#index
 <!doctype html>
 <html lang="en">
 <head>
@@ -63,18 +64,13 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Insurance Fraud Detection System</a>
+            <a class="navbar-brand" href="/">Insurance Fraud Detection System</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="train.html">Train Model</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="predict.html">Predict Fraud</a>
-                    </li>
+                <ul class="navbar-nav ml-auto" id="navLinks">
+                    <!-- Navigation links will be inserted here by JavaScript -->
                 </ul>
             </div>
         </div>
@@ -87,8 +83,8 @@
         <hr class="my-4">
         <p>Get started by training the model or making predictions on new data.</p>
         <div class="mt-4">
-            <a class="btn btn-primary btn-lg" href="train.html" role="button">Train Model</a>
-            <a class="btn btn-secondary btn-lg" href="predict.html" role="button">Predict Fraud</a>
+            <a class="btn btn-primary btn-lg" href="#" id="trainBtn">Train Model</a>
+            <a class="btn btn-secondary btn-lg" href="#" id="predictBtn">Predict Fraud</a>
         </div>
     </div>
 
@@ -104,5 +100,99 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        // Authentication and navigation handler
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get token from localStorage
+            const token = localStorage.getItem('authToken');
+            const navLinks = document.getElementById('navLinks');
+
+            // Function to verify token
+            function verifyAuthStatus() {
+                if (!token) {
+                    return Promise.resolve({ valid: false });
+                }
+
+                return fetch('/api/auth/verify', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Token validation failed');
+                    }
+                    return response.json();
+                })
+                .catch(error => {
+                    console.error('Auth error:', error);
+                    return { valid: false };
+                });
+            }
+
+            // Update navigation based on auth status
+            verifyAuthStatus().then(result => {
+                if (result.valid) {
+                    // User is logged in
+                    navLinks.innerHTML = `
+                        <li class="nav-item">
+                            <a class="nav-link" href="train.html">Train Model</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="predict.html">Predict Fraud</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                        </li>
+                    `;
+
+                    // Setup logout button
+                    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('authToken');
+                        window.location.href = '/';
+                    });
+                } else {
+                    // User is not logged in
+                    navLinks.innerHTML = `
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registration.html">Register</a>
+                        </li>
+                    `;
+                }
+            });
+
+            // Train button click handler
+            document.getElementById('trainBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                verifyAuthStatus().then(result => {
+                    if (result.valid) {
+                        window.location.href = 'train.html';
+                    } else {
+                        alert('Please login first to access training functionality');
+                        window.location.href = 'login.html';
+                    }
+                });
+            });
+
+            // Predict button click handler
+            document.getElementById('predictBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                verifyAuthStatus().then(result => {
+                    if (result.valid) {
+                        window.location.href = 'predict.html';
+                    } else {
+                        alert('Please login first to access prediction functionality');
+                        window.location.href = 'login.html';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

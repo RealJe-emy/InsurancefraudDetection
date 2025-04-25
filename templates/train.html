@@ -1,3 +1,4 @@
+#train.html
 <!doctype html>
 <html lang="en">
 <head>
@@ -98,13 +99,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="train.html">Train Model</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="predict.html">Predict Fraud</a>
-                    </li>
+                <ul class="navbar-nav ml-auto" id="navLinks">
+                    <!-- Navigation links will be inserted here by JavaScript -->
                 </ul>
             </div>
         </div>
@@ -150,105 +146,209 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
     <script>
         $(document).ready(function() {
             $('#loading').hide();
 
-            // Validate File
+            // Check authentication status immediately on page load
+            // and prevent any page content from loading if not authenticated
+            (async function() {
+                try {
+                    const isAuthenticated = await verifyAuthentication();
+                    if (!isAuthenticated) {
+                        // This will redirect, so nothing after this will execute
+                        redirectToLogin();
+                    }
+
+                    // Set up navigation links when authenticated
+                    updateNavLinks();
+                } catch (error) {
+                    console.error('Authentication check failed:', error);
+                    redirectToLogin();
+                }
+            })();
+
+            // Verify token with the backend
+            async function verifyAuthentication() {
+                const token = localStorage.getItem('authToken');
+                if (!token) {
+                    return false;
+                }
+
+                try {
+                    const response = await fetch('/api/auth/verify', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Token verification failed');
+                    }
+
+                    const data = await response.json();
+                    return data.valid === true;
+                } catch (error) {
+                    console.error('Token verification error:', error);
+                    return false;
+                }
+            }
+
+            // Update navigation based on auth status
+            function updateNavLinks() {
+                const navLinks = document.getElementById('navLinks');
+
+                // User is logged in since we've passed authentication check
+                navLinks.innerHTML = `
+                    <li class="nav-item">
+                        <a class="nav-link" href="train.html">Train Model</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="predict.html">Predict Fraud</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                    </li>
+                `;
+
+                // Setup logout button
+                document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('authToken');
+                    window.location.href = '/';
+                });
+            }
+
+            function redirectToLogin() {
+                const currentPath = encodeURIComponent(window.location.pathname);
+                window.location.href = `/login.html?redirect=${currentPath}`;
+            }
+
+            // Validate File Button
             $("#validatefile").click(function(e) {
                 e.preventDefault();
-                $('#loading').show();
-                var fileInput = document.getElementById('csvfile');
-                var file = fileInput.files[0];
-                var formData = new FormData();
-                formData.append('file', file);
 
-                $.ajax({
-                    url: "/validate",
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        var resultHtml = '';
-                        if (response.status === "success") {
-                            resultHtml = '<div class="alert alert-success" role="alert">' +
-                                        '<strong>Success!</strong> ' + response.message +
-                                        '</div>';
-                        } else if (response.status === "error") {
-                            resultHtml = '<div class="alert alert-danger" role="alert">' +
-                                        '<strong>Error:</strong> ' + response.message +
-                                        '</div>';
-                        } else {
-                            resultHtml = '<div class="alert alert-warning" role="alert">' +
-                                        '<strong>Warning:</strong> Unexpected response format.' +
-                                        '</div>';
-                        }
-                        $(".json-result").html(resultHtml);
-                        $('#loading').hide();
-                    },
-                    error: function(xhr, status, error) {
-                        var errorMessage = "An error occurred during validation.";
-                        try {
-                            var response = JSON.parse(xhr.responseText);
-                            if (response && response.message) {
-                                errorMessage = response.message;
-                            }
-                        } catch (e) {
-                            if (xhr.status === 400) {
-                                errorMessage = "The file format is incorrect or missing required information.";
-                            } else if (xhr.status === 500) {
-                                errorMessage = "A server error occurred. Please try again later.";
-                            }
-                        }
-                        $(".json-result").html('<div class="alert alert-danger" role="alert">' +
-                                              '<strong>Error:</strong> ' + errorMessage +
-                                              '</div>');
-                        $('#loading').hide();
+                verifyAuthentication().then(isAuthenticated => {
+                    if (!isAuthenticated) {
+                        redirectToLogin();
+                        return;
                     }
+
+                    processFileValidation();
                 });
             });
 
-            // Train Model
+            // Train Model Button
             $("#trainmodel").click(function(e) {
-            e.preventDefault();
-            $('#loading').show();
-            $(".json-result").html('<div class="alert alert-info" role="alert">Training model... Please wait.</div>');
+                e.preventDefault();
 
-            var fileInput = document.getElementById('csvfile');
-            if (fileInput.files.length > 0) {
-                var file = fileInput.files[0];
-                var formData = new FormData();
-                formData.append('file', file); // Ensure the key is 'file'
-
-                $.ajax({
-                    url: "/train",
-                    type: "POST",
-                    data: formData,
-                    processData: false, // Required for FormData
-                    contentType: false, // Required for FormData
-                    success: function(response) {
-                        $(".json-result").html('<div class="alert alert-success" role="alert"><strong>Success!</strong> ' + response + '</div>');
-                        $('#loading').hide();
-                    },
-                    error: function(xhr, status, error) {
-                        var errorMessage = "An error occurred during training.";
-                        if (xhr.status === 415) {
-                            errorMessage = "Unsupported Media Type: Ensure the request includes a valid file.";
-                        } else if (xhr.status === 500) {
-                            errorMessage = "A server error occurred. Please try again later.";
-                        }
-                        $(".json-result").html('<div class="alert alert-danger" role="alert"><strong>Error:</strong> ' + errorMessage + '</div>');
-                        $('#loading').hide();
+                verifyAuthentication().then(isAuthenticated => {
+                    if (!isAuthenticated) {
+                        redirectToLogin();
+                        return;
                     }
+
+                    processModelTraining();
                 });
-            } else {
-                $(".json-result").html('<div class="alert alert-danger" role="alert">Please upload a file before training.</div>');
-                $('#loading').hide();
+            });
+
+            // File Validation
+            function processFileValidation() {
+                $('#loading').show();
+                const fileInput = document.getElementById('csvfile');
+                const file = fileInput.files[0];
+
+                if (!file) {
+                    showAlert('Please select a file first', 'danger');
+                    $('#loading').hide();
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                fetch('/validate', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                    },
+                    body: formData
+                })
+                .then(response => {
+                    if (response.status === 401) {
+                        // Unauthorized - token expired or invalid
+                        throw new Error('Your session has expired. Please log in again.');
+                    }
+                    if (!response.ok) throw new Error(response.statusText);
+                    return response.json();
+                })
+                .then(data => showAlert(data.message, data.status))
+                .catch(error => {
+                    showAlert(error.message || 'Validation failed', 'danger');
+
+                    // If unauthorized, redirect after showing message
+                    if (error.message.includes('session') || error.message.includes('log in')) {
+                        setTimeout(() => {
+                            localStorage.removeItem('authToken');
+                            redirectToLogin();
+                        }, 1500);
+                    }
+                })
+                .finally(() => $('#loading').hide());
+            }
+
+            // Model Training
+            function processModelTraining() {
+                $('#loading').show();
+                $(".json-result").html('<div class="alert alert-info">Training model... Please wait.</div>');
+
+                const fileInput = document.getElementById('csvfile');
+                if (fileInput.files.length === 0) {
+                    showAlert('Please upload a file before training', 'danger');
+                    $('#loading').hide();
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+
+                fetch('/api/train', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                    },
+                    body: formData
+                })
+                .then(response => {
+                    if (response.status === 401) {
+                        // Unauthorized - token expired or invalid
+                        throw new Error('Your session has expired. Please log in again.');
+                    }
+                    if (!response.ok) throw new Error(response.statusText);
+                    return response.text();
+                })
+                .then(text => showAlert(text, 'success'))
+                .catch(error => {
+                    showAlert(error.message || 'Training failed', 'danger');
+
+                    // If unauthorized, redirect after showing message
+                    if (error.message.includes('session') || error.message.includes('log in')) {
+                        setTimeout(() => {
+                            localStorage.removeItem('authToken');
+                            redirectToLogin();
+                        }, 1500);
+                    }
+                })
+                .finally(() => $('#loading').hide());
+            }
+
+            // Helper function
+            function showAlert(message, type) {
+                const alertClass = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : type}`;
+                $(".json-result").html(`<div class="${alertClass}">${message}</div>`);
             }
         });
-    });
     </script>
 </body>
 </html>
