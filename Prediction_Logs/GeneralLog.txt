@@ -250,3 +250,7 @@
 2025-04-14/09:36:49		GoodRaw directory deleted successfully!!!
 2025-04-14/09:36:49		Bad files moved to archive
 2025-04-14/09:36:49		Bad Raw Data Folder Deleted successfully!!
+2025-04-25/11:17:38		Only files in the directory are : ['fraudDetection_021119920_010222.csv', 'fraudDetection_021119920_222.csv', 'fraudDetection_03032025_010223.csv', 'fraudDetection_extended.csv', 'InputFile.csv']
+2025-04-25/11:17:44		GoodRaw directory deleted successfully!!!
+2025-04-25/11:17:44		Bad files moved to archive
+2025-04-25/11:17:44		Bad Raw Data Folder Deleted successfully!!

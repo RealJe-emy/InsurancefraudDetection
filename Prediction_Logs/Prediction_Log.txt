@@ -12579,3 +12579,346 @@ dtype: object
 2025-04-14/09:36:50		Saving prediction results with probabilities...
 2025-04-14/09:36:50		Predictions with probabilities saved to Prediction_Output_File/Predictions.csv
 2025-04-14/09:36:50		=== Prediction Completed Successfully ===
+2025-04-25/11:17:38		Start of Validation on files for prediction!!
+2025-04-25/11:17:38		Raw Data Validation Complete!!
+2025-04-25/11:17:38		Starting Data Transforamtion!!
+2025-04-25/11:17:39		DataTransformation Completed!!!
+2025-04-25/11:17:39		Creating Prediction_Database and tables on the basis of given schema!!!
+2025-04-25/11:17:39		Table creation Completed!!
+2025-04-25/11:17:39		Insertion of Data into Table started!!!!
+2025-04-25/11:17:44		Insertion in Table completed!!!
+2025-04-25/11:17:44		Deleting Good Data Folder!!!
+2025-04-25/11:17:44		Good_Data folder deleted!!!
+2025-04-25/11:17:44		Moving bad files to Archive and deleting Bad_Data folder!!!
+2025-04-25/11:17:44		Bad files moved to archive!! Bad folder Deleted!!
+2025-04-25/11:17:44		Validation Operation completed!!
+2025-04-25/11:17:44		Extracting csv file from table
+2025-04-25/11:17:44		=== Starting Prediction Process ===
+2025-04-25/11:17:44		Current working directory: C:\Users\jerem\OneDrive\Desktop\insuranceFraudDetection\code\fraudDetection
+2025-04-25/11:17:44		Model directory contents: ['KMeans', 'XGBoost0', 'XGBoost1']
+2025-04-25/11:17:44		Loading data...
+2025-04-25/11:17:44		Entered the get_data method of the Data_Getter class
+2025-04-25/11:17:44		Data Load Successful.Exited the get_data method of the Data_Getter class
+2025-04-25/11:17:44		Data columns are as follows: Index(['months_as_customer', 'age', 'policy_number', 'policy_bind_date',
+       'policy_state', 'policy_csl', 'policy_deductable',
+       'policy_annual_premium', 'umbrella_limit', 'insured_zip', 'insured_sex',
+       'insured_education_level', 'insured_occupation', 'insured_hobbies',
+       'insured_relationship', 'capital-gains', 'capital-loss',
+       'incident_date', 'incident_type', 'collision_type', 'incident_severity',
+       'authorities_contacted', 'incident_state', 'incident_city',
+       'incident_location', 'incident_hour_of_the_day',
+       'number_of_vehicles_involved', 'property_damage', 'bodily_injuries',
+       'witnesses', 'police_report_available', 'total_claim_amount',
+       'injury_claim', 'property_claim', 'vehicle_claim', 'auto_make',
+       'auto_model', 'auto_year'],
+      dtype='object')
+2025-04-25/11:17:44		Data shape: (500, 38)
+2025-04-25/11:17:44		Data types: months_as_customer               int64
+age                              int64
+policy_number                    int64
+policy_bind_date                object
+policy_state                    object
+policy_csl                      object
+policy_deductable                int64
+policy_annual_premium          float64
+umbrella_limit                   int64
+insured_zip                      int64
+insured_sex                     object
+insured_education_level         object
+insured_occupation              object
+insured_hobbies                 object
+insured_relationship            object
+capital-gains                    int64
+capital-loss                     int64
+incident_date                   object
+incident_type                   object
+collision_type                  object
+incident_severity               object
+authorities_contacted           object
+incident_state                  object
+incident_city                   object
+incident_location               object
+incident_hour_of_the_day         int64
+number_of_vehicles_involved      int64
+property_damage                 object
+bodily_injuries                  int64
+witnesses                        int64
+police_report_available         object
+total_claim_amount               int64
+injury_claim                     int64
+property_claim                   int64
+vehicle_claim                    int64
+auto_make                       object
+auto_model                      object
+auto_year                        int64
+dtype: object
+2025-04-25/11:17:45		Data head:
+   months_as_customer  age  policy_number  ...  auto_make auto_model auto_year
+0                 328   48         521585  ...       Saab        92x      2004
+1                 228   42         342868  ...   Mercedes       E400      2007
+2                 134   29         687698  ...      Dodge        RAM      2007
+3                 256   41         227811  ...  Chevrolet      Tahoe      2014
+4                 228   44         367455  ...     Accura        RSX      2009
+
+[5 rows x 38 columns]
+2025-04-25/11:17:45		Initial data shape: (500, 38)
+2025-04-25/11:17:45		Raw input data sample:
+{
+  "months_as_customer": 328,
+  "age": 48,
+  "policy_number": 521585,
+  "policy_bind_date": "10/17/2014",
+  "policy_state": "OH",
+  "policy_csl": "250/500",
+  "policy_deductable": 1000,
+  "policy_annual_premium": 1406.91,
+  "umbrella_limit": 0,
+  "insured_zip": 466132,
+  "insured_sex": "MALE",
+  "insured_education_level": "MD",
+  "insured_occupation": "craft-repair",
+  "insured_hobbies": "sleeping",
+  "insured_relationship": "husband",
+  "capital-gains": 53300,
+  "capital-loss": 0,
+  "incident_date": "1/25/2015",
+  "incident_type": "Single Vehicle Collision",
+  "collision_type": "Side Collision",
+  "incident_severity": "Major Damage",
+  "authorities_contacted": "Police",
+  "incident_state": "SC",
+  "incident_city": "Columbus",
+  "incident_location": "9935 4th Drive",
+  "incident_hour_of_the_day": 5,
+  "number_of_vehicles_involved": 1,
+  "property_damage": "YES",
+  "bodily_injuries": 1,
+  "witnesses": 2,
+  "police_report_available": "YES",
+  "total_claim_amount": 71610,
+  "injury_claim": 6510,
+  "property_claim": 13020,
+  "vehicle_claim": 52080,
+  "auto_make": "Saab",
+  "auto_model": "92x",
+  "auto_year": 2004
+}
+2025-04-25/11:17:45		Dropping columns: ['policy_number', 'policy_bind_date', 'policy_state', 'insured_zip', 'incident_location', 'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make', 'auto_model', 'auto_year', 'age', 'total_claim_amount']
+2025-04-25/11:17:45		Data shape after dropping columns: (500, 24)
+2025-04-25/11:17:45		Data columns after dropping: Index(['months_as_customer', 'policy_csl', 'policy_deductable',
+       'policy_annual_premium', 'umbrella_limit', 'insured_sex',
+       'insured_education_level', 'insured_occupation', 'insured_relationship',
+       'capital-gains', 'capital-loss', 'incident_type', 'collision_type',
+       'incident_severity', 'authorities_contacted',
+       'incident_hour_of_the_day', 'number_of_vehicles_involved',
+       'property_damage', 'bodily_injuries', 'witnesses',
+       'police_report_available', 'injury_claim', 'property_claim',
+       'vehicle_claim'],
+      dtype='object')
+2025-04-25/11:17:45		Final data columns: ['months_as_customer', 'policy_csl', 'policy_deductable', 'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day', 'number_of_vehicles_involved', 'bodily_injuries', 'property_damage', 'police_report_available', 'insured_education_level', 'insured_sex', 'umbrella_limit', 'capital-gains', 'capital-loss', 'witnesses', 'injury_claim', 'property_claim', 'vehicle_claim', 'authorities_contacted', 'collision_type', 'incident_type', 'insured_occupation', 'insured_relationship']
+2025-04-25/11:17:45		After column selection data sample:
+{
+  "months_as_customer": 328,
+  "policy_csl": "250/500",
+  "policy_deductable": 1000,
+  "policy_annual_premium": 1406.91,
+  "incident_severity": "Major Damage",
+  "incident_hour_of_the_day": 5,
+  "number_of_vehicles_involved": 1,
+  "bodily_injuries": 1,
+  "property_damage": "YES",
+  "police_report_available": "YES",
+  "insured_education_level": "MD",
+  "insured_sex": "MALE",
+  "umbrella_limit": 0,
+  "capital-gains": 53300,
+  "capital-loss": 0,
+  "witnesses": 2,
+  "injury_claim": 6510,
+  "property_claim": 13020,
+  "vehicle_claim": 52080,
+  "authorities_contacted": "Police",
+  "collision_type": "Side Collision",
+  "incident_type": "Single Vehicle Collision",
+  "insured_occupation": "craft-repair",
+  "insured_relationship": "husband"
+}
+2025-04-25/11:17:45		Entered the is_null_present method of the Preprocessor class
+2025-04-25/11:17:45		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2025-04-25/11:17:45		Imputing missing values in: ['property_damage', 'police_report_available', 'authorities_contacted', 'collision_type']
+2025-04-25/11:17:45		Entered the impute_missing_values method of the Preprocessor class
+2025-04-25/11:17:45		Imputing missing values Successful. Exited the impute_missing_values method of the Preprocessor class
+2025-04-25/11:17:45		After imputation data sample:
+{
+  "months_as_customer": 328,
+  "policy_csl": "250/500",
+  "policy_deductable": 1000,
+  "policy_annual_premium": 1406.91,
+  "incident_severity": "Major Damage",
+  "incident_hour_of_the_day": 5,
+  "number_of_vehicles_involved": 1,
+  "bodily_injuries": 1,
+  "property_damage": "YES",
+  "police_report_available": "YES",
+  "insured_education_level": "MD",
+  "insured_sex": "MALE",
+  "umbrella_limit": 0,
+  "capital-gains": 53300,
+  "capital-loss": 0,
+  "witnesses": 2,
+  "injury_claim": 6510,
+  "property_claim": 13020,
+  "vehicle_claim": 52080,
+  "authorities_contacted": "Police",
+  "collision_type": "Side Collision",
+  "incident_type": "Single Vehicle Collision",
+  "insured_occupation": "craft-repair",
+  "insured_relationship": "husband"
+}
+2025-04-25/11:17:45		Encoding categorical columns...
+2025-04-25/11:17:45		Entered the encode_categorical_columns method of the Preprocessor class
+2025-04-25/11:17:45		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2025-04-25/11:17:45		Entered the oneHotEncoding method of the Preprocessor class
+2025-04-25/11:17:45		one hot encoding for categorical values successful. Exited the oneHotEncoding method of the Preprocessor class
+2025-04-25/11:17:45		After encoding data sample:
+{
+  "policy_csl": 2.5,
+  "incident_severity": 3,
+  "property_damage": 1,
+  "police_report_available": 1,
+  "insured_education_level": 6,
+  "insured_sex": 1,
+  "authorities_contacted_Fire": false,
+  "authorities_contacted_Other": false,
+  "authorities_contacted_Police": true,
+  "collision_type_Rear Collision": false,
+  "collision_type_Side Collision": true,
+  "incident_type_Parked Car": false,
+  "incident_type_Single Vehicle Collision": true,
+  "incident_type_Vehicle Theft": false,
+  "insured_occupation_armed-forces": false,
+  "insured_occupation_craft-repair": true,
+  "insured_occupation_exec-managerial": false,
+  "insured_occupation_farming-fishing": false,
+  "insured_occupation_handlers-cleaners": false,
+  "insured_occupation_machine-op-inspct": false,
+  "insured_occupation_other-service": false,
+  "insured_occupation_priv-house-serv": false,
+  "insured_occupation_prof-specialty": false,
+  "insured_occupation_protective-serv": false,
+  "insured_occupation_sales": false,
+  "insured_occupation_tech-support": false,
+  "insured_occupation_transport-moving": false,
+  "insured_relationship_not-in-family": false,
+  "insured_relationship_other-relative": false,
+  "insured_relationship_own-child": false,
+  "insured_relationship_unmarried": false,
+  "insured_relationship_wife": false,
+  "months_as_customer": 328,
+  "policy_deductable": 1000,
+  "policy_annual_premium": 1406.91,
+  "incident_hour_of_the_day": 5,
+  "number_of_vehicles_involved": 1,
+  "bodily_injuries": 1,
+  "umbrella_limit": 0,
+  "capital-gains": 53300,
+  "capital-loss": 0,
+  "witnesses": 2,
+  "injury_claim": 6510,
+  "property_claim": 13020,
+  "vehicle_claim": 52080
+}
+2025-04-25/11:17:45		Scaling numerical columns...
+2025-04-25/11:17:45		Entered the scale_numerical_columns method of the Preprocessor class
+2025-04-25/11:17:45		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2025-04-25/11:17:45		After scaling data sample:
+{
+  "months_as_customer": 1.0775867023028378,
+  "policy_deductable": -0.30583732397491725,
+  "umbrella_limit": -0.49904555884597734,
+  "capital-gains": 1.0314271108995472,
+  "capital-loss": 0.9395830568967751,
+  "incident_hour_of_the_day": -1.0096514790109534,
+  "number_of_vehicles_involved": -0.8405965588113357,
+  "bodily_injuries": 0.01232877869092183,
+  "witnesses": 0.5230029801552721,
+  "injury_claim": -0.22671966382513692,
+  "property_claim": 1.1144963895815958,
+  "vehicle_claim": 0.7107621416428548,
+  "policy_csl": 2.5,
+  "incident_severity": 3,
+  "property_damage": 1,
+  "police_report_available": 1,
+  "insured_education_level": 6,
+  "insured_sex": 1,
+  "authorities_contacted_Fire": false,
+  "authorities_contacted_Other": false,
+  "authorities_contacted_Police": true,
+  "collision_type_Rear Collision": false,
+  "collision_type_Side Collision": true,
+  "incident_type_Parked Car": false,
+  "incident_type_Single Vehicle Collision": true,
+  "incident_type_Vehicle Theft": false,
+  "insured_occupation_armed-forces": false,
+  "insured_occupation_craft-repair": true,
+  "insured_occupation_exec-managerial": false,
+  "insured_occupation_farming-fishing": false,
+  "insured_occupation_handlers-cleaners": false,
+  "insured_occupation_machine-op-inspct": false,
+  "insured_occupation_other-service": false,
+  "insured_occupation_priv-house-serv": false,
+  "insured_occupation_prof-specialty": false,
+  "insured_occupation_protective-serv": false,
+  "insured_occupation_sales": false,
+  "insured_occupation_tech-support": false,
+  "insured_occupation_transport-moving": false,
+  "insured_relationship_not-in-family": false,
+  "insured_relationship_other-relative": false,
+  "insured_relationship_own-child": false,
+  "insured_relationship_unmarried": false,
+  "insured_relationship_wife": false,
+  "policy_annual_premium": 1406.91
+}
+2025-04-25/11:17:45		Loading KMeans model...
+2025-04-25/11:17:45		Entered the load_model method of the File_Operation class
+2025-04-25/11:17:45		Model File KMeans loaded. Exited the load_model method of the Model_Finder class
+2025-04-25/11:17:45		KMeans model loaded successfully
+2025-04-25/11:17:45		Columns being fed to the model Index(['policy_csl', 'insured_sex', 'insured_education_level',
+       'incident_severity', 'property_damage', 'police_report_available',
+       'insured_occupation_armed-forces', 'insured_occupation_craft-repair',
+       'insured_occupation_exec-managerial',
+       'insured_occupation_farming-fishing',
+       'insured_occupation_handlers-cleaners',
+       'insured_occupation_machine-op-inspct',
+       'insured_occupation_other-service',
+       'insured_occupation_priv-house-serv',
+       'insured_occupation_prof-specialty',
+       'insured_occupation_protective-serv', 'insured_occupation_sales',
+       'insured_occupation_tech-support',
+       'insured_occupation_transport-moving',
+       'insured_relationship_not-in-family',
+       'insured_relationship_other-relative', 'insured_relationship_own-child',
+       'insured_relationship_unmarried', 'insured_relationship_wife',
+       'incident_type_Parked Car', 'incident_type_Single Vehicle Collision',
+       'incident_type_Vehicle Theft', 'collision_type_Rear Collision',
+       'collision_type_Side Collision', 'authorities_contacted_Fire',
+       'authorities_contacted_Other', 'authorities_contacted_Police',
+       'months_as_customer', 'policy_deductable', 'policy_annual_premium',
+       'umbrella_limit', 'capital-gains', 'capital-loss',
+       'incident_hour_of_the_day', 'number_of_vehicles_involved',
+       'bodily_injuries', 'witnesses', 'injury_claim', 'property_claim',
+       'vehicle_claim'],
+      dtype='object')
+2025-04-25/11:17:45		Predicting clusters...
+2025-04-25/11:17:45		Found clusters: [1]
+2025-04-25/11:17:45		Processing cluster 1...
+2025-04-25/11:17:45		Entered the find_correct_model_file method of the File_Operation class
+2025-04-25/11:17:45		Exited the find_correct_model_file method of the Model_Finder class.
+2025-04-25/11:17:45		Loading model: XGBoost1
+2025-04-25/11:17:45		Entered the load_model method of the File_Operation class
+2025-04-25/11:17:45		Model File XGBoost1 loaded. Exited the load_model method of the Model_Finder class
+2025-04-25/11:17:45		Cluster 1 predictions: 500 records
+2025-04-25/11:17:45		Sample probability scores: [0.10126731 0.3717299  0.31299406 0.1852025  0.23932813]
+2025-04-25/11:17:45		Saving prediction results with probabilities...
+2025-04-25/11:17:45		Predictions with probabilities saved to Prediction_Output_File/Predictions.csv
+2025-04-25/11:17:45		=== Prediction Completed Successfully ===
