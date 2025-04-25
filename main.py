@@ -1,22 +1,27 @@
-from flask import Flask, request, jsonify, render_template, Response
+from flask import Flask, request, jsonify, render_template, Response, redirect, url_for, send_from_directory, g
 from flask_cors import CORS, cross_origin
+from functools import wraps
 import os
+import traceback
+import json
+import pandas as pd
+import sqlite3
+import shutil
+import csv
+from datetime import datetime, timedelta
+from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+import secrets
+
 from Training_Raw_data_validation.rawValidation import Raw_Data_validation
 from application_logging.logger import App_Logger
 from prediction_Validation_Insertion import pred_validation
 from trainingModel import trainModel
 from training_Validation_Insertion import train_validation
-import flask_monitoringdashboard as dashboard
 from predictFromModel import prediction
-import traceback
-import json
-import pandas as pd
-import sqlite3
-from datetime import datetime
-import shutil
-import csv
-from werkzeug.utils import secure_filename
+import flask_monitoringdashboard as dashboard
 from order import add_policy_numbers_to_csv
+
 
 # Initialize the Flask app
 app = Flask(__name__, template_folder='templates')
@@ -31,9 +36,149 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 UPLOAD_FOLDER_CSV = "uploads"
 os.makedirs(UPLOAD_FOLDER_CSV, exist_ok=True)
 
+# Add this after app initialization
+REQUIRED_TEMPLATES = ['index.html', 'login.html', 'registration.html',
+                     'train.html', 'predict.html', 'validate.html',
+                     '404.html', '500.html']
+
+@app.before_first_request
+def check_templates():
+    missing = []
+    for template in REQUIRED_TEMPLATES:
+        if not os.path.exists(os.path.join(app.template_folder, template)):
+            missing.append(template)
+    if missing:
+        raise RuntimeError(f"Missing required templates: {', '.join(missing)}")
+
+
+def get_db():
+    """Get a thread-local database connection"""
+    if 'db' not in g:
+        g.db = sqlite3.connect('database.db')
+        g.db.row_factory = sqlite3.Row
+        g.db.execute("PRAGMA foreign_keys = ON")
+        g.db.execute("PRAGMA journal_mode = WAL")
+    return g.db
+
+
+def init_db():
+    """Initialize database tables"""
+    with app.app_context():
+        db = get_db()
+        try:
+            db.execute("""
+                CREATE TABLE IF NOT EXISTS employees (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    username TEXT NOT NULL,
+                    email TEXT UNIQUE NOT NULL,
+                    password_hash TEXT NOT NULL,
+                    is_active BOOLEAN DEFAULT 1,
+                    role TEXT DEFAULT 'employee'
+                )
+            """)
+            db.execute("""
+                CREATE TABLE IF NOT EXISTS employee_sessions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    employee_id INTEGER NOT NULL,
+                    session_token TEXT NOT NULL,
+                    expires_at DATETIME NOT NULL,
+                    FOREIGN KEY (employee_id) REFERENCES employees(id)
+                )
+            """)
+            db.commit()
+        except Exception as e:
+            print(f"Database initialization error: {e}")
+            db.rollback()
+
+
+@app.teardown_appcontext
+def close_db(exception=None):
+    """Close the database at the end of each request"""
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
+
 # Initialize the logger
 logger = App_Logger()
 
+@app.errorhandler(sqlite3.Error)
+def handle_db_errors(e):
+    return jsonify({"error": "Database operation failed"}), 500
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        # For API requests, check Authorization header
+        token = request.headers.get('Authorization', '').replace('Bearer ', '')
+
+        # For browser requests, also check cookies
+        if not token and request.cookies:
+            token = request.cookies.get('authToken')
+
+        if not token:
+            # If it's an API request (expecting JSON)
+            if request.is_json or request.headers.get('Accept') == 'application/json':
+                return jsonify({"error": "Authorization required"}), 401
+            # If it's a browser request
+            else:
+                return redirect(url_for('login_page', next=request.path))
+
+        db = get_db()
+        user = db.execute(
+            "SELECT e.id, e.username, e.email, e.role FROM employee_sessions s "
+            "JOIN employees e ON s.employee_id = e.id "
+            "WHERE s.session_token = ? AND s.expires_at > datetime('now')",
+            (token,)
+        ).fetchone()
+
+        if not user:
+            if request.is_json or request.headers.get('Accept') == 'application/json':
+                return jsonify({"error": "Invalid token"}), 401
+            else:
+                return redirect(url_for('login_page', next=request.path))
+
+        request.user = dict(user)
+        return f(*args, **kwargs)
+
+    return decorated_function
+
+
+@app.route('/debug-routes')
+def debug_routes():
+    routes = []
+    for rule in app.url_map.iter_rules():
+        routes.append({
+            'route': str(rule),
+            'methods': sorted(rule.methods),
+            'endpoint': rule.endpoint
+        })
+    return jsonify(routes)
+
+@app.route("/", methods=['GET'])
+@app.route("/index.html", methods=['GET'])
+@cross_origin()
+def home():
+    # Check for auth token in headers or cookies
+    token = request.headers.get('Authorization', '').replace('Bearer ', '') or request.cookies.get('authToken')
+
+    if token:
+        try:
+            db = get_db()
+            user = db.execute(
+                "SELECT e.id, e.username, e.email FROM employee_sessions s "
+                "JOIN employees e ON s.employee_id = e.id "
+                "WHERE s.session_token = ? AND s.expires_at > datetime('now')",
+                (token,)
+            ).fetchone()
+
+            if user:
+                # Don't redirect, just show index.html to authenticated users too
+                return render_template('index.html')
+        except Exception as e:
+            app.logger.error(f"Token verification error: {str(e)}")
+
+    return render_template('index.html')  # Show regular index for unauthenticated users
 
 # Serve the HTML files
 @app.route("/", methods=['GET'])
@@ -41,23 +186,253 @@ logger = App_Logger()
 def home():
     return render_template('index.html')
 
+@app.route('/login.html')
+def login_page():
+    return render_template('login.html')
 
-@app.route("/predict.html", methods=['GET'])
-@cross_origin()
+@app.route('/registration.html')
+def register_page():
+    return render_template('registration.html')
+@app.route('/train.html')
+@login_required
+def train_page():
+    return render_template('train.html')
+@app.route('/predict.html')
+@login_required
 def predict_page():
     return render_template('predict.html')
 
-
-@app.route("/validation.html", methods=['GET'])
-@cross_origin()
+@app.route('/validation.html')
+@login_required
 def validation_page():
     return render_template('validation.html')
 
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html'), 404
 
-@app.route("/train.html", methods=['GET'])
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('500.html'), 500
+
+@app.route('/protected')
+@login_required
+def protected():
+    db = get_db()  # Safe connection
+    user_data = db.execute(
+        "SELECT * FROM employees WHERE email = ?",
+        (request.employee['email'],)
+    ).fetchone()
+
+    return jsonify(dict(user_data))
+
+
+# Auth Service Class
+class AuthService:
+    def register_user(self, username, email, password):
+        db = get_db()  # Get fresh connection per call
+        try:
+            # Check if email exists
+            existing = db.execute(
+                "SELECT id FROM employees WHERE email = ?",
+                (email,)
+            ).fetchone()
+
+            if existing:
+                return None, "Email already registered"
+
+            # Hash password and create user
+            hashed_pw = generate_password_hash(password)
+            db.execute(
+                "INSERT INTO employees (username, email, password_hash) "
+                "VALUES (?, ?, ?)",
+                (username, email, hashed_pw)
+            )
+            db.commit()
+            return email, None
+        except Exception as e:
+            db.rollback()
+            return None, str(e)
+
+
+# Auth API Endpoints
+@app.route('/api/auth/register', methods=['POST'])
 @cross_origin()
-def train_page():
-    return render_template('train.html')
+def register():
+    if not request.is_json:
+        return jsonify({"error": "Request must be JSON"}), 400
+
+    data = request.get_json()
+    required_fields = ['username', 'email', 'password']
+
+    if not all(field in data for field in required_fields):
+        return jsonify({"error": f"Missing required fields: {required_fields}"}), 400
+
+    db = get_db()  # 🔴 ADD THIS LINE - Get fresh connection
+    try:
+        # Check if email exists
+        existing = db.execute(
+            "SELECT id FROM employees WHERE email = ?",
+            (data['email'],)
+        ).fetchone()
+
+        if existing:
+            return jsonify({"error": "Email already registered"}), 400
+
+        # Hash password and create user
+        hashed_pw = generate_password_hash(data['password'])
+        db.execute(
+            "INSERT INTO employees (username, email, password_hash) "
+            "VALUES (?, ?, ?)",
+            (data['username'], data['email'], hashed_pw)
+        )
+        db.commit()
+        return jsonify({"message": "Registration successful"}), 201
+        from employee_behavior_logger import log_employee_action, calculate_suspicion_score
+
+        # Log initial registration activity
+        user_id = db.execute("SELECT id FROM employees WHERE email = ?", (data['email'],)).fetchone()['id']
+        claim_id = f"REG_{user_id}"
+
+        log_employee_action(user_id, "register", claim_id)
+
+        # Optional: calculate initial behavior score
+        score = calculate_suspicion_score(user_id)
+        if score >= 7:
+            log_employee_action(user_id, "flagged", claim_id, score)
+
+
+    except Exception as e:
+        db.rollback()
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/auth/logout', methods=['POST'])
+@cross_origin()
+def logout():
+    token = request.headers.get('Authorization', '').replace('Bearer ', '') or request.cookies.get('authToken')
+    if not token:
+        return jsonify({"message": "Already logged out"}), 200
+
+    db = get_db()
+    db.execute("DELETE FROM employee_sessions WHERE session_token = ?", (token,))
+    db.commit()
+
+    response = jsonify({"message": "Logged out successfully"})
+    response.delete_cookie('authToken')
+    return response
+
+@app.route('/api/auth/login', methods=['POST'])
+@cross_origin()
+def login():
+    data = request.get_json()
+    if not data or 'email' not in data or 'password' not in data:
+        return jsonify({"error": "Email and password required"}), 400
+
+    db = get_db()
+    try:
+        # Get user with all necessary fields
+        user = db.execute(
+            "SELECT id, username, email, role, password_hash FROM employees WHERE email = ?",
+            (data['email'],)
+        ).fetchone()
+
+        if not user:
+            return jsonify({"error": "Invalid email or password"}), 401
+
+        user_dict = dict(user)
+
+        if not check_password_hash(user_dict['password_hash'], data['password']):
+            return jsonify({"error": "Invalid email or password"}), 401
+
+        # Create session token
+        token = secrets.token_hex(32)
+        expires_at = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')
+
+        # Delete any existing sessions for this user
+        db.execute(
+            "DELETE FROM employee_sessions WHERE employee_id = ?",
+            (user_dict['id'],)
+        )
+
+        # Create new session
+        db.execute(
+            "INSERT INTO employee_sessions (employee_id, session_token, expires_at) "
+            "VALUES (?, ?, ?)",
+            (user_dict['id'], token, expires_at)
+        )
+        db.commit()
+
+        response = jsonify({
+            "token": token,
+            "user": {
+                "id": user_dict['id'],
+                "username": user_dict['username'],
+                "email": user_dict['email'],
+                "role": user_dict['role']
+            },
+            "redirect": "/index.html"
+        })
+        response.set_cookie(
+            "authToken",
+            token,
+            httponly=True,  # Prevents JS access
+            samesite='Lax',  # Basic protection
+            max_age=60 * 60 * 24 * 7  # 7 days
+        )
+        return response
+
+    except Exception as e:
+        db.rollback()
+        app.logger.error(f"Login error: {str(e)}")
+        return jsonify({"error": "An error occurred during login"}), 500
+
+
+@app.route('/api/auth/verify', methods=['GET'])
+@cross_origin()
+def verify_token():
+    token = request.headers.get('Authorization', '').replace('Bearer ', '')
+    if not token:
+        return jsonify({"valid": False}), 401
+
+    db = get_db()
+    try:
+        session = db.execute(
+            "SELECT e.id, e.username, e.email, e.role "
+            "FROM employee_sessions s "
+            "JOIN employees e ON s.employee_id = e.id "
+            "WHERE s.session_token = ? AND s.expires_at > datetime('now')",
+            (token,)
+        ).fetchone()
+
+        return jsonify({
+            "valid": bool(session),
+            "user": dict(session) if session else None
+        }), 200
+
+    except Exception as e:
+        app.logger.error(f"Token verification error: {str(e)}")
+        return jsonify({"valid": False}), 500
+
+# Protected route example
+@app.route('/api/auth/me', methods=['GET'])
+@cross_origin()
+def get_current_user():
+    token = request.headers.get('Authorization', '').replace('Bearer ', '')
+    if not token:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    db = get_db()  # 🔴 ADD THIS LINE
+    user = db.execute(
+        "SELECT e.id, e.username, e.email FROM employee_sessions s "
+        "JOIN employees e ON s.employee_id = e.id "
+        "WHERE s.session_token = ? AND s.expires_at > datetime('now')",
+        (token,)
+    ).fetchone()
+
+    if not user:
+        return jsonify({"error": "Invalid token"}), 401
+
+    return jsonify(dict(user))
 
 
 # To validate the file
@@ -185,49 +560,6 @@ def validate_file():
         }), 500
 
 
-# @app.route("/train", methods=['POST'])
-# @cross_origin()
-# def trainRouteClient():
-#     log_file = open("Training_Logs/trainingLog.txt", "a+")
-#     try:
-#         logger.log(log_file, "Training request received.")
-#         if request.json and 'folderPath' in request.json:
-            
-#             path = os.path.abspath(request.json['folderPath'])
-#             print(f"Absolute path received: {path}")
-#             logger.log(log_file, f"Absolute path received: {path}")
-#             path = request.json['folderPath']
-#             print(f"Folder path received: {path}")
-#             logger.log(log_file, f"Folder path received: {path}")
-            
-#             # Make sure path is a directory, not a file
-#             if os.path.isfile(path):
-#                 path = os.path.dirname(path)  # Get the directory of the file
-#                 logger.log(log_file, f"Path was a file. Using directory: {path}")
-            
-#             # Initialize validation with log file
-#             train_valObj = train_validation(path, log_file)
-#             train_valObj.train_validation()
-            
-#             # Initialize and train model
-#             trainModelObj = trainModel(log_file)
-#             trainModelObj.trainingModel()
-            
-#             logger.log(log_file, "Training successful.")
-#             log_file.close()
-#             return Response("Training successful!!")
-#         else:
-#             logger.log(log_file, "Error: folderPath not provided in request.")
-#             log_file.close()
-#             return Response("Error: folderPath is required!", status=400)
-#     except Exception as e:
-#         error_trace = traceback.format_exc()
-#         logger.log(log_file, f"Unexpected error: {str(e)}")
-#         logger.log(log_file, f"Traceback:\n{error_trace}")
-#         print(f"Unexpected error: {e}\nTraceback:\n{error_trace}")  # Print full error to terminal
-#         log_file.close()
-#         return Response(f"Error Occurred! {str(e)}", status=500)
-    
 
 
 @app.route("/train", methods=['POST'])
@@ -281,20 +613,19 @@ def trainRouteClient():
 
 
 
-
 # Predict route
-@app.route("/predict", methods=['POST'])
+@app.route('/api/predict', methods=['POST'])
 @cross_origin()
+@login_required
 def predictRouteClient():
     log_file = "Prediction_Logs/PredictionLog.txt"
     try:
         logger.log(log_file, "Prediction request received")
 
-        # Initialize variables
         pred_folder = "Prediction_Batch_Files"
         os.makedirs(pred_folder, exist_ok=True)
 
-        # Handle different request types
+        # Handle file upload or filepath input
         if request.files and 'file' in request.files:
             file = request.files['file']
             if file.filename == '':
@@ -314,88 +645,37 @@ def predictRouteClient():
 
         else:
             logger.log(log_file, "No valid input data provided")
-            return jsonify(
-                {"status": "error", "message": "Please provide either a file upload or valid file path"}), 400
+            return jsonify({
+                "status": "error",
+                "message": "Please provide either a file upload or valid file path"
+            }), 400
 
-        # Get the expected feature order from schema
-        schema_path = "schema_prediction.json"  # Update with your actual schema path
-        with open(schema_path) as f:
-            schema = json.load(f)
-        expected_columns = list(schema['ColName'].keys())
-        print(f"Expected columns: {expected_columns}")
-        logger.log(log_file, f"Expected columns: {expected_columns}")
+        # =============================
+        # Actual prediction logic here
+        # =============================
 
-        # Validate and reorder columns if needed
-        raw_data_path = os.path.join(pred_folder, "fraudDetection_extended.csv")
-        print(raw_data_path)
-        try:
-            if os.path.exists(raw_data_path):
-                with open(raw_data_path, 'r') as f:
-                    reader = csv.reader(f)
-                    actual_columns = next(reader)
-                    print(f"Actual columns: {actual_columns}")
-                    logger.log(log_file, f"Actual columns: {actual_columns}")
-
-                if set(actual_columns) != set(expected_columns):
-                    logger.log(log_file, "Columns don't match schema. Reordering...")
-                    df = pd.read_csv(raw_data_path)
-                    df = df[expected_columns]  # Reorder columns
-                    df.to_csv(raw_data_path, index=True)
-        except Exception as e:
-            logger.log(log_file, f"Error reordering columns: {str(e)}")
-            return jsonify({"status": "error", "message": f"Error reordering columns: {str(e)}"}), 500
-        
-        missing = [col for col in expected_columns if col not in df.columns]
-        extra = [col for col in df.columns if col not in expected_columns]
-        print(f"Missing columns: {missing}")
-        print(f"Extra columns: {extra}")
-
-        logger.log(log_file, "Column reordering completed")
-        # Extract policy_number from the dataframe
-        policy_numbers = df['policy_number'].tolist()
-        print(f"length of policy_numbers is : {len(policy_numbers)}")
-        logger.log(log_file, f"Extracted policy numbers: {policy_numbers}")
-
-        # Initialize prediction validation
-        pred_val = pred_validation(pred_folder)
+        # Validate and insert prediction data
+        pred_val = pred_validation(raw_data=file_path)
         pred_val.prediction_validation()
 
-        # Initialize prediction
-        pred = prediction(pred_folder)
-        output_path = pred.predictionFromModel()
-        print(f"Tis is the output path file {output_path}")
+        predictor = prediction()
+        prediction_output_path = predictor.predict_from_model()
 
-        # Read and return results
-        results = []
-        add_policy_numbers_to_csv(policy_numbers, output_path)
-        logger.log(log_file, f"Policy numbers added to output file: {output_path}")
-        print(f"Policy numbers added to output file: {output_path}")
-        
-        with open(output_path, 'r') as f:
-            reader = csv.reader(f)
-            headers = next(reader)
-            for row in reader:
-                results.append({
-                    "policy_number": row[2],
-                    "prediction": row[0],
-                    "probability": row[1]
-                })
+        logger.log(log_file, f"Prediction successful. Output saved to: {prediction_output_path}")
 
         return jsonify({
             "status": "success",
-            "results": results,
-            "summary": {
-                "total_records": len(results),
-                "fraud_count": sum(1 for r in results if r['prediction'] == 'Y')
-            },
-            "policy_numbers": policy_numbers
-        })
+            "message": "Prediction completed",
+            "output_file": prediction_output_path
+        }), 200
 
     except Exception as e:
         logger.log(log_file, f"Prediction failed: {str(e)}")
-        return jsonify({"status": "error", "message": f"Prediction failed: {str(e)}"}), 500
+        return jsonify({
+            "status": "error",
+            "message": f"Prediction failed: {str(e)}"
+        }), 500
 
-# single prediction endpoint
 @app.route('/single_predict', methods=['POST'])
 @cross_origin()
 def single_predict():
@@ -590,6 +870,7 @@ def single_predict():
                     "details": str(e) if app.debug else None,
                     "resolution": "Contact support with error details"
                 }), 500
+
 
     except Exception as e:
         error_id = datetime.now().strftime("%Y%m%d-%H%M%S")
