@@ -1,3 +1,4 @@
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier
@@ -56,47 +57,95 @@ class Model_Finder:
                                    'SVM training failed. Exited the get_best_params_for_svm method of the Model_Finder class')
             raise Exception()
 
+    # def get_best_params_for_xgboost(self, train_x, train_y):
+    #     self.logger_object.log(self.file_object,
+    #     'Entered the get_best_params_for_xgboost method of the Model_Finder class')
+    #     try:
+    #         # Handle missing values using SimpleImputer
+    #         imputer = SimpleImputer(strategy='mean')
+    #         train_x = imputer.fit_transform(train_x)
+            
+    #         # Initializing with appropriate XGBoost parameters
+    #         # Note: 'criterion' is not a parameter for XGBClassifier, it's for sklearn's tree-based models
+    #         self.param_grid_xgboost = {
+    #             "n_estimators": [100, 130],
+    #             "max_depth": range(3, 10, 2),  # XGBoost typically uses smaller depths
+    #             "learning_rate": [0.01, 0.1, 0.3],
+    #             "subsample": [0.8, 1.0],
+    #             "colsample_bytree": [0.8, 1.0]
+    #         }
+            
+    #         # Create XGBoost classifier
+    #         self.xgb = XGBClassifier(eval_metric='logloss')
+            
+    #         # Creating an object of the Grid Search class
+    #         self.grid = GridSearchCV(self.xgb, self.param_grid_xgboost, verbose=3, cv=5)
+            
+    #         # Finding the best parameters
+    #         self.grid.fit(train_x, train_y)
+            
+    #         # Extracting the best parameters
+    #         best_params = self.grid.best_params_
+            
+    #         # Creating a new model with the best parameters
+    #         self.xgb = XGBClassifier(
+    #             n_estimators=best_params['n_estimators'],
+    #             max_depth=best_params['max_depth'],
+    #             learning_rate=best_params['learning_rate'],
+    #             subsample=best_params['subsample'],
+    #             colsample_bytree=best_params['colsample_bytree'],
+    #             eval_metric='logloss'
+    #         )
+            
+    #         # Training the new model
+    #         self.xgb.fit(train_x, train_y)
+            
+    #         self.logger_object.log(self.file_object,
+    #         'XGBoost best params: ' + str(self.grid.best_params_) + '. Exited the get_best_params_for_xgboost method of the Model_Finder class')
+            
+    #         return self.xgb
+            
+    #     except Exception as e:
+    #         self.logger_object.log(self.file_object,
+    #         'Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: ' + str(e))
+    #         self.logger_object.log(self.file_object,
+    #         'XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class')
+    #         # Provide the actual exception rather than just raising a generic one
+    #         raise Exception(f"XGBoost parameter tuning failed: {str(e)}")
+
     def get_best_params_for_xgboost(self, train_x, train_y):
         self.logger_object.log(self.file_object,
-                               'Entered the get_best_params_for_xgboost method of the Model_Finder class')
+        'Entered the get_best_params_for_xgboost method of the Model_Finder class')
         try:
             # Handle missing values using SimpleImputer
-            imputer = SimpleImputer(strategy='mean')  # You can also use 'median' or 'most_frequent'
-            train_x = imputer.fit_transform(train_x)
-
-            # Initializing with different combinations of parameters
-            self.param_grid_xgboost = {
-                "n_estimators": [100, 130],
-                "criterion": ['gini', 'entropy'],
-                "max_depth": range(8, 10, 1)
-            }
-
-            # Creating an object of the Grid Search class
-            self.grid = GridSearchCV(XGBClassifier(objective='binary:logistic'), self.param_grid_xgboost, verbose=3, cv=5)
-
-            # Finding the best parameters
-            self.grid.fit(train_x, train_y)
-
-            # Extracting the best parameters
-            self.criterion = self.grid.best_params_['criterion']
-            self.max_depth = self.grid.best_params_['max_depth']
-            self.n_estimators = self.grid.best_params_['n_estimators']
-
-            # Creating a new model with the best parameters
-            self.xgb = XGBClassifier(criterion=self.criterion, max_depth=self.max_depth, n_estimators=self.n_estimators, n_jobs=-1)
-
-            # Training the new model
-            self.xgb.fit(train_x, train_y)
-
+            imputer = SimpleImputer(strategy='mean')
+            train_x_imputed = imputer.fit_transform(train_x)
+            
+            # Create a basic XGBoost model with default parameters first
+            xgb_default = XGBClassifier(objective='binary:logistic',  
+                                    eval_metric='logloss')
+            
+            # Train the default model
+            xgb_default.fit(train_x_imputed, train_y)
+            
             self.logger_object.log(self.file_object,
-                                   'XGBoost best params: ' + str(self.grid.best_params_) + '. Exited the get_best_params_for_xgboost method of the Model_Finder class')
-            return self.xgb
+                                'Successfully trained XGBoost with default parameters')
+            
+            # Return the model without grid search for now
+            # You can manually implement parameter tuning later
+            return xgb_default
+            
         except Exception as e:
             self.logger_object.log(self.file_object,
-                                   'Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: ' + str(e))
+            'Exception occurred in get_best_params_for_xgboost method of the Model_Finder class. Exception message: ' + str(e))
             self.logger_object.log(self.file_object,
-                                   'XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class')
-            raise Exception()
+            'XGBoost Parameter tuning failed. Exited the get_best_params_for_xgboost method of the Model_Finder class')
+            
+            # Fall back to a Random Forest classifier if XGBoost fails
+            self.logger_object.log(self.file_object, 'Falling back to Random Forest classifier')
+            rf = RandomForestClassifier(n_estimators=100, random_state=42)
+            rf.fit(train_x_imputed, train_y)
+            return rf
 
     def get_best_model(self, train_x, train_y, test_x, test_y):
         self.logger_object.log(self.file_object,

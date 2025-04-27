@@ -217,18 +217,19 @@ class Prediction_Data_validation:
         """
             Method Name: validationFileNameRaw
             Description: This function validates the name of the prediction csv file as per given name in the schema!
-                         Regex pattern is used to do the validation.If name format do not match the file is moved
-                         to Bad Raw Data folder else in Good raw data.
+                         Regex pattern is used to do the validation. If name format does not match, the file is moved
+                         to Bad Raw Data folder; otherwise, it is moved to Good Raw Data folder.
             Output: None
             On Failure: Exception
-
-
         """
         # delete the directories for good and bad data in case last run was unsuccessful and folders were not deleted.
         self.deleteExistingBadDataTrainingFolder()
         self.deleteExistingGoodDataTrainingFolder()
         self.createDirectoryForGoodBadRawData()
-        onlyfiles = [f for f in listdir(self.Batch_Directory)]
+        onlyfiles = [f for f in listdir(self.Batch_Directory) if os.path.isfile(os.path.join(self.Batch_Directory, f))]
+        
+        print("Only files in the directory are : ", onlyfiles)
+        self.logger.log("Prediction_Logs/GeneralLog.txt", "Only files in the directory are : %s" % onlyfiles)
         try:
             f = "Prediction_Logs/nameValidationLog.txt"
             for filename in onlyfiles:
@@ -237,25 +238,22 @@ class Prediction_Data_validation:
                     splitAtDot = (re.split('_', splitAtDot[0]))
                     if len(splitAtDot[1]) == LengthOfDateStampInFile:
                         if len(splitAtDot[2]) == LengthOfTimeStampInFile:
-                            shutil.copy("Prediction_Batch_files/" + filename, "Prediction_Raw_Files_Validated/Good_Raw")
+                            shutil.copy(os.path.join(self.Batch_Directory, filename), "Prediction_Raw_Files_Validated/Good_Raw")
                             self.logger.log(f,"Valid File name!! File moved to GoodRaw Folder :: %s" % filename)
 
                         else:
-                            shutil.copy("Prediction_Batch_files/" + filename, "Prediction_Raw_Files_Validated/Bad_Raw")
+                            shutil.copy(os.path.join(self.Batch_Directory, filename), "Prediction_Raw_Files_Validated/Bad_Raw")
                             self.logger.log(f,"Invalid File Name!! File moved to Bad Raw Folder :: %s" % filename)
                     else:
-                        shutil.copy("Prediction_Batch_files/" + filename, "Prediction_Raw_Files_Validated/Bad_Raw")
+                        shutil.copy(os.path.join(self.Batch_Directory, filename), "Prediction_Raw_Files_Validated/Bad_Raw")
                         self.logger.log(f,"Invalid File Name!! File moved to Bad Raw Folder :: %s" % filename)
                 else:
-                    shutil.copy("Prediction_Batch_files/" + filename, "Prediction_Raw_Files_Validated/Bad_Raw")
+                    shutil.copy(os.path.join(self.Batch_Directory, filename), "Prediction_Raw_Files_Validated/Bad_Raw")
                     self.logger.log(f, "Invalid File Name!! File moved to Bad Raw Folder :: %s" % filename)
-
-            # f.close()
 
         except Exception as e:
             f = "Prediction_Logs/nameValidationLog.txt"
-            self.logger.log(f, "Error occured while validating FileName %s" % e)
-            # f.close()
+            self.logger.log(f, "Error occurred while validating FileName %s" % e)
             raise e
 
 
