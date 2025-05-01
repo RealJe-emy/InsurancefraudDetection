@@ -1,3 +1,4 @@
+# trainingModel.py
 # """
 # This is the Entry point for Training the Machine Learning Model.
 
@@ -114,7 +115,6 @@ Revisions: None
 
 """
 
-
 # Doing the necessary imports
 from sklearn.model_selection import train_test_split
 from data_ingestion import data_loader
@@ -127,7 +127,8 @@ import numpy as np
 import pandas as pd
 import os
 
-#Creating the common Logging object
+
+# Creating the common Logging object
 
 
 # class trainModel:
@@ -138,7 +139,7 @@ import os
 #             self.file_object = log_file
 #         else:
 #             self.file_object = open("Training_Logs/ModelTrainingLog.txt", 'a+')
-            
+
 #     def trainingModel(self):
 #         # Logging the start of Training
 #         self.log_writer.log(self.file_object, 'Start of Training')
@@ -171,7 +172,7 @@ import os
 #                         else:
 #                             # For numerical columns, fill with mean
 #                             data[col] = data[col].fillna(data[col].mean())
-            
+
 #             # Final check for any remaining NaN values
 #             if data.isnull().sum().sum() > 0:
 #                 self.log_writer.log(self.file_object, 'Found remaining NaN values after imputation. Applying final cleanup.')
@@ -180,13 +181,13 @@ import os
 #                 for col in numeric_cols:
 #                     if data[col].isnull().sum() > 0:
 #                         data[col] = data[col].fillna(data[col].mean())
-                
+
 #                 # For categorical columns
 #                 categorical_cols = data.select_dtypes(exclude=['number']).columns
 #                 for col in categorical_cols:
 #                     if data[col].isnull().sum() > 0:
 #                         data[col] = data[col].fillna(data[col].mode()[0] if not data[col].mode().empty else "Unknown")
-            
+
 #             #encode categorical data
 #             data = preprocessor.encode_categorical_columns(data)
 
@@ -202,7 +203,7 @@ import os
 #                 if X.isnull().sum().sum() > 0:
 #                     self.log_writer.log(self.file_object, 'Found NaN values before clustering. Performing final cleanup.')
 #                     X = X.fillna(X.mean())
-                
+
 #                 number_of_clusters=kmeans.elbow_plot(X)  #  using the elbow plot to find the number of optimum clusters
 #             except Exception as e:
 #                 self.log_writer.log(self.file_object, f'Error in elbow plot: {str(e)}. Using default number of clusters.')
@@ -278,7 +279,7 @@ class trainModel:
             preprocessor = preprocessing.Preprocessor(self.file_object, self.log_writer)
             data = preprocessor.remove_columns(data, [
                 'policy_number', 'policy_bind_date', 'policy_state', 'insured_zip', 'incident_location',
-                'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make', 
+                'incident_date', 'incident_state', 'incident_city', 'insured_hobbies', 'auto_make',
                 'auto_model', 'auto_year', 'age', 'total_claim_amount'
             ])
             data.replace('?', np.NaN, inplace=True)  # Replacing '?' with NaN
@@ -312,7 +313,8 @@ class trainModel:
                 cluster_features = cluster_data.drop(['Labels', 'Cluster'], axis=1)
                 cluster_label = cluster_data['Labels']
 
-                x_train, x_test, y_train, y_test = train_test_split(cluster_features, cluster_label, test_size=1/3, random_state=355)
+                x_train, x_test, y_train, y_test = train_test_split(cluster_features, cluster_label, test_size=1 / 3,
+                                                                    random_state=355)
                 x_train = preprocessor.scale_numerical_columns(x_train)
                 x_test = preprocessor.scale_numerical_columns(x_test)
 

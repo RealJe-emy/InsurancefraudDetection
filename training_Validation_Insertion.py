@@ -1,3 +1,4 @@
+#training_Validation_Insertion.py
 from datetime import datetime
 from Training_Raw_data_validation.rawValidation import Raw_Data_validation
 from DataTypeValidation_Insertion_Training.DataTypeValidation import dBOperation
@@ -63,12 +64,4 @@ class train_validation:
 
         except Exception as e:
             raise e
-
-
-
-
-
-
-
-
 

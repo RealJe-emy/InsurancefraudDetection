@@ -1827,3 +1827,72 @@
 2025-04-25/11:16:58		Missing Values Validation Started!!
 2025-04-25/11:16:58		Missing Values Validation Completed!!
 2025-04-25/11:16:58		Validation Successful!
+2025-05-01/15:32:25		Request received at /validate
+2025-05-01/15:32:25		File received: fraudDetection_03032025_010223.csv
+2025-05-01/15:32:25		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-05-01/15:32:25		Regex pattern created successfully.
+2025-05-01/15:32:25		Schema details extracted successfully.
+2025-05-01/15:32:25		Error deleting Bad Data folder: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/15:32:25		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/15:32:25		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/15:34:01		Request received at /validate
+2025-05-01/15:34:01		File received: fraudDetection_26012025_071222.csv
+2025-05-01/15:34:01		File saved to: Training_Batch_Files\fraudDetection_26012025_071222.csv
+2025-05-01/15:34:01		Regex pattern created successfully.
+2025-05-01/15:34:01		Schema details extracted successfully.
+2025-05-01/15:34:01		Error deleting Bad Data folder: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/15:34:01		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/15:34:01		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/17:19:39		Request received at /validate
+2025-05-01/17:19:39		File received: fraudDetection_26012025_071222.csv
+2025-05-01/17:19:39		File saved to: Training_Batch_Files\fraudDetection_26012025_071222.csv
+2025-05-01/17:19:39		Regex pattern created successfully.
+2025-05-01/17:19:39		Schema details extracted successfully.
+2025-05-01/17:19:39		Error deleting Bad Data folder: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/17:19:39		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/17:19:39		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/19:58:30		Request received at /validate
+2025-05-01/19:58:30		File received: fraudDetection_03032025_010223.csv
+2025-05-01/19:58:30		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-05-01/19:58:30		Validating file name...
+2025-05-01/19:58:30		Regex pattern created successfully.
+2025-05-01/19:58:30		Schema details extracted successfully.
+2025-05-01/19:58:30		Error deleting Bad Data folder: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/19:58:30		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/19:58:30		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/19:58:40		Request received at /validate
+2025-05-01/19:58:40		File received: fraudDetection_26012025_071222.csv
+2025-05-01/19:58:40		File saved to: Training_Batch_Files\fraudDetection_26012025_071222.csv
+2025-05-01/19:58:40		Validating file name...
+2025-05-01/19:58:40		Regex pattern created successfully.
+2025-05-01/19:58:40		Schema details extracted successfully.
+2025-05-01/19:58:40		Error deleting Bad Data folder: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/19:58:40		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/19:58:40		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/20:04:51		Request received at /validate
+2025-05-01/20:04:51		File received: fraudDetection_03032025_010223.csv
+2025-05-01/20:04:51		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-05-01/20:04:51		Validating file name...
+2025-05-01/20:04:51		Regex pattern created successfully.
+2025-05-01/20:04:51		Schema details extracted successfully.
+2025-05-01/20:04:51		Error deleting Bad Data folder: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/20:04:51		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/20:04:51		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/20:10:54		Request received at /validate
+2025-05-01/20:10:54		File received: fraudDetection_03032025_010223.csv
+2025-05-01/20:10:54		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-05-01/20:10:54		Validating file name...
+2025-05-01/20:10:54		Regex pattern created successfully.
+2025-05-01/20:10:54		Schema details extracted successfully.
+2025-05-01/20:10:54		Error deleting Bad Data folder: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/20:10:54		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/20:10:54		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/20:11:27		Request received at /validate
+2025-05-01/20:11:27		File received: fraudDetection_03032025_010223.csv
+2025-05-01/20:11:27		File saved to: Training_Batch_Files\fraudDetection_03032025_010223.csv
+2025-05-01/20:11:27		Validating file name...
+2025-05-01/20:11:27		Regex pattern created successfully.
+2025-05-01/20:11:27		Schema details extracted successfully.
+2025-05-01/20:11:27		Error deleting Bad Data folder: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/20:11:27		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'
+2025-05-01/20:11:27		File name validation failed: [WinError 5] Access is denied: 'Training_Raw_files_validated/Bad_Raw/'

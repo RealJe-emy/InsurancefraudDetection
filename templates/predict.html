@@ -283,8 +283,7 @@
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
 
     <script>
-
-        $(document).ready(function() {
+            $(document).ready(function() {
         $('#loading').hide();
 
         // Check authentication on page load
@@ -295,63 +294,87 @@
             e.preventDefault();
             if (!checkAuthStatus()) return;
 
-            processBatchPrediction();
-        });
-
-        // Single Prediction Form
-        $("#single_predict_form").submit(function(e) {
-            e.preventDefault();
-            if (!checkAuthStatus()) return;
-
-            processSinglePrediction();
-        });
-
-        // Authentication Check
-        function checkAuthStatus() {
-            const token = localStorage.getItem('authToken');
-            if (!token) {
-                window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
-                return false;
-            }
-            return true;
-        }
-
-        // Batch Prediction
-        function processBatchPrediction() {
             $('#loading').show();
-            const fileInput = document.getElementById('csvfile');
-            const file = fileInput.files[0];
+            var fileInput = document.getElementById('csvfile');
+            var file = fileInput.files[0];
 
+            // Validate file exists
             if (!file) {
-                showBatchAlert('Please select a file first', 'danger');
+                $("#batch_result").html('<div class="alert alert-danger">Please select a file</div>');
                 $('#loading').hide();
                 return;
             }
 
-            const formData = new FormData();
-            formData.append('file', file);
+            // Validate file type
+            if (!file.name.endsWith('.csv')) {
+                $("#batch_result").html('<div class="alert alert-danger">Please upload a CSV file</div>');
+                $('#loading').hide();
+                return;
+            }
 
-            fetch('/api/predict', {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+            // Validate file content
+            Papa.parse(file, {
+                header: true,
+                preview: 1,
+                complete: function(results) {
+                    var requiredFields = [
+                        'policy_number', 'months_as_customer', 'policy_deductable',
+                        'policy_annual_premium', 'incident_severity', 'incident_hour_of_the_day',
+                        'number_of_vehicles_involved', 'bodily_injuries', 'property_damage',
+                        'police_report_available'
+                    ];
+
+                    var missingFields = [];
+                    if (results.meta.fields) {
+                        missingFields = requiredFields.filter(field => !results.meta.fields.includes(field));
+                    }
+
+                    if (missingFields.length > 0) {
+                        $("#batch_result").html('<div class="alert alert-danger">Missing required fields: ' +
+                            missingFields.join(', ') + '</div>');
+                        $('#loading').hide();
+                        return;
+                    }
+
+                    // Proceed with upload if validation passes
+                    var formData = new FormData();
+                    formData.append('file', file);
+
+                    $.ajax({
+                        url: "/api/predict",
+                        type: "POST",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                        },
+                        success: function(response) {
+                            displayBatchResults(response);
+                            $('#loading').hide();
+                        },
+                        error: function(xhr, status, error) {
+                            $("#batch_result").html('<div class="alert alert-danger">Error: ' +
+                                (xhr.responseJSON?.message || error) + '</div>');
+                            $('#loading').hide();
+                        }
+                    });
                 },
-                body: formData
-            })
-            .then(response => {
-                if (!response.ok) throw new Error(response.statusText);
-                return response.json();
-            })
-            .then(data => displayBatchResults(data))
-            .catch(error => showBatchAlert(error.message || 'Prediction failed', 'danger'))
-            .finally(() => $('#loading').hide());
-        }
+                error: function(error) {
+                    $("#batch_result").html('<div class="alert alert-danger">Error parsing CSV: ' + error + '</div>');
+                    $('#loading').hide();
+                }
+            });
+        });
 
-        // Single Prediction
-        function processSinglePrediction() {
+        // Single Client Prediction
+        $("#single_predict_form").submit(function(e) {
+            e.preventDefault();
+            if (!checkAuthStatus()) return;
+
             $('#loading').show();
 
-            const formData = {
+            var formData = {
                 policy_number: $("#policy_number").val(),
                 months_as_customer: $("#months_as_customer").val(),
                 policy_deductable: $("#policy_deductable").val(),
@@ -364,68 +387,82 @@
                 police_report_available: $("#police_report_available").val()
             };
 
-            fetch('/single_predict', {
-                method: 'POST',
+            $.ajax({
+                url: "/single_predict",
+                type: "POST",
+                data: JSON.stringify(formData),
+                contentType: "application/json",
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + localStorage.getItem('authToken')
                 },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                if (!response.ok) throw new Error(response.statusText);
-                return response.json();
-            })
-            .then(data => displaySingleResult(data))
-            .catch(error => showSingleAlert(error.message || 'Prediction failed', 'danger'))
-            .finally(() => $('#loading').hide());
-        }
-
-        // Display Functions
-        function displayBatchResults(data) {
-            let html = '<table class="table table-striped"><thead><tr>';
-            html += '<th>Policy Number</th><th>Prediction</th><th>Confidence</th></tr></thead><tbody>';
-
-            data.results.forEach(result => {
-                const badgeClass = result.prediction === 'Y' ? 'badge-danger' : 'badge-success';
-                html += `<tr>
-                    <td>${result.policy_number}</td>
-                    <td><span class="badge ${badgeClass}">${result.prediction === 'Y' ? 'Fraud' : 'Valid'}</span></td>
-                    <td>${(result.probability * 100).toFixed(1)}%</td>
-                </tr>`;
+                success: function(response) {
+                    displaySingleResult(response);
+                    $('#loading').hide();
+                },
+                error: function(xhr, status, error) {
+                    $("#single_result").html('<div class="alert alert-danger">Error: ' +
+                        (xhr.responseJSON?.message || error) + '</div>');
+                    $('#loading').hide();
+                }
             });
+        });
 
-            html += '</tbody></table>';
-            $("#batch_result").html(html);
+        // Authentication Check
+        function checkAuthStatus() {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+                return false;
+            }
+            return true;
         }
 
-        function displaySingleResult(data) {
-            const badgeClass = data.prediction === 'Y' ? 'badge-danger' : 'badge-success';
-            const html = `
-                <div class="alert alert-info">
-                    <h5>Prediction Result</h5>
-                    <p>Policy: ${data.policy_number}</p>
-                    <p>Status: <span class="badge ${badgeClass}">${
-                        data.prediction === 'Y' ? 'Potential Fraud' : 'Likely Valid'
-                    }</span></p>
-                    <p>Confidence: ${(data.confidence * 100).toFixed(1)}%</p>
-                    <hr>
-                    <h6>Key Factors:</h6>
-                    <ul>${data.factors.map(f => `<li>${f}</li>`).join('')}</ul>
-                </div>
-            `;
+        function displaySingleResult(response) {
+            let html = '<div class="card">';
+            html += '<div class="card-header ' + (response.prediction === 'Y' ? 'bg-danger' : 'bg-success') + ' text-white">';
+            html += '<h5 class="mb-0">Prediction: ' + (response.prediction === 'Y' ? 'FRAUD DETECTED' : 'No Fraud Detected') + '</h5>';
+            html += '</div>';
+            html += '<div class="card-body">';
+            html += '<p><strong>Confidence:</strong> ' + (response.probability * 100).toFixed(2) + '%</p>';
+
+            if (response.important_factors) {
+                html += '<h6>Key Factors:</h6><ul>';
+                response.important_factors.forEach(factor => {
+                    html += '<li>' + factor + '</li>';
+                });
+                html += '</ul>';
+            }
+
+            html += '<h6>Details:</h6>';
+            html += '<pre>' + JSON.stringify(response, null, 2) + '</pre>';
+            html += '</div></div>';
+
             $("#single_result").html(html);
         }
 
-        // Alert Functions
-        function showBatchAlert(message, type) {
-            const alertClass = `alert alert-${type === 'danger' ? 'danger' : 'warning'}`;
-            $("#batch_result").html(`<div class="${alertClass}">${message}</div>`);
-        }
+        function displayBatchResults(response) {
+            if (response.results && response.results.length > 0) {
+                let html = '<div class="table-responsive"><table class="table table-striped">';
+                html += '<thead><tr><th>Policy #</th><th>Prediction</th><th>Confidence</th><th>Details</th></tr></thead><tbody>';
 
-        function showSingleAlert(message, type) {
-            const alertClass = `alert alert-${type === 'danger' ? 'danger' : 'warning'}`;
-            $("#single_result").html(`<div class="${alertClass}">${message}</div>`);
+                response.results.forEach(result => {
+                    html += '<tr class="' + (result.prediction === 'Y' ? 'table-danger' : 'table-success') + '">';
+                    html += '<td>' + result.policy_number + '</td>';
+                    html += '<td>' + (result.prediction === 'Y' ? 'FRAUD' : 'Clean') + '</td>';
+                    html += '<td>' + (result.probability * 100).toFixed(2) + '%</td>';
+                    html += '<td><button class="btn btn-sm btn-info view-details" data-id="' + result.policy_number + '">View</button></td>';
+                    html += '</tr>';
+                });
+
+                html += '</tbody></table></div>';
+                html += '<div class="mt-3">';
+                html += '<strong>Summary:</strong> ' + response.summary.fraud_count + ' fraud cases detected out of ' + response.results.length;
+                html += '</div>';
+
+                $("#batch_result").html(html);
+            } else {
+                $("#batch_result").html('<div class="alert alert-warning">No results returned from prediction</div>');
+            }
         }
     });
     </script>

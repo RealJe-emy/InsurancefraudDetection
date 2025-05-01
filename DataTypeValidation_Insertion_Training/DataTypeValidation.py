@@ -1,3 +1,4 @@
+#DataTypeValidation.py
 import shutil
 import sqlite3
 from datetime import datetime
@@ -204,8 +205,3 @@ class dBOperation:
         except Exception as e:
             self.logger.log(log_file, "File exporting failed. Error : %s" %e)
             # log_file.close()
-
-
-
-
-
